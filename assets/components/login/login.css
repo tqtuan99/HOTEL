@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+:root {
+   --border-radius-bg: 25px;
+}
+
+:root {
+   --color-inputFocus: #F46A49;
+   --bg-color-slider: rgba(0, 0, 0, 0.5);
+   --border-color-input: rgba(0, 0, 0, 0.3);
+   --color-textSign: rgba(0, 0, 0, 0.4);
+   --font-color-iconEye: rgba(34, 27, 27, 0.596);
+   --bg-color-buttonGoogle: #3578E7;
+   --bg-color-buttonFacebook: #3B5999;
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   /* background-color: rgba(199, 83, 16, 0.726); */
+   /* background-blend-mode: hard-light; */
+   background-image: url('https://images.unsplash.com/photo-1564668848727-0908b6b68ae3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80');
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   width: 100vw;
+   height: 100vh;
+   font-family: 'Itim', cursive;
+}
+
+body,
+form {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   /* flex-direction: column; */
+   /* gap: 40px; */
+}
+
+.container {
+   position: relative;
+   height: 85%;
+   width: 70%;
+}
+
+#slider {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   width: 100%;
+}
+
+#slider .slides {
+   width: 100%;
+   height: 100%;
+}
+
+#slider .slides img {
+   opacity: 0.7;
+   display: block;
+   width: 55%;
+   height: 100%;
+   object-fit: cover;
+   border-radius: var(--border-radius-bg) 0 0 var(--border-radius-bg);
+}
+
+#slider .slides:after {
+   content: '';
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   background-color: var(--bg-color-slider);
+   z-index: 15;
+   border-radius: var(--border-radius-bg);
+}
+
+#slider .slides p {
+   font-size: 20px;
+   position: absolute;
+   bottom: 13%;
+   color: white;
+   z-index: 10;
+   padding: 0 30px;
+   width: 55%;
+   text-align: center;
+   z-index: 20;
+}
+
+form {
+   position: absolute;
+   right: 0;
+   width: 45%;
+   height: 100%;
+   background-color: whitesmoke;
+   border-radius: 0 var(--border-radius-bg) var(--border-radius-bg) 0;
+   flex-direction: column;
+   padding: 3% 5%;
+   row-gap: 3%;
+   z-index: 20;
+}
+
+form .title {
+   margin-bottom: 4%;
+   font-size: 50px;
+   text-transform: uppercase;
+   text-shadow: 2px 1px var(--color-inputFocus);
+}
+
+form .cont-form {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   row-gap: 8px;
+}
+
+form :nth-child(4) {
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+form .input {
+   outline: none;
+   padding: 8px 14px;
+   border-radius: .5em;
+   border: 2px solid var(--border-color-input);
+   background-color: transparent;
+}
+
+form .input:focus {
+   border: 2px solid var(--color-inputFocus);
+}
+
+form .cont-pass {
+   position: relative;
+   height: 34px;
+}
+
+form .input.pass {
+   position: absolute;
+   width: 100%;
+   margin-bottom: 10px;
+   /* padding-right: 2.2em; */
+}
+
+form .cont-pass .fa-eye {
+   position: absolute;
+   top: 30%;
+   right: 10px;
+   color: var(--font-color-iconEye);
+}
+
+form .cont-pass .fa-eye:hover {
+   cursor: pointer;
+}
+
+form .btn {
+   outline: none;
+   width: 100%;
+   padding: 14px;
+   border-radius: 4em;
+   border: none;
+   font-size: 15px;
+   color: whitesmoke;
+}
+
+form .btn:hover {
+   cursor: pointer;
+}
+
+form .btn.signin {
+   font-size: 17px;
+   margin-top: 20px;
+   margin-bottom: 10px;
+   background: linear-gradient(to left, #fc7f41, #f46949, #e95351, #da3f58, #c82d5f);
+   transition: all 400ms ease;
+}
+form .btn:hover,
+form .signin:hover{
+   transition: all 400ms ease;
+   background: linear-gradient(to left, #7cfc41, #70f532, #36fc23, #24ee90, #19d2d8);
+   
+}
+
+form .txt-sign {
+   margin: -25px;
+   padding: 0 10px;
+   background-color: whitesmoke;
+   color: var(--color-textSign);
+}
+
+form .line {
+   width: 60%;
+   border: none;
+   border-top: 1px solid var(--color-textSign);
+}
+
+form .facebook,
+form .google {
+   border-radius: 2px;
+   position: relative;
+}
+
+form .facebook {
+   margin-top: 28px;
+   background-color: var(--bg-color-buttonFacebook);
+   margin-bottom: 8px;
+}
+
+form .google {
+   background-color: var(--bg-color-buttonGoogle);
+}
+
+form .facebook i,
+form .google .content-svg {
+   position: absolute;
+   top: 1px;
+   bottom: 1px;
+   left: 1px;
+   width: 15%;
+   background-color: white;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+form .facebook i {
+   color: #3B5999;
+   font-size: 27px;
+}
+
+form .google .content-svg img {
+   width: 50%;
+}
+
+form .account {
+   margin-top: 11px;
+}
+
+form .create-account {
+   color: var(--color-inputFocus);
+   text-decoration-line: underline;
+   /* line-height: 1em; */
+}
+
+form .create-account:hover,
+form .forgot-password:hover {
+   cursor: pointer;
+   font-weight: 800;
+}
+
+
+@media only screen and (max-width: 1180px) {
+   .container {
+      width: 90%;
+   }
+}
+
+
+@media only screen and (max-width: 1050px) {
+   .container {
+      width: 90%;
+   }
+
+   form {
+      width: 45%;
+   }
+}
+
+@media only screen and (max-width: 900px) {
+
+   .container {
+      width: 60%;
+   }
+
+   form {
+      width: 100%;
+      border-radius: var(--border-radius-bg);
+   }
+
+   #slider {
+      width: 0;
+   }
+}
+
+@media only screen and (max-width: 600px) {
+   .container {
+      width: 90%;
+   }
+
+   form {
+      width: 100%;
+      border-radius: var(--border-radius-bg);
+   }
+
+   #slider {
+      width: 0;
+   }
+}
