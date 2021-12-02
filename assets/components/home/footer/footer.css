@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+   --bg-main: linear-gradient(to right, #fa9e1b, #8d4fff);
+   --bg-def: linear-gradient(to left, #7cfc41, #70f532, #36fc23, #24ee90, #19d2d8);
+}
+
+.header-curve {
+   border-radius: 95% 95% 0 0 / 20%;
+}
+
+.bg-main-footer {
+   background: var(--bg-main);
+}
+
+.bg-btn {
+   background: var(--bg-def);
+}
+
+.bg-btn:hover {
+   background: linear-gradient(to left, #fc7f41, #f46949, #e95351, #da3f58, #c82d5f);
+}
+
+.icon-fb {
+   left: 0;
+   top: 0;
+   width: 10px;
+   height: 10px;
+}
+
+.icon-fb:hover {
+   margin-top: -0.25rem;
+   margin-right: -0.25rem;
+}
+
+.rotate-45 {
+   transform: rotate(45deg);
+}
+
+.-rotate-45 {
+   transform: rotate(-45deg);
+}
