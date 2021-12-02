@@ -37,18 +37,18 @@
       </div>
 
 
-      <form>
+      <form method="POST">
          <p class="title">
             Login
          </p>
          <div class="cont-form">
             <label for="" class="lbl-email">Email</label>
-            <input type="email" class="input email" placeholder="example@gmail.com" required>
+            <input type="email" name="email" class="input email" placeholder="example@gmail.com" required>
          </div>
          <div class="cont-form">
             <label for="" class="lbl-pass">Password</label>
             <div class="cont-pass">
-               <input type="password" class="input pass" placeholder="password" required>
+               <input type="password" name="pass" class="input pass" placeholder="password" required>
                <i class="far fa-eye"></i>
             </div>
          </div>
@@ -59,7 +59,12 @@
             </div>
             <a class="forgot-password">Forgot your password?</a>
          </div>
-         <button type="submit" class="btn signin">Sign in</button>
+         <button type="submit" name="submit" class="btn signin">Sign in</button>
+         <!-- import file login -->
+         <?php
+         include 'suplogin.php';
+         ?>
+
          <hr class="line">
          <h5 class="txt-sign">Or sign in with</h5>
          <div>
@@ -73,10 +78,11 @@
                Login with Google+
             </button>
          </div>
-         <p class="account">Don't have an account? <Span class="create-account"> <a href="../register/register.html">Create an account</a></Span></p>
+         <p class="account">Don't have an account? <Span class="create-account"> <a href="../register/register.php" >Create an account</a></Span></p>
       </form>
-
+      <!-- target="_blank": next tab -->
    </div>
    <script src="./login.js"></script>
 
 </html>
+

@@ -35,27 +35,25 @@
             <p>Welcome to hotel ❤ Serving you is our pleasure!</p>
          </div>
       </div>
-
-
-      <form>
+      <form method="POST">
          <p class="title">
             REGISTER ACCOUNT
          </p>
          <div class="cont-form">
             <label for="" class="lbl-email">Email</label>
-            <input type="email" class="input email" placeholder="example@gmail.com" required>
+            <input type="email"  name="email" class="input email" placeholder="example@gmail.com" required>
          </div>
          <div class="cont-form">
-            <label for="" class="lbl-pass">Password</label>
+            <label for=""  class="lbl-pass">Password</label>
             <div class="cont-pass">
-               <input type="password" class="input pass" placeholder="password" required>
+               <input type="password"  name="pass" class="input pass" placeholder="password" required>
                <i class="far fa-eye"></i>
             </div>
          </div>
          <div class="cont-form">
-            <label for="" class="lbl-pass">Retype Password</label>
+            <label for=""  class="lbl-pass">Retype Password</label>
             <div class="cont-pass">
-               <input type="password" class="input pass" placeholder="retype password" required>
+               <input type="password" name="retype-pass" class="input pass" placeholder="retype password" required>
                <i class="far fa-eye"></i>
             </div>
          </div>
@@ -65,7 +63,16 @@
                <label for="" class="lbl-remember">To create an account, please agree to our terms at <a href="#">Terms & Privacy</a>.</label>
             </div>
          </div>
-         <button type="submit" class="btn signin">Register</button>
+         <script>
+            
+         </script>
+         <?php
+         include 'suprigister.php';
+         ?>
+         <button type="submit" name="submit" class="btn signin">Register</button>
+
+         
+
          <hr class="line">
          <h5 class="txt-sign">Or sign in with</h5>
          <div>
@@ -80,7 +87,7 @@
             </button>
          </div>
          <p class="account">Do you have an account? <Span class="create-account">
-         <a href="../login/login.html">Login</a></Span></p>
+         <a href="../login/login.php">Login</a></Span></p>
       </form>
 
    </div>
