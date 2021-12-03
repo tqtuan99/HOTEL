@@ -38,6 +38,39 @@
          <p class="title">
             REGISTER ACCOUNT
          </p>
+
+         <div class="cont-form">
+            <div class="cont-name">
+               <label for="" class="lbl-name">First Name</label>
+               <div>
+                  <input type="text" class="name input" placeholder="first name" required>
+               </div>
+            </div>
+
+            <div class="cont-name">
+               <label for="" class="lbl-name">Last Name</label>
+               <div>
+                  <input type="text" class="name input" placeholder="last name" required>
+               </div>
+            </div>
+         </div>
+
+         <div class="cont-form">
+            <label for="" class="lbl-sex">Gender:</label>
+            <div>
+                 <input type="radio" class="input-radio" name="fav_language" value="Male" required>
+                 <label for="html">Male</label><br>
+            </div>
+            <div>
+                 <input type="radio" class="input-radio" name="fav_language" value="Female" required>
+                 <label for="css">Female</label><br>
+            </div>
+            <div>
+                 <input type="radio" class="input-radio" name="fav_language" value="Other" required>
+                 <label for="javascript">Other</label>
+            </div>
+         </div>
+
          <div class="cont-form">
             <label for="" class="lbl-email">Email</label>
             <input type="email" class="input email" placeholder="example@gmail.com" required>
@@ -56,6 +89,7 @@
                <i class="far fa-eye"></i>
             </div>
          </div>
+
          <div class="cont-form">
             <div class="remember">
                <input type="checkbox" class="chk-remember">
@@ -63,24 +97,13 @@
                      Privacy</a>.</label>
             </div>
          </div>
+
          <button type="submit" class="btn signin">Register</button>
          <hr class="line">
-         <h5 class="txt-sign">Or sign in with</h5>
-         <div>
-            <button type="button" class="btn facebook">
-               <i class="fab fa-facebook"></i>Login with Facebook
-            </button>
-            <button type="button" class="btn google">
-               <div class="content-svg">
-                  <img src="../../image/google+.svg" alt="Google">
-               </div>
-               Login with Google+
-            </button>
-         </div>
+
          <p class="account">Do you have an account? <Span class="create-account">
                <a href="../login/login.html">Login</a></Span></p>
       </form>
-
    </div>
    <script src="../login/login.js"></script>
 

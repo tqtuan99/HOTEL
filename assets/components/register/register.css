@@ -103,7 +103,7 @@ form {
    background-color: whitesmoke;
    border-radius: 0 var(--border-radius-bg) var(--border-radius-bg) 0;
    flex-direction: column;
-   padding: 3% 5%;
+   padding: 2% 2%;
    row-gap: 3%;
    z-index: 20;
 }
@@ -120,12 +120,22 @@ form .cont-form {
    display: flex;
    flex-direction: column;
    width: 100%;
-   row-gap: 8px;
+   row-gap: 4px;
 }
 
-form :nth-child(5) {
+form :nth-child(2) {
    flex-direction: row;
    justify-content: space-between;
+}
+
+form :nth-child(3) {
+   flex-direction: row;
+   justify-content: space-evenly;
+}
+
+form .cont-form .input-radio {
+   width: 15px;
+   height: 15px;
 }
 
 form .input {
@@ -163,6 +173,15 @@ form .cont-pass .fa-eye:hover {
    cursor: pointer;
 }
 
+form .cont-name .name {
+   width: 100%;
+   margin-top: 4px;
+}
+
+form .cont-name {
+   width: 45%;
+}
+
 form .btn {
    outline: none;
    width: 100%;
@@ -179,23 +198,20 @@ form .btn:hover {
 
 form .btn.signin {
    font-size: 17px;
-   margin-top: 20px;
-   margin-bottom: 10px;
+   margin-top: 10px;
+   margin-bottom: 4px;
    background: linear-gradient(to left, #fc7f41, #f46949, #e95351, #da3f58, #c82d5f);
    transition: all 400ms ease;
 }
+
 form .btn:hover,
-form .signin:hover{
+form .signin:hover {
    transition: all 400ms ease;
    background: linear-gradient(to left, #7cfc41, #70f532, #36fc23, #24ee90, #19d2d8);
-   
 }
 
-form .txt-sign {
-   margin: -25px;
-   padding: 0 10px;
-   background-color: whitesmoke;
-   color: var(--color-textSign);
+form .cont-form .remember {
+   margin-top: 10px;
 }
 
 form .line {
@@ -270,7 +286,7 @@ form .create-account:hover {
       width: 50%;
    }
 
-   #slider{
+   #slider {
       width: 50%;
    }
 
