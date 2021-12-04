@@ -34,7 +34,7 @@
          </div>
       </div>
 
-      <form>
+      <form method="POST">
          <p class="title">
             REGISTER ACCOUNT
          </p>
@@ -43,14 +43,14 @@
             <div class="cont-name">
                <label for="" class="lbl-name">First Name</label>
                <div>
-                  <input type="text" class="name input" placeholder="first name" required>
+                  <input type="text" name="firstname" class="name input" placeholder="first name" required>
                </div>
             </div>
 
             <div class="cont-name">
                <label for="" class="lbl-name">Last Name</label>
                <div>
-                  <input type="text" class="name input" placeholder="last name" required>
+                  <input type="text" name="lastname" class="name input" placeholder="last name" required>
                </div>
             </div>
          </div>
@@ -58,51 +58,56 @@
          <div class="cont-form">
             <label for="" class="lbl-sex">Gender:</label>
             <div>
-                 <input type="radio" class="input-radio" name="fav_language" value="Male" required>
+                 <input type="radio" class="input-radio" name="gender" value="Male" required>
                  <label for="html">Male</label><br>
             </div>
             <div>
-                 <input type="radio" class="input-radio" name="fav_language" value="Female" required>
+                 <input type="radio" class="input-radio" name="gender" value="Female" required>
                  <label for="css">Female</label><br>
             </div>
             <div>
-                 <input type="radio" class="input-radio" name="fav_language" value="Other" required>
+                 <input type="radio" class="input-radio" name="gender" value="Other" required>
                  <label for="javascript">Other</label>
             </div>
          </div>
 
          <div class="cont-form">
             <label for="" class="lbl-email">Email</label>
-            <input type="email" class="input email" placeholder="example@gmail.com" required>
+            <input type="email" name="email" class="input email" placeholder="example@gmail.com" required>
          </div>
          <div class="cont-form">
             <label for="" class="lbl-pass">Password</label>
             <div class="cont-pass">
-               <input type="password" class="input pass" placeholder="password" required>
+               <input type="password" name="password" class="input pass" placeholder="password" required>
                <i class="far fa-eye"></i>
             </div>
          </div>
          <div class="cont-form">
             <label for="" class="lbl-pass">Retype Password</label>
             <div class="cont-pass">
-               <input type="password" class="input pass" placeholder="retype password" required>
+               <input type="password" name="retypepassword" class="input pass" placeholder="retype password" required>
                <i class="far fa-eye"></i>
             </div>
          </div>
 
          <div class="cont-form">
             <div class="remember">
-               <input type="checkbox" class="chk-remember">
+               <input type="checkbox" class="chk-remember" required>
                <label for="" class="lbl-remember">To create an account, please agree to our terms at <a href="#">Terms &
                      Privacy</a>.</label>
             </div>
          </div>
 
-         <button type="submit" class="btn signin">Register</button>
+         <button type="submit" name="submit" class="btn signin">Register</button>
+         <!-- import handle rigister -->
+         <?php
+         include 'handleRigister.php';
+         ?>
+
          <hr class="line">
 
          <p class="account">Do you have an account? <Span class="create-account">
-               <a href="../login/login.html">Login</a></Span></p>
+               <a href="../login/login.php">Login</a></Span></p>
       </form>
    </div>
    <script src="../login/login.js"></script>
