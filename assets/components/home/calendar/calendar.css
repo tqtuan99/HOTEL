@@ -1,0 +1,43 @@
+:root {
+   --bg-section: linear-gradient(to right, #fa9e1b, #8d4fff);
+   --btn-black: #31124b;
+}
+
+.search {
+   /* border-radius: 105% 95% 95% 95% / 30%; */
+   width: 100%;
+   background-color: #4158D0;
+   background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+.search__container {
+   height: 192px;
+}
+
+.search__container--item {
+   display: flex;
+   flex-direction: column;
+   padding-right: 70px;
+   row-gap: 8px;
+   color: #000;
+}
+
+.search__container--item label,
+span {
+   color: white;
+   font-weight: 700;
+   font-size: 1rem;
+   animation: pulse 3s infinite;
+}
+
+.search__container--btn {
+   padding: 5px 50px;
+   background-color: var(--btn-black);
+   border-radius: 53px;
+   line-height: 53px;
+   cursor: pointer;
+}
+
+.search__container--btn:hover {
+   background: linear-gradient(to left, #fc7f41, #f46949, #e95351, #da3f58, #c82d5f);
+}
