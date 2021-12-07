@@ -1,0 +1,38 @@
+:root {
+   --bg-sub-nav: #54e6f7;
+}
+
+.nav a {
+   text-transform: uppercase;
+   margin-right: 1rem;
+   line-height: 64px;
+}
+
+.nav>li:hover .subnav {
+   display: block;
+}
+
+.subnav li:hover {
+   color: #000;
+   background-color: var(--bg-sub-nav);
+}
+
+.nav .subnav {
+   display: none;
+   min-width: 300px;
+   top: 100%;
+   left: 0;
+   position: absolute;
+   background-color: bisque;
+}
+
+.nav .subnav li {
+   font-size: 15px;
+   padding: 0 16px;
+   text-align: left;
+}
+
+.nav .subnav .subnav-item {
+   flex-flow: wrap;
+   justify-content: space-between;
+}

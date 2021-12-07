@@ -11,6 +11,7 @@
 }
 
 .search__container {
+   margin: 50px 0;
    height: 192px;
 }
 
@@ -24,6 +25,7 @@
 
 .search__container--item label,
 span {
+   z-index: auto;
    color: white;
    font-weight: 700;
    font-size: 1rem;
