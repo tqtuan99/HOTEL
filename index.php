@@ -20,14 +20,14 @@
    <link rel="stylesheet" href="./assets/components/home/header/header.css">
 
    <link rel="stylesheet" href="./assets/components/home/footer/footer.css">
-   <style>
+   <!-- <style>
       .js-show-user:hover .js-profile-user {
          display: block !important;
          z-index: 1;
          top: 30px;
          right: 0px;
       }
-   </style>
+   </style> -->
    <title>Document</title>
 </head>
 
@@ -125,7 +125,7 @@
                         <a href="../../../../../hotel/assets/components/register/register.php" class="text-white hover:text-pink-300">Create account</a>
                      </div>
 
-                     <div class="hidden lg:ml-8 lg:flex">
+                     <div class="js-change-currency hidden lg:ml-8 lg:flex">
                         <a href="#" class="text-white hover:text-pink-300 flex items-center">
                            <img src="https://tailwindui.com/img/flags/flag-canada.svg" alt="" class="w-5 h-auto block flex-shrink-0">
                            <span class="ml-3 block text-sm font-medium">
@@ -146,6 +146,8 @@
                         </a>
                      </div>
 
+
+
                      <!-- Profile dropdown -->
                      <div class="js-show-user ml-3 relative">
                         <div id="js-user" class="lg:hidden mr-5">
@@ -153,7 +155,7 @@
                               <?php
                               if (isset($_GET['id'])) {
                                  require_once("./assets/components/handle/dbcontroller.php");
-                                 //$db_handle = new DBController();
+                                 $db_handle = new DBController();
                                  $query = "SELECT * FROM khachhang where idtaikhoan = '" . $_GET['id'] . "'";
                                  $conn = $db_handle->connectDB();
                                  $result = $conn->query($query);
@@ -175,11 +177,12 @@
                            <!-- Active: "bg-gray-100", Not Active: "" -->
                            <!-- <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Sing in</a>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Create account</a>
-                        <a href="#" class="inline-block px-4 py-2 text-sm text-gray-700">
-                           <img src="https://tailwindui.com/img/flags/flag-canada.svg" alt="" class="w-5 h-auto inline-block flex-shrink-0">
-                           CAD
-                           <span class="sr-only">, change currency</span>
-                        </a> -->
+                           -->
+                           <a href="#" class="inline-block px-4 py-2 text-sm text-gray-700">
+                              <img src="https://tailwindui.com/img/flags/flag-canada.svg" alt="" class="w-5 h-auto inline-block flex-shrink-0">
+                              CAD
+                              <span class="sr-only">, change currency</span>
+                           </a>
                            <a href="#" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Personal Information</a>
                            <a href="./index.php" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Log Out</a>
 
@@ -207,7 +210,7 @@
 
 
       <!--START: Slider -->
-      <div id="slider" >
+      <div id="slider">
          <div class="text-center mt-6">
             <h2 class="font-bold text-4xl text-gray-800 mb-3">We have the best rooms
             </h2>
@@ -590,11 +593,15 @@
 <?php
 if (isset($_GET['id'])) {
    require_once("./assets/components/handle/dbcontroller.php");
-   //$db_handle = new DBController();
+   $db_handle = new DBController();
    $query = "SELECT * FROM khachhang where idtaikhoan = '" . $_GET['id'] . "'";
    $count = $db_handle->numRows($query);
    if ($count != 0)
       echo '<script>
+      var changeCurrency = document.querySelector(".js-change-currency");
+      changeCurrency.classList.remove("lg:flex");
+      changeCurrency.classList.add("lg:hidden");
+
         var elementSigin = document.getElementById("js-login-logout")
         elementSigin.classList.remove("lg:flex");
         elementSigin.classList.add("lg:hidden");
@@ -605,6 +612,17 @@ if (isset($_GET['id'])) {
      </script>';
 }
 ?>
+<script>
+   var showUser = document.querySelector(".js-show-user");
+   var proFileUser = document.querySelector(".js-profile-user");
+   showUser.onclick = function() {
+      if (proFileUser.style.display == "none") {
+         proFileUser.style.display = "block";
+      } else {
+         proFileUser.style.display = "none";
+      }
+   }
+</script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
