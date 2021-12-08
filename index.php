@@ -46,12 +46,12 @@
                </div>
                <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                   <div class="flex-shrink-0 flex items-start mt-9">
-                     <div class="block md:hidden h-8 w-auto">
+                     <div class="block md:hidden h-20 w-auto">
                         <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/hpxruznz.json" trigger="loop" colors="primary:#16c72e,secondary:#08a88a" scale="31" axis-y="17" style="width:100px;height:100px">
                         </lord-icon>
                      </div>
-                     <div class="hidden md:block h-8 w-auto">
+                     <div class="hidden lg:block h-8 w-auto">
                         <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/hpxruznz.json" trigger="loop" colors="primary:#16c72e,secondary:#08a88a" scale="31" axis-y="17" style="width:100px;height:100px">
                         </lord-icon>
@@ -74,7 +74,7 @@
                            <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
                               About Us
                            </a>
-                           <ul class="subnav">
+                           <ul class="subnav ">
                               <div class="subnav-item flex">
                                  <li><a href="#">example</a></li>
                                  <li><a href="#">Example 2</a></li>
@@ -136,7 +136,7 @@
                      </div>
 
                      <!-- Search -->
-                     <div class="flex lg:ml-6">
+                     <div class="flex lg:ml-6 md:flex hidden">
                         <a href="#" class="p-2 text-gray-400 hover:text-gray-500">
                            <span class="sr-only">Search</span>
                            <!-- Heroicon name: outline/search -->
@@ -150,8 +150,8 @@
 
                      <!-- Profile dropdown -->
                      <div class="js-show-user ml-3 relative">
-                        <div id="js-user" class="lg:hidden mr-5">
-                           <div class=" text-white px-3 py-2 rounded-md ">
+                        <div id="js-user" class="lg:hidden mr-5 flex">
+                           <div class="text-white px-3 py-2 rounded-md ">
                               <?php
                               if (isset($_GET['id'])) {
                                  require_once("./assets/components/handle/dbcontroller.php");
@@ -169,7 +169,7 @@
                            </div>
                            <button type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                               <span class="sr-only">Open user menu</span>
-                              <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                              <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                            </button>
                         </div>
 
@@ -596,7 +596,7 @@ if (isset($_GET['id'])) {
    $db_handle = new DBController();
    $query = "SELECT * FROM khachhang where idtaikhoan = '" . $_GET['id'] . "'";
    $count = $db_handle->numRows($query);
-   if ($count != 0)
+   if ($count != 0) {
       echo '<script>
       var changeCurrency = document.querySelector(".js-change-currency");
       changeCurrency.classList.remove("lg:flex");
@@ -610,6 +610,7 @@ if (isset($_GET['id'])) {
         elementUser.classList.remove("lg:hidden");
         elementUser.classList.add("lg:flex");
      </script>';
+   }
 }
 ?>
 <script>
