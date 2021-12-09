@@ -38,14 +38,14 @@
       <nav class="fixed top-0 right-0 left-0 bg-gray-800 z-10">
          <div class="w-full mx-auto px-2 sm:px-6 lg:px-8">
             <div class="relative flex items-center justify-between h-16">
-               <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+               <div class="js-menu absolute inset-y-0 left-0 flex items-center sm:hidden">
                   <!-- Mobile menu button-->
                   <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white text-4xl" aria-controls="mobile-menu" aria-expanded="false">
                      <i class="fas fa-bars"></i>
                   </button>
                </div>
                <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                  <div class="flex-shrink-0 flex items-start mt-9">
+                  <div class="flex-shrink-0 flex items-start mt-8 -ml-5">
                      <div class="block md:hidden h-20 w-auto">
                         <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/hpxruznz.json" trigger="loop" colors="primary:#16c72e,secondary:#08a88a" scale="31" axis-y="17" style="width:100px;height:100px">
@@ -58,8 +58,8 @@
                      </div>
                   </div>
 
-                  <div class="flex-1 hidden sm:block sm:ml-6">
-                     <div class="nav m-5 flex justify-start space-x-4 text-center list-none">
+                  <div class="flex-1 hidden sm:block">
+                     <div class="nav lg:m-5 flex justify-start space-x-4 text-center list-none">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <li class="relative">
                            <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
@@ -137,7 +137,7 @@
 
                      <!-- Search -->
                      <div class="flex lg:ml-6 md:flex hidden">
-                        <a href="#" class="p-2 text-gray-400 hover:text-gray-500">
+                        <a href="#" class="pl-2 text-gray-400 hover:text-gray-500">
                            <span class="sr-only">Search</span>
                            <!-- Heroicon name: outline/search -->
                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -150,7 +150,7 @@
 
                      <!-- Profile dropdown -->
                      <div class="js-show-user ml-3 relative">
-                        <div id="js-user" class="lg:hidden mr-5 flex">
+                        <div id="js-user" class="lg:hidden flex">
                            <div class="text-white px-3 py-2 rounded-md ">
                               <?php
                               if (isset($_GET['id'])) {
@@ -173,7 +173,7 @@
                            </button>
                         </div>
 
-                        <div class="js-profile-user sm:hidden origin-top-right absolute right-9 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                        <div class="js-profile-user hidden origin-top-right absolute right-4 mt-3 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                            <!-- Active: "bg-gray-100", Not Active: "" -->
                            <!-- <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Sing in</a>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Create account</a>
@@ -193,7 +193,7 @@
             </div>
 
             <!-- Mobile menu, show/hide based on menu state. -->
-            <div class="sm:hidden" id="mobile-menu">
+            <div class="js-items-menu hidden" id="mobile-menu">
                <div class="px-2 pt-2 pb-3 space-y-1">
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                   <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 block px-3 py-2 rounded-md">Dashboard</a>
@@ -624,6 +624,18 @@ if (isset($_GET['id'])) {
       }
    }
 </script>
+<script>
+   var showMenu = document.querySelector(".js-menu");
+   var itemsMenu = document.querySelector(".js-items-menu");
+   showMenu.onclick = function() {
+      if (itemsMenu.style.display == "none") {
+         itemsMenu.style.display = "block";
+      } else {
+         itemsMenu.style.display = "none";
+      }
+   }
+</script>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
