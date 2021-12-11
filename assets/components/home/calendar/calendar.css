@@ -80,10 +80,9 @@ span {
    }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 46.25em) {
    #ui-datepicker-div {
-      width: 23em;
-      left: 4px !important;
+      width: 90% !important;
    }
 
    .ui-datepicker-multi-2 .ui-datepicker-group {

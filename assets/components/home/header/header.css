@@ -19,6 +19,7 @@
 .subnav li:hover {
    color: #000;
    background-color: var(--bg-sub-nav);
+   border-radius: 10px;
 }
 
 .nav .subnav {
@@ -28,6 +29,7 @@
    left: 0;
    position: absolute;
    background-color: bisque;
+   border-radius: 10px;
 }
 
 .nav .subnav li {
