@@ -14,7 +14,7 @@
 
    <link rel="stylesheet" href="./assets/css/styles.css">
 
-   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
    <link rel="stylesheet" href="./assets/components/home/calendar/calendar.css">
 
    <link rel="stylesheet" href="./assets/components/home/header/header.css">
@@ -58,7 +58,7 @@
                      </div>
                   </div>
 
-                  <div class="flex-1 hidden sm:block">
+                  <div class="flex-1 hidden sm:block ">
                      <div class="nav lg:m-5 flex justify-start space-x-4 text-center list-none">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <li class="relative">
@@ -194,15 +194,59 @@
 
             <!-- Mobile menu, show/hide based on menu state. -->
             <div class="js-items-menu hidden" id="mobile-menu">
-               <div class="px-2 pt-2 pb-3 space-y-1">
-                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                  <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 block px-3 py-2 rounded-md">Dashboard</a>
+               <div class="nav list-none px-2 pb-3 block sm:hidden">
+                  <li class="relative">
+                     <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
+                        Home
+                     </a>
+                     <ul class="subnav">
 
-                  <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 block px-3 py-2 rounded-md">Team</a>
+                     </ul>
+                  </li>
 
-                  <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 block px-3 py-2 rounded-md">Projects</a>
+                  <li class="relative">
+                     <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
+                        About Us
+                     </a>
+                     <ul class="subnav ">
+                        <div class="subnav-item flex">
+                           <li><a href="#">example</a></li>
+                           <li><a href="#">Example 2</a></li>
+                           <li><a href="#">Example 3</a></li>
+                           <li><a href="#">Example 4</a></li>
+                        </div>
+                     </ul>
+                  </li>
 
-                  <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 block px-3 py-2 rounded-md">Calendar</a>
+                  <li class="relative">
+                     <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
+                        Offers
+                     </a>
+                     <ul class="subnav">
+                        <div class="subnav-item flex">
+                           <li><a href="#">example</a></li>
+                           <li><a href="#">Example 2</a></li>
+                           <li><a href="#">Example 3</a></li>
+                           <li><a href="#">Example 4</a></li>
+                           <li><a href="#">Example 5</a></li>
+                           <li><a href="#">Example 6</a></li>
+                           <li><a href="#">Example 7</a></li>
+                        </div>
+                     </ul>
+                  </li>
+
+                  <li class="relative">
+                     <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
+                        News
+                     </a>
+                     <ul class="subnav">
+                        <div class="subnav-item flex">
+                           <li><a href="#">example</a></li>
+                           <li><a href="#">Example 2</a></li>
+                           <li><a href="#">Example 3</a></li>
+                        </div>
+                     </ul>
+                  </li>
                </div>
             </div>
       </nav>
@@ -468,20 +512,20 @@
 
       <!-- START: Calender Book-->
       <div class="search search__container ">
-         <div class="flex flex-wrap justify-center items-center h-full ">
-            <div class="search__container--item ">
+         <div class="flex flex-wrap justify-center items-center h-full">
+            <div class="search__container--item calendar-check-in">
                <div>
                   <label for="from">CHECK IN</label>
                </div>
                <input class="rounded-2xl text-lg text-center" type="text" id="from" name="from" placeholder="MM-DD-YYYY">
             </div>
-            <div class="search__container--item">
+            <div class="search__container--item calendar-check-out">
                <div>
                   <label for="to">CHECK OUT</label>
                </div>
                <input class="rounded-2xl text-lg text-center" type="text" id="to" name="to" placeholder="MM-DD-YYYY">
             </div>
-            <div class="search__container--item">
+            <div class="search__container--item calendar-adults">
                <div>
                   <span>ADULTS</span>
                </div>
@@ -496,7 +540,7 @@
                   <option>09</option>
                </select>
             </div>
-            <div class="search__container--item">
+            <div class="search__container--item calendar-children">
                <div>
                   <span>CHILDREN</span>
                </div>
@@ -509,7 +553,7 @@
                   <option>05</option>
                </select>
             </div>
-            <div class="search__container--btn ani">
+            <div class="search__container--btn ani calendar-search">
                <a class="no-underline text-white animate-pulse" href="#">SEARCH</a>
                <span></span>
                <span></span>
@@ -587,7 +631,9 @@
       </div>
       <!-- END: Footer -->
    </div>
-
+   <a id="to-top" class="hidden md:block" href="#">
+      <i class="fas fa-angle-double-up animate-pulse"></i>
+   </a>
 </body>
 
 <?php
@@ -634,6 +680,21 @@ if (isset($_GET['id'])) {
          itemsMenu.style.display = "none";
       }
    }
+</script>
+<script>
+   var e = document.getElementById("to-top");
+   window.onscroll = function() {
+         if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            e.style.display = "block";
+         } else {
+            e.style.display = "none";
+         }
+      },
+      e.click(function() {
+         return $("html, body").animate({
+            scrollTop: 0
+         }, 'slow')
+      })
 </script>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>

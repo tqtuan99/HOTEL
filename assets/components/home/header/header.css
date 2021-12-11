@@ -40,3 +40,26 @@
    flex-flow: wrap;
    justify-content: space-between;
 }
+
+#to-top {
+   display: none;
+   position: fixed;
+   right: 12px;
+   bottom: 12px;
+   border-radius: 3px;
+   padding: 7px 16px 5px;
+   font-size: 21px;
+   text-align: center;
+   color: #000000;
+   background-color: #1bbae1;
+   opacity: 0.5;
+   filter: alpha(opacity=20);
+}
+
+#to-top:hover {
+   color: #ffffff;
+   background-color: #1bbae1;
+   text-decoration: none;
+   opacity: 1;
+   filter: alpha(opacity=100)
+}
