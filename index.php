@@ -184,7 +184,7 @@
                               <span class="sr-only">, change currency</span>
                            </a>
                            <a href="#" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Personal Information</a>
-                           <a href="./index.php" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Log Out</a>
+                           <a href="#" onclick="goToLogout('./index.php')" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Log Out</a>
 
                         </div>
                      </div>
@@ -629,6 +629,17 @@ if (isset($_GET['id'])) {
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="./assets/components/slider/slider.js"></script>
 
+
+<script>
+   function goToLogout(url) {
+    if(confirm("Are you sure you want to exit?")) {
+        location = url;
+        return true;
+    } else {
+        return false;
+    }
+}
+</script>
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="./assets/components/home/calendar/calendar.js"></script>
