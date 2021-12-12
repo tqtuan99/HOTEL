@@ -43,3 +43,49 @@ span {
 .search__container--btn:hover {
    background: linear-gradient(to left, #fc7f41, #f46949, #e95351, #da3f58, #c82d5f);
 }
+
+/* *fix JQuery */
+#ui-datepicker-div {
+   background: lightgreen;
+   border-radius: 10px;
+}
+
+.ui-datepicker .ui-datepicker-header {
+   background: repeating-linear-gradient(145deg, #1d7f1f, transparent 100px);
+}
+
+@media only screen and (max-width: 768px) {
+   .search__container {
+      height: 100%;
+   }
+
+   .calendar-check-in {
+      width: 100%;
+      padding: 5px 20px;
+   }
+
+   .calendar-check-out {
+      width: 100%;
+      padding: 5px 20px;
+   }
+
+   .calendar-adults {
+      width: 50%;
+      padding: 5px 20px 10px;
+   }
+
+   .calendar-children {
+      width: 50%;
+      padding: 5px 20px 10px;
+   }
+}
+
+@media only screen and (max-width: 46.25em) {
+   #ui-datepicker-div {
+      width: 90% !important;
+   }
+
+   .ui-datepicker-multi-2 .ui-datepicker-group {
+      width: 100%;
+   }
+}

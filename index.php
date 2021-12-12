@@ -14,7 +14,7 @@
 
    <link rel="stylesheet" href="./assets/css/styles.css">
 
-   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
    <link rel="stylesheet" href="./assets/components/home/calendar/calendar.css">
 
    <link rel="stylesheet" href="./assets/components/home/header/header.css">
@@ -38,14 +38,14 @@
       <nav class="fixed top-0 right-0 left-0 bg-gray-800 z-10">
          <div class="w-full mx-auto px-2 sm:px-6 lg:px-8">
             <div class="relative flex items-center justify-between h-16">
-               <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+               <div class="js-menu absolute inset-y-0 left-0 flex items-center sm:hidden">
                   <!-- Mobile menu button-->
                   <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white text-4xl" aria-controls="mobile-menu" aria-expanded="false">
                      <i class="fas fa-bars"></i>
                   </button>
                </div>
                <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                  <div class="flex-shrink-0 flex items-start mt-9">
+                  <div class="flex-shrink-0 flex items-start mt-8 -ml-5">
                      <div class="block md:hidden h-20 w-auto">
                         <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/hpxruznz.json" trigger="loop" colors="primary:#16c72e,secondary:#08a88a" scale="31" axis-y="17" style="width:100px;height:100px">
@@ -58,8 +58,8 @@
                      </div>
                   </div>
 
-                  <div class="flex-1 hidden sm:block sm:ml-6">
-                     <div class="nav m-5 flex justify-start space-x-4 text-center list-none">
+                  <div class="flex-1 hidden sm:block ">
+                     <div class="nav lg:m-5 flex justify-start space-x-4 text-center list-none">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <li class="relative">
                            <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
@@ -137,7 +137,7 @@
 
                      <!-- Search -->
                      <div class="flex lg:ml-6 md:flex hidden">
-                        <a href="#" class="p-2 text-gray-400 hover:text-gray-500">
+                        <a href="#" class="pl-2 text-gray-400 hover:text-gray-500">
                            <span class="sr-only">Search</span>
                            <!-- Heroicon name: outline/search -->
                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -150,7 +150,7 @@
 
                      <!-- Profile dropdown -->
                      <div class="js-show-user ml-3 relative">
-                        <div id="js-user" class="lg:hidden mr-5 flex">
+                        <div id="js-user" class="lg:hidden flex">
                            <div class="text-white px-3 py-2 rounded-md ">
                               <?php
                               if (isset($_GET['id'])) {
@@ -173,7 +173,7 @@
                            </button>
                         </div>
 
-                        <div class="js-profile-user sm:hidden origin-top-right absolute right-9 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                        <div class="js-profile-user hidden origin-top-right absolute right-4 mt-3 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                            <!-- Active: "bg-gray-100", Not Active: "" -->
                            <!-- <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Sing in</a>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Create account</a>
@@ -193,16 +193,60 @@
             </div>
 
             <!-- Mobile menu, show/hide based on menu state. -->
-            <div class="sm:hidden" id="mobile-menu">
-               <div class="px-2 pt-2 pb-3 space-y-1">
-                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                  <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 block px-3 py-2 rounded-md">Dashboard</a>
+            <div class="js-items-menu hidden" id="mobile-menu">
+               <div class="nav list-none px-2 pb-3 block sm:hidden">
+                  <li class="relative">
+                     <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
+                        Home
+                     </a>
+                     <ul class="subnav">
 
-                  <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 block px-3 py-2 rounded-md">Team</a>
+                     </ul>
+                  </li>
 
-                  <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 block px-3 py-2 rounded-md">Projects</a>
+                  <li class="relative">
+                     <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
+                        About Us
+                     </a>
+                     <ul class="subnav ">
+                        <div class="subnav-item flex">
+                           <li><a href="#">example</a></li>
+                           <li><a href="#">Example 2</a></li>
+                           <li><a href="#">Example 3</a></li>
+                           <li><a href="#">Example 4</a></li>
+                        </div>
+                     </ul>
+                  </li>
 
-                  <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 block px-3 py-2 rounded-md">Calendar</a>
+                  <li class="relative">
+                     <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
+                        Offers
+                     </a>
+                     <ul class="subnav">
+                        <div class="subnav-item flex">
+                           <li><a href="#">example</a></li>
+                           <li><a href="#">Example 2</a></li>
+                           <li><a href="#">Example 3</a></li>
+                           <li><a href="#">Example 4</a></li>
+                           <li><a href="#">Example 5</a></li>
+                           <li><a href="#">Example 6</a></li>
+                           <li><a href="#">Example 7</a></li>
+                        </div>
+                     </ul>
+                  </li>
+
+                  <li class="relative">
+                     <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
+                        News
+                     </a>
+                     <ul class="subnav">
+                        <div class="subnav-item flex">
+                           <li><a href="#">example</a></li>
+                           <li><a href="#">Example 2</a></li>
+                           <li><a href="#">Example 3</a></li>
+                        </div>
+                     </ul>
+                  </li>
                </div>
             </div>
       </nav>
@@ -468,20 +512,20 @@
 
       <!-- START: Calender Book-->
       <div class="search search__container ">
-         <div class="flex flex-wrap justify-center items-center h-full ">
-            <div class="search__container--item ">
+         <div class="flex flex-wrap justify-center items-center h-full">
+            <div class="search__container--item calendar-check-in">
                <div>
                   <label for="from">CHECK IN</label>
                </div>
                <input class="rounded-2xl text-lg text-center" type="text" id="from" name="from" placeholder="MM-DD-YYYY">
             </div>
-            <div class="search__container--item">
+            <div class="search__container--item calendar-check-out">
                <div>
                   <label for="to">CHECK OUT</label>
                </div>
                <input class="rounded-2xl text-lg text-center" type="text" id="to" name="to" placeholder="MM-DD-YYYY">
             </div>
-            <div class="search__container--item">
+            <div class="search__container--item calendar-adults">
                <div>
                   <span>ADULTS</span>
                </div>
@@ -496,7 +540,7 @@
                   <option>09</option>
                </select>
             </div>
-            <div class="search__container--item">
+            <div class="search__container--item calendar-children">
                <div>
                   <span>CHILDREN</span>
                </div>
@@ -509,7 +553,7 @@
                   <option>05</option>
                </select>
             </div>
-            <div class="search__container--btn ani">
+            <div class="search__container--btn ani calendar-search">
                <a class="no-underline text-white animate-pulse" href="#">SEARCH</a>
                <span></span>
                <span></span>
@@ -587,7 +631,9 @@
       </div>
       <!-- END: Footer -->
    </div>
-
+   <a id="to-top" class="hidden md:block" href="#">
+      <i class="fas fa-angle-double-up animate-pulse"></i>
+   </a>
 </body>
 
 <?php
@@ -624,6 +670,33 @@ if (isset($_GET['id'])) {
       }
    }
 </script>
+<script>
+   var showMenu = document.querySelector(".js-menu");
+   var itemsMenu = document.querySelector(".js-items-menu");
+   showMenu.onclick = function() {
+      if (itemsMenu.style.display == "none") {
+         itemsMenu.style.display = "block";
+      } else {
+         itemsMenu.style.display = "none";
+      }
+   }
+</script>
+<script>
+   var e = document.getElementById("to-top");
+   window.onscroll = function() {
+         if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            e.style.display = "block";
+         } else {
+            e.style.display = "none";
+         }
+      },
+      e.click(function() {
+         return $("html, body").animate({
+            scrollTop: 0
+         }, 'slow')
+      })
+</script>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
