@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="../../components/register/register.css">
    <link rel="stylesheet" href="../../../assets/font/fontawesome-free-5.15.4-web/css/all.min.css">
-   <title>Login Form </title>
+   <title>Register Form </title>
 </head>
 
 <body>
@@ -34,7 +34,7 @@
          </div>
       </div>
 
-      <form method="POST">
+      <form method="POST" >
          <p class="title">
             REGISTER ACCOUNT
          </p>
@@ -98,6 +98,7 @@
             </div>
          </div>
 
+         
          <button type="submit" name="submit" class="btn signin">Register</button>
          <!-- import handle rigister -->
          <?php
@@ -109,7 +110,9 @@
          <p class="account">Do you have an account? <Span class="create-account">
                <a href="../login/login.php">Login</a></Span></p>
       </form>
-   </div>
+      
+
    <script src="../login/login.js"></script>
+   
 
 </html>

@@ -1,4 +1,8 @@
 <?php
+
+
+require_once("../handle/dbcontroller.php");
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -19,38 +23,30 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $pass = $_POST["password"];
     $retypepassword = $_POST["retypepassword"];
+
+    $verification = random_int(100000, 999999);
+
+
     if ($pass != $retypepassword) echo "Mật khẩu xác nhận không đúng.";
     else {
-        require_once("../handle/dbcontroller.php");
         $db_handle = new DBController();
         $query = "SELECT * FROM khachhang where email = '" . $email . "'";
 
         $count = $db_handle->numRows($query);
         if ($count != 0) echo "Email đã tồn tại.";
         else {
-
             $sql = "INSERT INTO taikhoan (tendangnhap,matkhau)
-    VALUES ('$email', '$pass')";
+        VALUES ('$email', '$pass')";
 
-            if ($conn->multi_query($sql) === TRUE) {
-                $query1 = "SELECT * FROM taikhoan where tendangnhap = '" . $email . "'";
-                $idtaikhoan = null;
-                $conn = $db_handle->connectDB();
-                $result = $conn->query($query1);
-                if ($result->num_rows > 0) {
-                    // output data of each row
-                    $row = $result->fetch_assoc();
-                    $idtaikhoan = $row["idtaikhoan"];
-                }
-                $sql1 = "INSERT INTO khachhang (idtaikhoan,ho,ten,gioitinh,email)
-    VALUES ('$idtaikhoan','$firstname','$lastname', '$gender','$email')";
-                if($conn->multi_query($sql1)===true){
-                    header("Location: ../login/login.php?email=" . $email . "");
-                }
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-            }
+            $conn->multi_query($sql);
+
+            include("../../../gmail-email/sendmail.php");
+            sendmail($email,$firstname.$lastname,$verification);
+
+            header("Location: ./confirmCode.php?q=".md5($verification)."&e=".$email."&f=".$firstname."&l=".$lastname."&g=".$gender."");
         }
     }
 }
+
+
 $conn->close();

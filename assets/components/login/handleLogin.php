@@ -25,13 +25,16 @@ if (isset($_POST["submit"])) {
       // output data of each row
       while ($row = $result->fetch_assoc()) {
          if ($row["tendangnhap"] == $email && $row["matkhau"] == $pass) {
-            header("Location: ../../../index.php?id=".$row["idtaikhoan"]."");
+            if ($row["trangthai"] == 1) header("Location: ../../../index.php?id=".$row["idtaikhoan"]."");
             $check=1;
             break;
          }
       }
       if($check==0) {
          echo "<div class='message'>Tên đăng nhập hoặc mật khẩu không chính xác.</div>";
+      }else
+      {
+         echo "Tài khoản chưa xác nhận!";
       }
    } else {
       echo "Tài khoản không tồn tại. Vui lòng tạo tài khoản.";
