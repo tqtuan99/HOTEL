@@ -1,0 +1,60 @@
+body {
+   margin: 0;
+   padding: 0;
+   background: url(../../image/Slow.png);
+}
+
+.cont-confirm {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background: url(../../image/bg-rocket.png);
+   height: 100%;
+}
+
+form {
+   width: 350px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   height: 400px;
+   background: rgb(99 245 244 / 45%);
+   margin: 160px 0;
+   box-shadow: 7px 7px 3px 0 #bae4f6, -3px -4px 5px 0 #ebf9ff, -1px -1px 3px 0 #fff, 1px 1px 1px 0 #bde4f4;
+   border-radius: 20px;
+   gap: 30px;
+}
+
+form button {
+   padding: 10px 40px;
+   background: #4ff8ed;
+   border: 0.5px solid #3cf9ed;
+   box-shadow: 7px 7px 7px 0 #0cb1c7;
+   font-weight: bolder;
+   border-radius: 15px;
+
+}
+
+.bg-confirm {}
+
+.confirm-text {
+   text-align: center;
+   font-size: 25px;
+   font-weight: bold;
+   text-transform: capitalize;
+}
+
+.confirm-text label {
+   font-size: 30px;
+}
+
+.confirm-text input {
+   padding: 10px;
+   width: 250px;
+   margin-top: 20px;
+   font-style: oblique;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+}

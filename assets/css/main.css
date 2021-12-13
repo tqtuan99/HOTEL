@@ -1,0 +1,11 @@
+* {
+   text-decoration: none;
+   box-sizing: border-box;
+}
+
+body {
+   overflow-x: hidden;
+   padding: 0 !important;
+   margin: 0 !important;
+   line-height: 1.5 !important;
+}

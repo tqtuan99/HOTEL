@@ -1,0 +1,107 @@
+.main-comment {
+   background: url(../../image/bg-color.png);
+}
+
+.bg-comment {
+   background: url(../../image/bg-rocket.png);
+   background-repeat: no-repeat;
+}
+
+.comment-row {
+   position: relative;
+   text-align: justify;
+   margin-top: 100px !important;
+}
+
+.comment-row img {
+   position: absolute;
+   width: 200px;
+   margin: 50px 0 0 20%;
+}
+
+.comment-text {
+   float: right;
+   background: azure;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 40%;
+   border-radius: 25px;
+   padding: 20px;
+   margin: 0 20% 5% 0;
+}
+
+.comment-text .title {
+   margin-top: 20px;
+}
+
+.comment-text .sub-title {
+   font-style: italic;
+}
+
+.comment-text .name {
+   font-size: 20px;
+}
+
+.slick-initialized .slick-slide {
+   margin: 0 10px;
+   height: 100% !important;
+}
+
+.slick-arrow {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-120%);
+   border: none;
+   width: 55px;
+   height: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 20px;
+   line-height: 1;
+   z-index: 5;
+   transition: all 0.2s linear;
+   background-color: rgb(0 255 255 / 32%);
+}
+
+.slick-arrow:hover {
+   background-color: #2cccff;
+   color: white;
+}
+
+.slick-prev {
+   left: 0;
+}
+
+.slick-next {
+   right: 0;
+}
+
+.slick-dots {
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   transform: translate(-50%, 0);
+   display: flex !important;
+   align-items: center;
+   justify-content: center;
+   gap: 0 20px;
+   list-style: none;
+}
+
+.slick-dots button {
+   font-size: 0;
+   width: 15px;
+   height: 15px;
+   border-radius: 100rem;
+   background-color: #eee;
+   border: none;
+   outline: none;
+   transition: all 0.2s linear;
+}
+
+.slick-dots .slick-active button {
+   background-color: #2cccff;
+}

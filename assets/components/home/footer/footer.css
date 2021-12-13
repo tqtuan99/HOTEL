@@ -7,6 +7,10 @@
    --bg-def: linear-gradient(to left, #7cfc41, #70f532, #36fc23, #24ee90, #19d2d8);
 }
 
+button,textarea {
+   font-size: 16px;
+}
+
 .header-curve {
    border-radius: 95% 95% 0 0 / 20%;
 }

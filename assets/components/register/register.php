@@ -34,7 +34,7 @@
          </div>
       </div>
 
-      <form method="POST" >
+      <form method="POST">
          <p class="title">
             REGISTER ACCOUNT
          </p>
@@ -98,7 +98,7 @@
             </div>
          </div>
 
-         
+
          <button type="submit" name="submit" class="btn signin">Register</button>
          <!-- import handle rigister -->
          <?php
@@ -110,9 +110,9 @@
          <p class="account">Do you have an account? <Span class="create-account">
                <a href="../login/login.php">Login</a></Span></p>
       </form>
-      
 
-   <script src="../login/login.js"></script>
-   
+
+      <script src="../login/login.js"></script>
+
 
 </html>
