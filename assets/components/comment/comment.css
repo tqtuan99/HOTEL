@@ -1,10 +1,17 @@
 .main-comment {
-   background: url(../../image/bg-color.png);
+   background: url(../../image/circle_left.png);
+   background-repeat: no-repeat;
+   background-position: left;
 }
 
 .bg-comment {
    background: url(../../image/bg-rocket.png);
    background-repeat: no-repeat;
+   padding: 0 0 6em;
+}
+
+.bg-comment .slider-comment {
+   margin-top: -6%;
 }
 
 .comment-row {

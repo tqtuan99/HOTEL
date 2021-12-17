@@ -1,12 +1,12 @@
 <?php
-   $id = "";
-   $m = "";
-   $s = "";
+$id = "";
+$m = "";
+$s = "";
 
-if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
+if (isset($_GET['id']) && isset($_GET['m']) && isset($_GET['m'])) {
    $id = $_GET['id'];
    $m = $_GET['m'];
-   $s = $_GET['s'];  
+   $s = $_GET['s'];
    require_once("./assets/components/handle/dbcontroller.php");
    $db_handle = new DBController();
 }
@@ -130,9 +130,9 @@ if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0" data-aos="fade-left">
                <div class="ml-auto flex items-center">
                   <div id="js-login-logout" class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                     <a href="../../../../../HOTEL/assets/components/login/login.php" class="text-white hover:text-pink-300">Sign in</a>
+                     <a href="../../../../../HOTEL/assets/components/login/login.php" target="blank" class="text-white hover:text-pink-300">Sign in</a>
                      <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
-                     <a href="../../../../../hotel/assets/components/register/register.php" class="text-white hover:text-pink-300">Create account</a>
+                     <a href="../../../../../hotel/assets/components/register/register.php" target="blank" class="text-white hover:text-pink-300">Create account</a>
                   </div>
 
                   <div class="js-change-currency hidden lg:ml-8 lg:flex">
@@ -145,26 +145,13 @@ if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
                      </a>
                   </div>
 
-                  <!-- Search -->
-                  <div class="flex lg:ml-6 md:flex hidden">
-                     <a href="#" class="pl-2 text-gray-400 hover:text-gray-500">
-                        <span class="sr-only">Search</span>
-                        <!-- Heroicon name: outline/search -->
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                     </a>
-                  </div>
-
-
-
                   <!-- Profile dropdown -->
                   <div class="js-show-user ml-3 relative">
                      <div id="js-user" class="lg:hidden flex">
                         <div class="text-white px-3 py-2 rounded-md ">
                            <?php
                            if (md5($id) == $m && sha1($id) == $s) {
-                              $query = "SELECT * FROM khachhang where idtaikhoan = '" .$id. "'";
+                              $query = "SELECT * FROM khachhang where idtaikhoan = '" . $id . "'";
                               $conn = $db_handle->connectDB();
                               $result = $conn->query($query);
                               if ($result->num_rows > 0) {
@@ -286,37 +273,91 @@ if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
       </script>
    </div>
 
+   <!-- START: Calender Book-->
+   <div class="margin-auto search search__container" data-aos="fade-up">
+      <div class="flex flex-wrap justify-center items-center h-full">
+         <div class="search__container--item calendar-check-in" data-aos="fade-right">
+            <div>
+               <label for="from">CHECK IN</label>
+            </div>
+            <input class="rounded-2xl text-lg text-center" type="text" id="from" name="from" placeholder="MM-DD-YYYY">
+         </div>
+         <div class="search__container--item calendar-check-out" data-aos="fade-right">
+            <div>
+               <label for="to">CHECK OUT</label>
+            </div>
+            <input class="rounded-2xl text-lg text-center" type="text" id="to" name="to" placeholder="MM-DD-YYYY">
+         </div>
+         <div class="search__container--item calendar-adults" data-aos="fade-left">
+            <div>
+               <span>ADULTS</span>
+            </div>
+            <select class="w-full rounded-2xl text-lg" name="" id="">
+               <option>01</option>
+               <option>02</option>
+               <option>03</option>
+               <option>04</option>
+               <option>05</option>
+               <option>07</option>
+               <option>08</option>
+               <option>09</option>
+            </select>
+         </div>
+         <div class="search__container--item calendar-children" data-aos="fade-left">
+            <div>
+               <span>CHILDREN</span>
+            </div>
+            <select class="w-full rounded-2xl text-lg" name="" id="">
+               <option>0</option>
+               <option>01</option>
+               <option>02</option>
+               <option>03</option>
+               <option>04</option>
+               <option>05</option>
+            </select>
+         </div>
+         <div class="search__container--btn ani calendar-search" data-aos="fade-left">
+            <a class="no-underline text-white animate-pulse" href="#">SEARCH</a>
+            <span></span>
+            <span></span>
+            <span></span>
+         </div>
+      </div>
+   </div>
+   <!-- END: Calender Book-->
+
+
    <!-- Start: Information -->
    <div class="bg-image">
-      <div class="info">
+      <div class="margin-auto info">
          <div class="special ">
             <div class="activities" data-aos="fade-right">
                <div>
                   <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
-                  <lord-icon src="https://cdn.lordicon.com/jvucoldz.json" trigger="loop-on-hover" colors="primary:#121331,secondary:#08a88a" style="width:100px;height:100px">
+                  <lord-icon src="https://cdn.lordicon.com/vlupvdhl.json" trigger="loop-on-hover" colors="primary:#121331,secondary:#08a88a" style="width:100px;height:100px">
                   </lord-icon>
                </div>
-               <h3>Activities 1</h3>
+               <h3>Profession</h3>
                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
             </div>
 
             <div class="travel" data-aos="fade-left">
                <div>
                   <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
-                  <lord-icon src="https://cdn.lordicon.com/jvucoldz.json" trigger="loop-on-hover" colors="primary:#121331,secondary:#08a88a" style="width:100px;height:100px">
+                  <lord-icon src="https://cdn.lordicon.com/qhviklyi.json" trigger="loop-on-hover" colors="primary:#121331,secondary:#08a88a" style="width:100px;height:100px">
                   </lord-icon>
                </div>
-               <h3>Activities 2</h3>
+               <h3>Quality</h3>
                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
             </div>
 
             <div class="private" data-aos="fade-right">
                <div>
                   <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
-                  <lord-icon src="https://cdn.lordicon.com/jvucoldz.json" trigger="loop-on-hover" colors="primary:#121331,secondary:#08a88a" style="width:100px;height:100px">
+                  <lord-icon src="https://cdn.lordicon.com/tfosrbcn.json" trigger="loop-on-hover" colors="primary:#121331,secondary:#08a88a" style="width:100px;height:100px">
                   </lord-icon>
                </div>
-               <h3>Activities 3</h3>
+               <h3>Reputation</h3>
                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
             </div>
 
@@ -326,7 +367,7 @@ if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
                   <lord-icon src="https://cdn.lordicon.com/jvucoldz.json" trigger="loop-on-hover" colors="primary:#121331,secondary:#08a88a" style="width:100px;height:100px">
                   </lord-icon>
                </div>
-               <h3>Activities 4</h3>
+               <h3>Activities</h3>
                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
             </div>
          </div>
@@ -346,11 +387,13 @@ if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
    </div>
    <!-- End: Information -->
 
+
+
    <!-- This example requires Tailwind CSS v2.0+ -->
    <!--START: Slider -->
    <div id="slider">
-      <div class="text-center mt-6 ">
-         <h2 class="font-bold text-4xl text-gray-800 mb-3" data-aos="fade-right">We have the best rooms
+      <div class="text-center mt-6  ">
+         <h2 class="font-bold text-4xl text-gray-800 mb-3" data-aos="fade-right">We Have The Best Rooms
          </h2>
          <p class="italic text-2xl text-gray-400 mb-6" data-aos="fade-left">We have the most luxurious rooms with stunning views that make every visitor delight and don't want to leave.
          </p>
@@ -603,63 +646,164 @@ if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
    </div>
    <!--END: Slider -->
 
+   <!-- Start: ShowRoomRow -->
+   <div class="best-room">
+      <div class="container">
+         <div class="text-center mt-6">
+            <h2 class="font-bold text-4xl text-gray-800 mb-3" data-aos="fade-right">
+               The Premium Rooms Satisfy Every Traveler
+            </h2>
+            <p class="italic text-2xl text-gray-400 mb-6" data-aos="fade-left">With a unique design along with beautiful sea views, the rooms of the Angel hotel can satisfy the most discerning travelers.
+            </p>
+         </div>
+         <div class="row">
+            <div class="row-content">
+               <div class="image-room" data-aos="fade-right" style="background-image: url(./assets/image/destination-1.jpg);">
+               </div>
+               <div class="row-text" data-aos="fade-right">
+                  <span class="price">1000$</span>
+                  <p class="room"> VIP 1</p>
+                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
+                  <ul>
+                     <li>
+                        <span class="fas fa-bath"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-bed"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-street-view"></span>5
+                     </li>
+                  </ul>
+                  <a href="">BOOK</a>
+               </div>
+            </div>
 
-   <!-- START: Calender Book-->
-   <div class="search search__container" data-aos="fade-up">
-      <div class="flex flex-wrap justify-center items-center h-full">
-         <div class="search__container--item calendar-check-in" data-aos="fade-right">
-            <div>
-               <label for="from">CHECK IN</label>
+            <div class="row-content">
+               <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
+               </div>
+               <div class="row-text" data-aos="fade-up">
+                  <span class="price">1000$</span>
+                  <p class="room"> VIP 1</p>
+                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
+                  <ul>
+                     <li>
+                        <span class="fas fa-bath"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-bed"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-street-view"></span>5
+                     </li>
+                  </ul>
+                  <a href="">BOOK</a>
+               </div>
             </div>
-            <input class="rounded-2xl text-lg text-center" type="text" id="from" name="from" placeholder="MM-DD-YYYY">
-         </div>
-         <div class="search__container--item calendar-check-out" data-aos="fade-right">
-            <div>
-               <label for="to">CHECK OUT</label>
+
+            <div class="row-content">
+               <div class="image-room" data-aos="fade-left" style="background-image: url(./assets/image/destination-1.jpg);">
+               </div>
+               <div class="row-text" data-aos="fade-left">
+                  <span class="price">1000$</span>
+                  <p class="room"> VIP 1</p>
+                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
+                  <ul>
+                     <li>
+                        <span class="fas fa-bath"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-bed"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-street-view"></span>5
+                     </li>
+                  </ul>
+                  <a href="">BOOK</a>
+               </div>
             </div>
-            <input class="rounded-2xl text-lg text-center" type="text" id="to" name="to" placeholder="MM-DD-YYYY">
-         </div>
-         <div class="search__container--item calendar-adults" data-aos="fade-left">
-            <div>
-               <span>ADULTS</span>
+
+            <div class="row-content">
+               <div class="image-room" data-aos="fade-right" style="background-image: url(./assets/image/destination-1.jpg);">
+               </div>
+               <div class="row-text" data-aos="fade-right">
+                  <span class="price">1000$</span>
+                  <p class="room"> VIP 1</p>
+                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
+                  <ul>
+                     <li>
+                        <span class="fas fa-bath"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-bed"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-street-view"></span>5
+                     </li>
+                  </ul>
+                  <a href="">BOOK</a>
+               </div>
             </div>
-            <select class="w-full rounded-2xl text-lg" name="" id="">
-               <option>01</option>
-               <option>02</option>
-               <option>03</option>
-               <option>04</option>
-               <option>05</option>
-               <option>07</option>
-               <option>08</option>
-               <option>09</option>
-            </select>
-         </div>
-         <div class="search__container--item calendar-children" data-aos="fade-left">
-            <div>
-               <span>CHILDREN</span>
+
+            <div class="row-content">
+               <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
+               </div>
+               <div class="row-text" data-aos="fade-up">
+                  <span class="price">1000$</span>
+                  <p class="room"> VIP 1</p>
+                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
+                  <ul>
+                     <li>
+                        <span class="fas fa-bath"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-bed"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-street-view"></span>5
+                     </li>
+                  </ul>
+                  <a href="">BOOK</a>
+               </div>
             </div>
-            <select class="w-full rounded-2xl text-lg" name="" id="">
-               <option>0</option>
-               <option>01</option>
-               <option>02</option>
-               <option>03</option>
-               <option>04</option>
-               <option>05</option>
-            </select>
-         </div>
-         <div class="search__container--btn ani calendar-search" data-aos="fade-left">
-            <a class="no-underline text-white animate-pulse" href="#">SEARCH</a>
-            <span></span>
-            <span></span>
-            <span></span>
+
+            <div class="row-content">
+               <div class="image-room" data-aos="fade-left" style="background-image: url(./assets/image/destination-1.jpg);">
+               </div>
+               <div class="row-text" data-aos="fade-left">
+                  <span class="price">1000$</span>
+                  <p class="room"> VIP 1</p>
+                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
+                  <ul>
+                     <li>
+                        <span class="fas fa-bath"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-bed"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-street-view"></span>5
+                     </li>
+                  </ul>
+                  <a href="">BOOK</a>
+               </div>
+            </div>
+
          </div>
       </div>
    </div>
-   <!-- END: Calender Book-->
+   <!-- End: ShowRoomRow -->
 
    <!-- Start: Slider Comment -->
    <div class="main-comment" data-aos="fade-right">
       <div class="bg-comment" data-aos="fade-up">
+         <div class="text-center mt-6  ">
+            <h2 class="font-bold text-4xl text-gray-800 mb-3" data-aos="fade-right">
+               Hear Reviews From Our Customers
+            </h2>
+            <p class="italic text-2xl text-gray-400 mb-6" data-aos="fade-left">Angel Hotel! The #1 choice of every traveler.
+            </p>
+         </div>
          <div class="slider-comment" data-aos="fade-left">
             <div class="comment-row">
                <img src="./assets/image/Model.png" class="avatar" alt="">
@@ -685,7 +829,7 @@ if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
                      that I got a task to help aunties sell lottery, which she was first trying to sell us. What a hard
                      and
                      meaningful feeling to describe when we gave back to her the money from selling tickets.”</p>
-                  <p class="name"> -- Q. Tuan -- </p>
+                  <p class="name"> -- Đ. Long -- </p>
                </div>
             </div>
 
@@ -713,7 +857,7 @@ if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
                      that I got a task to help aunties sell lottery, which she was first trying to sell us. What a hard
                      and
                      meaningful feeling to describe when we gave back to her the money from selling tickets.”</p>
-                  <p class="name"> -- Q. Tuan -- </p>
+                  <p class="name"> -- Đ. Long -- </p>
                </div>
             </div>
 
@@ -725,6 +869,7 @@ if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
    <!-- START: Footer -->
    <div class="footer">
       <div class="w-full header-curve bg-main-footer" data-aos="fade-up">
+         <!-- <div class="bg-footer-bland"> -->
          <div class="flex flex-wrap text-center text-white">
             <div class="w-full md:w-1/3 p-5 border-r-2 border-opacity-30" data-aos="fade-right">
                <div class="animate-bounce my-6 text-xl font-semibold">ABOUT US</div>
@@ -736,7 +881,6 @@ if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
                   tempus et odio sit amet feugiat. Maecenas dignissim a turpis in molestie. Fusce tincidunt vestibulum
                   iaculis.</p>
             </div>
-
 
             <div class="w-full md:w-1/3 p-5 border-r-2 border-opacity-30" data-aos="fade-up">
                <div class="animate-bounce my-6 text-xl font-semibold">CONTACT US</div>
@@ -764,7 +908,6 @@ if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
                </div>
             </div>
 
-
             <div class="w-full md:w-1/3 p-5" data-aos="fade-left">
                <div class="animate-bounce mt-6 text-xl font-semibold">SAY HELLO!</div>
                <form class="p-3 w-4/5 mx-auto mt-2 px-6 pt-6 pb-4 rounded">
@@ -786,6 +929,7 @@ if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
          </div>
       </div>
    </div>
+   </div>
    <!-- END: Footer -->
 
    </div>
@@ -796,7 +940,7 @@ if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
 
 <?php
 if (md5($id) == $m && sha1($id) == $s) {
-   $query = "SELECT * FROM khachhang where idtaikhoan = '" . $id. "'";
+   $query = "SELECT * FROM khachhang where idtaikhoan = '" . $id . "'";
    $count = $db_handle->numRows($query);
    if ($count != 0) {
       echo '<script>
@@ -855,7 +999,7 @@ if (md5($id) == $m && sha1($id) == $s) {
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
    AOS.init({
-      offset: 250,
+      offset: 200,
       duration: 1000
    });
 </script>

@@ -19,13 +19,13 @@
             <div>
                <label for="from">CHECK IN</label>
             </div>
-            <input class="rounded-2xl text-lg" type="text" id="from" name="from" placeholder="mm-dd-yyyy">
+            <input class="rounded-2xl text-lg" type="date" id="from" name="from" placeholder="mm-dd-yyyy">
          </div>
          <div class="search__container--item">
             <div>
                <label for="to">CHECK OUT</label>
             </div>
-            <input class="rounded-2xl text-lg" type="text" id="to" name="to" placeholder="mm-dd-yyyy">
+            <input class="rounded-2xl text-lg" type="date" id="to" name="to" placeholder="mm-dd-yyyy">
          </div>
          <div class="search__container--item">
             <div>

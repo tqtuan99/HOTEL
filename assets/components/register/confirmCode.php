@@ -6,12 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./confirmRegister.css">
+    <link rel="stylesheet" href="../../font/fontawesome-free-5.15.4-web/css/all.min.css">
     <title>Confirm Code</title>
 </head>
 
 <body>
     <div class="cont-confirm">
         <form action="" method="POST">
+            <div class="back">
+                <a href="./register.php" class="fas fa-long-arrow-alt-left"></a>
+            </div>
             <div class="bg-confirm">
                 <div class="confirm-text">
                     <label for="" class="lbl-pass center">Confirm code</label>
@@ -21,6 +25,9 @@
                 </div>
             </div>
             <button type="submit" class="btn signin btn-confirmCode" name="btn-confirmCode">CONFIRM</button>
+            <div>
+                <input type="time" class="input pass confirmCode">
+            </div>
             <?php
 
             require_once("../handle/dbcontroller.php");
@@ -68,7 +75,7 @@
                             
                         }, 3000);
                          </script>';
-                        header("Location: ../login/login.php?email=" . $_GET['e']. "");
+                        header("Location: ../login/login.php?email=" . $_GET['e'] . "");
                     }
                 } else {
                     echo '<div style="color: red;">Mã xác nhận không đúng!</div>';

@@ -7,16 +7,24 @@
    --bg-def: linear-gradient(to left, #7cfc41, #70f532, #36fc23, #24ee90, #19d2d8);
 }
 
-button,textarea {
+button,
+textarea {
    font-size: 16px;
 }
 
 .header-curve {
    border-radius: 95% 95% 0 0 / 20%;
+   padding: 2em 0 3em;
 }
 
 .bg-main-footer {
-   background: var(--bg-main);
+   background-size: cover;
+   background-image: url(../../../image/footer-bg.jpg);
+   background-repeat: no-repeat;
+   background-position: bottom;
+}
+.bg-footer-bland {
+   background-image: url(../../../image/bg-color.png);
 }
 
 .bg-btn {

@@ -11,8 +11,9 @@
 }
 
 .search__container {
-   margin: 50px 0;
-   height: 192px;
+   margin: 0 6em;
+   height: 195px;
+   border-radius: 50px;
 }
 
 .search__container--item {
@@ -34,6 +35,7 @@ span {
 
 .search__container--btn {
    padding: 5px 50px;
+   margin-bottom: 10px;
    background-color: var(--btn-black);
    border-radius: 53px;
    line-height: 53px;
