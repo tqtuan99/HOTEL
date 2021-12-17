@@ -25,7 +25,8 @@ if (isset($_POST["submit"])) {
       // output data of each row
       while ($row = $result->fetch_assoc()) {
          if ($row["tendangnhap"] == $email && $row["matkhau"] == $pass) {
-            if ($row["trangthai"] == 1) header("Location: ../../../index.php?id=".$row["idtaikhoan"]."");
+            if ($row["trangthai"] == 1) 
+               header("Location: ../../../index.php?m=".md5($row["idtaikhoan"])."&id=".$row["idtaikhoan"]."&s=".sha1($row["idtaikhoan"])."");
             $check=1;
             break;
          }

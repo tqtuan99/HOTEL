@@ -62,10 +62,16 @@
                     $sql1 = "INSERT INTO khachhang (idtaikhoan,ho,ten,gioitinh,email)
         VALUES ('$idtaikhoan','$firstname','$lastname', '$gender','$email')";
                     if ($conn->multi_query($sql1) === true) {
-                        header("Location: ../login/login.php?email=" . $_GET['e'] . "");
+                        echo '<script>
+                        alert("Creat accout successful.");
+                        setTimeout(function() { 
+                            
+                        }, 3000);
+                         </script>';
+                        header("Location: ../login/login.php?email=" . $_GET['e']. "");
                     }
                 } else {
-                    echo "Mã xác nhận không đúng!";
+                    echo '<div style="color: red;">Mã xác nhận không đúng!</div>';
                 }
             }
             ?>

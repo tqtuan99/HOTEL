@@ -1,3 +1,12 @@
+<?php
+if (isset($_GET['id'])) {
+   $id = $_GET['id'];
+   $m = $_GET['m'];
+   $s = $_GET['s'];
+   require_once("./assets/components/handle/dbcontroller.php");
+   $db_handle = new DBController();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,15 +36,6 @@
    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
    <link rel="stylesheet" href="./assets/css/main.css">
    <link rel="stylesheet" href="./assets/components/home/footer/footer.css">
-
-   <!-- <style>
-      .js-show-user:hover .js-profile-user {
-         display: block !important;
-         z-index: 1;
-         top: 30px;
-         right: 0px;
-      }
-   </style> -->
    <title>Document</title>
 </head>
 
@@ -159,10 +159,8 @@
                      <div id="js-user" class="lg:hidden flex">
                         <div class="text-white px-3 py-2 rounded-md ">
                            <?php
-                           if (isset($_GET['id'])) {
-                              require_once("./assets/components/handle/dbcontroller.php");
-                              $db_handle = new DBController();
-                              $query = "SELECT * FROM khachhang where idtaikhoan = '" . $_GET['id'] . "'";
+                           if (md5($id) == $m && sha1($id) == $s) {
+                              $query = "SELECT * FROM khachhang where idtaikhoan = '" .$id. "'";
                               $conn = $db_handle->connectDB();
                               $result = $conn->query($query);
                               if ($result->num_rows > 0) {
@@ -190,7 +188,7 @@
                            <span class="sr-only">, change currency</span>
                         </a>
                         <a href="#" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Personal Information</a>
-                        <a href="./index.php" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Log Out</a>
+                        <a href="./index.php" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" onclick="return confirm('Are you sure?')" role="menuitem" tabindex="-1" id="user-menu-item-1">Log Out</a>
 
                      </div>
                   </div>
@@ -793,10 +791,8 @@
 </body>
 
 <?php
-if (isset($_GET['id'])) {
-   require_once("./assets/components/handle/dbcontroller.php");
-   $db_handle = new DBController();
-   $query = "SELECT * FROM khachhang where idtaikhoan = '" . $_GET['id'] . "'";
+if (md5($id) == $m && sha1($id) == $s) {
+   $query = "SELECT * FROM khachhang where idtaikhoan = '" . $id. "'";
    $count = $db_handle->numRows($query);
    if ($count != 0) {
       echo '<script>

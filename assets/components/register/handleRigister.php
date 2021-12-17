@@ -26,14 +26,15 @@ if (isset($_POST["submit"])) {
 
     $verification = random_int(100000, 999999);
 
-
-    if ($pass != $retypepassword) echo "Mật khẩu xác nhận không đúng.";
+    if(strlen($pass) < 8) echo '<div style="color: red;">Mật khẩu tối thiểu 8 kí tự!</div>';
+    else
+        if ($pass != $retypepassword) echo '<div style="color: red;">Mật khẩu xác nhận không đúng.</div>';
     else {
         $db_handle = new DBController();
         $query = "SELECT * FROM khachhang where email = '" . $email . "'";
 
         $count = $db_handle->numRows($query);
-        if ($count != 0) echo "Email đã tồn tại.";
+        if ($count != 0) echo '<div style="color: red;">Email đã tồn tại.</div>';
         else {
             $sql = "INSERT INTO taikhoan (tendangnhap,matkhau)
         VALUES ('$email', '$pass')";
