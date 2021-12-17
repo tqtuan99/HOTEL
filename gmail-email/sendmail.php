@@ -34,8 +34,25 @@ function sendmail($email, $firstname,$verification){
         // Setting the email content
         $mail->IsHTML(true);
         $mail->Subject = "Confirm Email";
-        $mail->Body = 'Verification: <b>'.$verification.'</b> ';
-        $mail->AltBody = 'Verification: '.$verification.'';
+        $mail->Body = '
+        Hey '.$firstname.',<br>
+        <br> 
+        Thank you for your interest in our hotel, to complete the registration process please enter the following confirmation code into your device.
+        <br><br> 
+        Verification code: <b>'.$verification.'</b> <br><br> 
+        Thanks,<br>
+        KLT Hotel
+        ';
+
+        $mail->AltBody = '
+        Hey '.$firstname.',
+
+        Thank you for your interest in our hotel, to complete the registration process please enter the following confirmation code into your device.
+
+        Verification code: '.$verification.'
+        Thanks,
+        KLT Hotel
+        ';
     
         $mail->send();
     } catch (Exception $e) {

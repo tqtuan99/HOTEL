@@ -32,13 +32,13 @@ if (isset($_POST["submit"])) {
          }
       }
       if($check==0) {
-         echo "<div class='message'>Tên đăng nhập hoặc mật khẩu không chính xác.</div>";
+         echo '<div style="color: red;">Tên đăng nhập hoặc mật khẩu không chính xác.</div>';
       }else
       {
-         echo "Tài khoản chưa xác nhận!";
+         echo '<div style="color: red;">Tài khoản chưa xác nhận!</div>';
       }
    } else {
-      echo "Tài khoản không tồn tại. Vui lòng tạo tài khoản.";
+      echo '<div style="color: red;">Tài khoản không tồn tại. Vui lòng tạo tài khoản.</div>';
    }
 }
 $conn->close();
