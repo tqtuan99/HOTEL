@@ -42,7 +42,7 @@ if (isset($_POST["submit"])) {
             $conn->multi_query($sql);
 
             include("../../../gmail-email/sendmail.php");
-            sendmail($email,$firstname.$lastname,$verification);
+            sendmail($email,$firstname." ".$lastname,$verification);
 
             header("Location: ./confirmCode.php?q=".md5($verification)."&e=".$email."&f=".$firstname."&l=".$lastname."&g=".$gender."");
         }

@@ -1,8 +1,12 @@
 <?php
-if (isset($_GET['id'])) {
+   $id = "";
+   $m = "";
+   $s = "";
+
+if (isset($_GET['id'])&& isset($_GET['m']) && isset($_GET['m'])) {
    $id = $_GET['id'];
    $m = $_GET['m'];
-   $s = $_GET['s'];
+   $s = $_GET['s'];  
    require_once("./assets/components/handle/dbcontroller.php");
    $db_handle = new DBController();
 }
