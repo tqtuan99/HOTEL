@@ -26,10 +26,14 @@
    display: none;
    min-width: 300px;
    top: 100%;
-   left: 0;
+   left: 15%;
    position: absolute;
    background-color: bisque;
    border-radius: 10px;
+}
+
+.nav .subnav a {
+   text-transform: capitalize;
 }
 
 .nav .subnav li {
@@ -39,8 +43,7 @@
 }
 
 .nav .subnav .subnav-item {
-   flex-flow: wrap;
-   justify-content: space-between;
+   display: block;
 }
 
 #to-top {
