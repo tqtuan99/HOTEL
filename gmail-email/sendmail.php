@@ -3,7 +3,6 @@
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
     
-    require_once('../handle/configEmail.php');
     require_once('../../../gmail-email/vendor/phpmailer/src/Exception.php');
     require_once('../../../gmail-email/vendor/phpmailer/src/PHPMailer.php');
     require_once('../../../gmail-email/vendor/phpmailer/src/SMTP.php');
@@ -24,8 +23,8 @@ function sendmail($email, $firstname,$verification, $check){
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
     
-        $mail->Username = $yourEmail; // YOUR gmail email
-        $mail->Password = $yourPassword; // YOUR gmail password
+        $mail->Username = 'klthotel2021@gmail.com'; // YOUR gmail email
+        $mail->Password = 'KLThotel2021'; // YOUR gmail password
     
         // Sender and recipient settings
         $mail->setFrom('klthotel2021@gmail.com', 'Hotel KLT');
