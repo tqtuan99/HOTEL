@@ -44,18 +44,18 @@ session_start();
          </p>
          <div class="cont-form">
             <label for="" class="lbl-email">Email</label>
-            <input type="email" name="email" class="input email" placeholder="example@gmail.com" value="<?php echo (isset($_GET['email']))?$_GET['email']:'';?>" required>
+            <input type="email" name="email" class="input email" placeholder="example@gmail.com" value="<?php if(isset($_COOKIE['username'])) echo $_COOKIE['username']; else echo (isset($_GET['email']))?$_GET['email']:'';?>" required>
          </div>
          <div class="cont-form">
             <label for="" class="lbl-pass">Password</label>
             <div class="cont-pass">
-               <input type="password" name="password" class="input pass" placeholder="password" required>
+               <input type="password" name="password" class="input pass"  placeholder="password" >
                <i class="far fa-eye"></i>
             </div>
          </div>
          <div class="cont-form">
             <div class="remember">
-               <input type="checkbox" class="chk-remember">
+               <input type="checkbox" name="chk-remember" <?php if(isset($_COOKIE['username'])) { ?> checked <?php } ?> class="chk-remember" value="1">
                <label for="" class="lbl-remember">Remember me</label>
             </div>
             <a href="../forgotPass/forgotPass.php" style="text-decoration: none; color: #000;" class="forgot-password">Forgot your password?</a>

@@ -22,8 +22,9 @@ if (isset($_POST["submit"])) {
         $count = $db_handle->numRows($query);
         if ($count != 0) echo '<div style="color: red;">Email đã tồn tại.</div>';
         else {
+            $p = md5($pass);
             $sql = "INSERT INTO taikhoan (tendangnhap,matkhau)
-        VALUES ('$email', '$pass')";
+        VALUES ('$email', '$p')";
 
             $conn->multi_query($sql);
 
