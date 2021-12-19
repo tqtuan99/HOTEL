@@ -1,15 +1,13 @@
 <?php
-$id = "";
-$m = "";
-$s = "";
+if(session_id() ==="")
+   session_start();
 
-if (isset($_GET['id']) && isset($_GET['m']) && isset($_GET['m'])) {
-   $id = $_GET['id'];
-   $m = $_GET['m'];
-   $s = $_GET['s'];
+   if(isset($_SESSION['idUser']))
+      $id = $_SESSION['idUser'];
+   else $id = "";
+
    require_once("./assets/components/handle/dbcontroller.php");
    $db_handle = new DBController();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -150,7 +148,7 @@ if (isset($_GET['id']) && isset($_GET['m']) && isset($_GET['m'])) {
                      <div id="js-user" class="lg:hidden flex">
                         <div class="text-white px-3 py-2 rounded-md ">
                            <?php
-                           if (md5($id) == $m && sha1($id) == $s) {
+                           if ($id) {
                               $query = "SELECT * FROM khachhang where idtaikhoan = '" . $id . "'";
                               $conn = $db_handle->connectDB();
                               $result = $conn->query($query);
@@ -179,7 +177,7 @@ if (isset($_GET['id']) && isset($_GET['m']) && isset($_GET['m'])) {
                            <span class="sr-only">, change currency</span>
                         </a>
                         <a href="#" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Personal Information</a>
-                        <a href="./index.php" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" onclick="return confirm('Are you sure?')" role="menuitem" tabindex="-1" id="user-menu-item-1">Log Out</a>
+                        <a href="./logout.php" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" onclick="return confirm('Are you sure?')" role="menuitem" tabindex="-1" id="user-menu-item-1">Log Out</a>
 
                      </div>
                   </div>
@@ -399,223 +397,49 @@ if (isset($_GET['id']) && isset($_GET['m']) && isset($_GET['m'])) {
          </p>
       </div>
       <div class="image-slider" data-aos="fade-up">
-         <div class="image-item">
-            <div class="image">
-               <img src="./assets/image/slider-room/room-1.jpg" alt="" />
-               <div class="item__content">
-                  <div class="item_center">
-                     <h1>VIP 001</h1>
-                     <div class="item_price">From $1450</div>
-                     <div class="item_rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                     </div>
-                     <div class="tour__item--btn">
-                        <div class="tour__btn__bgc"></div>
-                        <a href="#">Book now
-                           <span></span>
-                           <span></span>
-                           <span></span>
-                        </a>
+
+      <!-- show room in DB -->
+         <?php
+            $queryRoom = "SELECT * FROM PHONG";               
+            $conn = $db_handle->connectDB();
+            $result = $conn->query($queryRoom);
+            if ($result->num_rows > 0) {
+               while($row = $result->fetch_assoc()){
+                  if($row['tenphong'] == 'vip 1' || $row['tenphong'] == 'Vip 1')
+                  echo '
+                  <div class="image-item">
+                  <div class="image">
+                     <img src="./assets/image/slider-room/room-1.jpg" alt="" />
+                     <div class="item__content">
+                        <div class="item_center">
+                           <h1>'.$row['tenphong'].'</h1>
+                           <div class="item_price">'.$row['dongia'].'</div>
+                           <div class="item_rating">
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                           </div>
+                           <div class="tour__item--btn">
+                              <div class="tour__btn__bgc"></div>
+                              <a href="#">Book now
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                              </a>
+                           </div>
+                        </div>
                      </div>
                   </div>
                </div>
-            </div>
-         </div>
+                  ';
+               }
+            }
+         ?>
 
-         <div class="image-item">
-            <div class="image">
-               <img src="./assets/image/slider-room/room-2.jpg" alt="" />
-               <div class="item__content">
-                  <div class="item_center">
-                     <h1>VIP 002</h1>
-                     <div class="item_price">From $1450</div>
-                     <div class="item_rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                     </div>
-                     <div class="tour__item--btn">
-                        <div class="tour__btn__bgc"></div>
-                        <a href="#">Book now
-                           <span></span>
-                           <span></span>
-                           <span></span>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
 
-         <div class="image-item">
-            <div class="image">
-               <img src="./assets/image/slider-room/room-3.jpg" alt="" />
-               <div class="item__content">
-                  <div class="item_center">
-                     <h1>VIP 003</h1>
-                     <div class="item_price">From $1450</div>
-                     <div class="item_rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                     </div>
-                     <div class="tour__item--btn">
-                        <div class="tour__btn__bgc"></div>
-                        <a href="#">Book now
-                           <span></span>
-                           <span></span>
-                           <span></span>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         <div class="image-item">
-            <div class="image">
-               <img src="./assets/image/slider-room/room-4.jpg" alt="" />
-               <div class="item__content">
-                  <div class="item_center">
-                     <h1>VIP 004</h1>
-                     <div class="item_price">From $1450</div>
-                     <div class="item_rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                     </div>
-                     <div class="tour__item--btn">
-                        <div class="tour__btn__bgc"></div>
-                        <a href="#">Book now
-                           <span></span>
-                           <span></span>
-                           <span></span>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         <div class="image-item">
-            <div class="image">
-               <img src="./assets/image/slider-room/room-5.jpg" alt="" />
-               <div class="item__content">
-                  <div class="item_center">
-                     <h1>VIP 005</h1>
-                     <div class="item_price">From $1450</div>
-                     <div class="item_rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                     </div>
-                     <div class="tour__item--btn">
-                        <div class="tour__btn__bgc"></div>
-                        <a href="#">Book now
-                           <span></span>
-                           <span></span>
-                           <span></span>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         <div class="image-item">
-            <div class="image">
-               <img src="./assets/image/slider-room/room-6.jpg" alt="" />
-               <div class="item__content">
-                  <div class="item_center">
-                     <h1>VIP 006</h1>
-                     <div class="item_price">From $1450</div>
-                     <div class="item_rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                     </div>
-                     <div class="tour__item--btn">
-                        <div class="tour__btn__bgc"></div>
-                        <a href="#">Book now
-                           <span></span>
-                           <span></span>
-                           <span></span>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         <div class="image-item">
-            <div class="image">
-               <img src="./assets/image/slider-room/room-7.jpg" alt="" />
-               <div class="item__content">
-                  <div class="item_center">
-                     <h1>VIP 007</h1>
-                     <div class="item_price">From $1450</div>
-                     <div class="item_rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                     </div>
-                     <div class="tour__item--btn">
-                        <div class="tour__btn__bgc"></div>
-                        <a href="#">Book now
-                           <span></span>
-                           <span></span>
-                           <span></span>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         <div class="image-item">
-            <div class="image">
-               <img src="./assets/image/slider-room/room-8.jpg" alt="" />
-               <div class="item__content">
-                  <div class="item_center">
-                     <h1>VIP 008</h1>
-                     <div class="item_price">From $1450</div>
-                     <div class="item_rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                     </div>
-                     <div class="tour__item--btn">
-                        <div class="tour__btn__bgc"></div>
-                        <a href="#">Book now
-                           <span></span>
-                           <span></span>
-                           <span></span>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         <div class="image-item">
+         <!-- <div class="image-item">
             <div class="image">
                <img src="./assets/image/slider-room/room-9.jpg" alt="" />
                <div class="item__content">
@@ -640,7 +464,7 @@ if (isset($_GET['id']) && isset($_GET['m']) && isset($_GET['m'])) {
                   </div>
                </div>
             </div>
-         </div>
+         </div> -->
       </div>
 
    </div>
@@ -657,29 +481,44 @@ if (isset($_GET['id']) && isset($_GET['m']) && isset($_GET['m'])) {
             </p>
          </div>
          <div class="row">
-            <div class="row-content">
-               <div class="image-room" data-aos="fade-right" style="background-image: url(./assets/image/destination-1.jpg);">
-               </div>
-               <div class="row-text" data-aos="fade-right">
-                  <span class="price">1000$</span>
-                  <p class="room"> VIP 1</p>
-                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
-                  <ul>
-                     <li>
-                        <span class="fas fa-bath"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-bed"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-street-view"></span>5
-                     </li>
-                  </ul>
-                  <a href="">BOOK</a>
-               </div>
-            </div>
+         
+         <!-- show room in DB -->
+            <?php
+               $queryRoom = "SELECT * FROM PHONG";               
+               $conn = $db_handle->connectDB();
+               $result = $conn->query($queryRoom);
+               if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()){
+                     echo '
+                     <div class="row-content">
+                     <div class="image-room" data-aos="fade-right" style="background-image: url(./assets/image/destination-1.jpg);">
+                     </div>
+                     <div class="row-text" data-aos="fade-right">
+                        <span class="price">'.$row['dongia'].'</span>
+                        <p class="room"> '.$row['tenphong'].'</p>
+                        <p class="view"> <i class="fas fa-umbrella-beach"></i>'.$row['mota'].'</p>
+                        <ul>
+                           <li>
+                              <span class="fas fa-bath"></span>'.$row['sobontam'].'
+                           </li>
+                           <li>
+                              <span class="fas fa-bed"></span>'.$row['sogiuong'].'
+                           </li>
+                           <li>
+                              <span class="fas fa-street-view"></span>'.$row['songuoi'].'
+                           </li>
+                        </ul>
+                        <a href="">BOOK</a>
+                     </div>
+                  </div>
+                     ';
+                  }
+               }
 
-            <div class="row-content">
+            ?>
+            
+
+            <!-- <div class="row-content">
                <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
                </div>
                <div class="row-text" data-aos="fade-up">
@@ -699,95 +538,7 @@ if (isset($_GET['id']) && isset($_GET['m']) && isset($_GET['m'])) {
                   </ul>
                   <a href="">BOOK</a>
                </div>
-            </div>
-
-            <div class="row-content">
-               <div class="image-room" data-aos="fade-left" style="background-image: url(./assets/image/destination-1.jpg);">
-               </div>
-               <div class="row-text" data-aos="fade-left">
-                  <span class="price">1000$</span>
-                  <p class="room"> VIP 1</p>
-                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
-                  <ul>
-                     <li>
-                        <span class="fas fa-bath"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-bed"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-street-view"></span>5
-                     </li>
-                  </ul>
-                  <a href="">BOOK</a>
-               </div>
-            </div>
-
-            <div class="row-content">
-               <div class="image-room" data-aos="fade-right" style="background-image: url(./assets/image/destination-1.jpg);">
-               </div>
-               <div class="row-text" data-aos="fade-right">
-                  <span class="price">1000$</span>
-                  <p class="room"> VIP 1</p>
-                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
-                  <ul>
-                     <li>
-                        <span class="fas fa-bath"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-bed"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-street-view"></span>5
-                     </li>
-                  </ul>
-                  <a href="">BOOK</a>
-               </div>
-            </div>
-
-            <div class="row-content">
-               <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
-               </div>
-               <div class="row-text" data-aos="fade-up">
-                  <span class="price">1000$</span>
-                  <p class="room"> VIP 1</p>
-                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
-                  <ul>
-                     <li>
-                        <span class="fas fa-bath"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-bed"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-street-view"></span>5
-                     </li>
-                  </ul>
-                  <a href="">BOOK</a>
-               </div>
-            </div>
-
-            <div class="row-content">
-               <div class="image-room" data-aos="fade-left" style="background-image: url(./assets/image/destination-1.jpg);">
-               </div>
-               <div class="row-text" data-aos="fade-left">
-                  <span class="price">1000$</span>
-                  <p class="room"> VIP 1</p>
-                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
-                  <ul>
-                     <li>
-                        <span class="fas fa-bath"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-bed"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-street-view"></span>5
-                     </li>
-                  </ul>
-                  <a href="">BOOK</a>
-               </div>
-            </div>
+            </div>-->
 
          </div>
       </div>
@@ -805,7 +556,31 @@ if (isset($_GET['id']) && isset($_GET['m']) && isset($_GET['m'])) {
             </p>
          </div>
          <div class="slider-comment" data-aos="fade-left">
-            <div class="comment-row">
+
+            <?php
+            $queryComment = "SELECT * FROM phanhoi";               
+            $conn = $db_handle->connectDB();
+            $result = $conn->query($queryComment);
+            if ($result->num_rows > 0) {
+               while($row = $result->fetch_assoc()){
+                  if($row['sosao'] == '5' || $row['sosao'] == '4')
+                  echo '
+                  
+                  <div class="comment-row">
+                  <img src="./assets/image/Model.png" class="avatar" alt="">
+                  <div class="comment-text">
+                     <b class="title">“'.$row['tieude'].'”</b>
+                     <p class="sub-title">“'.$row['noidung'].'”</p>
+                     <p class="name"> -- '.$row['ten'].' -- </p>
+                  </div>
+               </div>
+                  ';
+               }
+            }
+            
+            ?>
+
+            <!-- <div class="comment-row">
                <img src="./assets/image/Model.png" class="avatar" alt="">
                <div class="comment-text">
                   <b class="title">“One thing very special about being Fresher in KMS is the challenging Fresher
@@ -817,49 +592,7 @@ if (isset($_GET['id']) && isset($_GET['m']) && isset($_GET['m'])) {
                      meaningful feeling to describe when we gave back to her the money from selling tickets.”</p>
                   <p class="name"> -- Q. Tuan -- </p>
                </div>
-            </div>
-
-            <div class="comment-row">
-               <img class="avatar" src="./assets/image/Model.png" alt="">
-               <div class="comment-text">
-                  <b class="title">“One thing very special about being Fresher in KMS is the challenging Fresher
-                     Bootcamp.”</b>
-                  <p class="sub-title">“Here, I learned something profound, not only the works. On Bootcamp Day, I
-                     recalled
-                     that I got a task to help aunties sell lottery, which she was first trying to sell us. What a hard
-                     and
-                     meaningful feeling to describe when we gave back to her the money from selling tickets.”</p>
-                  <p class="name"> -- Đ. Long -- </p>
-               </div>
-            </div>
-
-            <div class="comment-row">
-               <img class="avatar" src="./assets/image/Model.png" alt="">
-               <div class="comment-text">
-                  <b class="title">“One thing very special about being Fresher in KMS is the challenging Fresher
-                     Bootcamp.”</b>
-                  <p class="sub-title">“Here, I learned something profound, not only the works. On Bootcamp Day, I
-                     recalled
-                     that I got a task to help aunties sell lottery, which she was first trying to sell us. What a hard
-                     and
-                     meaningful feeling to describe when we gave back to her the money from selling tickets.”</p>
-                  <p class="name"> -- Q. Tuan -- </p>
-               </div>
-            </div>
-
-            <div class="comment-row">
-               <img class="avatar" src="./assets/image/Model.png" alt="">
-               <div class="comment-text">
-                  <b class="title">“One thing very special about being Fresher in KMS is the challenging Fresher
-                     Bootcamp.”</b>
-                  <p class="sub-title">“Here, I learned something profound, not only the works. On Bootcamp Day, I
-                     recalled
-                     that I got a task to help aunties sell lottery, which she was first trying to sell us. What a hard
-                     and
-                     meaningful feeling to describe when we gave back to her the money from selling tickets.”</p>
-                  <p class="name"> -- Đ. Long -- </p>
-               </div>
-            </div>
+            </div> -->
 
          </div>
       </div>
@@ -939,7 +672,7 @@ if (isset($_GET['id']) && isset($_GET['m']) && isset($_GET['m'])) {
 </body>
 
 <?php
-if (md5($id) == $m && sha1($id) == $s) {
+if ($id) {
    $query = "SELECT * FROM khachhang where idtaikhoan = '" . $id . "'";
    $count = $db_handle->numRows($query);
    if ($count != 0) {

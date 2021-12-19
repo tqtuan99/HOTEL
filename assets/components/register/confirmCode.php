@@ -31,19 +31,7 @@
             <?php
 
             require_once("../handle/dbcontroller.php");
-
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "qlks";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+            require_once("../handle/configDB.php");
 
             if (isset($_POST['btn-confirmCode'])) {
 
@@ -69,12 +57,6 @@
                     $sql1 = "INSERT INTO khachhang (idtaikhoan,ho,ten,gioitinh,email)
         VALUES ('$idtaikhoan','$firstname','$lastname', '$gender','$email')";
                     if ($conn->multi_query($sql1) === true) {
-                        echo '<script>
-                        alert("Creat accout successful.");
-                        setTimeout(function() { 
-                            
-                        }, 3000);
-                         </script>';
                         header("Location: ../login/login.php?email=" . $_GET['e'] . "");
                     }
                 } else {

@@ -3,11 +3,12 @@
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
     
+    require_once('../handle/configEmail.php');
     require_once('../../../gmail-email/vendor/phpmailer/src/Exception.php');
     require_once('../../../gmail-email/vendor/phpmailer/src/PHPMailer.php');
     require_once('../../../gmail-email/vendor/phpmailer/src/SMTP.php');
 
-function sendmail($email, $firstname,$verification){
+function sendmail($email, $firstname,$verification, $check){
     // random verification
     
     
@@ -23,8 +24,8 @@ function sendmail($email, $firstname,$verification){
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
     
-        $mail->Username = 'klthotel2021@gmail.com'; // YOUR gmail email
-        $mail->Password = 'KLThotel2021'; // YOUR gmail password
+        $mail->Username = $yourEmail; // YOUR gmail email
+        $mail->Password = $yourPassword; // YOUR gmail password
     
         // Sender and recipient settings
         $mail->setFrom('klthotel2021@gmail.com', 'Hotel KLT');
@@ -33,16 +34,34 @@ function sendmail($email, $firstname,$verification){
     
         // Setting the email content
         $mail->IsHTML(true);
-        $mail->Subject = "Confirm Email";
-        $mail->Body = '
-        Hey '.$firstname.',<br>
-        <br> 
-        Thank you for your interest in our hotel, to complete the registration process please enter the following confirmation code into your device.
-        <br><br> 
-        Verification code: <b>'.$verification.'</b> <br><br> 
-        Thanks,<br>
-        KLT Hotel
-        ';
+        
+        if($check==1){
+            $mail->Subject = "Confirm Email";
+            $mail->Body = '
+            Hey '.$firstname.',<br>
+            <br> 
+            Thank you for your interest in our hotel, to complete the registration process please enter the following confirmation code into your device.
+            <br><br> 
+            Verification code: <b>'.$verification.'</b> <br><br> 
+            Thanks,<br>
+            KLT Hotel
+            ';
+        }
+        else
+        {
+            $mail->Subject = "New Password";
+            $mail->Body = '
+            Hey '.$firstname.',<br>
+            <br> 
+            Thank you for your interest in our hotel, we have reset a new password for you.
+            <br><br> 
+            Your new password: <b>'.$verification.'</b> <br><br> 
+            If you want to change your password, <a href="http://localhost:8080/HOTEL">click here</a><br>
+            Thanks,<br>
+            KLT Hotel
+            ';
+        }
+        
 
         $mail->AltBody = '
         Hey '.$firstname.',

@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +58,7 @@
                <input type="checkbox" class="chk-remember">
                <label for="" class="lbl-remember">Remember me</label>
             </div>
-            <a class="forgot-password">Forgot your password?</a>
+            <a href="../forgotPass/forgotPass.php" style="text-decoration: none; color: #000;" class="forgot-password">Forgot your password?</a>
          </div>
          <button type="submit" name="submit" class="btn signin">Sign in</button>
          <!-- import file login -->

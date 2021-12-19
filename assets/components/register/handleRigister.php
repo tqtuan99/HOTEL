@@ -1,20 +1,6 @@
 <?php
-
-
 require_once("../handle/dbcontroller.php");
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "qlks";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once("../handle/configDB.php");
 
 if (isset($_POST["submit"])) {
     $firstname = $_POST["firstname"];
@@ -42,7 +28,7 @@ if (isset($_POST["submit"])) {
             $conn->multi_query($sql);
 
             include("../../../gmail-email/sendmail.php");
-            sendmail($email,$firstname." ".$lastname,$verification);
+            sendmail($email,$firstname." ".$lastname,$verification,1);
 
             header("Location: ./confirmCode.php?q=".md5($verification)."&e=".$email."&f=".$firstname."&l=".$lastname."&g=".$gender."");
         }
