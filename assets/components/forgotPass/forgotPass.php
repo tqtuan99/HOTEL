@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("../handle/dbcontroller.php");
 include('../handle/configDB.php');
 $check = 0;
