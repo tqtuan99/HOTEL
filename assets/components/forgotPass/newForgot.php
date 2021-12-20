@@ -1,24 +1,37 @@
 <?php
 session_start();
 $check = 0;
-
-if (isset($_GET['q']) && isset($_SESSION['tokenEmail'])) {
-   if ($_SESSION['tokenEmail'] == $_GET['q']) {
-      require_once("../handle/dbcontroller.php");
-      $db_handle = new DBController();
-      if (isset($_POST['submit'])) {
-         $pass = $_POST['password'];
-         $Confirmpass = $_POST['confirmPassword'];
-         if ($pass == $Confirmpass) {
-            $querry = "UPDATE taikhoan SET matkhau = '$newPassMD5'";
-            $db_handle->updateQuery($querry);
-            unset($_SESSION['tokenEmail']);
-            $check = 1;
-         }
+function updatePassword(){
+   require_once("../handle/dbcontroller.php");
+   $db_handle = new DBController();
+   if (isset($_POST['submit'])) {
+      $pass = $_POST['password'];
+      $Confirmpass = $_POST['confirmPassword'];
+      if ($pass == $Confirmpass) {
+         $newPassMD5 = md5($pass);
+         $querry = "UPDATE taikhoan SET matkhau = '$newPassMD5' where tendangnhap = '$email'";
+         $db_handle->updateQuery($querry);
+         unset($_SESSION['tokenEmail']);
+         $check = 1;
       }
-   } else {
-      header('Location: ../../../notFound.php');
    }
+}
+
+if ((isset($_GET['q']) && isset($_SESSION['tokenEmail'])) || isset($_SESSION['idUser'])) {
+   if ((isset($_GET['q']) && isset($_SESSION['tokenEmail']))){
+      $email = $_SESSION['tokenEmail'];
+      $emailMD5 = md5($_SESSION['tokenEmail']);
+      if ($emailMD5 == $_GET['q'] || isset($_SESSION['idUser'])) {
+        updatePassword();
+      } else {
+         header('Location: ../../../notFound.php');
+      }
+   }
+
+   if( isset($_SESSION['idUser'])){
+      updatePassword();
+   }
+   
 } else {
    header('Location: ../../../notFound.php');
 }

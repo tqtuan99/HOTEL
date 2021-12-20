@@ -14,9 +14,9 @@ if (isset($_POST["submit"])) {
 
     while ($row = $result->fetch_assoc())
         if ($row['email'] == $email) {
-            $querry = "UPDATE taikhoan SET matkhau = '$newPassMD5'";
+            $querry = "UPDATE taikhoan SET matkhau = '$newPassMD5' where tendangnhap = '$email'";
             $db_handle->updateQuery($querry);
-            $_SESSION['tokenEmail'] = md5($email);
+            $_SESSION['tokenEmail'] = $email;
             include("../../../gmail-email/sendmail.php");
             sendmail($email, '', $newPass, 0 , $email);
             $check = 1;
