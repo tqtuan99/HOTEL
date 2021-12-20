@@ -10,7 +10,8 @@
    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
    <link rel="stylesheet" href="../../../output.css">
-   <link rel="stylesheet" href="./assets/css/main.css">
+   <link rel="stylesheet" href="../home/footer/footer.css">
+   <link rel="stylesheet" href="../../css/main.css">
    <link rel="stylesheet" href="./pageshowroom.css">
    <link rel="stylesheet" href="../home/header/header.css">
    <link rel="stylesheet" href="../../font/fontawesome-free-5.15.4-web/css/all.min.css">
@@ -58,7 +59,7 @@
                         </a>
                         <ul class="subnav ">
                            <div class="subnav-item flex">
-                              <li><a href="./assets/components/page-show-room/pageRoom.php" target="blank">All Rooms</a></li>
+                              <li><a href="./pageshowroom.css" target="blank">All Rooms</a></li>
                               <li><a href="#">VIP Rooms A</a></li>
                               <li><a href="#">VIP Rooms B</a></li>
                               <li><a href="#">Normal Room</a></li>
@@ -116,18 +117,18 @@
                   <div class="js-show-user ml-3 relative">
                      <div id="js-user" class="lg:hidden flex">
                         <div class="text-white px-3 py-2 rounded-md ">
-                           <!-- <?php
-                                 if ($id) {
-                                    $query = "SELECT * FROM khachhang where idtaikhoan = '" . $id . "'";
-                                    $conn = $db_handle->connectDB();
-                                    $result = $conn->query($query);
-                                    if ($result->num_rows > 0) {
-                                       // output data of each row
-                                       $row = $result->fetch_assoc();
-                                       echo $row["ten"];
-                                    }
-                                 }
-                                 ?> -->
+                           <?php
+                           if ($id) {
+                              $query = "SELECT * FROM khachhang where idtaikhoan = '" . $id . "'";
+                              $conn = $db_handle->connectDB();
+                              $result = $conn->query($query);
+                              if ($result->num_rows > 0) {
+                                 // output data of each row
+                                 $row = $result->fetch_assoc();
+                                 echo $row["ten"];
+                              }
+                           }
+                           ?>
                         </div>
                         <button type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                            <span class="sr-only">Open user menu</span>
@@ -442,6 +443,10 @@
          </div>
       </div>
    </div>
+
+   <?php
+   include('../home/footer/footer.php');
+   ?>
 
    <script>
       var showMenu = document.querySelector(".js-menu");
