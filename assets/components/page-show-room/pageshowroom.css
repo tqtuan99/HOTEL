@@ -1,0 +1,302 @@
+:root {
+   --bg-section: radial-gradient(circle farthest-corner at 10% 20%, rgba(97, 186, 255, 1) 0%, rgba(166, 239, 253, 1) 90.1%);
+   --btn-black: #31124b;
+}
+
+.web-room {
+   padding: 6em 0;
+   position: relative;
+   width: 100%;
+}
+
+.container {
+   position: relative;
+   max-width: 1200px;
+   margin-right: auto;
+   margin-left: auto;
+   padding: 0 20px;
+}
+
+.show-room {
+   display: flex;
+   gap: 0 20px;
+}
+
+.sidebar {
+   display: flex;
+   flex-direction: column;
+   background-color: orange;
+   border-radius: 10px;
+   gap: 40px 0;
+}
+
+.search-room {
+   display: flex;
+   flex-direction: column;
+   padding: 0 20px;
+   gap: 20px;
+}
+
+.sidebar .option {
+   display: flex;
+   flex-direction: column;
+   border-top: 2px solid #ccc;
+   border-radius: 10px;
+   padding: 0 20px;
+   gap: 10px;
+}
+
+.sidebar .option .option-title {
+   font-size: 18px;
+   font-weight: bold;
+}
+
+.sidebar .option .option-type {
+   display: flex ;
+   flex-direction: column;
+   gap: 10px;
+   padding: 0 15px;
+}
+
+.sidebar .option input {
+   margin-right: 15px;
+   padding: 20px;
+}
+
+/* !RowRoom */
+.row {
+   display: flex;
+   flex-direction: column;
+   flex: 1;
+   gap: 25px;
+   min-width: 700px;
+}
+
+.row-content {
+   display: flex;
+   position: relative;
+   min-height: 350px;
+   max-height: 400px;
+   justify-content: start;
+   border-radius: 10px;
+   overflow: hidden;
+   border: 1px solid #ccc;
+   box-shadow: 3px 3px 3px #ccc;
+}
+
+.row .type-room {
+   color: #000;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   border: 1px solid #ccc;
+   border-radius: 10px;
+   background: var(--bg-section);
+}
+
+.row .type-room a {
+   color: #000;
+   font-size: 20px;
+   padding: 5px 30px;
+   width: 100%;
+   text-align: center;
+   cursor: pointer;
+}
+
+.row .type-room a:active {
+   color: #fff;
+   background-color: orange;
+}
+
+.row .type-room a:focus {
+   color: #fff;
+   background-color: #1d7f1f;
+}
+
+.row .row-content .image-room {
+   width: 30%;
+   height: 90%;
+   margin: 15px;
+   border-radius: 10px;
+   background-size: cover;
+   background-position: center center;
+   background-repeat: no-repeat;
+}
+
+.row-text {
+   display: flex;
+   flex: 1;
+   position: relative;
+   font-size: 18px;
+   padding: 15px 0;
+   gap: 15px;
+}
+
+.row-text .info {
+   display: flex;
+   flex: 3;
+   flex-direction: column;
+   gap: 10px 0;
+}
+
+.row-text .room {
+   font-size: 25px;
+   font-weight: bold;
+   color: yellowgreen;
+}
+
+.row-text .view {
+   color: #857e7e;
+   font-size: 20px;
+   padding: 5px 0;
+}
+
+.row-text ul {
+   padding: 0;
+}
+
+.row-text ul li {
+   display: block;
+   margin-bottom: 7px;
+   font-size: 15px;
+}
+
+.row-text ul li p {
+   display: inline-block;
+   margin-left: 15px;
+}
+
+.row-text .fas {
+   color: aqua;
+   font-size: 25px;
+   margin-right: 10px;
+}
+
+.row-text .info .text-sp {
+   position: relative;
+   display: flex;
+   text-align: justify;
+   top: -3px;
+   padding-left: 20px;
+   font-size: 10px;
+   line-height: 18px;
+   color: #008009;
+}
+
+.row-text .info .text-sp::before {
+   border-left: 2px solid #e6e6e6;
+   content: " ";
+   height: 100%;
+   left: 10px;
+   position: absolute;
+   top: 2px;
+   width: 1px;
+   z-index: 0;
+}
+
+.row-text .price {
+   padding: 7px 20px;
+   background: aqua;
+   border-radius: 10px;
+   width: 150px;
+   text-align: center;
+   transform: translateX(0);
+   font-weight: bold;
+   overflow: hidden;
+}
+
+.row-text .eval {
+   display: flex;
+   flex: 2;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: end;
+   margin: 0 20px;
+}
+
+.eval a {
+   padding: 15px 30px;
+   background: #008009;
+   border-radius: 50px;
+   width: 150px;
+   text-align: center;
+   transform: translateX(0);
+   font-weight: bold;
+   overflow: hidden;
+}
+
+.eval a::before {
+   content: '';
+   position: absolute;
+   width: 157%;
+   height: 60%;
+   left: -28%;
+   background: linear-gradient(#00ccff, #f7a001);
+   animation: animate 3s linear infinite;
+   z-index: -2;
+}
+
+.eval a::after {
+   content: '';
+   position: absolute;
+   inset: 4px;
+   background: #008009;
+   border-radius: 50px;
+   z-index: -1;
+}
+
+.eval a:hover {
+   color: #fff;
+   background: #008009;
+   z-index: 10;
+}
+
+@keyframes animate {
+   0% {
+      transform: rotate(0deg);
+   }
+
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+
+/* Calendar Search CSS */
+.search__container--item {
+   display: flex;
+   flex-direction: column;
+   row-gap: 8px;
+   color: #000;
+}
+
+.search__container--item label,
+span {
+   z-index: auto;
+   color: white;
+   font-weight: 700;
+   font-size: 15px;
+   animation: pulse 3s infinite;
+}
+
+.search__container--btn {
+   background-color: var(--btn-black);
+   border-radius: 53px;
+   line-height: 53px;
+   cursor: pointer;
+   text-align: center;
+}
+
+.search__container--btn:hover {
+   background: linear-gradient(to left, #fc7f41, #f46949, #e95351, #da3f58, #c82d5f);
+}
+
+/* *fix JQuery */
+#ui-datepicker-div {
+   background: lightgreen;
+   border-radius: 10px;
+}
+
+.ui-datepicker .ui-datepicker-header {
+   background: repeating-linear-gradient(145deg, #1d7f1f, transparent 100px);
+}
