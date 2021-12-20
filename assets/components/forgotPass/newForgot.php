@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if(isset($_GET['q'])){
+   if(isset($_SESSION['tokenEmail'])){
+      
+   }
+   else 
+   {
+      header('Location: ../../../notFound.php');
+   }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

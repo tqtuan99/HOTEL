@@ -43,7 +43,7 @@ session_start();
             <button type="submit" class="btn signin btn-confirmCode" name="btn-confirmCode">CONFIRM</button>
             <div>
                 <!-- <input type="time" class="input pass confirmCode"> -->
-                <span id="m">Phút</span> : <span id="s">Giây</span>
+                Effective time<span id="m">Phút</span> : <span id="s">Giây</span>
             </div>
             <?php
 
@@ -96,7 +96,7 @@ session_start();
             /*BƯỚC 1: THIẾT LẬP GIÁ TRỊ BAN ĐẦU*/
             if (h === null) {
                 h = 0;
-                m = 3;
+                m = 2;
                 s = 0;
             }
             /*BƯỚC 1: CHUYỂN ĐỔI DỮ LIỆU*/

@@ -3,20 +3,21 @@ require_once("../handle/dbcontroller.php");
 include('../handle/configDB.php');
 $check = 0;
 if (isset($_POST["submit"])) {
-    $email = $_POST["email"];
-
+    $email = $_POST["email"];;
     $newPass = random_int(10000000, 99999999);
     $newPassMD5 = md5($newPass);
 
+    $db_handle = new DBController();
     $query = "SELECT * FROM khachhang";
     $result = $conn->query($query);
 
     while ($row = $result->fetch_assoc())
         if ($row['email'] == $email) {
-            $querry = "UPDATE taikhoan SET matkhau = $newPass";
-            $conn->query($querry);
+            $querry = "UPDATE taikhoan SET matkhau = '$newPassMD5'";
+            $db_handle->updateQuery($querry);
+            $_SESSION['tokenEmail'] = md5($email);
             include("../../../gmail-email/sendmail.php");
-            sendmail($email, '', $newPass, 0);
+            sendmail($email, '', $newPass, 0 , $email);
             $check = 1;
         }
     $conn->close();
