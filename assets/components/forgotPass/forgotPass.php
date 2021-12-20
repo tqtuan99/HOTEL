@@ -6,7 +6,7 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
 
     $newPass = random_int(10000000, 99999999);
-
+    $newPassMD5 = md5($newPass);
 
     $query = "SELECT * FROM khachhang";
     $result = $conn->query($query);

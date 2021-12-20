@@ -1,3 +1,13 @@
+<?php
+session_start();
+    if(isset($_SESSION['tokenRegister'])){
+        unset($_SESSION['tokenRegister']);
+    }
+    else
+    {
+        header('Location: ../../../notFound.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,10 +137,9 @@
             }, 1000);
         }
 
-
-        function stop() {
-            clearTimeout(timeout);
-        }
+        // function stop() {
+        //     clearTimeout(timeout);
+        // }
         start();
     </script>
 </body>

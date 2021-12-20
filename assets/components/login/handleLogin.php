@@ -1,14 +1,14 @@
 <?php
 require_once("../handle/configDB.php");
-// $cookie_time = 30 * 24 * 60 * 60;
+$cookie_time = 30 * 24 * 60 * 60;
 
 
 if (isset($_POST["submit"])) {
    $email = $_POST["email"];
    // if(isset($_COOKIE['password']))
-   //    $pass = $_COOKIE['password'];
+   //    $pass = md5($_COOKIE['password']);
    // else
-      $pass = md5($_POST["password"]);
+   $pass = md5($_POST["password"]);
 
    $check_remember = ((isset($_POST['chk-remember']) != 0) ? 1 : "");
 
@@ -24,8 +24,8 @@ if (isset($_POST["submit"])) {
                if ($row['trangthai'] == 1) {
                   if ($check_remember) {
                      if(!isset($_COOKIE['password'])&& !isset($_COOKIE['password'])){
-                        setcookie('password', md5($row["matkhau"]), time() + $cookie_time);
-                        setcookie('username', $row["tendangnhap"], time() + $cookie_time);
+                        setcookie('password', $_POST["password"], time() + $cookie_time);
+                        setcookie('username', $_POST["email"], time() + $cookie_time);
                      }
                   }else {
                      if(isset($_COOKIE['password'])){
