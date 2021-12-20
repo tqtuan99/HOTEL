@@ -49,7 +49,7 @@ session_start();
          <div class="cont-form">
             <label for="" class="lbl-pass">Password</label>
             <div class="cont-pass">
-               <input type="password" name="password" class="input pass"  placeholder="password" >
+               <input type="password" name="password" class="input pass"  placeholder="password" value="<?php if(isset($_POST['password'])) {}else if(isset($_COOKIE['password'])) echo $_COOKIE['password'];?>"  required>
                <i class="far fa-eye"></i>
             </div>
          </div>

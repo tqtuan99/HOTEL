@@ -7,6 +7,7 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
 
     $newPass = random_int(10000000, 99999999);
+    $newPassMD5 = md5($newPass);
 
         
         $query = "SELECT * FROM khachhang";
@@ -14,10 +15,10 @@ if (isset($_POST["submit"])) {
 
         while($row=$result->fetch_assoc())
             if ($row['email'] == $email) {
-                $querry = "UPDATE taikhoan SET matkhau = $newPass";
+                $querry = "UPDATE taikhoan SET matkhau = $newPassMD5";
                 $conn->query($querry);
                 include("../../../gmail-email/sendmail.php");
-                sendmail($email,'',$newPass,0);
+                sendmail($email,'',$newPass, 0);
                 $check=1;
             }
     $conn->close();
