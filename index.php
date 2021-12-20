@@ -1,13 +1,13 @@
 <?php
-if(session_id() ==="")
+if (session_id() === "")
    session_start();
 
-   if(isset($_SESSION['idUser']))
-      $id = $_SESSION['idUser'];
-   else $id = "";
+if (isset($_SESSION['idUser']))
+   $id = $_SESSION['idUser'];
+else $id = "";
 
-   require_once("./assets/components/handle/dbcontroller.php");
-   $db_handle = new DBController();
+require_once("./assets/components/handle/dbcontroller.php");
+$db_handle = new DBController();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +70,7 @@ if(session_id() ==="")
                   <div class="nav lg:m-5 flex justify-start space-x-4 text-center list-none">
                      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                      <li class="relative">
-                        <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
+                        <a href="./index.php" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
                            Home
                         </a>
                         <ul class="subnav">
@@ -80,42 +80,37 @@ if(session_id() ==="")
 
                      <li class="relative">
                         <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
-                           About Us
+                           View Room
                         </a>
                         <ul class="subnav ">
                            <div class="subnav-item flex">
-                              <li><a href="#">example</a></li>
-                              <li><a href="#">Example 2</a></li>
-                              <li><a href="#">Example 3</a></li>
-                              <li><a href="#">Example 4</a></li>
+                              <li><a href="./assets/components/page-show-room/pageRoom.php" target="blank">All Rooms</a></li>
+                              <li><a href="#">VIP Rooms A</a></li>
+                              <li><a href="#">VIP Rooms B</a></li>
+                              <li><a href="#">Normal Room</a></li>
                            </div>
                         </ul>
                      </li>
 
                      <li class="relative">
                         <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
-                           Offers
+                           Apartments
                         </a>
                         <ul class="subnav">
                            <div class="subnav-item flex">
-                              <li><a href="#">example</a></li>
+                              <li><a href="#">Example 1</a></li>
                               <li><a href="#">Example 2</a></li>
-                              <li><a href="#">Example 3</a></li>
-                              <li><a href="#">Example 4</a></li>
-                              <li><a href="#">Example 5</a></li>
-                              <li><a href="#">Example 6</a></li>
-                              <li><a href="#">Example 7</a></li>
                            </div>
                         </ul>
                      </li>
 
                      <li class="relative">
                         <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
-                           News
+                           About us
                         </a>
                         <ul class="subnav">
                            <div class="subnav-item flex">
-                              <li><a href="#">example</a></li>
+                              <li><a href="#">Example 1</a></li>
                               <li><a href="#">Example 2</a></li>
                               <li><a href="#">Example 3</a></li>
                            </div>
@@ -385,8 +380,6 @@ if(session_id() ==="")
    </div>
    <!-- End: Information -->
 
-
-
    <!-- This example requires Tailwind CSS v2.0+ -->
    <!--START: Slider -->
    <div id="slider">
@@ -398,22 +391,22 @@ if(session_id() ==="")
       </div>
       <div class="image-slider" data-aos="fade-up">
 
-      <!-- show room in DB -->
+         <!-- show room in DB -->
          <?php
-            $queryRoom = "SELECT * FROM PHONG";               
-            $conn = $db_handle->connectDB();
-            $result = $conn->query($queryRoom);
-            if ($result->num_rows > 0) {
-               while($row = $result->fetch_assoc()){
-                  if($row['tenphong'] == 'vip 1' || $row['tenphong'] == 'Vip 1')
+         $queryRoom = "SELECT * FROM PHONG";
+         $conn = $db_handle->connectDB();
+         $result = $conn->query($queryRoom);
+         if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+               if ($row['tenphong'] == 'vip 1' || $row['tenphong'] == 'Vip 1' || $row['tenphong'] == 'VIP 1')
                   echo '
                   <div class="image-item">
                   <div class="image">
                      <img src="./assets/image/slider-room/room-1.jpg" alt="" />
                      <div class="item__content">
                         <div class="item_center">
-                           <h1>'.$row['tenphong'].'</h1>
-                           <div class="item_price">'.$row['dongia'].'</div>
+                           <h1>' . $row['tenphong'] . '</h1>
+                           <div class="item_price">' . $row['dongia'] . '</div>
                            <div class="item_rating">
                               <i class="fa fa-star"></i>
                               <i class="fa fa-star"></i>
@@ -434,8 +427,8 @@ if(session_id() ==="")
                   </div>
                </div>
                   ';
-               }
             }
+         }
          ?>
 
 
@@ -481,42 +474,42 @@ if(session_id() ==="")
             </p>
          </div>
          <div class="row">
-         
-         <!-- show room in DB -->
+
+            <!-- show room in DB -->
             <?php
-               $queryRoom = "SELECT * FROM PHONG";               
-               $conn = $db_handle->connectDB();
-               $result = $conn->query($queryRoom);
-               if ($result->num_rows > 0) {
-                  while($row = $result->fetch_assoc()){
-                     echo '
+            $queryRoom = "SELECT * FROM PHONG";
+            $conn = $db_handle->connectDB();
+            $result = $conn->query($queryRoom);
+            if ($result->num_rows > 0) {
+               while ($row = $result->fetch_assoc()) {
+                  echo '
                      <div class="row-content">
                      <div class="image-room" data-aos="fade-right" style="background-image: url(./assets/image/destination-1.jpg);">
                      </div>
                      <div class="row-text" data-aos="fade-right">
-                        <span class="price">'.$row['dongia'].'</span>
-                        <p class="room"> '.$row['tenphong'].'</p>
-                        <p class="view"> <i class="fas fa-umbrella-beach"></i>'.$row['mota'].'</p>
+                        <span class="price">' . $row['dongia'] . '</span>
+                        <p class="room"> ' . $row['tenphong'] . '</p>
+                        <p class="view"> <i class="fas fa-umbrella-beach"></i>' . $row['mota'] . '</p>
                         <ul>
                            <li>
-                              <span class="fas fa-bath"></span>'.$row['sobontam'].'
+                              <span class="fas fa-bath"></span>' . $row['sobontam'] . '
                            </li>
                            <li>
-                              <span class="fas fa-bed"></span>'.$row['sogiuong'].'
+                              <span class="fas fa-bed"></span>' . $row['sogiuong'] . '
                            </li>
                            <li>
-                              <span class="fas fa-street-view"></span>'.$row['songuoi'].'
+                              <span class="fas fa-street-view"></span>' . $row['songuoi'] . '
                            </li>
                         </ul>
                         <a href="">BOOK</a>
                      </div>
                   </div>
                      ';
-                  }
                }
+            }
 
             ?>
-            
+
 
             <!-- <div class="row-content">
                <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
@@ -558,26 +551,26 @@ if(session_id() ==="")
          <div class="slider-comment" data-aos="fade-left">
 
             <?php
-            $queryComment = "SELECT * FROM phanhoi";               
+            $queryComment = "SELECT * FROM phanhoi";
             $conn = $db_handle->connectDB();
             $result = $conn->query($queryComment);
             if ($result->num_rows > 0) {
-               while($row = $result->fetch_assoc()){
-                  if($row['sosao'] == '5' || $row['sosao'] == '4')
-                  echo '
+               while ($row = $result->fetch_assoc()) {
+                  if ($row['sosao'] == '5' || $row['sosao'] == '4')
+                     echo '
                   
                   <div class="comment-row">
                   <img src="./assets/image/Model.png" class="avatar" alt="">
                   <div class="comment-text">
-                     <b class="title">“'.$row['tieude'].'”</b>
-                     <p class="sub-title">“'.$row['noidung'].'”</p>
-                     <p class="name"> -- '.$row['ten'].' -- </p>
+                     <b class="title">“' . $row['tieude'] . '”</b>
+                     <p class="sub-title">“' . $row['noidung'] . '”</p>
+                     <p class="name"> -- ' . $row['ten'] . ' -- </p>
                   </div>
                </div>
                   ';
                }
             }
-            
+
             ?>
 
             <!-- <div class="comment-row">
