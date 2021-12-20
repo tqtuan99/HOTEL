@@ -34,6 +34,7 @@ if (isset($_POST["submit"])) {
                      }
                   }
                   $_SESSION['idUser'] = $row['idtaikhoan'];
+                  $_SESSION['emailUser'] = $row['tendangnhap'];
                   header("Location: ../../../index.php");
                }
                $check = 1;
