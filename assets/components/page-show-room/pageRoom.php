@@ -1,3 +1,14 @@
+<?php
+if (session_id() === "")
+   session_start();
+
+if (isset($_SESSION['idUser']))
+   $id = $_SESSION['idUser'];
+else $id = "";
+
+require_once("../../../assets/components/handle/dbcontroller.php");
+$db_handle = new DBController();
+?>
 <!DOCTYPE html>
 <html lang="en">
 

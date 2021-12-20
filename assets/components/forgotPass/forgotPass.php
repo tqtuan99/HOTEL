@@ -42,9 +42,9 @@ if (isset($_POST["submit"])) {
                     <label for="" class="lbl-pass-center" style="font-size: 25px;">Nhập email của bạn</label>
                     <input type="text" class="input pass confirmCode" name="email" placeholder="user@gmail.com" required>
                     <button type="submit" style="margin-top: 50px;" class="btn signin btn-confirmCode" name="submit">SEND</button>
-                    <div>
-                        <?php if (isset($_POST["submit"])) if ($check == 0) echo "Email không tồn tại. <br><a href='../register/register.php?email=$email'>Quay lại trang đăng kí</a>";
-                        else echo "Chúng tôi đã gửi mật khẩu mới vào email: $email <br><a href='../login/login.php?email=$email'>Quay lại trang đăng nhập</a>"; ?>
+                    <div style="font-size: 15px;margin: 28px; font-weight: 100;color: red;">
+                        <?php if (isset($_POST["submit"])) if ($check == 0) echo "Email không tồn tại. <br><br><a href='../register/register.php?email=$email'>Quay lại trang đăng kí</a>";
+                        else echo "Chúng tôi đã gửi mật khẩu mới vào email: $email <br><br><a href='../login/login.php?email=$email'>Quay lại trang đăng nhập</a>"; ?>
                     </div>
                 </div>
             </div>
