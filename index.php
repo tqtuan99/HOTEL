@@ -235,7 +235,7 @@ $db_handle = new DBController();
             }
          }
          ?>
-         <div class="image-item">
+         <!-- <div class="image-item">
             <div class="image">
                <img src="./assets/image/slider-room/room-9.jpg" alt="" />
                <div class="item__content">
@@ -260,7 +260,7 @@ $db_handle = new DBController();
                   </div>
                </div>
             </div>
-         </div>
+         </div> -->
       </div>
    </div>
    <!--END: Slider -->
@@ -310,7 +310,7 @@ $db_handle = new DBController();
                }
             }
             ?>
-            <div class="row-content">
+            <!-- <div class="row-content">
                <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
                </div>
                <div class="row-text" data-aos="fade-up">
@@ -330,7 +330,7 @@ $db_handle = new DBController();
                   </ul>
                   <a href="">BOOK</a>
                </div>
-            </div>
+            </div> -->
 
          </div>
       </div>
@@ -370,7 +370,7 @@ $db_handle = new DBController();
                }
             }
             ?>
-            <div class="comment-row">
+            <!-- <div class="comment-row">
                <img src="./assets/image/Model.png" class="avatar" alt="">
                <div class="comment-text">
                   <b class="title">“One thing very special about being Fresher in KMS is the challenging Fresher
@@ -382,21 +382,8 @@ $db_handle = new DBController();
                      meaningful feeling to describe when we gave back to her the money from selling tickets.”</p>
                   <p class="name"> -- Q. Tuan -- </p>
                </div>
-            </div>
-            <div class="comment-row">
-               <img src="./assets/image/Model.png" class="avatar" alt="">
-               <div class="comment-text">
-                  <b class="title">“One thing very special about being Fresher in KMS is the challenging Fresher
-                     Bootcamp.”</b>
-                  <p class="sub-title">“Here, I learned something profound, not only the works. On Bootcamp Day, I
-                     recalled
-                     that I got a task to help aunties sell lottery, which she was first trying to sell us. What a hard
-                     and
-                     meaningful feeling to describe when we gave back to her the money from selling tickets.”</p>
-                  <p class="name"> -- Q. Tuan -- </p>
-               </div>
-            </div>
-
+            </div> -->
+          
          </div>
       </div>
    </div>
