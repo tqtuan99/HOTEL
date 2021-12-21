@@ -275,6 +275,38 @@ $db_handle = new DBController();
    include('../home/footer/footer.php');
    ?>
 
+   <?php
+   if ($id) {
+      $query = "SELECT * FROM khachhang where idtaikhoan = '" . $id . "'";
+      $count = $db_handle->numRows($query);
+      if ($count != 0) {
+         echo '<script>
+      var changeCurrency = document.querySelector(".js-change-currency");
+      changeCurrency.classList.remove("lg:flex");
+      changeCurrency.classList.add("lg:hidden");
+
+        var elementSigin = document.getElementById("js-login-logout")
+        elementSigin.classList.remove("lg:flex");
+        elementSigin.classList.add("lg:hidden");
+
+        var elementUser = document.getElementById("js-user");
+        elementUser.classList.remove("lg:hidden");
+        elementUser.classList.add("lg:flex");
+     </script>';
+      }
+   }
+   ?>
+   <script>
+      var showUser = document.querySelector(".js-show-user");
+      var proFileUser = document.querySelector(".js-profile-user");
+      showUser.onclick = function() {
+         if (proFileUser.style.display == "none") {
+            proFileUser.style.display = "block";
+         } else {
+            proFileUser.style.display = "none";
+         }
+      }
+   </script>
    <script>
       var showMenu = document.querySelector(".js-menu");
       var itemsMenu = document.querySelector(".js-items-menu");

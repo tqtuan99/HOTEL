@@ -8,6 +8,7 @@
     require_once('../../../gmail-email/vendor/phpmailer/src/SMTP.php');
 
 function sendmail($email, $firstname,$verification, $check){
+    $tokenEmail = md5($email);
     // random verification
     
     
@@ -41,7 +42,9 @@ function sendmail($email, $firstname,$verification, $check){
             <br> 
             Thank you for your interest in our hotel, to complete the registration process please enter the following confirmation code into your device.
             <br><br> 
-            Verification code: <b>'.$verification.'</b> <br><br> 
+            Verification code: <b>'.$verification.'</b>  (valid for 2 minutes)<br>
+            Please do not share this code with others.
+            <br><br> 
             Thanks,<br>
             KLT Hotel
             ';
@@ -55,7 +58,7 @@ function sendmail($email, $firstname,$verification, $check){
             Thank you for your interest in our hotel, we have reset a new password for you.
             <br><br> 
             Your new password: <b>'.$verification.'</b> <br><br> 
-            If you want to change your password, <a href="http://localhost:8080/HOTEL">click here</a><br>
+            If you want to change your password, <a href="http://localhost:8080/HOTEL/assets/components/forgotPass/newForgot.php?q='.$tokenEmail.'">Click here</a>!<br>
             Thanks,<br>
             KLT Hotel
             ';
