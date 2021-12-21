@@ -1,12 +1,9 @@
 <?php
 session_start();
-    if(isset($_SESSION['tokenRegister'])){
-        unset($_SESSION['tokenRegister']);
-    }
-    else
-    {
-        header('Location: ../../../notFound.php');
-    }
+if (isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['verification'])) {
+} else {
+    header('Location: ../../../notFound.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,11 +40,9 @@ session_start();
             <button type="submit" class="btn signin btn-confirmCode" name="btn-confirmCode">CONFIRM</button>
             <div>
                 <!-- <input type="time" class="input pass confirmCode"> -->
-                Effective time<span id="m">Phút</span> : <span id="s">Giây</span>
+                Effective time <span id="m">Phút</span> : <span id="s">Giây</span>
             </div>
             <?php
-
-            require_once("../handle/dbcontroller.php");
             require_once("../handle/configDB.php");
 
             if (isset($_POST['btn-confirmCode'])) {
@@ -55,31 +50,37 @@ session_start();
                 $firstname = $_GET["f"];
                 $lastname = $_GET["l"];
                 $gender = $_GET["g"];
-                $email = $_GET["e"];
-                $db_handle = new DBController();
+                $code = trim($_POST['confirmCode']);
+                $email = $_SESSION['username'];
+                $passwordMD5 = $_SESSION['password'];
+                $verification = $_SESSION['verification'];
 
-                if (md5($_POST['confirmCode']) == $_GET['q']) {
+                if (md5($code) == $verification) {
 
-                    $query1 = "SELECT * FROM taikhoan where tendangnhap = '" . $email . "'";
-                    $query2 = "UPDATE taikhoan set trangthai = '1'";
                     $idtaikhoan = null;
-                    $conn = $db_handle->connectDB();
-                    $result = $conn->query($query1);
-                    $conn->query($query2);
+                    $sql1 = "INSERT INTO taikhoan (tendangnhap,matkhau) VALUES ('$email', '$passwordMD5')";
+                    $sql2 = "SELECT idtaikhoan FROM taikhoan where tendangnhap = '" . $email . "'";
+                    $conn->multi_query($sql1);
+                    $result = $conn->query($sql2);
                     if ($result->num_rows > 0) {
                         // output data of each row
                         $row = $result->fetch_assoc();
                         $idtaikhoan = $row["idtaikhoan"];
                     }
-                    $sql1 = "INSERT INTO khachhang (idtaikhoan,ho,ten,gioitinh,email)
+                    $sql3 = "INSERT INTO khachhang (idtaikhoan,ho,ten,gioitinh,email)
         VALUES ('$idtaikhoan','$firstname','$lastname', '$gender','$email')";
-                    if ($conn->multi_query($sql1) === true) {
-                        header("Location: ../login/login.php?email=" . $_GET['e'] . "");
+                    if ($conn->multi_query($sql3) === true) {
+                        unset($_SESSION['username']);
+                        unset($_SESSION['password']);
+                        unset($_SESSION['verification']);
+                        header("Location: ../login/login.php?email=" . $email . "");
                     }
                 } else {
                     echo '<div style="color: red;">Mã xác nhận không đúng!</div>';
                 }
             }
+            $conn->close();
+
             ?>
         </form>
     </div>

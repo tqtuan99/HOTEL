@@ -18,11 +18,11 @@ function updatePassword($email){
    }
 }
 
-if ((isset($_GET['q']) && isset($_SESSION['tokenEmail'])) || isset($_SESSION['idUser'])) {
+if ((isset($_GET['q']) && isset($_SESSION['tokenEmail'])) || (isset($_SESSION['idUser']) && $_SESSION['emailUser'])) {
    if ((isset($_GET['q']) && isset($_SESSION['tokenEmail']))){
       $email = $_SESSION['tokenEmail'];
       $emailMD5 = md5($_SESSION['tokenEmail']);
-      if ($emailMD5 == $_GET['q'] || isset($_SESSION['idUser'])) {
+      if ($emailMD5 == $_GET['q']) {
         $check = updatePassword($email);
       } else {
          header('Location: ../../../notFound.php');

@@ -156,7 +156,19 @@ $db_handle = new DBController();
             <div class="row">
                <div class="type">
                   <div class="type-room">
-                     <a>
+
+                     <?php
+                     $queryComment = "SELECT * FROM loaiphong";
+                     $conn = $db_handle->connectDB();
+                     $result = $conn->query($queryComment);
+                     if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                           echo '<a>' . $row['tenloaiphong'] . '</a>';
+                        }
+                     }
+                     ?>
+
+                     <!-- <a>
                         VIP 1
                      </a>
                      <a>
@@ -164,10 +176,72 @@ $db_handle = new DBController();
                      </a>
                      <a>
                         VIP3
-                     </a>
+                     </a> -->
                   </div>
                </div>
-               <div class="row-content">
+
+               <?php
+                     $queryComment = "SELECT * FROM phong";
+                     $conn = $db_handle->connectDB();
+                     $result = $conn->query($queryComment);
+                     if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                           echo '
+                           <div class="row-content">
+                  <div class="image-room" style="background-image: url(../../image/destination-1.jpg);">
+                  </div>
+                  <div class="row-text">
+                     <div class="info">
+                        <div class="room-floor">
+                           <p class="room"> ' . $row['tenphong'] . '</p>
+                           <p class="floor"> ' . $row['tang'] . '</p>
+                        </div>
+                        <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
+                        <ul>
+                           <li>
+                              <i class="fas fa-bed"></i>
+                              <p>
+                              ' . $row['sogiuong'] . '
+                              </p>
+                           </li>
+                           <li>
+                              <i class="fas fa-bath"></i>
+                              <p>
+                              ' . $row['sobontam'] . '
+                              </p>
+                           </li>
+                           <li>
+                              <i class="fas fa-street-view"></i>
+                              <p>
+                              ' . $row['songuoi'] . '
+                              </p>
+                           </li>
+                        </ul>
+                        <div class="text-sp">
+                           <p>
+                           ' . $row['mota'] . '
+                           </p>
+                        </div>
+                        <div class="price">
+                        ' . $row['dongia'] . '
+                        </div>
+                     </div>
+                     <div class="eval">
+                        <div>
+                           <p>Lấy Ra Sao</p>
+                           <p>Tính Trung binh điểm</p>
+                        </div>
+                        <a href="">BOOK</a>
+                     </div>
+                  </div>
+               </div>
+                           
+                           ';
+                        }
+                     }
+                     ?>
+
+               <!-- <div class="row-content">
                   <div class="image-room" style="background-image: url(../../image/destination-1.jpg);">
                   </div>
                   <div class="row-text">
@@ -265,7 +339,7 @@ $db_handle = new DBController();
                         <a href="">BOOK</a>
                      </div>
                   </div>
-               </div>
+               </div> -->
             </div>
          </div>
       </div>

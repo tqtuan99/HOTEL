@@ -20,23 +20,15 @@ if (isset($_POST["submit"])) {
         $query = "SELECT * FROM khachhang where email = '" . $email . "'";
 
         $count = $db_handle->numRows($query);
-        if ($count != 0) echo '<div style="color: red;">Email đã tồn tại.</div>';
+        if ($count > 0) echo '<div style="color: red;">Email đã tồn tại.</div>';
         else {
-            $p = md5($pass);
-            $sql = "INSERT INTO taikhoan (tendangnhap,matkhau)
-        VALUES ('$email', '$p')";
-            if ($conn->multi_query($sql)) {
-                include("../../../gmail-email/sendmail.php");
-                sendmail($email, $firstname . " " . $lastname, $verification, 1);
+            $_SESSION['username'] = $email;
+            $_SESSION['password'] = md5($pass);
+            $_SESSION['verification'] = md5($verification);
+            include("../../../gmail-email/sendmail.php");
+            sendmail($email, $firstname . " " . $lastname, $verification, 1);
 
-                $_SESSION['tokenRegister'] = md5($email);
-                header("Location: ./confirmCode.php?q=" . md5($verification) . "&e=" . $email . "&f=" . $firstname . "&l=" . $lastname . "&g=" . $gender . "");
-            }
-            else
-            {
-                echo 'There is some error going on, please try again later';
-            }
-        
+            header("Location: ./confirmCode.php?e=" . $email . "&f=" . $firstname . "&l=" . $lastname . "&g=" . $gender . "");
         }
     }
 }
