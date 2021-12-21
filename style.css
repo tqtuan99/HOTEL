@@ -70,7 +70,6 @@ p {
    display: flex;
    flex-direction: column;
    justify-content: center;
-   align-items: center;
    margin: 0 10px;
    text-align: justify;
 }
@@ -114,6 +113,7 @@ p {
 .row {
    display: flex;
    flex-wrap: wrap;
+   justify-content: space-between;
    gap: 40px 0;
    padding: 20px;
 }
@@ -121,7 +121,7 @@ p {
 .row-content {
    position: relative;
    margin: 0 15px;
-   flex: 1 0 30%;
+   flex: 0 0 30%;
    justify-content: center;
    align-items: center;
    border-radius: 10px;
@@ -223,6 +223,9 @@ p {
    padding: 10px 20px;
    border-radius: 15px;
 }
+
+
+/* Webpage Room */
 
 @keyframes animate {
    0% {

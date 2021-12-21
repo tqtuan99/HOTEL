@@ -43,201 +43,9 @@ $db_handle = new DBController();
 
 <body>
    <!-- START: Header -->
-   <nav class="header fixed top-0 right-0 bg-gray-800 left-0 z-50" data-aos="fade-down">
-      <div class="w-full mx-auto px-2 sm:px-6 lg:px-8">
-         <div class="relative flex items-center justify-between h-16">
-            <div class="js-menu absolute inset-y-0 left-0 flex items-center sm:hidden" data-aos="fade-right">
-               <!-- Mobile menu button-->
-               <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white text-4xl" aria-controls="mobile-menu" aria-expanded="false">
-                  <i class="fas fa-bars"></i>
-               </button>
-            </div>
-            <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start" data-aos="fade-right">
-               <div class="flex-shrink-0 flex items-start mt-8 -ml-5">
-                  <div class="block md:hidden h-20 w-auto">
-                     <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
-                     <lord-icon src="https://cdn.lordicon.com/hpxruznz.json" trigger="loop" colors="primary:#16c72e,secondary:#08a88a" scale="31" axis-y="17" style="width:100px;height:100px">
-                     </lord-icon>
-                  </div>
-                  <div class="hidden lg:block h-8 w-auto">
-                     <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
-                     <lord-icon src="https://cdn.lordicon.com/hpxruznz.json" trigger="loop" colors="primary:#16c72e,secondary:#08a88a" scale="31" axis-y="17" style="width:100px;height:100px">
-                     </lord-icon>
-                  </div>
-               </div>
-
-               <div class="flex-1 hidden sm:block ">
-                  <div class="nav lg:m-5 flex justify-start space-x-4 text-center list-none">
-                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                     <li class="relative">
-                        <a href="./index.php" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
-                           Home
-                        </a>
-                        <ul class="subnav">
-
-                        </ul>
-                     </li>
-
-                     <li class="relative">
-                        <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
-                           View Room
-                        </a>
-                        <ul class="subnav ">
-                           <div class="subnav-item flex">
-                              <li><a href="./assets/components/page-show-room/pageRoom.php" target="blank">All Rooms</a></li>
-                              <li><a href="#">VIP Rooms A</a></li>
-                              <li><a href="#">VIP Rooms B</a></li>
-                              <li><a href="#">Normal Room</a></li>
-                           </div>
-                        </ul>
-                     </li>
-
-                     <li class="relative">
-                        <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
-                           Apartments
-                        </a>
-                        <ul class="subnav">
-                           <div class="subnav-item flex">
-                              <li><a href="#">Example 1</a></li>
-                              <li><a href="#">Example 2</a></li>
-                           </div>
-                        </ul>
-                     </li>
-
-                     <li class="relative">
-                        <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
-                           About us
-                        </a>
-                        <ul class="subnav">
-                           <div class="subnav-item flex">
-                              <li><a href="#">Example 1</a></li>
-                              <li><a href="#">Example 2</a></li>
-                              <li><a href="#">Example 3</a></li>
-                           </div>
-                        </ul>
-                     </li>
-                  </div>
-               </div>
-            </div>
-
-            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0" data-aos="fade-left">
-               <div class="ml-auto flex items-center">
-                  <div id="js-login-logout" class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                     <a href="../../../../../HOTEL/assets/components/login/login.php" target="_blank" class="text-white hover:text-pink-300">Sign in</a>
-                     <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
-                     <a href="../../../../../hotel/assets/components/register/register.php" target="_blank" class="text-white hover:text-pink-300">Create account</a>
-                  </div>
-
-                  <div class="js-change-currency hidden lg:ml-8 lg:flex">
-                     <a href="#" class="text-white hover:text-pink-300 flex items-center">
-                        <img src="https://tailwindui.com/img/flags/flag-canada.svg" alt="" class="w-5 h-auto block flex-shrink-0">
-                        <span class="ml-3 block text-sm font-medium">
-                           CAD
-                        </span>
-                        <span class="sr-only">, change currency</span>
-                     </a>
-                  </div>
-
-                  <!-- Profile dropdown -->
-                  <div class="js-show-user ml-3 relative">
-                     <div id="js-user" class="lg:hidden flex">
-                        <div class="text-white px-3 py-2 rounded-md ">
-                           <?php
-                           if ($id) {
-                              $query = "SELECT * FROM khachhang where idtaikhoan = '" . $id . "'";
-                              $conn = $db_handle->connectDB();
-                              $result = $conn->query($query);
-                              if ($result->num_rows > 0) {
-                                 // output data of each row
-                                 $row = $result->fetch_assoc();
-                                 echo $row["ten"];
-                              }
-                           }
-                           ?>
-                        </div>
-                        <button type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                           <span class="sr-only">Open user menu</span>
-                           <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                        </button>
-                     </div>
-
-                     <div class="js-profile-user hidden origin-top-right absolute right-4 mt-3 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                        <!-- Active: "bg-gray-100", Not Active: "" -->
-                        <!-- <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Sing in</a>
-                     <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Create account</a>
-                        -->
-                        <a href="#" class="inline-block px-4 py-2 text-sm text-gray-700">
-                           <img src="https://tailwindui.com/img/flags/flag-canada.svg" alt="" class="w-5 h-auto inline-block flex-shrink-0">
-                           CAD
-                           <span class="sr-only">, change currency</span>
-                        </a>
-                        <a href="#" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Personal Information</a>
-                        <a href="./logout.php" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" onclick="return confirm('Are you sure?')" role="menuitem" tabindex="-1" id="user-menu-item-1">Log Out</a>
-
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         <!-- Mobile menu, show/hide based on menu state. -->
-         <div class="js-items-menu hidden" id="mobile-menu">
-            <div class="nav list-none px-2 pb-3 block sm:hidden">
-               <li class="relative">
-                  <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
-                     Home
-                  </a>
-                  <ul class="subnav">
-
-                  </ul>
-               </li>
-
-               <li class="relative">
-                  <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
-                     About Us
-                  </a>
-                  <ul class="subnav ">
-                     <div class="subnav-item flex">
-                        <li><a href="#">example</a></li>
-                        <li><a href="#">Example 2</a></li>
-                        <li><a href="#">Example 3</a></li>
-                        <li><a href="#">Example 4</a></li>
-                     </div>
-                  </ul>
-               </li>
-
-               <li class="relative">
-                  <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
-                     Offers
-                  </a>
-                  <ul class="subnav">
-                     <div class="subnav-item flex">
-                        <li><a href="#">example</a></li>
-                        <li><a href="#">Example 2</a></li>
-                        <li><a href="#">Example 3</a></li>
-                        <li><a href="#">Example 4</a></li>
-                        <li><a href="#">Example 5</a></li>
-                        <li><a href="#">Example 6</a></li>
-                        <li><a href="#">Example 7</a></li>
-                     </div>
-                  </ul>
-               </li>
-
-               <li class="relative">
-                  <a href="#" class="text-white hover:text-pink-300 hover:bg-gray-600 px-3 py-2 rounded-md ">
-                     News
-                  </a>
-                  <ul class="subnav">
-                     <div class="subnav-item flex">
-                        <li><a href="#">example</a></li>
-                        <li><a href="#">Example 2</a></li>
-                        <li><a href="#">Example 3</a></li>
-                     </div>
-                  </ul>
-               </li>
-            </div>
-         </div>
-   </nav>
+   <?php
+   include ('./assets/components/home/header/header.php')
+   ?>
    <!-- END: Header -->
 
    <div>
@@ -330,7 +138,7 @@ $db_handle = new DBController();
                   <lord-icon src="https://cdn.lordicon.com/vlupvdhl.json" trigger="loop-on-hover" colors="primary:#121331,secondary:#08a88a" style="width:100px;height:100px">
                   </lord-icon>
                </div>
-               <h3>Profession</h3>
+               <h3>LUXURY</h3>
                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
             </div>
 
@@ -340,7 +148,7 @@ $db_handle = new DBController();
                   <lord-icon src="https://cdn.lordicon.com/qhviklyi.json" trigger="loop-on-hover" colors="primary:#121331,secondary:#08a88a" style="width:100px;height:100px">
                   </lord-icon>
                </div>
-               <h3>Quality</h3>
+               <h3>GREAT SERVICES</h3>
                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
             </div>
 
@@ -350,7 +158,7 @@ $db_handle = new DBController();
                   <lord-icon src="https://cdn.lordicon.com/tfosrbcn.json" trigger="loop-on-hover" colors="primary:#121331,secondary:#08a88a" style="width:100px;height:100px">
                   </lord-icon>
                </div>
-               <h3>Reputation</h3>
+               <h3>ROOFTOP POOL</h3>
                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
             </div>
 
@@ -360,18 +168,15 @@ $db_handle = new DBController();
                   <lord-icon src="https://cdn.lordicon.com/jvucoldz.json" trigger="loop-on-hover" colors="primary:#121331,secondary:#08a88a" style="width:100px;height:100px">
                   </lord-icon>
                </div>
-               <h3>Activities</h3>
+               <h3>ONLINE RESERVATION</h3>
                <p>A small river named Duden flows by their place and supplies it with the necessary</p>
             </div>
          </div>
 
          <div class="detail" data-aos="fade-up">
-            <h1>It's time to start your adventure</h1>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
-               paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
-               blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-               ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+            <h1>Overview of angle hotel</h1>
+            <p>Angel Hotel is located in the west of Da Nang. Angle Hotel is a wonderful destination and gives you the most enjoyable experience when you come to us. Coming to Hotel Angle, you will be immersed in fresh nature, participate in recreational activities, relax to take away the sadness and chaos of life.</p>
+            <p>Angle Hotel with fully equipped rooms and villas, the interior space is decorated in a luxurious style blending modern Vietnamese and Western traditions. We have a well-trained, professional and professional staff, dedicated service.</p>
             <p>
                <a href=""></a>
             </p>
@@ -383,7 +188,7 @@ $db_handle = new DBController();
    <!-- This example requires Tailwind CSS v2.0+ -->
    <!--START: Slider -->
    <div id="slider">
-      <div class="text-center mt-6  ">
+      <div class="text-center mt-6 mx-9">
          <h2 class="font-bold text-4xl text-gray-800 mb-3" data-aos="fade-right">We Have The Best Rooms
          </h2>
          <p class="italic text-2xl text-gray-400 mb-6" data-aos="fade-left">We have the most luxurious rooms with stunning views that make every visitor delight and don't want to leave.
@@ -430,9 +235,7 @@ $db_handle = new DBController();
             }
          }
          ?>
-
-
-         <!-- <div class="image-item">
+         <div class="image-item">
             <div class="image">
                <img src="./assets/image/slider-room/room-9.jpg" alt="" />
                <div class="item__content">
@@ -457,16 +260,15 @@ $db_handle = new DBController();
                   </div>
                </div>
             </div>
-         </div> -->
+         </div>
       </div>
-
    </div>
    <!--END: Slider -->
 
    <!-- Start: ShowRoomRow -->
    <div class="best-room">
       <div class="container">
-         <div class="text-center mt-6">
+         <div class="text-center mt-6 mx-9">
             <h2 class="font-bold text-4xl text-gray-800 mb-3" data-aos="fade-right">
                The Premium Rooms Satisfy Every Traveler
             </h2>
@@ -507,11 +309,8 @@ $db_handle = new DBController();
                      ';
                }
             }
-
             ?>
-
-
-            <!-- <div class="row-content">
+            <div class="row-content">
                <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
                </div>
                <div class="row-text" data-aos="fade-up">
@@ -531,7 +330,7 @@ $db_handle = new DBController();
                   </ul>
                   <a href="">BOOK</a>
                </div>
-            </div>-->
+            </div>
 
          </div>
       </div>
@@ -541,9 +340,9 @@ $db_handle = new DBController();
    <!-- Start: Slider Comment -->
    <div class="main-comment" data-aos="fade-right">
       <div class="bg-comment" data-aos="fade-up">
-         <div class="text-center mt-6  ">
+         <div class="text-center mt-6">
             <h2 class="font-bold text-4xl text-gray-800 mb-3" data-aos="fade-right">
-               Hear Reviews From Our Customers
+               What Other Visitors Experienced
             </h2>
             <p class="italic text-2xl text-gray-400 mb-6" data-aos="fade-left">Angel Hotel! The #1 choice of every traveler.
             </p>
@@ -570,10 +369,8 @@ $db_handle = new DBController();
                   ';
                }
             }
-
             ?>
-
-            <!-- <div class="comment-row">
+            <div class="comment-row">
                <img src="./assets/image/Model.png" class="avatar" alt="">
                <div class="comment-text">
                   <b class="title">“One thing very special about being Fresher in KMS is the challenging Fresher
@@ -585,12 +382,29 @@ $db_handle = new DBController();
                      meaningful feeling to describe when we gave back to her the money from selling tickets.”</p>
                   <p class="name"> -- Q. Tuan -- </p>
                </div>
-            </div> -->
+            </div>
+            <div class="comment-row">
+               <img src="./assets/image/Model.png" class="avatar" alt="">
+               <div class="comment-text">
+                  <b class="title">“One thing very special about being Fresher in KMS is the challenging Fresher
+                     Bootcamp.”</b>
+                  <p class="sub-title">“Here, I learned something profound, not only the works. On Bootcamp Day, I
+                     recalled
+                     that I got a task to help aunties sell lottery, which she was first trying to sell us. What a hard
+                     and
+                     meaningful feeling to describe when we gave back to her the money from selling tickets.”</p>
+                  <p class="name"> -- Q. Tuan -- </p>
+               </div>
+            </div>
 
          </div>
       </div>
    </div>
    <!-- End: Slider Comment -->
+
+   <!-- Map -->
+   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5870.662980119421!2d108.1783270358089!3d16.053123188931465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219119525d8b5%3A0x8ebdaf5cd4660271!2zNTYtNTggTmd1eeG7hW4gVGh14bqtdCwgSG_DoCBBbiwgQ-G6qW0gTOG7hywgxJDDoCBO4bq1bmcgNTUwMDAwLCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1640067333708!5m2!1sen!2s" width="100%" height="500" style="border:0; max-width: 1200px; margin:auto; border: 2px solid aqua;" allowfullscreen="" loading="lazy" data-aos="fade-up"></iframe>
+   <!-- End: Map -->
 
    <!-- START: Footer -->
    <?php
