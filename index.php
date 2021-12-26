@@ -203,11 +203,12 @@ $db_handle = new DBController();
          $result = $conn->query($queryRoom);
          if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
+               $imgRoom = $row['anh']==""?'room1.jpg':$row['anh'];
                if ($row['tenphong'] == 'vip 1' || $row['tenphong'] == 'Vip 1' || $row['tenphong'] == 'VIP 1')
                   echo '
                   <div class="image-item">
                   <div class="image">
-                     <img src="./assets/image/slider-room/room-1.jpg" alt="" />
+                     <img src="./assets/photo/room/' . $imgRoom. '" alt="" />
                      <div class="item__content">
                         <div class="item_center">
                            <h1>' . $row['tenphong'] . '</h1>
@@ -284,9 +285,10 @@ $db_handle = new DBController();
             $result = $conn->query($queryRoom);
             if ($result->num_rows > 0) {
                while ($row = $result->fetch_assoc()) {
+                  $imgRoom = $row['anh']==""?'room1.jpg':$row['anh'];
                   echo '
                      <div class="row-content">
-                     <div class="image-room" data-aos="fade-right" style="background-image: url(./assets/image/destination-1.jpg);">
+                     <div class="image-room" data-aos="fade-right" style="background-image: url(./assets/photo/room/' . $imgRoom. ');">
                      </div>
                      <div class="row-text" data-aos="fade-right">
                         <span class="price">' . $row['dongia'] . '</span>
@@ -356,10 +358,11 @@ $db_handle = new DBController();
             if ($result->num_rows > 0) {
                while ($row = $result->fetch_assoc()) {
                   if ($row['sosao'] == '5' || $row['sosao'] == '4')
+
                      echo '
                   
                   <div class="comment-row">
-                  <img src="./assets/image/Model.png" class="avatar" alt="">
+                  <img src="./assets/photo/avatar/' . $avatar. '" class="avatar" alt="">
                   <div class="comment-text">
                      <b class="title">“' . $row['tieude'] . '”</b>
                      <p class="sub-title">“' . $row['noidung'] . '”</p>
