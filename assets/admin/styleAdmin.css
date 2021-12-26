@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300&display=swap');
+
+* {
+   text-decoration: none;
+   box-sizing: border-box;
+}
+
+body {
+   /* overflow-x: hidden; */
+   font-family: 'Open Sans', sans-serif;
+}
+
+/* ? ACCOUNT MANAGEMENT CSS */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+   padding: 10px 0;
+}
+
+table.dataTable.no-footer {
+   margin-bottom: 20px;
+   width: 100% !important;
+}
+
+/*Pagination Buttons*/
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+   font-weight: 700;
+   border-radius: .25rem;
+   border: 1px solid transparent;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+   color: #fff !important;
+   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+   font-weight: 700;
+   border-radius: .8rem;
+   background: #667eea !important;
+   border: 1px solid transparent;
+}
+
+/*Pagination Buttons - Hover */
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+   color: #fff !important;
+   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+   font-weight: 700;
+   border-radius: .8rem;
+   background: #667eea !important;
+   border: 1px solid transparent;
+}
+
+@media screen and (max-width: 767px) {
+   .dataTables_wrapper .dataTables_paginate {
+      margin-top: 0.5em;
+      display: flex;
+      justify-content: space-between;
+   }
+}
+
+@media screen and (max-width: 640px) {
+   .dataTables_wrapper .dataTables_filter {
+      margin-bottom: 0.5em;
+      margin-top: 0!important;
+   }
+}
+
+@media (min-width: 768px) {
+   .container {
+      max-width: 100%;
+   }
+}
+
+
+/* ? Statistical css*/
+#main-contend {
+   flex: 1;
+}
+
+.account-management {
+   display: none;
+}
+
+.employ-management{
+   display: none;
+}
+
+.statistical {
+   display: none;
+}
+
+.open {
+   display: block !important;
+}

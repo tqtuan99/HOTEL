@@ -50,6 +50,7 @@ span {
 #ui-datepicker-div {
    background: lightgreen;
    border-radius: 10px;
+   z-index: 10;
 }
 
 .ui-datepicker .ui-datepicker-header {

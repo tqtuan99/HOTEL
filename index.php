@@ -44,7 +44,7 @@ $db_handle = new DBController();
 <body>
    <!-- START: Header -->
    <?php
-   include ('./assets/components/home/header/header.php')
+   include('./assets/components/home/header/header.php')
    ?>
    <!-- END: Header -->
 
@@ -310,7 +310,7 @@ $db_handle = new DBController();
                }
             }
             ?>
-            <!-- <div class="row-content">
+            <div class="row-content">
                <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
                </div>
                <div class="row-text" data-aos="fade-up">
@@ -330,7 +330,93 @@ $db_handle = new DBController();
                   </ul>
                   <a href="">BOOK</a>
                </div>
-            </div> -->
+            </div>
+
+            <div class="row-content">
+               <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
+               </div>
+               <div class="row-text" data-aos="fade-up">
+                  <span class="price">1000$</span>
+                  <p class="room"> VIP 1</p>
+                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
+                  <ul>
+                     <li>
+                        <span class="fas fa-bath"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-bed"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-street-view"></span>5
+                     </li>
+                  </ul>
+                  <a href="">BOOK</a>
+               </div>
+            </div>
+
+            <div class="row-content">
+               <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
+               </div>
+               <div class="row-text" data-aos="fade-up">
+                  <span class="price">1000$</span>
+                  <p class="room"> VIP 1</p>
+                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
+                  <ul>
+                     <li>
+                        <span class="fas fa-bath"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-bed"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-street-view"></span>5
+                     </li>
+                  </ul>
+                  <a href="">BOOK</a>
+               </div>
+            </div>
+            <div class="row-content">
+               <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
+               </div>
+               <div class="row-text" data-aos="fade-up">
+                  <span class="price">1000$</span>
+                  <p class="room"> VIP 1</p>
+                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
+                  <ul>
+                     <li>
+                        <span class="fas fa-bath"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-bed"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-street-view"></span>5
+                     </li>
+                  </ul>
+                  <a href="">BOOK</a>
+               </div>
+            </div>
+            <div class="row-content">
+               <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
+               </div>
+               <div class="row-text" data-aos="fade-up">
+                  <span class="price">1000$</span>
+                  <p class="room"> VIP 1</p>
+                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
+                  <ul>
+                     <li>
+                        <span class="fas fa-bath"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-bed"></span>2
+                     </li>
+                     <li>
+                        <span class="fas fa-street-view"></span>5
+                     </li>
+                  </ul>
+                  <a href="">BOOK</a>
+               </div>
+            </div>
 
          </div>
       </div>
@@ -383,7 +469,6 @@ $db_handle = new DBController();
                   <p class="name"> -- Q. Tuan -- </p>
                </div>
             </div> -->
-          
          </div>
       </div>
    </div>
