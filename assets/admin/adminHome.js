@@ -97,11 +97,14 @@ for (const btnOpenModal of btnOpenModals) {
       myModal.style.display = "flex";
    }
 }
+
 for (const btnCloseModal of btnCloseModals) {
    btnCloseModal.onclick = function () {
       myModal.style.display = "none";
+      // console.log(btnCloseModals);
    }
 }
+
 window.onclick = function (event) {
    if (event.target == myModal) {
       myModal.style.display = "none";
