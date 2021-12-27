@@ -2,10 +2,8 @@
 if (session_id() === "")
    session_start();
 
-if (isset($_SESSION['admin'])){
-
-}
-else header('Location: ../../notFound.php');
+if (isset($_SESSION['admin'])) {
+} else header('Location: ../../notFound.php');
 
 if (isset($_SESSION['idUser']))
    $id = $_SESSION['idUser'];
@@ -28,8 +26,8 @@ $db_handle = new DBController();
 
    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"> -->
    <!-- <link rel="stylesheet" href="/assets/css/main.css"> -->
-   <link rel="stylesheet" href="/assets/font/fontawesome-free-5.15.4-web/css/all.min.css">
-   <link rel="stylesheet" href="../../output.css">
+   <link rel="stylesheet" href="/../HOTEL/assets/font/fontawesome-free-5.15.4-web/css/all.min.css">
+   <link rel="stylesheet" href="/../HOTEL/output.css">
    <link rel="stylesheet" href="./styleAdmin.css">
 
    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
@@ -299,80 +297,78 @@ $db_handle = new DBController();
 
             <!-- Main modal -->
             <div aria-hidden="true" class="my-modal-employ hidden overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center h-modal md:h-full inset-0 bg-gray-600 bg-opacity-50">
-               <div class="relative px-4 w-full max-w-md h-full md:h-auto">
+               <div class="relative w-full max-w-lg md:h-auto">
                   <!-- Modal content -->
                   <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                      <div class="flex justify-end">
-                        <button type="button" class="close-modal text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal">
+                        <button type="button" class="close-modal-employ text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal">
                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                            </svg>
                         </button>
                      </div>
-                     <form class="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8" action="#" method="POST">
-                        <h3 class="text-xl text-center font-medium text-gray-900 dark:text-white">Add Employee</h3>
+                     <form class="px-6 pb-2 space-y-6 lg:px-8 " action="#" method="POST">
+                        <h3 class="text-4xl text-center font-medium text-gray-900 dark:text-white">Add Employee</h3>
                         <div>
-                           <label for="name" class="block text-sm font-medium text-gray-900 dark:text-gray-300">Full name</label>
+                           <label for="name" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Full name</label>
                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nguyen Van A" required>
                         </div>
-                        <div style="display: flex; align-items: center;">
-                              <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Gender:</label>
+                        <div style="display: flex; align-items: center; margin-top: 12px;">
+                           <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Gender:</label>
 
-                              <input type="radio" name="gender" value="male" id="gender" class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                              <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Male</label>
-                              
-                              <input type="radio" name="gender" value="female" id="gender" class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                              <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Female</label>
-                              
-                              <input type="radio" name="gender" value="other" id="gender" class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                              <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Other</label>
+                           <input type="radio" name="gender" value="male" id="gender" class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                           <label class="block text-sm text-gray-900 dark:text-gray-300">Male</label>
+
+                           <input type="radio" name="gender" value="female" id="gender" class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                           <label class="block text-sm text-gray-900 dark:text-gray-300">Female</label>
+
+                           <input type="radio" name="gender" value="other" id="gender" class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                           <label class="block text-sm text-gray-900 dark:text-gray-300">Other</label>
                         </div>
-                        <script> alert("Add successfull!");</script>
-                        <div style="display: flex; align-items: center;">
+                        <script>
+                           alert("Add successfull!");
+                        </script>
+                        <div style="display: flex; align-items: center; margin-top: 12px;">
                            <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Position:</label>
 
                            <input type="radio" name="position" value="1" id="position" class="bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                           <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Admin</label>
-                           
+                           <label class="block text-sm text-gray-900 dark:text-gray-300">Admin</label>
+
                            <input type="radio" name="position" value="0" id="position" class="bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                           <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Employee</label>
-                        
+                           <label class="block text-sm text-gray-900 dark:text-gray-300">Employee</label>
+
                         </div>
-                        <div>
-                           <label for="phone" class="block text-sm font-medium text-gray-900 dark:text-gray-300">Phone</label>
+                        <div style="margin-top: 8px !important">
+                           <label for="phone" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Phone</label>
                            <input type="text" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="033456789" required>
                         </div>
-                        <div>
-                           <label for="id" class="block text-sm font-medium text-gray-900 dark:text-gray-300">ID</label>
-                           <input type="text" name="id" id="id" 
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="0123456789" required>
+                        <div style="margin-top: 8px !important">
+                           <label for="id" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">ID</label>
+                           <input type="text" name="id" id="id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="0123456789" required>
                         </div>
-                        <div>
-                           <label for="dob" class="block text-sm font-medium text-gray-900 dark:text-gray-300">Day of birth</label>
-                           <input type="date" name="dob" id="dob" 
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="01-01-2000" required>
+                        <div style="margin-top: 8px !important">
+                           <label for="dob" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Day of birth</label>
+                           <input type="date" name="dob" id="dob" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="01-01-2000" required>
                         </div>
-                        <div>
-                           <label for="email" class="block text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
-                           <input type="email" name="email" id="email" 
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required>
+                        <div style="margin-top: 8px !important">
+                           <label for="email" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
+                           <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required>
                         </div>
-                        <div>
-                           <label for="address" class="block text-sm font-medium text-gray-900 dark:text-gray-300">Address</label>
-                           <input type="text" name="address" id="address" 
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required>
+                        <div style="margin-top: 8px !important">
+                           <label for="address" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Address</label>
+                           <input type="text" name="address" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required>
                         </div>
 
-                        <div style="display: flex;">
-                           <div type="submit" name="cancel" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</div>
-                           <button type="submit" name="add" onclick="return confirm('Are you sure?');" class="w-full ml-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add</button>
+                        <div style="display: flex; margin-bottom: 8px !important;">
+                           <div type="submit" name="cancel" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Employ</div>
+                           <button type="submit" name="add" onclick="return confirm('Are you sure?');" class="close-modal-employ w-full ml-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</button>
                         </div>
                      </form>
                   </div>
                </div>
             </div>
             <?php
-               include('./handleAddEmployee.php');
+            include('./handleAddEmployee.php');
             ?>
             <div class="container mx-auto">
                <div class="flex flex-col">
@@ -465,7 +461,7 @@ $db_handle = new DBController();
                                     </a>
                                  </td>
                                  <td class="px-6 py-4">
-                                    <a href="#" class="open-modal inline-block text-center">
+                                    <a href="#" class="inline-block text-center">
                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                        </svg>

@@ -89,11 +89,13 @@ for (let i = 0; i < dataToMains.length; i++) {
 
 // *MODAL DELETE
 let myModal = document.querySelector('.my-modal');
-let btnOpenModal = document.querySelector('.open-modal');
+let btnOpenModals = document.querySelectorAll('.open-modal');
 let btnCloseModals = document.querySelectorAll('.close-modal');
 
-btnOpenModal.onclick = function () {
-   myModal.style.display = "flex";
+for (const btnOpenModal of btnOpenModals) {
+   btnOpenModal.onclick = function () {
+      myModal.style.display = "flex";
+   }
 }
 for (const btnCloseModal of btnCloseModals) {
    btnCloseModal.onclick = function () {
@@ -109,13 +111,13 @@ window.onclick = function (event) {
 // *MODAL ADD EMPLOY
 let myModalAddEmploy = document.querySelector('.my-modal-employ');
 let btnOpenModalAddEmploy = document.querySelector('.open-modal-employ');
-// let btnCloseModals = document.querySelectorAll('.close-modal');
+let btnCloseModalAddEmploys = document.querySelectorAll('.close-modal-employ');
 
 btnOpenModalAddEmploy.onclick = function () {
    myModalAddEmploy.style.display = "flex";
 }
-for (const btnCloseModal of btnCloseModals) {
-   btnCloseModal.onclick = function () {
+for (const btnCloseModalAddEmploy of btnCloseModalAddEmploys) {
+   btnCloseModalAddEmploy.onclick = function () {
       myModalAddEmploy.style.display = "none";
    }
 }
