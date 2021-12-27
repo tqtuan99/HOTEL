@@ -23,11 +23,15 @@
 }
 
 .sidebar {
+   z-index: 0;
    display: flex;
    flex-direction: column;
    background-color: orange;
    border-radius: 10px;
    gap: 40px 0;
+   position: fixed;
+   overflow-y: scroll;
+   height: 595px;
 }
 
 .search-room {
@@ -70,6 +74,7 @@
    flex: 1;
    gap: 25px;
    min-width: 700px;
+   margin-left: 290px;
 }
 
 .row-content {
@@ -103,14 +108,32 @@
    cursor: pointer;
 }
 
-.row .type-room a:active {
+.row .type .type-room .type-name:first-child:active {
    color: #fff;
    background-color: orange;
+   border-top-left-radius: 10px;
+   border-bottom-left-radius: 10px;
 }
 
-.row .type-room a:focus {
+.row .type .type-room .type-name:last-child:active {
+   color: #fff;
+   background-color: orange;
+   border-top-right-radius: 10px;
+   border-bottom-right-radius: 10px;
+}
+
+.row .type .type-room .type-name:first-child:focus {
    color: #fff;
    background-color: #1d7f1f;
+   border-top-left-radius: 10px;
+   border-bottom-left-radius: 10px;
+}
+
+.row .type .type-room .type-name:last-child:focus {
+   color: #fff;
+   background-color: #1d7f1f;
+   border-top-right-radius: 10px;
+   border-bottom-right-radius: 10px;
 }
 
 .row .row-content .image-room {
@@ -204,13 +227,14 @@
 }
 
 .row-text .price {
-   padding: 7px 20px;
+   padding: 10px 20px;
    background: aqua;
    border-radius: 10px;
-   width: 150px;
+   width: 110px;
    text-align: center;
    transform: translateX(0);
    font-weight: bold;
+   margin-top: auto;
    overflow: hidden;
 }
 

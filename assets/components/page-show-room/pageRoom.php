@@ -156,37 +156,26 @@ $db_handle = new DBController();
             <div class="row">
                <div class="type">
                   <div class="type-room">
-
                      <?php
                      $queryComment = "SELECT * FROM loaiphong";
                      $conn = $db_handle->connectDB();
                      $result = $conn->query($queryComment);
                      if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                           echo '<a>' . $row['tenloaiphong'] . '</a>';
+                           echo '<a class="type-name">' . $row['tenloaiphong'] . '</a>';
                         }
                      }
                      ?>
-
-                     <!-- <a>
-                        VIP 1
-                     </a>
-                     <a>
-                        VIP2
-                     </a>
-                     <a>
-                        VIP3
-                     </a> -->
                   </div>
                </div>
 
                <?php
-                     $queryComment = "SELECT * FROM phong";
-                     $conn = $db_handle->connectDB();
-                     $result = $conn->query($queryComment);
-                     if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                           echo '
+               $queryComment = "SELECT * FROM phong";
+               $conn = $db_handle->connectDB();
+               $result = $conn->query($queryComment);
+               if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
+                     echo '
                            <div class="row-content">
                   <div class="image-room" style="background-image: url(../../image/destination-1.jpg);">
                   </div>
@@ -234,112 +223,11 @@ $db_handle = new DBController();
                         <a href="">BOOK</a>
                      </div>
                   </div>
-               </div>
-                           
+               </div>                          
                            ';
-                        }
-                     }
-                     ?>
-
-               <!-- <div class="row-content">
-                  <div class="image-room" style="background-image: url(../../image/destination-1.jpg);">
-                  </div>
-                  <div class="row-text">
-                     <div class="info">
-                        <div class="room-floor">
-                           <p class="room"> VIP 1</p>
-                           <p class="floor"> tầng 1</p>
-                        </div>
-                        <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
-                        <ul>
-                           <li>
-                              <i class="fas fa-bed"></i>
-                              <p>
-                                 2 giường đôi lớn
-                              </p>
-                           </li>
-                           <li>
-                              <i class="fas fa-bath"></i>
-                              <p>
-                                 2 bồn tắm message
-                              </p>
-                           </li>
-                           <li>
-                              <i class="fas fa-street-view"></i>
-                              <p>
-                                 Ở lên đến 7 người
-                              </p>
-                           </li>
-                        </ul>
-                        <div class="text-sp">
-                           <p>
-                              Đặc tả theo yêu cầu ADMIN (VD:Bạn có thể hủy sau, nên hãy đặt ngay hôm nay để có giá tốt.
-                              Bạn có thể hủy sau, nên hãy đặt ngay hôm nay để có giá tốt.)
-                           </p>
-                        </div>
-                        <div class="price">
-                           1000$
-                        </div>
-                     </div>
-                     <div class="eval">
-                        <div>
-                           <p>Lấy Ra Sao</p>
-                           <p>Tính Trung binh điểm</p>
-                        </div>
-                        <a href="">BOOK</a>
-                     </div>
-                  </div>
-               </div>
-
-               <div class="row-content">
-                  <div class="image-room" style="background-image: url(../../image/destination-1.jpg);">
-                  </div>
-                  <div class="row-text">
-                     <div class="info">
-                        <div class="room-floor">
-                           <p class="room"> VIP 1</p>
-                           <p class="floor"> tầng 2</p>
-                        </div>
-                        <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
-                        <ul>
-                           <li>
-                              <i class="fas fa-bed"></i>
-                              <p>
-                                 2 giường đôi lớn
-                              </p>
-                           </li>
-                           <li>
-                              <i class="fas fa-bath"></i>
-                              <p>
-                                 2 bồn tắm message
-                              </p>
-                           </li>
-                           <li>
-                              <i class="fas fa-street-view"></i>
-                              <p>
-                                 Ở lên đến 7 người
-                              </p>
-                           </li>
-                        </ul>
-                        <div class="text-sp">
-                           <p>
-                              Đặc tả theo yêu cầu ADMIN (VD:Bạn có thể hủy sau, nên hãy đặt ngay hôm nay để có giá tốt.
-                              Bạn có thể hủy sau, nên hãy đặt ngay hôm nay để có giá tốt.)
-                           </p>
-                        </div>
-                        <div class="price">
-                           1000$
-                        </div>
-                     </div>
-                     <div class="eval">
-                        <div>
-                           <p>Lấy Ra Sao</p>
-                           <p>Tính Trung binh điểm</p>
-                        </div>
-                        <a href="">BOOK</a>
-                     </div>
-                  </div>
-               </div> -->
+                  }
+               }
+               ?>
             </div>
          </div>
       </div>

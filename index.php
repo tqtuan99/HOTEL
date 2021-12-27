@@ -203,12 +203,12 @@ $db_handle = new DBController();
          $result = $conn->query($queryRoom);
          if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-               $imgRoom = $row['anh']==""?'room1.jpg':$row['anh'];
+               $imgRoom = $row['anh'] == "" ? 'room1.jpg' : $row['anh'];
                if ($row['tenphong'] == 'vip 1' || $row['tenphong'] == 'Vip 1' || $row['tenphong'] == 'VIP 1')
                   echo '
                   <div class="image-item">
                   <div class="image">
-                     <img src="./assets/photo/room/' . $imgRoom. '" alt="" />
+                     <img src="./assets/photo/room/' . $imgRoom . '" alt="" />
                      <div class="item__content">
                         <div class="item_center">
                            <h1>' . $row['tenphong'] . '</h1>
@@ -285,12 +285,12 @@ $db_handle = new DBController();
             $result = $conn->query($queryRoom);
             if ($result->num_rows > 0) {
                while ($row = $result->fetch_assoc()) {
-                  $imgRoom = $row['anh']==""?'room1.jpg':$row['anh'];
+                  $imgRoom = $row['anh'] == "" ? 'room1.jpg' : $row['anh'];
                   echo '
                      <div class="row-content">
-                     <div class="image-room" data-aos="fade-right" style="background-image: url(./assets/photo/room/' . $imgRoom. ');">
+                     <div class="image-room" data-aos="zoom-in-up" data-aos-duration="3000" style="background-image: url(./assets/photo/room/' . $imgRoom . ');">
                      </div>
-                     <div class="row-text" data-aos="fade-right">
+                     <div class="row-text" data-aos="slide-up" data-aos-duration="2500">
                         <span class="price">' . $row['dongia'] . '</span>
                         <p class="room"> ' . $row['tenphong'] . '</p>
                         <p class="view"> <i class="fas fa-umbrella-beach"></i>' . $row['mota'] . '</p>
@@ -312,7 +312,7 @@ $db_handle = new DBController();
                }
             }
             ?>
-            <div class="row-content">
+            <!-- <div class="row-content">
                <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
                </div>
                <div class="row-text" data-aos="fade-up">
@@ -332,94 +332,7 @@ $db_handle = new DBController();
                   </ul>
                   <a href="">BOOK</a>
                </div>
-            </div>
-
-            <div class="row-content">
-               <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
-               </div>
-               <div class="row-text" data-aos="fade-up">
-                  <span class="price">1000$</span>
-                  <p class="room"> VIP 1</p>
-                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
-                  <ul>
-                     <li>
-                        <span class="fas fa-bath"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-bed"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-street-view"></span>5
-                     </li>
-                  </ul>
-                  <a href="">BOOK</a>
-               </div>
-            </div>
-
-            <div class="row-content">
-               <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
-               </div>
-               <div class="row-text" data-aos="fade-up">
-                  <span class="price">1000$</span>
-                  <p class="room"> VIP 1</p>
-                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
-                  <ul>
-                     <li>
-                        <span class="fas fa-bath"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-bed"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-street-view"></span>5
-                     </li>
-                  </ul>
-                  <a href="">BOOK</a>
-               </div>
-            </div>
-            <div class="row-content">
-               <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
-               </div>
-               <div class="row-text" data-aos="fade-up">
-                  <span class="price">1000$</span>
-                  <p class="room"> VIP 1</p>
-                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
-                  <ul>
-                     <li>
-                        <span class="fas fa-bath"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-bed"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-street-view"></span>5
-                     </li>
-                  </ul>
-                  <a href="">BOOK</a>
-               </div>
-            </div>
-            <div class="row-content">
-               <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
-               </div>
-               <div class="row-text" data-aos="fade-up">
-                  <span class="price">1000$</span>
-                  <p class="room"> VIP 1</p>
-                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
-                  <ul>
-                     <li>
-                        <span class="fas fa-bath"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-bed"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-street-view"></span>5
-                     </li>
-                  </ul>
-                  <a href="">BOOK</a>
-               </div>
-            </div>
-
+            </div> -->
          </div>
       </div>
    </div>
@@ -448,7 +361,7 @@ $db_handle = new DBController();
                      echo '
                   
                   <div class="comment-row">
-                  <img src="./assets/photo/avatar/' . $avatar. '" class="avatar" alt="">
+                  <img src="./assets/photo/avatar/' . $avatar . '" class="avatar" alt="">
                   <div class="comment-text">
                      <b class="title">“' . $row['tieude'] . '”</b>
                      <p class="sub-title">“' . $row['noidung'] . '”</p>
@@ -555,7 +468,7 @@ if ($id) {
 <script>
    AOS.init({
       offset: 200,
-      duration: 1000
+      duration: 1500
    });
 </script>
 

@@ -16,12 +16,16 @@ body {
 /* ? ACCOUNT MANAGEMENT CSS */
 .dataTables_wrapper .dataTables_length,
 .dataTables_wrapper .dataTables_filter {
-   padding: 10px 0;
+   padding: 0 0 10px 0;
 }
 
 table.dataTable.no-footer {
    margin-bottom: 20px;
    width: 100% !important;
+}
+
+.dataTables_wrapper {
+   overflow-x: auto;
 }
 
 /*Pagination Buttons*/
@@ -75,6 +79,7 @@ table.dataTable.no-footer {
 /* ? Statistical css*/
 #main-contend {
    flex: 1;
+   overflow-x: hidden;
 }
 
 .account-management {

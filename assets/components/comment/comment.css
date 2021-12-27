@@ -19,7 +19,7 @@
 .comment-row {
    position: relative;
    text-align: justify;
-   margin-top: 100px !important;
+   margin-top: 35px !important;
 }
 
 .comment-row img {
@@ -61,8 +61,8 @@
 
 .slick-arrow {
    position: absolute;
-   top: 50%;
-   transform: translateY(-120%);
+   top: 48%;
+   transform: translateY(-50%);
    border: none;
    width: 55px;
    height: 40px;

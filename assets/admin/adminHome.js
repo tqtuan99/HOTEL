@@ -1,9 +1,9 @@
 $(document).ready(function () {
-   $('#dataTable').DataTable({
+   $('.dataTable').DataTable({
          responsive: true
       })
       .columns.adjust()
-      .responsive.recalc();;
+      .responsive.recalc();
 });
 
 function toggleDD(myDropMenu) {
