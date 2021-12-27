@@ -10,6 +10,9 @@ body {
    font-family: 'Open Sans', sans-serif;
 }
 
+.img-radius {
+   border-radius: 12px;
+}
 /* ? ACCOUNT MANAGEMENT CSS */
 .dataTables_wrapper .dataTables_length,
 .dataTables_wrapper .dataTables_filter {

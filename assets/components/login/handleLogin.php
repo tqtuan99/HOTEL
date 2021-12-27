@@ -29,9 +29,28 @@ if (isset($_POST["submit"])) {
                         setcookie('username', '');
                      }
                   }
+
                   $_SESSION['idUser'] = $row['idtaikhoan'];
                   $_SESSION['emailUser'] = $row['tendangnhap'];
-                  header("Location: ../../../index.php");
+
+                  $sql1 = "SELECT idtaikhoan, chucvu from nhanvien where idtaikhoan = ".$row['idtaikhoan'];
+                  $kq = $conn->query($sql1);
+                  if($kq->num_rows > 0){
+                     $row1 = $kq->fetch_assoc();
+                     if($row1['chuvu'] == 1){
+                        $_SESSION['admin'] = 'yes';
+                        header("Location: ../../admin/adminHome.php");
+                     }
+                     else {
+                        $_SESSION['admin'] = 'yes';
+
+                        $_SESSION['employee'] = 'yes';
+                        header("Location: ../../admin/adminHome.php");
+                     }
+
+                  }
+                  else
+                     header("Location: ../../../index.php");
             }
             $check = 2;
          }
