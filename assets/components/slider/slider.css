@@ -59,8 +59,8 @@ button {
 
 .slick-arrow {
    position: absolute;
-   top: 50%;
-   transform: translateY(-120%);
+   top: 48%;
+   transform: translateY(-50%);
    border: none;
    width: 55px;
    height: 40px;
