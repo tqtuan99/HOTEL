@@ -2,7 +2,7 @@
 require_once("../components/handle/dbcontroller.php");
 require_once("../components/handle/configDB.php");
 
-if (isset($_POST["add"])) {
+if (isset($_POST["add"]) && !empty($_POST["add"])) {
     $name = $_POST["name"];
     $gender = $_POST["gender"];
     $position = $_POST["position"];

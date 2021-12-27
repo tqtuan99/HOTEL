@@ -372,7 +372,7 @@ $db_handle = new DBController();
                </div>
             </div>
             <?php
-               include('./handleAddEmployee.php');
+               require_once('./handleAddEmployee.php');
             ?>
             <div class="container mx-auto">
                <div class="flex flex-col">
