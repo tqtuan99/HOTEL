@@ -349,26 +349,31 @@ $db_handle = new DBController();
             </p>
          </div>
          <div class="slider-comment" data-aos="fade-left">
+            
+         <?php
+            $avatarComment = null;
 
-            <?php
             $queryComment = "SELECT * FROM phanhoi";
             $conn = $db_handle->connectDB();
             $result = $conn->query($queryComment);
             if ($result->num_rows > 0) {
                while ($row = $result->fetch_assoc()) {
-                  if ($row['sosao'] == '5' || $row['sosao'] == '4')
-
+                  if ($row['sosao'] == '5' || $row['sosao'] == '4') {
+                     $sql = "SELECT * FROM khachhang where idkhachhang = " . $row['idkhachhang'];
+                     $kq = $conn->query($sql);
+                     $rowkq = $kq->fetch_assoc();
+                     $avatarComment = $rowkq['avatar']==""?'avtNull.png':$rowkq['avatar'];
                      echo '
-                  
                   <div class="comment-row">
-                  <img src="./assets/photo/avatar/' . $avatar . '" class="avatar" alt="">
+                  <img src="./assets/photo/avatar/' . $avatarComment . '" class="avatar" alt="">
                   <div class="comment-text">
                      <b class="title">“' . $row['tieude'] . '”</b>
                      <p class="sub-title">“' . $row['noidung'] . '”</p>
-                     <p class="name"> -- ' . $row['ten'] . ' -- </p>
+                     <p class="name"> -- ' . $rowkq['ten'] . ' -- </p>
                   </div>
                </div>
                   ';
+                  }
                }
             }
             ?>
