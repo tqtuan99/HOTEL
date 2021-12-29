@@ -18,6 +18,12 @@ if (isset($_POST["submit"])) {
       while ($row = $result->fetch_assoc()) {
          if ($row["tendangnhap"] == $email) {
             if ($row['matkhau']== $pass) {
+
+               $sqlSetStatus = 'UPDATE taikhoan set trangthai = 1 where idtaikhoan = '.$row['idtaikhoan'];
+               $conn->multi_query($sqlSetStatus);
+
+               //login successful
+
                   if ($check_remember) {
                      if(!isset($_COOKIE['password'])&& !isset($_COOKIE['password'])){
                         setcookie('password', $_POST["password"], time() + $cookie_time);

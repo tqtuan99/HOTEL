@@ -169,8 +169,8 @@ $db_handle = new DBController();
                      <svg class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                      </svg>
-                     <form action="" method="POST">
                         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+<<<<<<< HEAD
                            Are you sure you want to delete?</h3>
                         <button data-modal-toggle="popup-modal" name="yes" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                            Yes, I am sure
@@ -178,6 +178,16 @@ $db_handle = new DBController();
                         <button data-modal-toggle="popup-modal" name="no" type="button" class="close-modal text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600">No,
                            cancel</button>
                      </form>
+=======
+                           Are you sure you want to delete this account?</h3>
+                        <a href="#">
+                           <button data-modal-toggle="popup-modal" onclick="deleteId()" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                               Yes, I am sure
+                           </button> 
+                        </a>
+                        <button data-modal-toggle="popup-modal" type="button" class="close-modal text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600">No,
+                        cancel</button>
+>>>>>>> ec750956ba951fd0363aea19127b8cb298f58ad9
                   </div>
                </div>
             </div>
@@ -213,7 +223,7 @@ $db_handle = new DBController();
                                     ID Account
                                  </th>
                                  <th class="px-6 py-2 text-xs text-white">
-                                    Name
+                                    Account Type 
                                  </th>
                                  <th class="px-6 py-2 text-xs text-white">
                                     Email
@@ -231,14 +241,22 @@ $db_handle = new DBController();
                            </thead>
                            <tbody class="bg-white divide-y divide-gray-300">
                               <?php
-                              $status = null;
+                              $typeAccount = '';
+                              $status = '';
                               $queryRoom = "SELECT * FROM taikhoan";
                               $conn = $db_handle->connectDB();
                               $result = $conn->query($queryRoom);
                               if ($result->num_rows > 0) {
                                  while ($row = $result->fetch_assoc()) {
-                                    if ($row['trangthai'] == 1) $status == 'online';
-                                    else $status = 'offline';
+                                    $sql = "SELECT * FROM nhanvien where idtaikhoan = " . $row['idtaikhoan'];
+                                    $kq = $conn->query($sql);
+                                    $rowkq = $kq->fetch_assoc();
+                                    if($rowkq)
+                                       if($rowkq['chucvu'] == 1)
+                                          $typeAccount = 'Quản lý';
+                                       else $typeAccount= $rowkq['chucvu'] == 0 ? 'Nhân viên' : 'Khách hàng';
+
+                                    $status = $row['trangthai'] == 1?'online':'offline';
                                     echo '
                                     <tr class="text-center whitespace-nowrap">
                                  <td class="px-6 py-4 text-sm text-gray-500">
@@ -246,7 +264,7 @@ $db_handle = new DBController();
                                  </td>
                                  <td class="px-6 py-4">
                                     <div class="text-sm text-gray-900">
-                                    ' . $row['tendangnhap'] . '
+                                    ' . $typeAccount . '
                                     </div>
                                  </td>
                                  <td class="px-6 py-4">
@@ -263,8 +281,8 @@ $db_handle = new DBController();
                                     </a>
                                  </td>
                                  <td class="px-6 py-4">
-                                    <a href="#" class="open-modal inline-block text-center">
-                                       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <a href="#"  class="open-modal inline-block text-center">
+                                       <svg xmlns="http://www.w3.org/2000/svg" onclick="saveId(1, '.$row['idtaikhoan'].')" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                        </svg>
                                     </a>                                  
@@ -324,9 +342,6 @@ $db_handle = new DBController();
                            <input type="radio" name="gender" value="other" id="gender" class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                            <label class="block text-sm text-gray-900 dark:text-gray-300">Other</label>
                         </div>
-                        <script>
-                           alert("Add successfull!");
-                        </script>
                         <div style="display: flex; align-items: center; margin-top: 12px;">
                            <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Position:</label>
 
@@ -359,8 +374,13 @@ $db_handle = new DBController();
                         </div>
 
                         <div style="display: flex; margin-bottom: 8px !important;">
+<<<<<<< HEAD
                            <button type="submit" name="add" onclick="return confirm('Are you sure?');" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Employ</button>
                            <button type="submit" name="cancel" class="close-modal-employ w-full ml-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</button>
+=======
+                           <button type="submit" name="add" id="submitbtn" onclick="return confirm('Are you sure?');" class=" w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Employ</button>
+                           <div type="submit" name="cancel" class="close-modal-employ cursor-pointer w-full text-white ml-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</div>
+>>>>>>> ec750956ba951fd0363aea19127b8cb298f58ad9
                         </div>
                      </form>
                   </div>
@@ -389,7 +409,7 @@ $db_handle = new DBController();
                                     Phone
                                  </th>
                                  <th class="px-6 py-2 text-xs text-white">
-                                    ID
+                                    CIC
                                  </th>
                                  <th class="px-6 py-2 text-xs text-white">
                                     Email
@@ -461,7 +481,7 @@ $db_handle = new DBController();
                                  </td>
                                  <td class="px-6 py-4">
                                     <a href="#" class="open-modal inline-block text-center">
-                                       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                       <svg xmlns="http://www.w3.org/2000/svg" onclick="saveId(0, '.$row['idtaikhoan'].')" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                        </svg>
                                     </a>
@@ -790,6 +810,35 @@ $db_handle = new DBController();
       </div>
 
    </div>
+   <script type="text/javascript">
+		var selectId = '';
+      var action = '';
+
+		function saveId(check, id) {
+			if(check == 1) action = 'deleteAcount';
+         else action = 'deleteEmployee';
+         selectId = id;
+		}
+
+		function deleteId() {
+			$.post('../components/handle/delete.php', {
+				'action': action,
+				'id': selectId
+			}, function(data) {
+				location.reload()
+			})
+		}
+
+      $('#submitbtn').onclick() = function(){
+         location.reload();
+      }
+	</script>
+
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 
    <!--Datatables -->
    <script src="./adminHome.js"></script>

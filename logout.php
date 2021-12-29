@@ -1,8 +1,13 @@
 <?php
+include_once('./assets/components/handle/configDB.php');
 session_start();
 
-if(isset($_SESSION["idUser"]))
+if(isset($_SESSION["idUser"])){
+    $sqlSetStatus = 'UPDATE taikhoan set trangthai = 0 where idtaikhoan = '.$_SESSION["idUser"];
+    $conn->multi_query($sqlSetStatus);
     unset($_SESSION["idUser"]);
+}
+
 
 if(isset($_SESSION["emailUser"]))
     unset($_SESSION['emailUser']);
