@@ -54,7 +54,7 @@ function showDataEmploy() {
 }
 
 function showDataRoom() {
-   buttonShowAccount.classList.add('open')
+   buttonShowRoom.classList.add('open')
 }
 
 function showDataStatis() {
@@ -65,7 +65,7 @@ function hideData() {
    buttonShowAccount.classList.remove('open')
    buttonShowStatis.classList.remove('open')
    buttonShowEmploy.classList.remove('open')
-   // buttonShowRoom.classList.remove('open')
+   buttonShowRoom.classList.remove('open')
 }
 
 for (let i = 0; i < dataToMains.length; i++) {
@@ -77,10 +77,10 @@ for (let i = 0; i < dataToMains.length; i++) {
       dataToMains[1].addEventListener('click', hideData)
       dataToMains[1].addEventListener('click', showDataEmploy)
    }
-   // if (!dataToMains[2].classList.contains('open')) {
-   //    dataToMains[2].addEventListener('click', hideData)
-   //    dataToMains[2].addEventListener('click', showDataRoom)
-   // }
+   if (!dataToMains[2].classList.contains('open')) {
+      dataToMains[2].addEventListener('click', hideData)
+      dataToMains[2].addEventListener('click', showDataRoom)
+   }
    if (!dataToMains[3].classList.contains('open')) {
       dataToMains[3].addEventListener('click', hideData)
       dataToMains[3].addEventListener('click', showDataStatis)
@@ -101,7 +101,6 @@ for (const btnOpenModal of btnOpenModals) {
 for (const btnCloseModal of btnCloseModals) {
    btnCloseModal.onclick = function () {
       myModal.style.display = "none";
-      // console.log(btnCloseModals);
    }
 }
 
@@ -122,5 +121,19 @@ btnOpenModalAddEmploy.onclick = function () {
 for (const btnCloseModalAddEmploy of btnCloseModalAddEmploys) {
    btnCloseModalAddEmploy.onclick = function () {
       myModalAddEmploy.style.display = "none";
+   }
+}
+
+// *MODAL ADD ROOM
+let myModalAddRoom = document.querySelector('.my-modal-room');
+let btnOpenModalAddRoom = document.querySelector('.open-modal-room');
+let btnCloseModalAddRooms = document.querySelectorAll('.close-modal-room');
+
+btnOpenModalAddRoom.onclick = function () {
+   myModalAddRoom.style.display = "flex";
+}
+for (const btnCloseModalAddRoom of btnCloseModalAddRooms) {
+   btnCloseModalAddRoom.onclick = function () {
+      myModalAddRoom.style.display = "none";
    }
 }

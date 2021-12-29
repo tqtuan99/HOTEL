@@ -89,6 +89,9 @@ table.dataTable.no-footer {
 .employ-management{
    display: none;
 }
+.room-management{
+   display: none;
+}
 
 .statistical {
    display: none;
