@@ -13,11 +13,14 @@ if (!empty($_POST)) {
 		$sql1 = 'delete from taikhoan where idtaikhoan = '.$id;
 		$sql2 = 'delete from taikhoan where idtaikhoan = '.$id;
 		$conn->multi_query($sql1);
+		header('location: ../../admin/adminHome.php?q=account');
 	}
 
     if ($action == 'deleteEmployee') {
 		$sql1 = 'delete from nhanvien where idtaikhoan = '.$id;
 		$conn->multi_query($sql1);
+		header('location: ../assets/admin/adminHome.php?q=employ');
+
 	}
 
     if ($action == 'update') {

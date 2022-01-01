@@ -99,7 +99,7 @@
    background: var(--bg-section);
 }
 
-.row .type-room a {
+.row .type-room button {
    color: #000;
    font-size: 20px;
    padding: 5px 30px;
@@ -226,11 +226,15 @@
    z-index: 0;
 }
 
+.h-50 {
+   height: 50px;
+}
+
 .row-text .price {
    padding: 10px 20px;
    background: aqua;
    border-radius: 10px;
-   width: 110px;
+   width: 165px;
    text-align: center;
    transform: translateX(0);
    font-weight: bold;

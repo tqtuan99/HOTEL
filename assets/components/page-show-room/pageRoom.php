@@ -38,50 +38,34 @@ $db_handle = new DBController();
    <div class="web-room">
       <div class="container">
          <div class="show-room">
-            <div class="sidebar">
+            <form class="sidebar"  method="GET" action="#">
                <div class="search-room">
                   <div class="search__container--item ">
                      <div>
                         <label for="from">CHECK IN</label>
                      </div>
-                     <input class="rounded-2xl text-lg" type="text" id="from" name="from" placeholder="mm-dd-yyyy">
+                     <input class="text-center rounded-2xl text-lg" type="text" id="from" name="checkin" placeholder="mm-dd-yyyy">
                   </div>
                   <div class="search__container--item">
                      <div>
                         <label for="to">CHECK OUT</label>
                      </div>
-                     <input class="rounded-2xl text-lg" type="text" id="to" name="to" placeholder="mm-dd-yyyy">
+                     <input class="text-center rounded-2xl text-lg" type="text" id="to" name="checkout" placeholder="mm-dd-yyyy" >
                   </div>
                   <div class="search__container--item">
                      <div>
                         <span>ADULTS</span>
                      </div>
-                     <select class="w-full rounded-2xl text-lg" name="" id="">
-                        <option>01</option>
-                        <option>02</option>
-                        <option>03</option>
-                        <option>04</option>
-                        <option>05</option>
-                        <option>07</option>
-                        <option>08</option>
-                        <option>09</option>
-                     </select>
+                     <input type="number" class="text-center w-full rounded-2xl text-lg" min="1" max="20" name="adults" id="" value="<?php echo isset($_GET['adults'])?$_GET['adults']:""; ?>"></input>
                   </div>
                   <div class="search__container--item">
                      <div>
                         <span>CHILDREN</span>
                      </div>
-                     <select class="w-full rounded-2xl text-lg" name="" id="">
-                        <option>0</option>
-                        <option>01</option>
-                        <option>02</option>
-                        <option>03</option>
-                        <option>04</option>
-                        <option>05</option>
-                     </select>
+                     <input type="number" class="text-center w-full rounded-2xl text-lg" min="0" max="20" name="children" id="" value="<?php echo isset($_GET['children'])?$_GET['children']:""; ?>"> </input>
                   </div>
                   <div class="search__container--btn ani">
-                     <a class="no-underline text-white animate-pulse" href="#">SEARCH</a>
+                     <button name="search" class="no-underline text-white animate-pulse">SEARCH</button>
                   </div>
                </div>
                <div class="option">
@@ -90,28 +74,31 @@ $db_handle = new DBController();
                   </div>
                   <div class="option-type">
                      <div class="">
-                        <input type="checkbox" class="chk-option">
+                        <input name="vitri1" type="checkbox" class="chk-option" <?php if(isset($_GET['vitri1'])) echo 'checked'?>>
                         <label for="" class="lbl-option">Giáp Biển</label>
                      </div>
 
                      <div class="">
-                        <input type="checkbox" class="chk-option">
+                        <input name="vitri2" type="checkbox" class="chk-option" <?php if(isset($_GET['vitri2'])) echo 'checked'?>>
                         <label for="" class="lbl-option">Giáp Mặt Phố</label>
                      </div>
 
                      <div class="">
-                        <input type="checkbox" class="chk-option">
+                        <input name="sao" type="checkbox" class="chk-option" <?php if(isset($_GET['sao'])) echo 'checked'?>>
                         <label for="" class="lbl-option">5 Sao</label>
                      </div>
 
                      <div class="">
-                        <input type="checkbox" class="chk-option">
-                        <label for="" class="lbl-option">2 Giường Đôi</label>
+                        <input name="giuongdoi" type="checkbox" class="chk-option" <?php if(isset($_GET['giuongdoi'])) echo 'checked'?>>
+                        <label for="" class="lbl-option">Giường Đôi</label>
                      </div>
 
                      <div class="">
-                        <input type="checkbox" class="chk-option">
+                        <input name="nguoi" type="checkbox" class="chk-option" <?php if(isset($_GET['nguoi'])) echo 'checked'?>>
                         <label for="" class="lbl-option">Trên 5 người</label>
+                     </div>
+                     <div class="search__container--btn ani">
+                        <button name="search1" class="no-underline text-white animate-pulse">SEARCH</button>
                      </div>
                   </div>
                </div>
@@ -121,112 +108,64 @@ $db_handle = new DBController();
                      Chọn Lọc Theo Giá:
                   </div>
                   <div class="option-type">
+                  <?php
+                  $checked = "";
+                   if(isset($_GET['price'])) 
+                     $checked = $_GET['price'];
+                   ?>
+                      <div class="">
+                        <input type="radio" name="price" class="chk-option" value="0" <?php if($checked==0) echo 'checked'?>>
+                        <label for="" class="lbl-option"> All</label>
+                     </div>
                      <div class="">
-                        <input type="checkbox" class="chk-option">
+                        <input type="radio" name="price" class="chk-option" value="1" <?php if($checked==1) echo 'checked'?>>
                         <label for="" class="lbl-option"> Dưới 1000$</label>
                      </div>
 
                      <div class="">
-                        <input type="checkbox" class="chk-option">
+                        <input type="radio" name="price" class="chk-option" <?php if($checked==2) echo 'checked'?> value="2">
                         <label for="" class="lbl-option">1000$ - 1500$</label>
                      </div>
 
                      <div class="">
-                        <input type="checkbox" class="chk-option">
+                        <input type="radio" name="price" class="chk-option" <?php if($checked==3) echo 'checked'?> value="3">
                         <label for="" class="lbl-option">1500$ - 2000$</label>
                      </div>
 
                      <div class="">
-                        <input type="checkbox" class="chk-option">
+                        <input type="radio" name="price" class="chk-option" <?php if($checked==4) echo 'checked'?> value="4">
                         <label for="" class="lbl-option">2000$ - 2500$</label>
                      </div>
 
                      <div class="">
-                        <input type="checkbox" class="chk-option">
+                        <input type="radio" name="price" class="chk-option" <?php if($checked==5) echo 'checked'?> value="5">
                         <label for="" class="lbl-option">2500$ - 3000$</label>
                      </div>
 
                      <div class="">
-                        <input type="checkbox" class="chk-option">
+                        <input type="radio" name="price" class="chk-option" <?php if($checked==6) echo 'checked'?> value="6" >
                         <label for="" class="lbl-option">Trên 3000$</label>
                      </div>
+
+                     <div class="search__container--btn ani">
+                        <button name="search2" class="no-underline text-white animate-pulse">SEARCH</button>
+                     </div>
+                     <br>
+
                   </div>
                </div>
-            </div>
+            </form>
             <div class="row">
                <div class="type">
-                  <div class="type-room">
+                  <form class="type-room" method="GET" action="#">
                      <?php
-                     $queryComment = "SELECT * FROM loaiphong";
-                     $conn = $db_handle->connectDB();
-                     $result = $conn->query($queryComment);
-                     if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                           echo '<a class="type-name">' . $row['tenloaiphong'] . '</a>';
-                        }
-                     }
+                     include('./getDBTypeRoom.php');
                      ?>
-                  </div>
+                  </form>
                </div>
 
                <?php
-               $queryComment = "SELECT * FROM phong";
-               $conn = $db_handle->connectDB();
-               $result = $conn->query($queryComment);
-               if ($result->num_rows > 0) {
-                  while ($row = $result->fetch_assoc()) {
-                     echo '
-                           <div class="row-content">
-                  <div class="image-room" style="background-image: url(../../image/destination-1.jpg);">
-                  </div>
-                  <div class="row-text">
-                     <div class="info">
-                        <div class="room-floor">
-                           <p class="room"> ' . $row['tenphong'] . '</p>
-                           <p class="floor"> ' . $row['tang'] . '</p>
-                        </div>
-                        <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
-                        <ul>
-                           <li>
-                              <i class="fas fa-bed"></i>
-                              <p>
-                              ' . $row['sogiuong'] . '
-                              </p>
-                           </li>
-                           <li>
-                              <i class="fas fa-bath"></i>
-                              <p>
-                              ' . $row['sobontam'] . '
-                              </p>
-                           </li>
-                           <li>
-                              <i class="fas fa-street-view"></i>
-                              <p>
-                              ' . $row['songuoi'] . '
-                              </p>
-                           </li>
-                        </ul>
-                        <div class="text-sp">
-                           <p>
-                           ' . $row['mota'] . '
-                           </p>
-                        </div>
-                        <div class="price">
-                        ' . $row['dongia'] . '
-                        </div>
-                     </div>
-                     <div class="eval">
-                        <div>
-                           <p>Lấy Ra Sao</p>
-                           <p>Tính Trung binh điểm</p>
-                        </div>
-                        <a href="">BOOK</a>
-                     </div>
-                  </div>
-               </div>                          
-                           ';
-                  }
-               }
+               include('./getDBRoom.php');
                ?>
             </div>
          </div>

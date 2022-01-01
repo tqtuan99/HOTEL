@@ -172,8 +172,8 @@ $db_handle = new DBController();
                      <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
                         Are you sure you want to delete?
                      </h3>
-                     <a href="#" onclick="return alert('Delete successfull?');">
-                        <button data-modal-toggle="popup-modal" onclick="deleteId()" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                     <a href="#">
+                        <button data-modal-toggle="popup-modal" onclick="deleteId(); getLocation()" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                            Yes, I am sure
                         </button>
                      </a>
@@ -295,7 +295,7 @@ $db_handle = new DBController();
          <!-- ? END: ACCOUNT MANAGEMENT-->
 
          <!-- ? EMPLOY MANAGEMENT -->
-         <div class="js-show-employ employ-management bg-gray-100 mt-12 md:mt-2">
+         <div  class="js-show-employ employ-management bg-gray-100 mt-12 md:mt-2">
             <div class="bg-gray-800 flex justify-between items-center pt-3">
                <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
                   <h3 class="font-bold pl-2">Employ Management</h3>
@@ -367,7 +367,7 @@ $db_handle = new DBController();
                         </div>
 
                         <div style="display: flex; margin-bottom: 8px !important;">
-                           <button type="submit" name="add" id="submitbtn" onclick="return confirm('Are you sure add employ?');" class=" w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Employ</button>
+                           <a href="../admin/adminHome.php?q=employ"><button type="submit" name="add" id="submitbtn" onclick="return confirm('Are you sure add employ?');" class=" w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Employ</button></a>
                            <div type="submit" name="cancel" class="close-modal-employ cursor-pointer w-full text-white ml-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</div>
                         </div>
                      </form>
@@ -574,9 +574,6 @@ $db_handle = new DBController();
                   </div>
                </div>
             </div>
-            <?php
-            include('./handleAddEmployee.php');
-            ?>
             <div class="container mx-auto">
                <div class="flex flex-col">
                   <div class="w-full">
@@ -813,9 +810,65 @@ $db_handle = new DBController();
          })
       }
 
-      $('#submitbtn').onclick() = function() {
-         location.reload();
+      function getLocation(){
+         switch (action){
+            case 'deleteAcount':
+               window.location.href = '../admin/adminHome.php?q=account';
+            case 'deleteEmployee':
+               window.location.href = '../admin/adminHome.php?q=employ';
+            case 'deleteRoom':
+               window.location.href = '../admin/adminHome.php?q=room';
+            case 'deleteAcount':
+               default: 
+         }
       }
+   </script>
+
+   <script>
+      // *SHOW DATA BUTTON FROM SIDEBAR
+      let buttonShowAccount1 = document.querySelector('.js-show-account')
+      let buttonShowEmploy1 = document.querySelector('.js-show-employ')
+      let buttonShowRoom1 = document.querySelector('.js-show-room')
+      let buttonShowStatis1 = document.querySelector('.js-show-statis')
+
+      function showDataAccount1() {
+         buttonShowAccount1.classList.add('open')
+      }
+
+      function showDataEmploy1() {
+         buttonShowEmploy1.classList.add('open')
+      }
+
+      function showDataRoom1() {
+         buttonShowRoom1.classList.add('open')
+      }
+
+      function showDataStatis1() {
+         buttonShowStatis1.classList.add('open')
+      }
+
+      function hideData1() {
+         buttonShowAccount1.classList.remove('open')
+         buttonShowStatis1.classList.remove('open')
+         buttonShowEmploy1.classList.remove('open')
+         buttonShowRoom1.classList.remove('open')
+      }
+      <?php
+      if (isset($_GET['q']) && !empty($_GET['q'])) {
+         echo 'hideData1();';
+         if ($_GET['q'] == 'account') {
+            echo 'showDataAccount1();';
+         } else
+         if ($_GET['q'] == 'employ') {
+            echo 'showDataEmploy1();';
+         } else
+         if ($_GET['q'] == 'room') {
+            echo 'showDataRoom1();';
+         } else {
+            echo 'showDataStatis1();';
+         }
+      }
+      ?>
    </script>
 
    <script>

@@ -32,7 +32,10 @@ if (isset($_POST["add"])) {
         $query = "INSERT INTO nhanvien(idtaikhoan, hotennv, gioitinh, chucvu, sodienthoai, socccd, ngaysinh, email, diachi) VALUES ('$idtaikhoan','$name', '$gender', '$position', '$phone', '$id', '$dob', '$email', '$address') ";
     
         $result = $conn->multi_query($query);
-        if ($result) echo '<script> alert("Add successfull!")</script>';
+        if ($result){
+		    header('location: ../assets/admin/adminHome.php?q=employ');
+            echo '<script> alert("Add successfull!")</script>';
+        }
         else {
             echo '<script> alert("Add failed!") </script>';
         }

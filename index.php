@@ -75,56 +75,40 @@ $db_handle = new DBController();
    </div>
 
    <!-- START: Calender Book-->
-   <div class="margin-auto search search__container" data-aos="fade-up">
-      <div class="flex flex-wrap justify-center items-center h-full">
-         <div class="search__container--item calendar-check-in" data-aos="fade-right">
-            <div>
-               <label for="from">CHECK IN</label>
+   <form action="#" method="GET">
+      <div class="margin-auto search search__container" data-aos="fade-up">
+         <div class="flex flex-wrap justify-center items-center h-full">
+            <div class="search__container--item calendar-check-in" data-aos="fade-right">
+               <div>
+                  <label for="from">CHECK IN</label>
+               </div>
+               <input class="rounded-2xl text-lg text-center" type="text" id="from" name="checkin" placeholder="MM-DD-YYYY">
             </div>
-            <input class="rounded-2xl text-lg text-center" type="text" id="from" name="from" placeholder="MM-DD-YYYY">
-         </div>
-         <div class="search__container--item calendar-check-out" data-aos="fade-right">
-            <div>
-               <label for="to">CHECK OUT</label>
+            <div class="search__container--item calendar-check-out" data-aos="fade-right">
+               <div>
+                  <label for="to">CHECK OUT</label>
+               </div>
+               <input class="rounded-2xl text-lg text-center" type="text" id="to" name="checkout" placeholder="MM-DD-YYYY">
             </div>
-            <input class="rounded-2xl text-lg text-center" type="text" id="to" name="to" placeholder="MM-DD-YYYY">
-         </div>
-         <div class="search__container--item calendar-adults" data-aos="fade-left">
-            <div>
-               <span>ADULTS</span>
+            <div class="search__container--item calendar-adults" data-aos="fade-left">
+               <div>
+                  <span>ADULTS</span>
+               </div>
+               <input class="rounded-2xl text-center" type="number" name="adults" id="" min="1" max="20" value="<?php echo isset($_GET['adults'])?$_GET['adults']:""; ?>">
             </div>
-            <select class="w-full rounded-2xl text-lg" name="" id="">
-               <option>01</option>
-               <option>02</option>
-               <option>03</option>
-               <option>04</option>
-               <option>05</option>
-               <option>07</option>
-               <option>08</option>
-               <option>09</option>
-            </select>
-         </div>
-         <div class="search__container--item calendar-children" data-aos="fade-left">
-            <div>
-               <span>CHILDREN</span>
+            <div class="search__container--item calendar-children" data-aos="fade-left">
+               <div>
+                  <span>CHILDREN</span>
+               </div>
+               <input class="rounded-2xl text-center" type="number" name="children" id="" min="0" max="20" value="<?php echo isset($_GET['adults'])?$_GET['adults']:""; ?>">
+
             </div>
-            <select class="w-full rounded-2xl text-lg" name="" id="">
-               <option>0</option>
-               <option>01</option>
-               <option>02</option>
-               <option>03</option>
-               <option>04</option>
-               <option>05</option>
-            </select>
-         </div>
-         <div class="search__container--btn ani calendar-search" data-aos="fade-left">
-            <a class="no-underline text-white animate-pulse" href="#">SEARCH</a>
-            <span></span>
-            <span></span>
-            <span></span>
+            <div class="search__container--btn ani calendar-search" data-aos="fade-left">
+               <button name="search" class="no-underline text-white animate-pulse" href="#">SEARCH</button>
+            </div>
          </div>
       </div>
-   </div>
+   </form>
    <!-- END: Calender Book-->
 
 
@@ -280,37 +264,38 @@ $db_handle = new DBController();
 
             <!-- show room in DB -->
             <?php
-            $queryRoom = "SELECT * FROM PHONG";
-            $conn = $db_handle->connectDB();
-            $result = $conn->query($queryRoom);
-            if ($result->num_rows > 0) {
-               while ($row = $result->fetch_assoc()) {
-                  $imgRoom = $row['anh'] == "" ? 'room1.jpg' : $row['anh'];
-                  echo '
-                     <div class="row-content">
-                     <div class="image-room" data-aos="zoom-in-up" data-aos-duration="3000" style="background-image: url(./assets/photo/room/' . $imgRoom . ');">
-                     </div>
-                     <div class="row-text" data-aos="slide-up" data-aos-duration="2500">
-                        <span class="price">' . $row['dongia'] . '</span>
-                        <p class="room"> ' . $row['tenphong'] . '</p>
-                        <p class="view"> <i class="fas fa-umbrella-beach"></i>' . $row['mota'] . '</p>
-                        <ul>
-                           <li>
-                              <span class="fas fa-bath"></span>' . $row['sobontam'] . '
-                           </li>
-                           <li>
-                              <span class="fas fa-bed"></span>' . $row['sogiuong'] . '
-                           </li>
-                           <li>
-                              <span class="fas fa-street-view"></span>' . $row['songuoi'] . '
-                           </li>
-                        </ul>
-                        <a href="">BOOK</a>
-                     </div>
-                  </div>
-                     ';
-               }
-            }
+            include ('./assets/components/handle/handleDB.php');
+            // $queryRoom = "SELECT * FROM PHONG";
+            // $conn = $db_handle->connectDB();
+            // $result = $conn->query($queryRoom);
+            // if ($result->num_rows > 0) {
+            //    while ($row = $result->fetch_assoc()) {
+            //       $imgRoom = $row['anh'] == "" ? 'room1.jpg' : $row['anh'];
+            //       echo '
+            //          <div class="row-content">
+            //          <div class="image-room" data-aos="zoom-in-up" data-aos-duration="3000" style="background-image: url(./assets/photo/room/' . $imgRoom . ');">
+            //          </div>
+            //          <div class="row-text" data-aos="slide-up" data-aos-duration="2500">
+            //             <span class="price">' . $row['dongia'] . '</span>
+            //             <p class="room"> ' . $row['tenphong'] . '</p>
+            //             <p class="view"> <i class="fas fa-umbrella-beach"></i>' . $row['mota'] . '</p>
+            //             <ul>
+            //                <li>
+            //                   <span class="fas fa-bath"></span>' . $row['sobontam'] . '
+            //                </li>
+            //                <li>
+            //                   <span class="fas fa-bed"></span>' . $row['sogiuong'] . '
+            //                </li>
+            //                <li>
+            //                   <span class="fas fa-street-view"></span>' . $row['songuoi'] . '
+            //                </li>
+            //             </ul>
+            //             <a href="">BOOK</a>
+            //          </div>
+            //       </div>
+            //          ';
+            //    }
+            // }
             ?>
             <!-- <div class="row-content">
                <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
@@ -352,6 +337,7 @@ $db_handle = new DBController();
             
          <?php
             $avatarComment = null;
+            $nameEmployee = null;
 
             $queryComment = "SELECT * FROM phanhoi";
             $conn = $db_handle->connectDB();
@@ -361,15 +347,17 @@ $db_handle = new DBController();
                   if ($row['sosao'] == '5' || $row['sosao'] == '4') {
                      $sql = "SELECT * FROM khachhang where idkhachhang = " . $row['idkhachhang'];
                      $kq = $conn->query($sql);
-                     $rowkq = $kq->fetch_assoc();
-                     $avatarComment = $rowkq['avatar']==""?'avtNull.png':$rowkq['avatar'];
+                     while($rowkq = $kq->fetch_assoc()){
+                        $avatarComment = $rowkq['avatar']==""?'avtNull.png':$rowkq['avatar'];
+                        $nameEmployee = $rowkq['ten'];
+                     }
                      echo '
                   <div class="comment-row">
                   <img src="./assets/photo/avatar/' . $avatarComment . '" class="avatar" alt="">
                   <div class="comment-text">
                      <b class="title">“' . $row['tieude'] . '”</b>
                      <p class="sub-title">“' . $row['noidung'] . '”</p>
-                     <p class="name"> -- ' . $rowkq['ten'] . ' -- </p>
+                     <p class="name"> -- ' . $nameEmployee . ' -- </p>
                   </div>
                </div>
                   ';
