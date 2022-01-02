@@ -9,6 +9,12 @@ if (isset($_SESSION['idUser']))
    $id = $_SESSION['idUser'];
 else $id = "";
 
+function mysubstr($str, $limit = 100)
+{
+   if (strlen($str) <= $limit) return $str;
+   return mb_substr($str, 0, $limit - 3, 'UTF-8') . '...';
+}
+
 require_once("../components/handle/dbcontroller.php");
 $db_handle = new DBController();
 ?>
@@ -100,7 +106,7 @@ $db_handle = new DBController();
                         <a href="#" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fa fa-user fa-fw"></i> Profile</a>
                         <a href="#" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fa fa-cog fa-fw"></i> Settings</a>
                         <div class="border border-gray-800"></div>
-                        <a href="../../logout.php" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a>
+                        <a href="../../logout.php" onclick="return confirm('Are you sure you want to exit?');" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a>
                      </div>
                   </div>
                </li>
@@ -117,30 +123,30 @@ $db_handle = new DBController();
          <div class="lg:mt-12 lg:w-60 lg:fixed lg:left-0 lg:top-0 content-center lg:content-start text-left justify-between">
             <ul class="list-reset flex flex-row lg:flex-col py-0 lg:py-4 px-1 md:px-2 text-center lg:text-left">
                <li class="mr-3 flex-1">
-                  <a href="#" class="js-show-data block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500 focus:ring-4 focus:ring-blue-300 focus:text-white">
+                  <a href="?q=account" class="js-show-data block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500 focus:ring-4 focus:ring-blue-300 focus:text-white">
                      <i class="fas fa-tasks pr-0 md:pr-3 text-yellow-500"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-gray-600 md:text-gray-400 block md:inline-block font-bold lg:leading-loose hover:text-white focus:text-white">Account
                         Management</span>
                   </a>
                </li>
                <li class="mr-3 flex-1">
-                  <a href="#" class="js-show-data block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500 focus:ring-4 focus:ring-blue-300 focus:text-white">
+                  <a href="?q=employ" class="js-show-data block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500 focus:ring-4 focus:ring-blue-300 focus:text-white">
                      <i class="fas fa-tasks pr-0 md:pr-3 text-yellow-500"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-gray-600 md:text-gray-400 block md:inline-block font-bold lg:leading-loose hover:text-white focus:text-white">Employ
                         Management</span>
                   </a>
                </li>
                <li class="mr-3 flex-1">
-                  <a href="#" class="js-show-data block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-green-500 focus:ring-4 focus:ring-blue-300 focus:text-white">
+                  <a href="?q=room" class="js-show-data block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-green-500 focus:ring-4 focus:ring-blue-300 focus:text-white">
                      <i class="fas fa-tasks pr-0 md:pr-3 text-yellow-500"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-gray-600 md:text-gray-400 block md:inline-block font-bold lg:leading-loose hover:text-white focus:text-white">Room
                         Management</span>
                   </a>
                </li>
                <li class="mr-3 flex-1">
-                  <a href="#" class="js-show-data block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-blue-600 focus:ring-4 focus:ring-blue-300 focus:text-white">
+                  <a href="?q=statistical" class="js-show-data block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-blue-600 focus:ring-4 focus:ring-blue-300 focus:text-white">
                      <i class="fas fa-chart-area pr-0 md:pr-3 text-yellow-500"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-gray-600 md:text-gray-400 block md:inline-block font-bold lg:leading-loose hover:text-white focus:text-white">Statistical</span>
                   </a>
                </li>
                <li class="mr-3 flex-1">
-                  <a href="#" class="js-show-data block py-1 md:py-3 pl-0 md:pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-red-500 focus:ring-4 focus:ring-blue-300 focus:text-white">
+                  <a href="../../logout.php" onclick="return confirm('Are you sure you want to exit?');" class="js-show-data block py-1 md:py-3 pl-0 md:pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-red-500 focus:ring-4 focus:ring-blue-300 focus:text-white">
                      <i class="fa fa-wallet pr-0 md:pr-3 text-yellow-500"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-gray-600 md:text-gray-400 block md:inline-block font-bold lg:leading-loose hover:text-white focus:text-white">Log
                         Out</span>
                   </a>
@@ -295,7 +301,7 @@ $db_handle = new DBController();
          <!-- ? END: ACCOUNT MANAGEMENT-->
 
          <!-- ? EMPLOY MANAGEMENT -->
-         <div  class="js-show-employ employ-management bg-gray-100 mt-12 md:mt-2">
+         <div class="js-show-employ employ-management bg-gray-100 mt-12 md:mt-2">
             <div class="bg-gray-800 flex justify-between items-center pt-3">
                <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
                   <h3 class="font-bold pl-2">Employ Management</h3>
@@ -367,7 +373,7 @@ $db_handle = new DBController();
                         </div>
 
                         <div style="display: flex; margin-bottom: 8px !important;">
-                           <a href="../admin/adminHome.php?q=employ"><button type="submit" name="add" id="submitbtn" onclick="return confirm('Are you sure add employ?');" class=" w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Employ</button></a>
+                           <button type="submit" name="add" id="" onclick="return confirm('Are you sure you want to add this employee?'); getLocation2(1)" class=" w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Employ</button>
                            <div type="submit" name="cancel" class="close-modal-employ cursor-pointer w-full text-white ml-3 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</div>
                         </div>
                      </form>
@@ -419,9 +425,9 @@ $db_handle = new DBController();
                            <tbody class="bg-white divide-y divide-gray-300">
                               <?php
                               $chucvu = null;
-                              $queryRoom = "SELECT * FROM nhanvien";
+                              $queryEmploy = "SELECT * FROM nhanvien";
                               $conn = $db_handle->connectDB();
-                              $result = $conn->query($queryRoom);
+                              $result = $conn->query($queryEmploy);
                               if ($result->num_rows > 0) {
                                  while ($row = $result->fetch_assoc()) {
                                     if ($row['chucvu'] == '1') $chucvu = 'Quản lý';
@@ -461,7 +467,7 @@ $db_handle = new DBController();
                                  ' . $row['diachi'] . '
                                  </td>
                                  <td class="px-6 py-4">
-                                    <a href="#" class="inline-block text-center">
+                                    <a href="#" class="edit-employ inline-block text-center">
                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                        </svg>
@@ -498,7 +504,7 @@ $db_handle = new DBController();
                </button>
             </div>
 
-            <!-- Main modal -->
+            <!-- Main modal add room-->
             <div aria-hidden="true" class="my-modal-room hidden overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center h-modal md:h-full inset-0 bg-gray-600 bg-opacity-50">
                <div class="relative w-full max-w-lg md:h-auto">
                   <!-- Modal content -->
@@ -510,70 +516,178 @@ $db_handle = new DBController();
                            </svg>
                         </button>
                      </div>
-                     <form class="px-6 pb-2 space-y-6 lg:px-8 " action="#" method="POST">
-                        <h3 class="text-4xl text-center font-medium text-gray-900 dark:text-white">Add Employee</h3>
+                     <form class="px-6 pb-2 space-y-6 lg:px-8 " action="#" method="POST" enctype="multipart/form-data">
+                        <h3 class="text-4xl text-center font-medium text-gray-900 dark:text-white">Add Room</h3>
                         <div>
-                           <label for="name" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Room Name</label>
-                           <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nguyen Van A" required>
+                           <label for="roomName" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Room Name</label>
+                           <input type="text" name="roomName" id="roomName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="NORMAL PH101" required>
                         </div>
                         <div style="display: flex; align-items: center; margin-top: 12px;">
-                           <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Loại:</label>
-
-                           <input type="radio" name="gender" value="male" id="gender" class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                           <label class="block text-sm text-gray-900 dark:text-gray-300">Male</label>
-
-                           <input type="radio" name="gender" value="female" id="gender" class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                           <label class="block text-sm text-gray-900 dark:text-gray-300">Female</label>
-
-                           <input type="radio" name="gender" value="other" id="gender" class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                           <label class="block text-sm text-gray-900 dark:text-gray-300">Other</label>
+                           <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Type:</label>
+                           <?php
+                           $queryTypeRoom = "SELECT * FROM loaiphong";
+                           $conn = $db_handle->connectDB();
+                           $result = $conn->query($queryTypeRoom);
+                           if ($result)
+                              if ($result->num_rows > 0) {
+                                 while ($row = $result->fetch_assoc()) {
+                                    echo '
+                                          <input type="radio"  name="typeRoom" value="' . $row['idloaiphong'] . '" id="' . $row['tenloaiphong'] . '" 
+                                          class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                                                <label for="' . $row['tenloaiphong'] . '" class="block text-sm text-gray-900 dark:text-gray-300">' . $row['tenloaiphong'] . '</label>
+                                          ';
+                                 }
+                              }
+                           ?>
                         </div>
                         <div style="display: flex; align-items: center; margin-top: 12px;">
-                           <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Position:</label>
+                           <div style="margin: 10px; width: 100px;">
 
-                           <input type="radio" name="position" value="1" id="position" class="bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                           <label class="block text-sm text-gray-900 dark:text-gray-300">Admin</label>
+                              <label for="floor" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">Floor</label>
+                              <input type="number" name="floor" id="floor" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                           </div>
 
-                           <input type="radio" name="position" value="0" id="position" class="bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                           <label class="block text-sm text-gray-900 dark:text-gray-300">Employee</label>
+                           <div style="margin: 10px; width: 100px;">
+                              <label for="people" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">People</label>
+                              <input type="number" name="people" id="people" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                           </div>
 
+                           <div style="margin: 10px; width: 100px;">
+                              <label for="bed" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">Bed</label>
+                              <input type="number" name="bed" id="bed" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                           </div>
+
+                           <div style="margin: 10px; width: 100px;">
+                              <label for="bathtub" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">Bathtub</label>
+                              <input type="number" name="bathtub" id="bathtub" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                           </div>
                         </div>
                         <div style="margin-top: 8px !important">
-                           <label for="phone" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Phone</label>
-                           <input type="text" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="033456789" required>
+                           <label for="location" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Location</label>
+                           <input type="text" name="location" id="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Sea ​​views..." required>
                         </div>
                         <div style="margin-top: 8px !important">
-                           <label for="id" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">ID</label>
-                           <input type="text" name="id" id="id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="0123456789" required>
+                           <label for="description" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Description</label>
+                           <textarea cols="40" rows="5" type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Luxury bedroom..." required></textarea>
                         </div>
                         <div style="margin-top: 8px !important">
-                           <label for="dob" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Day of birth</label>
-                           <input type="date" name="dob" id="dob" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="01-01-2000" required>
+                           <label for="price" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Unit price</label>
+                           <input type="number" min="100000" step="100000" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="1.000.000" required>
                         </div>
                         <div style="margin-top: 8px !important">
-                           <label for="email" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
-                           <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required>
-                        </div>
-                        <div style="margin-top: 8px !important">
-                           <label class="block">
-                              <span class="sr-only">Choose profile photo</span>
-                              <input type="file" class="block w-full text-sm text-gray-500
+                           <span for="image" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Choose room photo</span>
+                           <input type="hidden" name="size" value="1000000">
+                           <input id="image" name="image" type="file" class="block w-full text-sm text-gray-500
                                     file:mr-4 file:py-2 file:px-4
                                     file:rounded-full file:border-0
                                     file:text-sm file:font-semibold
                                     file:bg-violet-50 file:text-violet-700
                                     hover:file:bg-violet-100
                                  " />
-                           </label>
                         </div>
                         <div style="display: flex; margin-bottom: 8px !important;">
-                           <button type="submit" name="add" onclick="return confirm('Are you sure?');" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Room</button>
-                           <button type="submit" name="cancel" class="close-modal-room w-full ml-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</button>
+                           <button name="addRoom" onclick="return confirm('Are you sure you want to add this room?')" class=" w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Room</button>
+                           <div name="cancel" class="cursor-pointer close-modal-room w-full ml-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</div>
                         </div>
                      </form>
                   </div>
                </div>
             </div>
+            <?php
+            include('./handleAddRoom.php');
+            ?>
+
+            <!-- begin modal edit room -->
+            <div aria-hidden="true" class="my-modal-edit-room hidden overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center h-modal md:h-full inset-0 bg-gray-600 bg-opacity-50">
+               <div class="relative w-full max-w-lg md:h-auto">
+                  <!-- Modal content -->
+                  <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                     <div class="flex justify-end">
+                        <button type="button" class="close-modal-room text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal">
+                           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                           </svg>
+                        </button>
+                     </div>
+                     <form class="px-6 pb-2 space-y-6 lg:px-8 " action="#" method="POST" enctype="multipart/form-data">
+                        <h3 class="text-4xl text-center font-medium text-gray-900 dark:text-white">Update Room</h3>
+                        <div>
+                           <label for="roomName" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Room Name</label>
+                           <input type="text" name="roomName" id="roomName" value="<?php echo (isset($_GET['nameR']))?$_GET['nameR']:''; ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="NORMAL PH101" required>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-top: 12px;">
+                           <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Type:</label>
+                           <?php
+                           $queryTypeRoom = "SELECT * FROM loaiphong";
+                           $conn = $db_handle->connectDB();
+                           $result = $conn->query($queryTypeRoom);
+                           if ($result)
+                              if ($result->num_rows > 0) {
+                                 while ($row = $result->fetch_assoc()) {
+                                    echo '
+                                          <input type="radio"  name="typeRoom" value="' . $row['idloaiphong'] . '" id="' . $row['tenloaiphong'] . '" 
+                                          class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                                                <label for="' . $row['tenloaiphong'] . '" class="block text-sm text-gray-900 dark:text-gray-300">' . $row['tenloaiphong'] . '</label>
+                                          ';
+                                 }
+                              }
+                           ?>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-top: 12px;">
+                           <div style="margin: 10px; width: 100px;">
+
+                              <label for="floor" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">Floor</label>
+                              <input type="number" name="floor" value="<?php echo (isset($_GET['Flo']))?$_GET['Flo']:''; ?>" id="floor" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                           </div>
+
+                           <div style="margin: 10px; width: 100px;">
+                              <label for="people" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">People</label>
+                              <input type="number" name="people" value="<?php echo (isset($_GET['Peo']))?$_GET['Peo']:''; ?>" id="people" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                           </div>
+
+                           <div style="margin: 10px; width: 100px;">
+                              <label for="bed" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">Bed</label>
+                              <input type="number" name="bed" id="bed" value="<?php echo (isset($_GET['Bed']))?$_GET['Bed']:''; ?>" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                           </div>
+
+                           <div style="margin: 10px; width: 100px;">
+                              <label for="bathtub" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">Bathtub</label>
+                              <input type="number" name="bathtub" id="bathtub" value="<?php echo (isset($_GET['Ba']))?$_GET['Ba']:''; ?>" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                           </div>
+                        </div>
+                        <div style="margin-top: 8px !important">
+                           <label for="location" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Location</label>
+                           <input type="text" name="location" value="<?php echo (isset($_GET['Lo']))?$_GET['Lo']:''; ?>" id="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Sea ​​views..." required>
+                        </div>
+                        <div style="margin-top: 8px !important">
+                           <label for="description" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Description</label>
+                           <textarea cols="40" rows="5" type="text" value="<?php echo (isset($_GET['Des']))?$_GET['Des']:''; ?>" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Luxury bedroom..." required></textarea>
+                        </div>
+                        <div style="margin-top: 8px !important">
+                           <label for="price" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Unit price</label>
+                           <input type="number" min="100000" value="<?php echo (isset($_GET['Pri']))?$_GET['Pri']:''; ?>" step="100000" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="1.000.000" required>
+                        </div>
+                        <div style="margin-top: 8px !important">
+                           <span for="image" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Choose room photo</span>
+                           <input type="hidden" name="size" value="1000000">
+                           <input id="image" name="image" type="file" class="block w-full text-sm text-gray-500
+                                    file:mr-4 file:py-2 file:px-4
+                                    file:rounded-full file:border-0
+                                    file:text-sm file:font-semibold
+                                    file:bg-violet-50 file:text-violet-700
+                                    hover:file:bg-violet-100
+                                 " />
+                        </div>
+                        <div style="display: flex; margin-bottom: 8px !important;">
+                           <button name="editRoom" onclick="return confirm('Are you sure you want to edit this room?')" class=" w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Room</button>
+                           <div name="cancel" class="cursor-pointer close-modal-room w-full ml-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <!-- end modal edit room -->
+
             <div class="container mx-auto">
                <div class="flex flex-col">
                   <div class="w-full">
@@ -582,28 +696,34 @@ $db_handle = new DBController();
                            <thead class="bg-black">
                               <tr>
                                  <th class="px-6 py-2 text-xs text-white">
-                                    ID Employ
-                                 </th>
-                                 <th class="px-6 py-2 text-xs text-white">
                                     Name
                                  </th>
                                  <th class="px-6 py-2 text-xs text-white">
-                                    DoB
+                                    Type
                                  </th>
                                  <th class="px-6 py-2 text-xs text-white">
-                                    Phone
+                                    Floor
                                  </th>
                                  <th class="px-6 py-2 text-xs text-white">
-                                    ID
+                                    Location
                                  </th>
                                  <th class="px-6 py-2 text-xs text-white">
-                                    Email
+                                    Description
                                  </th>
                                  <th class="px-6 py-2 text-xs text-white">
-                                    Position
+                                    Status
                                  </th>
                                  <th class="px-6 py-2 text-xs text-white">
-                                    Address
+                                    Number Bed
+                                 </th>
+                                 <th class="px-6 py-2 text-xs text-white">
+                                    Number People
+                                 </th>
+                                 <th class="px-6 py-2 text-xs text-white">
+                                    Number Bathtub
+                                 </th>
+                                 <th class="px-6 py-2 text-xs text-white">
+                                    Image
                                  </th>
                                  <th class="px-6 py-2 text-xs text-white">
                                     Edit
@@ -615,58 +735,67 @@ $db_handle = new DBController();
                            </thead>
                            <tbody class="bg-white divide-y divide-gray-300">
                               <?php
-                              $chucvu = null;
-                              $queryRoom = "SELECT * FROM nhanvien";
+
+                              $trangthai = null;
+                              $queryRoom = "SELECT * FROM phong, loaiphong where phong.idloaiphong = loaiphong.idloaiphong";
                               $conn = $db_handle->connectDB();
                               $result = $conn->query($queryRoom);
                               if ($result->num_rows > 0) {
                                  while ($row = $result->fetch_assoc()) {
-                                    if ($row['chucvu'] == '1') $chucvu = 'Quản lý';
-                                    else $chucvu = 'Nhân viên';
+                                    if ($row['trangthai'] == '2') $trangthai = 'Đã thuê';
+                                    else if ($row['trangthai'] == '1') $trangthai = 'Đã đặt';
+                                    else $trangthai = 'Trống';
                                     echo '
                               <tr class="text-center whitespace-nowrap">
                                  <td class="px-6 py-4 text-sm text-gray-500">
-                                    ' . $row['idnhanvien'] . '
+                                    ' . $row['tenphong'] . '
                                  </td>
                                  <td class="px-6 py-4">
                                     <div style="text-transform: capitalize; class="text-capitalize text-sm text-gray-900">
-                                    ' . $row['hotennv'] . '
+                                    ' . $row['tenloaiphong'] . '
                                     </div>
                                  </td>
                                  <td class="px-6 py-4">
                                     <div class="text-sm text-gray-900">
-                                 ' . $row['ngaysinh'] . '
+                                 ' . $row['tang'] . '
                                     </div>
                                  </td>
                                  <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">
-                                    ' . $row['sodienthoai'] . '
+                                    <div class="text-sm text-gray-900 txt-over">
+                                    ' . $row['vitri'] . '
                                     </div>
                                  </td>
                                  <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">
-                                    ' . $row['socccd'] . '
+                                    <div class="text-sm text-gray-900 txt-over">
+                                    ' . $row['mota'] . '
                                     </div>
                                  </td>
                                  <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">' . $row['email'] . '</div>
+                                    <div class="text-sm text-gray-500">' . $trangthai . '</div>
                                  </td>
                                  <td class="px-6 py-4 text-sm text-gray-500">
-                                 ' . $chucvu . '
+                                 ' .  $row['sogiuong'] . '
                                  </td>
                                  <td class="px-6 py-4 text-sm text-gray-500">
-                                 ' . $row['diachi'] . '
+                                 ' . $row['songuoi'] . '
+                                 </td>
+                                 <td class="px-6 py-4 text-sm text-gray-500">
+                                 ' . $row['sobontam'] . '
+                                 </td>
+                                 <td class="px-6 py-4 text-sm text-gray-500">
+                                    <img style="height: 39px;" src="../photo/room/' . $row['anh'] . '" alt="">
                                  </td>
                                  <td class="px-6 py-4">
-                                    <a href="#" class="inline-block text-center">
-                                       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <a href="#" class="open-modal-edit-room inline-block text-center">
+                                       <svg xmlns="http://www.w3.org/2000/svg" onclick="UpdateId(' . $row['idphong'] . ',' . $row['tenphong'] . ',' . $row['idloaiphong'] . ',' . $row['tang'] . ',' . $row['songuoi'] . ',' . $row['sobontam'] . ',' . $row['dongia'] . ',' . $row['sogiuong'] . ')"
+                                        class="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                        </svg>
                                     </a>
                                  </td>
                                  <td class="px-6 py-4">
                                     <a href="#" class="open-modal inline-block text-center">
-                                       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                       <svg xmlns="http://www.w3.org/2000/svg" onclick="saveId(2, ' . $row['idphong'] . ')" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                        </svg>
                                     </a>
@@ -797,6 +926,7 @@ $db_handle = new DBController();
 
       function saveId(check, id) {
          if (check == 1) action = 'deleteAcount';
+         else if (check == 2) action = 'deleteRoom';
          else action = 'deleteEmployee';
          selectId = id;
       }
@@ -810,62 +940,112 @@ $db_handle = new DBController();
          })
       }
 
-      function getLocation(){
-         switch (action){
+
+
+      function getLocation() {
+         switch (action) {
             case 'deleteAcount':
                window.location.href = '../admin/adminHome.php?q=account';
+               break;
             case 'deleteEmployee':
                window.location.href = '../admin/adminHome.php?q=employ';
+               break;
             case 'deleteRoom':
                window.location.href = '../admin/adminHome.php?q=room';
-            case 'deleteAcount':
-               default: 
+               break;
          }
+      }
+   </script>
+
+   <!-- update -->
+   <script>
+      // var action = idR = nameR = typeR = Flo = Peo = Ba = Lo = Des = Pri = Bed = '';
+      var action = 'editRoom';
+
+      // function saveIdEdit(check, idR, nameR, typeR, Flo, Peo, Ba, Lo, Des, Pri, Bed) {
+
+      //    if (check == 1) action = 'editAcount';
+      //    else if (check == 2) action = 'editRoom';
+      //    else action = 'editEmployee';
+
+      //    idR = idR;
+      //    nameR = nameR;
+      //    typeR = typeR;
+      //    Flo = Flo;
+      //    Peo = Peo;
+      //    Ba = Ba;
+      //    Lo = Lo;
+      //    Des = Des;
+      //    Pri = Pri;
+      //    Bed = Bed;
+      // }
+      function UpdateIId() {
+         $.get('', {
+            'action': action,
+         }, function(data) {
+            location.reload()
+         })
+      }
+
+      function UpdateId(check, idR, nameR, typeR, Flo, Peo, Ba, Pri, Bed) {
+         $.get('./adminHome.php', {
+            'action': action,
+            'idR': idR,
+            'nameR': nameR,
+            'typeR': typeR,
+            'Flo': Flo,
+            'Peo': Peo,
+            'Ba': Ba,
+            'Pri': Pri,
+            'Bed': Bed,
+         }, function(data) {
+            location.reload()
+         })
       }
    </script>
 
    <script>
       // *SHOW DATA BUTTON FROM SIDEBAR
-      let buttonShowAccount1 = document.querySelector('.js-show-account')
-      let buttonShowEmploy1 = document.querySelector('.js-show-employ')
-      let buttonShowRoom1 = document.querySelector('.js-show-room')
-      let buttonShowStatis1 = document.querySelector('.js-show-statis')
+      let buttonShowAccount = document.querySelector('.js-show-account')
+      let buttonShowEmploy = document.querySelector('.js-show-employ')
+      let buttonShowRoom = document.querySelector('.js-show-room')
+      let buttonShowStatis = document.querySelector('.js-show-statis')
 
-      function showDataAccount1() {
-         buttonShowAccount1.classList.add('open')
+      function showDataAccount() {
+         buttonShowAccount.classList.add('open')
       }
 
-      function showDataEmploy1() {
-         buttonShowEmploy1.classList.add('open')
+      function showDataEmploy() {
+         buttonShowEmploy.classList.add('open')
       }
 
-      function showDataRoom1() {
-         buttonShowRoom1.classList.add('open')
+      function showDataRoom() {
+         buttonShowRoom.classList.add('open')
       }
 
-      function showDataStatis1() {
-         buttonShowStatis1.classList.add('open')
+      function showDataStatis() {
+         buttonShowStatis.classList.add('open')
       }
 
-      function hideData1() {
-         buttonShowAccount1.classList.remove('open')
-         buttonShowStatis1.classList.remove('open')
-         buttonShowEmploy1.classList.remove('open')
-         buttonShowRoom1.classList.remove('open')
+      function hideData() {
+         buttonShowAccount.classList.remove('open')
+         buttonShowStatis.classList.remove('open')
+         buttonShowEmploy.classList.remove('open')
+         buttonShowRoom.classList.remove('open')
       }
       <?php
       if (isset($_GET['q']) && !empty($_GET['q'])) {
-         echo 'hideData1();';
+         echo 'hideData();';
          if ($_GET['q'] == 'account') {
-            echo 'showDataAccount1();';
+            echo 'showDataAccount();';
          } else
          if ($_GET['q'] == 'employ') {
-            echo 'showDataEmploy1();';
+            echo 'showDataEmploy();';
          } else
          if ($_GET['q'] == 'room') {
-            echo 'showDataRoom1();';
+            echo 'showDataRoom();';
          } else {
-            echo 'showDataStatis1();';
+            echo 'showDataStatis();';
          }
       }
       ?>

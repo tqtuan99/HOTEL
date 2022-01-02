@@ -5,6 +5,21 @@
    box-sizing: border-box;
 }
 
+.txt-over {
+   width: 100px;
+   text-overflow: ellipsis;
+   overflow: hidden;
+}
+
+.txt-over:hover {
+   overflow: visible;
+   white-space: nowrap;
+}
+
+.w-300 {
+   width: 300px !important;
+}
+
 body {
    /* overflow-x: hidden; */
    font-family: 'Open Sans', sans-serif;

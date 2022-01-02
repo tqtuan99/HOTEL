@@ -38,7 +38,7 @@ $db_handle = new DBController();
    <div class="web-room">
       <div class="container">
          <div class="show-room">
-            <form class="sidebar"  method="GET" action="#">
+            <form id='formSearch' class="sidebar"  method="GET" action="#">
                <div class="search-room">
                   <div class="search__container--item ">
                      <div>
@@ -157,11 +157,12 @@ $db_handle = new DBController();
             </form>
             <div class="row">
                <div class="type">
-                  <form class="type-room" method="GET" action="#">
+                  <div class="type-room">
+                     <button form="formSearch" name="typeRoom"  class="type-name" value="all">ALL</button>
                      <?php
                      include('./getDBTypeRoom.php');
                      ?>
-                  </form>
+                  </div>
                </div>
 
                <?php

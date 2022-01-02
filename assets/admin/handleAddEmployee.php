@@ -33,7 +33,6 @@ if (isset($_POST["add"])) {
     
         $result = $conn->multi_query($query);
         if ($result){
-		    header('location: ../assets/admin/adminHome.php?q=employ');
             echo '<script> alert("Add successfull!")</script>';
         }
         else {

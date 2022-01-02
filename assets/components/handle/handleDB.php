@@ -22,9 +22,9 @@ if(isset($_GET['search'])){
              <div class="image-room" data-aos="zoom-in-up" data-aos-duration="3000" style="background-image: url(./assets/photo/room/' . $imgRoom . ');">
              </div>
              <div class="row-text" data-aos="slide-up" data-aos-duration="2500">
-                <span class="price">' . $row['dongia'] . ' VNĐ</span>
+                <span class="price">' . number_format($row['dongia']) . ' VNĐ</span>
                 <p class="room"> ' . $row['tenphong'] . '</p>
-                <p class="view"> <i class="fas fa-umbrella-beach"></i>' . $row['mota'] . '</p>
+                <p class="view"> <i class="fas fa-umbrella-beach"></i>' . $row['vitri'] . '</p>
                 <ul>
                    <li>
                       <span class="fas fa-bath"></span>' . $row['sobontam'] . ' bồn tắm

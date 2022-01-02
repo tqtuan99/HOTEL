@@ -94,13 +94,13 @@ $db_handle = new DBController();
                <div>
                   <span>ADULTS</span>
                </div>
-               <input class="rounded-2xl text-center" type="number" name="adults" id="" min="1" max="20" value="<?php echo isset($_GET['adults'])?$_GET['adults']:""; ?>">
+               <input class="rounded-2xl text-center" type="number" name="adults" id="" min="1" max="20" value="<?php echo isset($_GET['adults']) ? $_GET['adults'] : ""; ?>">
             </div>
             <div class="search__container--item calendar-children" data-aos="fade-left">
                <div>
                   <span>CHILDREN</span>
                </div>
-               <input class="rounded-2xl text-center" type="number" name="children" id="" min="0" max="20" value="<?php echo isset($_GET['adults'])?$_GET['adults']:""; ?>">
+               <input class="rounded-2xl text-center" type="number" name="children" id="" min="0" max="20" value="<?php echo isset($_GET['adults']) ? $_GET['adults'] : ""; ?>">
 
             </div>
             <div class="search__container--btn ani calendar-search" data-aos="fade-left">
@@ -185,67 +185,42 @@ $db_handle = new DBController();
          $queryRoom = "SELECT * FROM PHONG";
          $conn = $db_handle->connectDB();
          $result = $conn->query($queryRoom);
-         if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-               $imgRoom = $row['anh'] == "" ? 'room1.jpg' : $row['anh'];
-               if ($row['tenphong'] == 'vip 1' || $row['tenphong'] == 'Vip 1' || $row['tenphong'] == 'VIP 1')
-                  echo '
-                  <div class="image-item">
-                  <div class="image">
-                     <img src="./assets/photo/room/' . $imgRoom . '" alt="" />
-                     <div class="item__content">
-                        <div class="item_center">
-                           <h1>' . $row['tenphong'] . '</h1>
-                           <div class="item_price">' . $row['dongia'] . '</div>
-                           <div class="item_rating">
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                           </div>
-                           <div class="tour__item--btn">
-                              <div class="tour__btn__bgc"></div>
-                              <a href="#">Book now
-                                 <span></span>
-                                 <span></span>
-                                 <span></span>
-                              </a>
+         if ($result)
+            if ($result->num_rows > 0) {
+               while ($row = $result->fetch_assoc()) {
+                  $imgRoom = $row['anh'] == "" ? 'room1.jpg' : $row['anh'];
+                  if ($row['idloaiphong'] == '5' || $row['idloaiphong'] == '6' || $row['idloaiphong'] == '7')
+                     echo '
+                     <div class="image-item">
+                     <div class="image">
+                        <img src="./assets/photo/room/' . $imgRoom . '" alt="" />
+                        <div class="item__content">
+                           <div class="item_center">
+                              <h1>' . $row['tenphong'] . '</h1>
+                              <div class="item_price">' . number_format($row['dongia']) . ' VNĐ</div>
+                              <div class="item_rating">
+                                 <i class="fa fa-star"></i>
+                                 <i class="fa fa-star"></i>
+                                 <i class="fa fa-star"></i>
+                                 <i class="fa fa-star"></i>
+                                 <i class="fa fa-star"></i>
+                              </div>
+                              <div class="tour__item--btn">
+                                 <div class="tour__btn__bgc"></div>
+                                 <a href="#">Book now
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                 </a>
+                              </div>
                            </div>
                         </div>
                      </div>
                   </div>
-               </div>
-                  ';
+                     ';
+               }
             }
-         }
          ?>
-         <!-- <div class="image-item">
-            <div class="image">
-               <img src="./assets/image/slider-room/room-9.jpg" alt="" />
-               <div class="item__content">
-                  <div class="item_center">
-                     <h1>VIP 009</h1>
-                     <div class="item_price">From $1450</div>
-                     <div class="item_rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                     </div>
-                     <div class="tour__item--btn">
-                        <div class="tour__btn__bgc"></div>
-                        <a href="#">Book now
-                           <span></span>
-                           <span></span>
-                           <span></span>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div> -->
       </div>
    </div>
    <!--END: Slider -->
@@ -264,60 +239,8 @@ $db_handle = new DBController();
 
             <!-- show room in DB -->
             <?php
-            include ('./assets/components/handle/handleDB.php');
-            // $queryRoom = "SELECT * FROM PHONG";
-            // $conn = $db_handle->connectDB();
-            // $result = $conn->query($queryRoom);
-            // if ($result->num_rows > 0) {
-            //    while ($row = $result->fetch_assoc()) {
-            //       $imgRoom = $row['anh'] == "" ? 'room1.jpg' : $row['anh'];
-            //       echo '
-            //          <div class="row-content">
-            //          <div class="image-room" data-aos="zoom-in-up" data-aos-duration="3000" style="background-image: url(./assets/photo/room/' . $imgRoom . ');">
-            //          </div>
-            //          <div class="row-text" data-aos="slide-up" data-aos-duration="2500">
-            //             <span class="price">' . $row['dongia'] . '</span>
-            //             <p class="room"> ' . $row['tenphong'] . '</p>
-            //             <p class="view"> <i class="fas fa-umbrella-beach"></i>' . $row['mota'] . '</p>
-            //             <ul>
-            //                <li>
-            //                   <span class="fas fa-bath"></span>' . $row['sobontam'] . '
-            //                </li>
-            //                <li>
-            //                   <span class="fas fa-bed"></span>' . $row['sogiuong'] . '
-            //                </li>
-            //                <li>
-            //                   <span class="fas fa-street-view"></span>' . $row['songuoi'] . '
-            //                </li>
-            //             </ul>
-            //             <a href="">BOOK</a>
-            //          </div>
-            //       </div>
-            //          ';
-            //    }
-            // }
+            include('./assets/components/handle/handleDB.php');
             ?>
-            <!-- <div class="row-content">
-               <div class="image-room" data-aos="fade-up" style="background-image: url(./assets/image/destination-1.jpg);">
-               </div>
-               <div class="row-text" data-aos="fade-up">
-                  <span class="price">1000$</span>
-                  <p class="room"> VIP 1</p>
-                  <p class="view"> <i class="fas fa-umbrella-beach"></i>View beach beautiful</p>
-                  <ul>
-                     <li>
-                        <span class="fas fa-bath"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-bed"></span>2
-                     </li>
-                     <li>
-                        <span class="fas fa-street-view"></span>5
-                     </li>
-                  </ul>
-                  <a href="">BOOK</a>
-               </div>
-            </div> -->
          </div>
       </div>
    </div>
@@ -334,8 +257,8 @@ $db_handle = new DBController();
             </p>
          </div>
          <div class="slider-comment" data-aos="fade-left">
-            
-         <?php
+
+            <?php
             $avatarComment = null;
             $nameEmployee = null;
 
@@ -347,8 +270,8 @@ $db_handle = new DBController();
                   if ($row['sosao'] == '5' || $row['sosao'] == '4') {
                      $sql = "SELECT * FROM khachhang where idkhachhang = " . $row['idkhachhang'];
                      $kq = $conn->query($sql);
-                     while($rowkq = $kq->fetch_assoc()){
-                        $avatarComment = $rowkq['avatar']==""?'avtNull.png':$rowkq['avatar'];
+                     while ($rowkq = $kq->fetch_assoc()) {
+                        $avatarComment = $rowkq['avatar'] == "" ? 'avtNull.png' : $rowkq['avatar'];
                         $nameEmployee = $rowkq['ten'];
                      }
                      echo '
@@ -365,19 +288,6 @@ $db_handle = new DBController();
                }
             }
             ?>
-            <!-- <div class="comment-row">
-               <img src="./assets/image/Model.png" class="avatar" alt="">
-               <div class="comment-text">
-                  <b class="title">“One thing very special about being Fresher in KMS is the challenging Fresher
-                     Bootcamp.”</b>
-                  <p class="sub-title">“Here, I learned something profound, not only the works. On Bootcamp Day, I
-                     recalled
-                     that I got a task to help aunties sell lottery, which she was first trying to sell us. What a hard
-                     and
-                     meaningful feeling to describe when we gave back to her the money from selling tickets.”</p>
-                  <p class="name"> -- Q. Tuan -- </p>
-               </div>
-            </div> -->
          </div>
       </div>
    </div>
