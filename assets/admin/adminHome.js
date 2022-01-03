@@ -1,7 +1,7 @@
 $(document).ready(function () {
    $('.dataTable').DataTable({
-         responsive: true
-      })
+      responsive: true
+   })
       .columns.adjust()
       .responsive.recalc();
 });
@@ -120,9 +120,31 @@ btnOpenModalAddEmploy.onclick = function () {
 }
 for (const btnCloseModalAddEmploy of btnCloseModalAddEmploys) {
    btnCloseModalAddEmploy.onclick = function () {
-      myModalAddEmploy.style.display = "none";      
+      myModalAddEmploy.style.display = "none";
+      myModalEditEmploy.style.display = "none";
    }
 }
+
+// *MODAL edit EMPLOY
+let myModalEditEmploy = document.querySelector('.my-modal-edit-employ');
+let btnOpenModalEditEmploys = document.querySelectorAll('.open-modal-edit-employ');
+
+for (const btnOpenModalEditEmploy of btnOpenModalEditEmploys) {
+   btnOpenModalEditEmploy.onclick = function () {
+      myModalEditEmploy.style.display = "flex";
+   }
+}
+
+// *MODAL edit Account
+let myModalEditAccount = document.querySelector('.my-modal-edit-account');
+let btnOpenModalEditAccounts = document.querySelectorAll('.open-modal-edit-account');
+
+for (const btnOpenModalEditAccount of btnOpenModalEditAccounts) {
+   btnOpenModalEditAccount.onclick = function () {
+      myModalEditAccount.style.display = "flex";
+   }
+}
+
 
 // *MODAL ADD ROOM
 let myModalAddRoom = document.querySelector('.my-modal-room');
@@ -136,6 +158,7 @@ for (const btnCloseModalAddRoom of btnCloseModalAddRooms) {
    btnCloseModalAddRoom.onclick = function () {
       myModalAddRoom.style.display = "none";
       myModalEditRoom.style.display = "none";
+      myModalEditAccount.style.display = "none";
    }
 }
 
@@ -143,8 +166,28 @@ for (const btnCloseModalAddRoom of btnCloseModalAddRooms) {
 let myModalEditRoom = document.querySelector('.my-modal-edit-room');
 let btnOpenModalEditRooms = document.querySelectorAll('.open-modal-edit-room');
 
-for(const btnOpenModalEditRoom of btnOpenModalEditRooms){
+for (const btnOpenModalEditRoom of btnOpenModalEditRooms) {
    btnOpenModalEditRoom.onclick = function () {
       myModalEditRoom.style.display = "flex";
    }
+}
+
+//MODAL search-statistical
+
+let handleShowStatisticals = document.querySelectorAll('.js-search-statistical');
+let showStatisticals = document.querySelectorAll('.js-show-statistical');
+
+for (let i = 0; i < handleShowStatisticals.length; i++) {
+   handleShowStatisticals[i].addEventListener('click', function () {
+      if(i<4)
+         for (let j = 0; j < 4; j++) {
+            j == i ? showStatisticals[j].classList.remove('hidden') : showStatisticals[j].classList.add('hidden') ;
+            j == i ? handleShowStatisticals[j].classList.add('active') : handleShowStatisticals[j].classList.remove('active') ;
+         }
+      else
+         for (let j = 4; j < 8; j++) {
+            j == i ? showStatisticals[j].classList.remove('hidden') : showStatisticals[j].classList.add('hidden') ;
+            j == i ? handleShowStatisticals[j].classList.add('active') : handleShowStatisticals[j].classList.remove('active') ;
+         }
+   });
 }
