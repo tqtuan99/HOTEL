@@ -2,8 +2,8 @@
 if (session_id() === "")
    session_start();
 
-// if (isset($_SESSION['admin'])) {
-// } else header('Location: ../../notFound.php');
+if (isset($_SESSION['admin'])) {
+} else header('Location: ../../notFound.php');
 
 if (isset($_SESSION['idUser']))
    $id = $_SESSION['idUser'];
@@ -43,12 +43,9 @@ $db_handle = new DBController();
    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-
 </head>
 
-
 <body class="bg-gray-800 font-sans leading-normal tracking-normal mt-12">
-
    <!--Nav-->
    <nav class="bg-gray-800 pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0">
 
@@ -111,8 +108,9 @@ $db_handle = new DBController();
       </div>
 
    </nav>
+   <!-- END: NAV -->
 
-
+   <!-- Start: SIDEBAR -->
    <div class="sidebar flex flex-col lg:flex-row mx-4">
       <div class="sidebar-content z-50 shadow-xl h-16 fixed bottom-0 mt-12 lg:h-screen z-10 w-full lg:w-60 left-0">
          <a href="#" class="hidden lg:block mt-3  ml-5">
@@ -121,7 +119,7 @@ $db_handle = new DBController();
             </span>
          </a>
          <div class="lg:mt-12 lg:w-60 lg:fixed lg:left-0 lg:top-0 content-center lg:content-start text-left justify-between">
-            <ul class="list-reset lg:pt-7 flex flex-row lg:flex-col py-0 lg:py-4 md:pl-2 text-center lg:text-left">
+            <ul class="list-reset lg:pt-7 flex flex-row lg:flex-col py-0 lg:py-4 md:pl-2 text-center lg:text-left overflow-hidden">
                <li class="flex-1 relative">
                   <a href="?q=account" class="js-show-data block py-1 md:py-3 lg:pl-3 align-middle text-white no-underline">
                      <i class="fas fa-tasks pr-0 md:pr-3 text-white"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-white block md:inline-block font-bold lg:leading-loose">Account
@@ -154,9 +152,10 @@ $db_handle = new DBController();
          </div>
       </div>
    </div>
+   <!-- End: SIDEBAR -->
 
    <!-- *MAIN -->
-   <div id="main-contend" class="lg:ml-60 lg:px-4">
+   <div id="main-contend" class="lg:ml-60 px-2 lg:px-4">
 
       <div class="my-modal hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center h-modal sm:h-full" id="">
          <div class="relative px-4 w-full max-w-md md:h-auto">
@@ -214,7 +213,7 @@ $db_handle = new DBController();
          <div class="container mx-auto">
             <div class="flex flex-col">
                <div class="w-full">
-                  <div class="p-8 border-b border-gray-200 shadow">
+                  <div class="p-2 lg:p-8 border-b border-gray-200 shadow">
                      <table class="dataTable divide-y divide-gray-300" id="dataTable">
                         <thead class="bg-black">
                            <tr>
@@ -456,7 +455,7 @@ $db_handle = new DBController();
          <div class="container mx-auto">
             <div class="flex flex-col">
                <div class="w-full">
-                  <div class="p-8 border-b border-gray-200 shadow">
+                  <div class="p-2 lg:p-8 border-b border-gray-200 shadow">
                      <table class="dataTable divide-y divide-gray-300" id="dataTable">
                         <thead class="bg-black">
                            <tr>
@@ -755,7 +754,7 @@ $db_handle = new DBController();
          <div class="container mx-auto">
             <div class="flex flex-col">
                <div class="w-full">
-                  <div class="p-8 border-b border-gray-200 shadow">
+                  <div class="p-2 lg:p-8 border-b border-gray-200 shadow">
                      <table class="dataTable divide-y divide-gray-300" id="dataTable">
                         <thead class="bg-black">
                            <tr>

@@ -10,16 +10,15 @@ function toggleDD(myDropMenu) {
    document.getElementById(myDropMenu).classList.toggle("invisible");
 }
 
-// GIỮ HIỆU ỨNG HOVER
+// GIỮ HIỆU ỨNG CLICK
 let list = document.querySelectorAll('.sidebar li');
-
 function activeLink() {
    list.forEach((item) =>
       item.classList.remove('hovered'));
    this.classList.add('hovered');
 }
 list.forEach((item) =>
-   item.addEventListener('click', activeLink));
+   item.addEventListener('onclick', activeLink));
 
 /*Filter dropdown options*/
 function filterDD(myDropMenu, myDropMenuSearch) {
