@@ -259,7 +259,7 @@ $db_handle = new DBController();
                                     echo '
                                     <tr class="text-center whitespace-nowrap">
                                  <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">' . $row['tendangnhap'] . '</div>
+                                    <div class="text-sm text-gray-900">' . $row['tendangnhap'] . '</div>
                                  </td>
                                  <td class="px-6 py-4">
                                     <div class="text-sm text-gray-900">
@@ -660,98 +660,6 @@ $db_handle = new DBController();
             <?php
             include('./handleAddRoom.php');
             ?>
-
-            <!-- begin modal edit room -->
-            <div aria-hidden="true" class="my-modal-edit-room hidden overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center h-modal md:h-full inset-0 bg-gray-600 bg-opacity-50">
-               <div class="relative w-full max-w-lg md:h-auto">
-                  <!-- Modal content -->
-                  <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                     <div class="flex justify-end">
-                        <button type="button" class="close-modal-room text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal">
-                           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                           </svg>
-                        </button>
-                     </div>
-                     <form class="px-6 pb-2 space-y-6 lg:px-8 " action="#" method="POST" enctype="multipart/form-data">
-                        <h3 class="text-4xl text-center font-medium text-gray-900 dark:text-white">Update Room</h3>
-                        <div>
-                           <label for="roomName" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Room Name</label>
-                           <input type="text" name="roomName" id="roomName" value="<?php echo (isset($_GET['nameR'])) ? $_GET['nameR'] : ''; ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="NORMAL PH101" required>
-                        </div>
-                        <div style="display: flex; align-items: center; margin-top: 12px;">
-                           <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Type:</label>
-                           <?php
-                           $queryTypeRoom = "SELECT * FROM loaiphong";
-                           $conn = $db_handle->connectDB();
-                           $result = $conn->query($queryTypeRoom);
-                           if ($result)
-                              if ($result->num_rows > 0) {
-                                 while ($row = $result->fetch_assoc()) {
-                                    echo '
-                                          <input type="radio"  name="typeRoom" value="' . $row['idloaiphong'] . '" id="' . $row['tenloaiphong'] . '" 
-                                          class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                                                <label for="' . $row['tenloaiphong'] . '" class="block text-sm text-gray-900 dark:text-gray-300">' . $row['tenloaiphong'] . '</label>
-                                          ';
-                                 }
-                              }
-                           ?>
-                        </div>
-                        <div style="display: flex; align-items: center; margin-top: 12px;">
-                           <div style="margin: 10px; width: 100px;">
-
-                              <label for="floor" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">Floor</label>
-                              <input type="number" name="floor" value="<?php echo (isset($_GET['Flo'])) ? $_GET['Flo'] : ''; ?>" id="floor" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                           </div>
-
-                           <div style="margin: 10px; width: 100px;">
-                              <label for="people" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">People</label>
-                              <input type="number" name="people" value="<?php echo (isset($_GET['Peo'])) ? $_GET['Peo'] : ''; ?>" id="people" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                           </div>
-
-                           <div style="margin: 10px; width: 100px;">
-                              <label for="bed" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">Bed</label>
-                              <input type="number" name="bed" id="bed" value="<?php echo (isset($_GET['Bed'])) ? $_GET['Bed'] : ''; ?>" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                           </div>
-
-                           <div style="margin: 10px; width: 100px;">
-                              <label for="bathtub" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">Bathtub</label>
-                              <input type="number" name="bathtub" id="bathtub" value="<?php echo (isset($_GET['Ba'])) ? $_GET['Ba'] : ''; ?>" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                           </div>
-                        </div>
-                        <div style="margin-top: 8px !important">
-                           <label for="location" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Location</label>
-                           <input type="text" name="location" value="<?php echo (isset($_GET['Lo'])) ? $_GET['Lo'] : ''; ?>" id="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Sea ​​views..." required>
-                        </div>
-                        <div style="margin-top: 8px !important">
-                           <label for="description" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Description</label>
-                           <textarea cols="40" rows="5" type="text" value="<?php echo (isset($_GET['Des'])) ? $_GET['Des'] : ''; ?>" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Luxury bedroom..." required></textarea>
-                        </div>
-                        <div style="margin-top: 8px !important">
-                           <label for="price" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Unit price</label>
-                           <input type="number" min="100000" value="<?php echo (isset($_GET['Pri'])) ? $_GET['Pri'] : ''; ?>" step="100000" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="1.000.000" required>
-                        </div>
-                        <div style="margin-top: 8px !important">
-                           <span for="image" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Choose room photo</span>
-                           <input type="hidden" name="size" value="1000000">
-                           <input id="image" name="image" type="file" class="block w-full text-sm text-gray-500
-                                    file:mr-4 file:py-2 file:px-4
-                                    file:rounded-full file:border-0
-                                    file:text-sm file:font-semibold
-                                    file:bg-violet-50 file:text-violet-700
-                                    hover:file:bg-violet-100
-                                 " />
-                        </div>
-                        <div style="display: flex; margin-bottom: 8px !important;">
-                           <button name="editRoom" onclick="return confirm('Are you sure you want to edit this room?')" class=" w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Room</button>
-                           <div name="cancel" class="cursor-pointer close-modal-room w-full ml-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</div>
-                        </div>
-                     </form>
-                  </div>
-               </div>
-            </div>
-            <!-- end modal edit room -->
-
             <div class="container mx-auto">
                <div class="flex flex-col">
                   <div class="w-full">
@@ -858,8 +766,8 @@ $db_handle = new DBController();
                                     <img style="height: 39px;" src="../photo/room/' . $row['anh'] . '" alt="">
                                  </td>
                                  <td class="px-6 py-4">
-                                    <a href="#" class="open-modal-edit-room inline-block text-center">
-                                       <svg xmlns="http://www.w3.org/2000/svg" onclick="UpdateId(' . $row['idphong'] . ',' . $row['tenphong'] . ',' . $row['idloaiphong'] . ',' . $row['tang'] . ',' . $row['songuoi'] . ',' . $row['sobontam'] . ',' . $row['dongia'] . ',' . $row['sogiuong'] . ')"
+                                    <a href="./handleEditRoom.php?idRoom=' . $row['idphong'] . '" class="open-modal-edit-room inline-block text-center">
+                                       <svg xmlns="http://www.w3.org/2000/svg"
                                         class="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                        </svg>
@@ -885,7 +793,6 @@ $db_handle = new DBController();
             </div>
          </div>
          <!-- END MANAGEMENT -->
-
          <!-- ? Statistical  -->
          <div class="js-show-statis statistical bg-gray-100 mt-12 md:mt-2 pb-12">
             <div class="bg-gray-800 pt-3">
@@ -1054,7 +961,7 @@ $db_handle = new DBController();
                               $query = $conn->query('SELECT * FROM phong ;');
                               echo mysqli_num_rows($query);
                            ?>
-                           <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></h3>
+                           <span class="text-yellow-600"></span></h3>
                         </div>
                      </div>
                   </div>
@@ -1095,6 +1002,7 @@ $db_handle = new DBController();
                               $queryStatis = 'SELECT DISTINCT DATE_FORMAT(ngaythanhtoan, "%d/%m/%Y") as thang, ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2) as danhthu 
                                              FROM `hoadon`, `ct_hoadon`, `phong` 
                                              WHERE hoadon.idhoadon = ct_hoadon.idhoadon and ct_hoadon.idphong = phong.idphong 
+                                             GROUP by DATE_FORMAT(ngaythanhtoan, "%d/%m/%Y")
                                              ORDER BY ngaythanhtoan ASC';
                         } 
                         $result = $conn->query($queryStatis);
@@ -1178,6 +1086,14 @@ $db_handle = new DBController();
          })
       }
 
+      function saveIdEdit(check, id) {
+         if (check == 1) action = 'editAcount';
+         else if (check == 2) action = 'editRoom';
+         else action = 'editEmployee';
+         sessionStorage.setItem('idRoom' , id );
+         location.reload();
+      }
+
 
 
       function getLocation() {
@@ -1192,53 +1108,6 @@ $db_handle = new DBController();
                window.location.href = '../admin/adminHome.php?q=room';
                break;
          }
-      }
-   </script>
-
-   <!-- update -->
-   <script>
-      // var action = idR = nameR = typeR = Flo = Peo = Ba = Lo = Des = Pri = Bed = '';
-      var action = 'editRoom';
-
-      // function saveIdEdit(check, idR, nameR, typeR, Flo, Peo, Ba, Lo, Des, Pri, Bed) {
-
-      //    if (check == 1) action = 'editAcount';
-      //    else if (check == 2) action = 'editRoom';
-      //    else action = 'editEmployee';
-
-      //    idR = idR;
-      //    nameR = nameR;
-      //    typeR = typeR;
-      //    Flo = Flo;
-      //    Peo = Peo;
-      //    Ba = Ba;
-      //    Lo = Lo;
-      //    Des = Des;
-      //    Pri = Pri;
-      //    Bed = Bed;
-      // }
-      function UpdateIId() {
-         $.get('', {
-            'action': action,
-         }, function(data) {
-            location.reload()
-         })
-      }
-
-      function UpdateId(check, idR, nameR, typeR, Flo, Peo, Ba, Pri, Bed) {
-         $.get('./adminHome.php', {
-            'action': action,
-            'idR': idR,
-            'nameR': nameR,
-            'typeR': typeR,
-            'Flo': Flo,
-            'Peo': Peo,
-            'Ba': Ba,
-            'Pri': Pri,
-            'Bed': Bed,
-         }, function(data) {
-            location.reload()
-         })
       }
    </script>
 
@@ -1271,6 +1140,7 @@ $db_handle = new DBController();
          buttonShowEmploy.classList.remove('open')
          buttonShowRoom.classList.remove('open')
       }
+
       <?php
       if (isset($_GET['q']) && !empty($_GET['q'])) {
          echo 'hideData();';
