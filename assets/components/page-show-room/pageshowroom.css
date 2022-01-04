@@ -23,7 +23,7 @@
 }
 
 .sidebar {
-   z-index: 0;
+   z-index: 999;
    display: flex;
    flex-direction: column;
    background-color: orange;
@@ -99,7 +99,7 @@
    background: var(--bg-section);
 }
 
-.row .type-room a {
+.row .type-room button {
    color: #000;
    font-size: 20px;
    padding: 5px 30px;
@@ -108,32 +108,25 @@
    cursor: pointer;
 }
 
-.row .type .type-room .type-name:first-child:active {
-   color: #fff;
-   background-color: orange;
-   border-top-left-radius: 10px;
-   border-bottom-left-radius: 10px;
-}
-
-.row .type .type-room .type-name:last-child:active {
+.row .type .type-room .type-name:active {
    color: #fff;
    background-color: orange;
    border-top-right-radius: 10px;
-   border-bottom-right-radius: 10px;
+   border-radius: 10px;
 }
 
-.row .type .type-room .type-name:first-child:focus {
+.row .type .type-room .type-name:focus {
    color: #fff;
    background-color: #1d7f1f;
    border-top-left-radius: 10px;
-   border-bottom-left-radius: 10px;
+   border-radius: 10px;
 }
 
-.row .type .type-room .type-name:last-child:focus {
+.focus {
    color: #fff;
-   background-color: #1d7f1f;
+   background-color: orange;
    border-top-right-radius: 10px;
-   border-bottom-right-radius: 10px;
+   border-radius: 10px;
 }
 
 .row .row-content .image-room {
@@ -226,11 +219,15 @@
    z-index: 0;
 }
 
+.h-50 {
+   height: 50px;
+}
+
 .row-text .price {
    padding: 10px 20px;
    background: aqua;
    border-radius: 10px;
-   width: 110px;
+   width: 165px;
    text-align: center;
    transform: translateX(0);
    font-weight: bold;

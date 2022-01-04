@@ -82,9 +82,9 @@
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0" data-aos="fade-left">
                <div class="ml-auto flex items-center">
                   <div id="js-login-logout" class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                     <a href="../../../../../HOTEL/assets/components/login/login.php" target="_blank" class="text-white hover:text-pink-300">Sign in</a>
+                     <a href="../../../../../HOTEL/assets/components/login/login.php" class="text-white hover:text-pink-300">Sign in</a>
                      <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
-                     <a href="../../../../../hotel/assets/components/register/register.php" target="_blank" class="text-white hover:text-pink-300">Create account</a>
+                     <a href="../../../../../hotel/assets/components/register/register.php" class="text-white hover:text-pink-300">Create account</a>
                   </div>
 
                   <div class="js-change-currency hidden lg:ml-8 lg:flex">

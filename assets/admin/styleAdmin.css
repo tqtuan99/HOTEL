@@ -6,6 +6,41 @@
    --tw-bg-opacity: 1;
 }
 
+.search-statistical {
+   background-color: rgb(63, 81, 163); 
+   color: #fff;
+   margin: 0 4px 2px 4px; 
+   width:100px ; 
+   height: 30px; 
+   text-align: center;
+}
+
+.search-statistical:hover {
+   background-color: rgb(39, 63, 173); 
+   color: rgb(0, 0, 0);
+   cursor: pointer;
+}
+
+.active {
+   background-color: rgb(0, 0, 0); 
+   color: #fff;
+}
+
+.txt-over {
+   width: 100px;
+   text-overflow: ellipsis;
+   overflow: hidden;
+}
+
+.txt-over:hover {
+   overflow: visible;
+   white-space: nowrap;
+}
+
+.w-300 {
+   width: 300px !important;
+}
+
 body {
    /* overflow-x: hidden; */
    font-family: 'Open Sans', sans-serif;

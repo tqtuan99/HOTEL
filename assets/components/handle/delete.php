@@ -20,6 +20,11 @@ if (!empty($_POST)) {
 		$conn->multi_query($sql1);
 	}
 
+	if ($action == 'deleteRoom') {
+		$sql1 = 'delete from phong where idphong = '.$id;
+		$conn->multi_query($sql1);
+	}
+
     if ($action == 'update') {
 		$sql1 = 'delete from taikhoan where idtaikhoan = '.$id;
 		$sql1 = 'delete from taikhoan where idtaikhoan = '.$id;

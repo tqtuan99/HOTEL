@@ -30,13 +30,10 @@
         <p>
         If you try to access,
             <a href="https://help.github.com/pages/">read the full documentation.</a>
-            <!-- to learn how to set up <strong>GitHub Pages</strong>
-            for your repository, organization, or user account. -->
         </p>
 
         <div id="suggestions">
             <a href="./index.php">KLT Hotel</a> 
-            <!-- <a href="https://twitter.com/githubstatus">@githubstatus</a> -->
         </div>
 
         <a href="/" class="logo logo-img-1x">

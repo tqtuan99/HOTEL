@@ -23,6 +23,15 @@ class DBController {
 		if(!empty($resultset))
 			return $resultset;
 	}
+
+	function search($query) {
+		$result = mysqli_query($this->conn, $query);
+		while($row=mysqli_fetch_assoc($result)) {
+			$resultset[] = $row;
+		}		
+		if(!empty($resultset))
+			return $resultset;
+	}
 	
 	function numRows($query) {
 	    $result  = mysqli_query($this->conn, $query);
