@@ -2,8 +2,8 @@
 if (session_id() === "")
    session_start();
 
-if (isset($_SESSION['admin'])) {
-} else header('Location: ../../notFound.php');
+// if (isset($_SESSION['admin'])) {
+// } else header('Location: ../../notFound.php');
 
 if (isset($_SESSION['idUser']))
    $id = $_SESSION['idUser'];
@@ -51,10 +51,6 @@ $db_handle = new DBController();
             <a href="#">
                <span class="text-3xl pl-2 text-green-600 font-extrabold">
                   <span class="">ANGLE</span>
-                  <!-- <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
-                  <lord-icon src="https://cdn.lordicon.com/hpxruznz.json" trigger="loop"
-                     colors="primary:#16c72e,secondary:#08a88a" scale="31" axis-y="17" style="width:100px;height:100px">
-                  </lord-icon> -->
                </span>
             </a>
          </div>
@@ -111,37 +107,41 @@ $db_handle = new DBController();
    </nav>
 
 
-   <div class="flex flex-col lg:flex-row mx-4">
-
-      <div class="bg-gray-800 shadow-xl h-16 fixed bottom-0 mt-12 lg:h-screen z-10 w-full lg:w-60 left-0">
+   <div class="sidebar flex flex-col lg:flex-row mx-4">
+      <div class="sidebar-content z-50 shadow-xl h-16 fixed bottom-0 mt-12 lg:h-screen z-10 w-full lg:w-60 left-0">
+         <a href="#" class="hidden lg:block mt-3  ml-5">
+            <span class="text-3xl text-white font-extrabold">
+               <span class="">ANGLE</span>
+            </span>
+         </a>
          <div class="lg:mt-12 lg:w-60 lg:fixed lg:left-0 lg:top-0 content-center lg:content-start text-left justify-between">
-            <ul class="list-reset flex flex-row lg:flex-col py-0 lg:py-4 px-1 md:px-2 text-center lg:text-left">
-               <li class="mr-3 flex-1">
-                  <a href="#" class="js-show-data block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-pink-500 focus:ring-4 focus:ring-blue-300 focus:text-white">
-                     <i class="fas fa-tasks pr-0 md:pr-3 text-yellow-500"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-gray-600 md:text-gray-400 block md:inline-block font-bold lg:leading-loose hover:text-white focus:text-white">Account
+            <ul class="list-reset lg:pt-7 flex flex-row lg:flex-col py-0 lg:py-4 md:pl-2 text-center lg:text-left">
+               <li class="flex-1 relative">
+                  <a href="#" class="js-show-data block py-1 md:py-3 lg:pl-3 align-middle text-white no-underline">
+                     <i class="fas fa-tasks pr-0 md:pr-3 text-white"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-white block md:inline-block font-bold lg:leading-loose">Account
                         Management</span>
                   </a>
                </li>
-               <li class="mr-3 flex-1">
-                  <a href="#" class="js-show-data block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500 focus:ring-4 focus:ring-blue-300 focus:text-white">
-                     <i class="fas fa-tasks pr-0 md:pr-3 text-yellow-500"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-gray-600 md:text-gray-400 block md:inline-block font-bold lg:leading-loose hover:text-white focus:text-white">Employ
+               <li class="flex-1 relative">
+                  <a href="#" class="js-show-data block py-1 md:py-3 lg:pl-3 align-middle text-white no-underline">
+                     <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-white block md:inline-block font-bold lg:leading-loose">Employ
                         Management</span>
                   </a>
                </li>
-               <li class="mr-3 flex-1">
-                  <a href="#" class="js-show-data block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-green-500 focus:ring-4 focus:ring-blue-300 focus:text-white">
-                     <i class="fas fa-tasks pr-0 md:pr-3 text-yellow-500"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-gray-600 md:text-gray-400 block md:inline-block font-bold lg:leading-loose hover:text-white focus:text-white">Room
+               <li class="flex-1 relative">
+                  <a href="#" class="js-show-data block py-1 md:py-3 lg:pl-3 align-middle text-white no-underline">
+                     <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-white block md:inline-block font-bold lg:leading-loose">Room
                         Management</span>
                   </a>
                </li>
-               <li class="mr-3 flex-1">
-                  <a href="#" class="js-show-data block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-blue-600 focus:ring-4 focus:ring-blue-300 focus:text-white">
-                     <i class="fas fa-chart-area pr-0 md:pr-3 text-yellow-500"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-gray-600 md:text-gray-400 block md:inline-block font-bold lg:leading-loose hover:text-white focus:text-white">Statistical</span>
+               <li class="flex-1 relative">
+                  <a href="#" class="js-show-data block py-1 md:py-3 lg:pl-3 align-middle text-white no-underline">
+                     <i class="fas fa-chart-area pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-white block md:inline-block font-bold lg:leading-loose">Statistical</span>
                   </a>
                </li>
-               <li class="mr-3 flex-1">
-                  <a href="#" class="js-show-data block py-1 md:py-3 pl-0 md:pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-red-500 focus:ring-4 focus:ring-blue-300 focus:text-white">
-                     <i class="fa fa-wallet pr-0 md:pr-3 text-yellow-500"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-gray-600 md:text-gray-400 block md:inline-block font-bold lg:leading-loose hover:text-white focus:text-white">Log
+               <li class="flex-1 relative">
+                  <a href="#" class="js-show-data block py-1 md:py-3 pl-0 lg:pl-3 align-middle text-white no-underline">
+                     <i class="fa fa-wallet pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-white block md:inline-block font-bold lg:leading-loose">Log
                         Out</span>
                   </a>
                </li>

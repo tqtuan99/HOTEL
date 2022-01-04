@@ -3,6 +3,7 @@
 * {
    text-decoration: none;
    box-sizing: border-box;
+   --tw-bg-opacity: 1;
 }
 
 body {
@@ -13,6 +14,51 @@ body {
 .img-radius {
    border-radius: 12px;
 }
+
+/* ? SIDEBAR */
+.sidebar .sidebar-content {
+   background-color: #0093E9;
+   background-image: linear-gradient(157deg, #0093E9 0%, #58ccc0 100%);
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.hovered {
+   background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
+   border-top-left-radius: 50px;
+   border-bottom-left-radius: 50px;
+}
+
+.sidebar ul li:hover i,
+.sidebar ul li.hovered i {
+   color: yellowgreen;
+}
+
+.sidebar ul li:hover a::before,
+.sidebar ul li.hovered a::before {
+   content: '';
+   position: absolute;
+   top: -40px;
+   right: 0;
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   box-shadow: 23px 23px 0 5px rgba(31, 41, 55, var(--tw-bg-opacity));
+   background: transparent;
+}
+
+.sidebar ul li:hover a::after,
+.sidebar ul li.hovered a::after {
+   content: '';
+   position: absolute;
+   bottom: -40px;
+   right: 0;
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   box-shadow: 23px -23px 0 5px rgba(31, 41, 55, var(--tw-bg-opacity));
+   background: transparent;
+}
+
 /* ? ACCOUNT MANAGEMENT CSS */
 .dataTables_wrapper .dataTables_length,
 .dataTables_wrapper .dataTables_filter {
@@ -65,7 +111,7 @@ table.dataTable.no-footer {
 @media screen and (max-width: 640px) {
    .dataTables_wrapper .dataTables_filter {
       margin-bottom: 0.5em;
-      margin-top: 0!important;
+      margin-top: 0 !important;
    }
 }
 
@@ -86,10 +132,11 @@ table.dataTable.no-footer {
    display: none;
 }
 
-.employ-management{
+.employ-management {
    display: none;
 }
-.room-management{
+
+.room-management {
    display: none;
 }
 
