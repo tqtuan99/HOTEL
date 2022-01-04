@@ -655,67 +655,68 @@ $db_handle = new DBController();
                   </form>
                </div>
             </div>
-            <?php
-            include('./handleAddRoom.php');
-            ?>
-            <div class="container mx-auto">
-               <div class="flex flex-col">
-                  <div class="w-full">
-                     <div class="p-8 border-b border-gray-200 shadow">
-                        <table class="dataTable divide-y divide-gray-300" id="dataTable">
-                           <thead class="bg-black">
-                              <tr>
-                                 <th class="px-6 py-2 text-xs text-white">
-                                    Name
-                                 </th>
-                                 <th class="px-6 py-2 text-xs text-white">
-                                    Type
-                                 </th>
-                                 <th class="px-6 py-2 text-xs text-white">
-                                    Floor
-                                 </th>
-                                 <th class="px-6 py-2 text-xs text-white">
-                                    Location
-                                 </th>
-                                 <th class="px-6 py-2 text-xs text-white">
-                                    Description
-                                 </th>
-                                 <th class="px-6 py-2 text-xs text-white">
-                                    Status
-                                 </th>
-                                 <th class="px-6 py-2 text-xs text-white">
-                                    Number Bed
-                                 </th>
-                                 <th class="px-6 py-2 text-xs text-white">
-                                    Number People
-                                 </th>
-                                 <th class="px-6 py-2 text-xs text-white">
-                                    Number Bathtub
-                                 </th>
-                                 <th class="px-6 py-2 text-xs text-white">
-                                    Image
-                                 </th>
-                                 <th class="px-6 py-2 text-xs text-white">
-                                    Edit
-                                 </th>
-                                 <th class="px-6 py-2 text-xs text-white">
-                                    Delete
-                                 </th>
-                              </tr>
-                           </thead>
-                           <tbody class="bg-white divide-y divide-gray-300">
-                              <?php
+         </div>
+         <?php
+         include('./handleAddRoom.php');
+         ?>
+         <div class="container mx-auto">
+            <div class="flex flex-col">
+               <div class="w-full">
+                  <div class="p-8 border-b border-gray-200 shadow">
+                     <table class="dataTable divide-y divide-gray-300" id="dataTable">
+                        <thead class="bg-black">
+                           <tr>
+                              <th class="px-6 py-2 text-xs text-white">
+                                 Name
+                              </th>
+                              <th class="px-6 py-2 text-xs text-white">
+                                 Type
+                              </th>
+                              <th class="px-6 py-2 text-xs text-white">
+                                 Floor
+                              </th>
+                              <th class="px-6 py-2 text-xs text-white">
+                                 Location
+                              </th>
+                              <th class="px-6 py-2 text-xs text-white">
+                                 Description
+                              </th>
+                              <th class="px-6 py-2 text-xs text-white">
+                                 Status
+                              </th>
+                              <th class="px-6 py-2 text-xs text-white">
+                                 Number Bed
+                              </th>
+                              <th class="px-6 py-2 text-xs text-white">
+                                 Number People
+                              </th>
+                              <th class="px-6 py-2 text-xs text-white">
+                                 Number Bathtub
+                              </th>
+                              <th class="px-6 py-2 text-xs text-white">
+                                 Image
+                              </th>
+                              <th class="px-6 py-2 text-xs text-white">
+                                 Edit
+                              </th>
+                              <th class="px-6 py-2 text-xs text-white">
+                                 Delete
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-300">
+                           <?php
 
-                              $trangthai = null;
-                              $queryRoom = "SELECT * FROM phong, loaiphong where phong.idloaiphong = loaiphong.idloaiphong";
-                              $conn = $db_handle->connectDB();
-                              $result = $conn->query($queryRoom);
-                              if ($result->num_rows > 0) {
-                                 while ($row = $result->fetch_assoc()) {
-                                    if ($row['trangthai'] == '2') $trangthai = 'Đã thuê';
-                                    else if ($row['trangthai'] == '1') $trangthai = 'Đã đặt';
-                                    else $trangthai = 'Trống';
-                                    echo '
+                           $trangthai = null;
+                           $queryRoom = "SELECT * FROM phong, loaiphong where phong.idloaiphong = loaiphong.idloaiphong";
+                           $conn = $db_handle->connectDB();
+                           $result = $conn->query($queryRoom);
+                           if ($result->num_rows > 0) {
+                              while ($row = $result->fetch_assoc()) {
+                                 if ($row['trangthai'] == '2') $trangthai = 'Đã thuê';
+                                 else if ($row['trangthai'] == '1') $trangthai = 'Đã đặt';
+                                 else $trangthai = 'Trống';
+                                 echo '
                               <tr class="text-center whitespace-nowrap">
                                  <td class="px-6 py-4 text-sm text-gray-500">
                                  <div class="text-sm text-gray-900">
@@ -789,13 +790,14 @@ $db_handle = new DBController();
                </div>
             </div>
          </div>
-         <!-- END MANAGEMENT -->
-         <!-- ? Statistical  -->
-         <div class="js-show-statis statistical bg-gray-100 mt-12 md:mt-2 pb-12">
-            <div class="bg-gray-800 pt-3">
-               <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
-                  <h3 class="font-bold pl-2">Statistical</h3>
-               </div>
+      </div>
+      <!-- END ROOM MANAGEMENT -->
+
+      <!-- ? Statistical  -->
+      <div class="js-show-statis statistical bg-gray-100 mt-12 md:mt-2 pb-12">
+         <div class="bg-gray-800 pt-3">
+            <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+               <h3 class="font-bold pl-2">Statistical</h3>
             </div>
          </div>
          <div class="flex flex-wrap justify-center">
@@ -967,18 +969,13 @@ $db_handle = new DBController();
                            $query = $conn->query('SELECT * FROM phong ;');
                            echo mysqli_num_rows($query);
                            ?>
-<<<<<<< HEAD
-                           <span class="text-yellow-600"></span></h3>
-                        </div>
-=======
-                           <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span>
+                           <span class="text-yellow-600"></span>
                         </h3>
->>>>>>> e4415ba0443c738ee24018b2c817fb30c0bb05f6
                      </div>
                   </div>
                </div>
-               <!--/Metric Card-->
             </div>
+            <!--/Metric Card-->
          </div>
          <div class="flex flex-row flex-wrap flex-grow mt-2">
             <div class="w-full p-6">
@@ -1077,7 +1074,6 @@ $db_handle = new DBController();
       </div>
    </div>
 
-   </div>
    <script type="text/javascript">
       var selectId = '';
       var action = '';
@@ -1102,7 +1098,7 @@ $db_handle = new DBController();
          if (check == 1) action = 'editAcount';
          else if (check == 2) action = 'editRoom';
          else action = 'editEmployee';
-         sessionStorage.setItem('idRoom' , id );
+         sessionStorage.setItem('idRoom', id);
          location.reload();
       }
 
