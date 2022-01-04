@@ -10,16 +10,6 @@ function toggleDD(myDropMenu) {
    document.getElementById(myDropMenu).classList.toggle("invisible");
 }
 
-// GIỮ HIỆU ỨNG CLICK
-let list = document.querySelectorAll('.sidebar li');
-function activeLink() {
-   list.forEach((item) =>
-      item.classList.remove('hovered'));
-   this.classList.add('hovered');
-}
-list.forEach((item) =>
-   item.addEventListener('onclick', activeLink));
-
 /*Filter dropdown options*/
 function filterDD(myDropMenu, myDropMenuSearch) {
    var input, filter, ul, li, a, i;
@@ -48,55 +38,6 @@ window.onclick = function (event) {
    }
 }
 
-
-// // *SHOW DATA BUTTON FROM SIDEBAR
-// let dataToMains = document.querySelectorAll('.js-show-data')
-// let buttonShowAccount = document.querySelector('.js-show-account')
-// let buttonShowEmploy = document.querySelector('.js-show-employ')
-// let buttonShowRoom = document.querySelector('.js-show-room')
-// let buttonShowStatis = document.querySelector('.js-show-statis')
-
-// function showDataAccount() {
-//    buttonShowAccount.classList.add('open')
-// }
-
-// function showDataEmploy() {
-//    buttonShowEmploy.classList.add('open')
-// }
-
-// function showDataRoom() {
-//    buttonShowRoom.classList.add('open')
-// }
-
-// function showDataStatis() {
-//    buttonShowStatis.classList.add('open')
-// }
-
-// function hideData() {
-//    buttonShowAccount.classList.remove('open')
-//    buttonShowStatis.classList.remove('open')
-//    buttonShowEmploy.classList.remove('open')
-//    buttonShowRoom.classList.remove('open')
-// }
-
-// for (let i = 0; i < dataToMains.length; i++) {
-//    if (!dataToMains[0].classList.contains('open')) {
-//       dataToMains[0].addEventListener('click', hideData)
-//       dataToMains[0].addEventListener('click', showDataAccount)
-//    }
-//    if (!dataToMains[1].classList.contains('open')) {
-//       dataToMains[1].addEventListener('click', hideData)
-//       dataToMains[1].addEventListener('click', showDataEmploy)
-//    }
-//    if (!dataToMains[2].classList.contains('open')) {
-//       dataToMains[2].addEventListener('click', hideData)
-//       dataToMains[2].addEventListener('click', showDataRoom)
-//    }
-//    if (!dataToMains[3].classList.contains('open')) {
-//       dataToMains[3].addEventListener('click', hideData)
-//       dataToMains[3].addEventListener('click', showDataStatis)
-//    }
-// }
 
 // *MODAL DELETE
 let myModal = document.querySelector('.my-modal');
@@ -132,30 +73,8 @@ btnOpenModalAddEmploy.onclick = function () {
 for (const btnCloseModalAddEmploy of btnCloseModalAddEmploys) {
    btnCloseModalAddEmploy.onclick = function () {
       myModalAddEmploy.style.display = "none";
-      myModalEditEmploy.style.display = "none";
    }
 }
-
-// *MODAL edit EMPLOY
-let myModalEditEmploy = document.querySelector('.my-modal-edit-employ');
-let btnOpenModalEditEmploys = document.querySelectorAll('.open-modal-edit-employ');
-
-for (const btnOpenModalEditEmploy of btnOpenModalEditEmploys) {
-   btnOpenModalEditEmploy.onclick = function () {
-      myModalEditEmploy.style.display = "flex";
-   }
-}
-
-// *MODAL edit Account
-let myModalEditAccount = document.querySelector('.my-modal-edit-account');
-let btnOpenModalEditAccounts = document.querySelectorAll('.open-modal-edit-account');
-
-for (const btnOpenModalEditAccount of btnOpenModalEditAccounts) {
-   btnOpenModalEditAccount.onclick = function () {
-      myModalEditAccount.style.display = "flex";
-   }
-}
-
 
 // *MODAL ADD ROOM
 let myModalAddRoom = document.querySelector('.my-modal-room');
@@ -168,20 +87,9 @@ btnOpenModalAddRoom.onclick = function () {
 for (const btnCloseModalAddRoom of btnCloseModalAddRooms) {
    btnCloseModalAddRoom.onclick = function () {
       myModalAddRoom.style.display = "none";
-      myModalEditRoom.style.display = "none";
-      myModalEditAccount.style.display = "none";
    }
 }
 
-//MODAL EDIT ROOM
-let myModalEditRoom = document.querySelector('.my-modal-edit-room');
-let btnOpenModalEditRooms = document.querySelectorAll('.open-modal-edit-room');
-
-for (const btnOpenModalEditRoom of btnOpenModalEditRooms) {
-   btnOpenModalEditRoom.onclick = function () {
-      myModalEditRoom.style.display = "flex";
-   }
-}
 
 //MODAL search-statistical
 

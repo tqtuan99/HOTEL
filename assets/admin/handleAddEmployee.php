@@ -13,6 +13,24 @@ if (isset($_POST["add"])) {
     $address = $_POST["address"];
     $passwordMD5 = md5($phone);
 
+    $errors= array();
+    $file_name = $_FILES['avatar']['name'];
+    $file_size = $_FILES['avatar']['size'];
+    $file_tmp = $_FILES['avatar']['tmp_name'];
+    $file_type = $_FILES['avatar']['type'];
+    $file_parts =explode('.',$_FILES['avatar']['name']);
+    $file_ext=strtolower(end($file_parts));
+    $expensions= array("jpeg","jpg","png");
+    if(in_array($file_ext,$expensions)=== false){
+    $errors[]="Chỉ hỗ trợ upload file JPEG hoặc PNG.";
+    }
+    if($file_size > 2097152) {
+    $errors[]='Kích thước file không được lớn hơn 2MB';
+    }
+    $avatar = $_FILES['avatar']['name']==''?'': $_FILES['avatar']['name'];
+    $target = "../../assets/photo/avatar/".basename($avatar);
+    move_uploaded_file($_FILES['avatar']['tmp_name'], $target);
+
     $sqlGetEmail = 'SELECT  * FROM taikhoan where tendangnhap = '.$email;
     $resultEmail = $conn->multi_query($sqlGetEmail);
     if ($resultEmail > 0) {
@@ -29,7 +47,7 @@ if (isset($_POST["add"])) {
             $idtaikhoan = $row["idtaikhoan"];
         }
         
-        $query = "INSERT INTO nhanvien(idtaikhoan, hotennv, gioitinh, chucvu, sodienthoai, socccd, ngaysinh, email, diachi) VALUES ('$idtaikhoan','$name', '$gender', '$position', '$phone', '$id', '$dob', '$email', '$address') ";
+        $query = "INSERT INTO nhanvien(idtaikhoan, hotennv, gioitinh, chucvu, sodienthoai, socccd, ngaysinh, email, diachi, avatar) VALUES ('$idtaikhoan','$name', '$gender', '$position', '$phone', '$id', '$dob', '$email', '$address','$avatar') ";
     
         $result = $conn->multi_query($query);
         if ($result){

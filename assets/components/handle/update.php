@@ -39,20 +39,18 @@ if (isset($_POST['editRoom'])) {
 }
 
 if (isset($_POST['editEmploy'])) {
-	$action =  $_POST['action'];
-    $idR = $_POST['idR'];
-    $nameR = $_POST['nameR'];
-    $typeR = $_POST['typeR'];
-    $Flo = $_POST['Flo'];
-    $Peo = $_POST['Peo'];
-    $Ba = $_POST['Ba'];
-    $Lo = $_POST['Lo'];
-    $Des = $_POST['Des'];
-    $Pri = $_POST['Pri'];
-    $Bed = $_POST['Bed'];
-    $supImg = $_POST['supImg'];
-	
-	$errors= array();
+    $idE = $_POST['idE'];
+	$name = $_POST["name"];
+    $gender = $_POST["gender"];
+    $position = $_POST["position"];
+    $phone = $_POST["phone"];
+    $id = $_POST["id"];
+    $dob = $_POST["dob"];
+    $email = $_POST["email"];
+    $address = $_POST["address"];
+    $supImg = $_POST["supImg"];
+    
+    $errors= array();
     $file_name = $_FILES['image']['name'];
     $file_size = $_FILES['image']['size'];
     $file_tmp = $_FILES['image']['tmp_name'];
@@ -67,10 +65,10 @@ if (isset($_POST['editEmploy'])) {
     $errors[]='Kích thước file không được lớn hơn 2MB';
     }
     $image = $_FILES['image']['name']==''?$supImg: $_FILES['image']['name'];
-    $target = "../../assets/photo/room/".basename($image);
+    $target = "../../assets/photo/avatar/".basename($image);
     move_uploaded_file($_FILES['image']['tmp_name'], $target);
 
-	$sql1 = "UPDATE `phong` SET `idloaiphong`= '$typeR' ,`tenphong`= '$nameR' ,`tang`= '$Flo' ,`vitri`= '$Lo',`mota`= '$Des',`dongia`= $Pri ,`sogiuong`= $Bed ,`anh`='$image',`songuoi`= $Peo,`sobontam`= $Ba WHERE idphong = $idR";
+	$sql1 = "UPDATE `nhanvien` SET `hotennv`='$name',`gioitinh`='$gender',`chucvu`='$position',`sodienthoai`='$phone',`avatar`='$image',`socccd`='$id',`email`='$email',`diachi`='$address',`ngaysinh`='$dob' WHERE idnhanvien = $idE";
 	if($conn->query($sql1)){
 		echo 'alert("Update Successful!");
 			';
