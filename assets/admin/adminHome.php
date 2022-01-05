@@ -944,34 +944,58 @@ $db_handle = new DBController();
                      <?php
                      $arrayThang = '';
                      $arrayDanhthu = '';
+                     $arrayTotalUser = '';
                      $typeStatis = '';
                      $queryStatis = 'SELECT DISTINCT DATE_FORMAT(ngaythanhtoan, "%Y") as thang, sum(ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2)) as danhthu 
                                           FROM `hoadon`, `ct_hoadon`, `phong` 
                                           WHERE hoadon.idhoadon = ct_hoadon.idhoadon and ct_hoadon.idphong = phong.idphong 
                                           GROUP by DATE_FORMAT(ngaythanhtoan, "%Y")
                                           ORDER BY ngaythanhtoan ASC';
+                     $queryStatisUser = 'SELECT DISTINCT DATE_FORMAT(ngaytao, "%Y") as thang, count(*) as soluong 
+                                          FROM taikhoan
+                                          GROUP by DATE_FORMAT(ngaytao, "%Y")
+                                          ORDER BY ngaytao ASC';
 
                      if (isset($_GET['typeStatis'])) {
                         $typeStatis = $_GET['typeStatis'];
 
-                        if ($typeStatis == 2)
+                        if ($typeStatis == 2){
                            $queryStatis = 'SELECT DISTINCT DATE_FORMAT(ngaythanhtoan, "%m/%Y") as thang, sum(ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2)) as danhthu 
                                              FROM `hoadon`, `ct_hoadon`, `phong` 
                                              WHERE hoadon.idhoadon = ct_hoadon.idhoadon and ct_hoadon.idphong = phong.idphong 
                                              GROUP by DATE_FORMAT(ngaythanhtoan, "%m/%Y")
                                              ORDER BY ngaythanhtoan ASC';
+
+                           $queryStatisUser = 'SELECT DISTINCT DATE_FORMAT(ngaytao, "%m/%Y") as thang, count(*) as soluong 
+                                                FROM taikhoan
+                                                GROUP by DATE_FORMAT(ngaytao, "%m/%Y")
+                                                ORDER BY ngaytao ASC';
+                        }
                         if ($typeStatis == 3)
                            $queryStatis = 'SELECT DISTINCT DATE_FORMAT(ngaythanhtoan, "%d/%m/%Y") as thang, ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2) as danhthu 
                                              FROM `hoadon`, `ct_hoadon`, `phong` 
                                              WHERE hoadon.idhoadon = ct_hoadon.idhoadon and ct_hoadon.idphong = phong.idphong 
                                              GROUP by DATE_FORMAT(ngaythanhtoan, "%d/%m/%Y")
                                              ORDER BY ngaythanhtoan ASC';
+
+                           $queryStatisUser = 'SELECT DISTINCT DATE_FORMAT(ngaytao, "%d/%m/%Y") as thang, count(*) as soluong 
+                                             FROM taikhoan
+                                             GROUP by DATE_FORMAT(ngaytao, "%d/%m/%Y")
+                                             ORDER BY ngaytao ASC';
                      }
                      $result = $conn->query($queryStatis);
+                     $result1 = $conn->query($queryStatisUser);
                      if ($result)
                         while ($row = $result->fetch_assoc()) {
                            $arrayThang .= '"' . $row['thang'] . '",';
                            $arrayDanhthu .= '"' . $row['danhthu'] . '",';
+                        }
+                     if ($result1)
+                        while ($row = $result1->fetch_assoc()) {
+                           if($row == null) 
+                              $arrayTotalUser .= '"0",';
+
+                           $arrayTotalUser .= '"' . $row['soluong']*1000000 . '",';
                         }
                      ?>
                      <script>
@@ -986,7 +1010,7 @@ $db_handle = new DBController();
                                  "backgroundColor": "rgba(255, 99, 132, 0.2)"
                               }, {
                                  "label": "Adsense Clicks",
-                                 "data": [<?php echo $arrayDanhthu  ?>],
+                                 "data": [<?php echo $arrayTotalUser  ?>],
                                  "type": "line",
                                  "fill": false,
                                  "borderColor": "rgb(54, 162, 235)"
