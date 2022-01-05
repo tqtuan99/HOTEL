@@ -256,9 +256,9 @@ $db_handle = new DBController();
                                  $color = $row['trangthai'] == 1 ? 'text-red-900' : 'text-gray-900';
 
                                  echo '
-                                    <tr class="text-center whitespace-nowrap">
+                              <tr class="text-center whitespace-nowrap">
                                  <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">' . $row['tendangnhap'] . '</div>
+                                    <div class="text-sm text-gray-900 txt-over">' . $row['tendangnhap'] . '</div>
                                  </td>
                                  <td class="px-6 py-4">
                                     <div class="text-sm text-gray-900">
@@ -295,7 +295,6 @@ $db_handle = new DBController();
          </div>
       </div>
       <!-- ? END: ACCOUNT MANAGEMENT-->
-
 
       <!-- ? EMPLOY MANAGEMENT -->
       <div class="js-show-employ employ-management bg-gray-100 mt-12 md:mt-2">
@@ -348,11 +347,11 @@ $db_handle = new DBController();
                         <label class="block text-sm text-gray-900 dark:text-gray-300">Employee</label>
 
                      </div>
-                     <div style="margin-top: 8px !important">
+                     <div style="display: inline-block; width: 40%; margin-top: 8px !important">
                         <label for="phone" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Phone</label>
                         <input type="text" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="033456789" required>
                      </div>
-                     <div style="margin-top: 8px !important">
+                     <div style="display: inline-block; width: 40%; float: right; margin-top: 8px !important">
                         <label for="id" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">ID</label>
                         <input type="text" name="id" id="id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="0123456789" required>
                      </div>
@@ -370,17 +369,16 @@ $db_handle = new DBController();
                      </div>
 
                      <div style="margin-top: 8px !important">
-                    <span for="avatar" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Choose room photo</span>
-                    <input type="hidden" name="size" value="1000000">
-                       <input id="avatar"  name="avatar" type="file" class="block w-full text-sm text-gray-500
+                        <span for="avatar" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Choose room photo</span>
+                        <input type="hidden" name="size" value="1000000">
+                        <input id="avatar" name="avatar" type="file" class="block w-full text-sm text-gray-500
                                        file:mr-4 file:py-2 file:px-4
                                        file:rounded-full file:border-0
                                        file:text-sm file:font-semibold
                                        file:bg-violet-50 file:text-violet-700
                                        hover:file:bg-violet-100
-                                       " 
-                                       />
-                </div>
+                                       " />
+                     </div>
 
                      <div style="display: flex; margin-bottom: 8px !important;">
                         <button type="submit" name="add" id="" onclick="return confirm('Are you sure you want to add this employee?'); getLocation2(1)" class=" w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Employ</button>
@@ -393,8 +391,6 @@ $db_handle = new DBController();
          <?php
          include('./handleAddEmployee.php');
          ?>
-
-         
 
          <div class="container mx-auto">
             <div class="flex flex-col">
@@ -448,13 +444,13 @@ $db_handle = new DBController();
                                  echo '
                               <tr class="text-center whitespace-nowrap">
                                  <td class="px-6 py-4">
-                                    <div class="text-capitalize text-sm text-gray-900">
+                                    <div class="text-capitalize text-sm text-gray-900 txt-over">
                                     ' . $row['hotennv'] . '
                                     </div>
                                  </td>
                                  <td class="px-6 py-4">
                                     <div class="text-sm text-gray-900">
-                                    <img src="../photo/avatar/' . $row['avatar'] . '" alt="">
+                                    <img style="width:30px; display: inline-block" src="../photo/avatar/' . $row['avatar'] . '" alt="">
                                     </div>
                                  </td>
                                  <td class="px-6 py-4">
@@ -463,22 +459,22 @@ $db_handle = new DBController();
                                     </div>
                                  </td>
                                  <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">
+                                    <div class="text-sm text-gray-900 txt-over">
                                     ' . $row['sodienthoai'] . '
                                     </div>
                                  </td>
                                  <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">
+                                    <div class="text-sm text-gray-900 txt-over">
                                     ' . $row['socccd'] . '
                                     </div>
                                  </td>
                                  <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">' . $row['email'] . '</div>
+                                    <div class="text-sm text-gray-900 txt-over">' . $row['email'] . '</div>
                                  </td>
                                  <td class="px-6 py-4 text-sm text-gray-900">
                                  ' . $chucvu . '
                                  </td>
-                                 <td class="px-6 py-4 text-sm text-gray-900">
+                                 <td class="px-6 py-4 text-sm text-gray-900 txt-over">
                                  ' . $row['diachi'] . '
                                  </td>
                                  <td class="px-6 py-4">
@@ -504,7 +500,7 @@ $db_handle = new DBController();
                      </table>
                   </div>
                </div>
-               
+
             </div>
          </div>
       </div>
@@ -556,24 +552,23 @@ $db_handle = new DBController();
                            }
                         ?>
                      </div>
-                     <div style="display: flex; align-items: center; margin-top: 12px;">
-                        <div style="margin: 10px; width: 100px;">
-
+                     <div style="display: flex; align-items: center; margin-top: 12px; justify-content: space-between;">
+                        <div style="width: 100px;">
                            <label for="floor" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">Floor</label>
                            <input type="number" name="floor" id="floor" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                         </div>
 
-                        <div style="margin: 10px; width: 100px;">
+                        <div style="width: 100px;">
                            <label for="people" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">People</label>
                            <input type="number" name="people" id="people" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                         </div>
 
-                        <div style="margin: 10px; width: 100px;">
+                        <div style="width: 100px;">
                            <label for="bed" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">Bed</label>
                            <input type="number" name="bed" id="bed" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                         </div>
 
-                        <div style="margin: 10px; width: 100px;">
+                        <div style="width: 100px;">
                            <label for="bathtub" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300">Bathtub</label>
                            <input type="number" name="bathtub" id="bathtub" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                         </div>
@@ -584,7 +579,7 @@ $db_handle = new DBController();
                      </div>
                      <div style="margin-top: 8px !important">
                         <label for="description" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Description</label>
-                        <textarea cols="40" rows="5" type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Luxury bedroom..." required></textarea>
+                        <textarea cols="40" rows="5" type="text" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white h-20" placeholder="Luxury bedroom..." required></textarea>
                      </div>
                      <div style="margin-top: 8px !important">
                         <label for="price" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Unit price</label>
@@ -671,7 +666,7 @@ $db_handle = new DBController();
                                  else $trangthai = 'Trống';
                                  echo '
                               <tr class="text-center whitespace-nowrap">
-                                 <td class="px-6 py-4 text-sm text-gray-500">
+                                 <td class="px-6 py-4 text-sm text-gray-500 txt-over">
                                  <div class="text-sm text-gray-900">
                                  ' . $row['tenphong'] . '
                                     </div>
@@ -754,10 +749,10 @@ $db_handle = new DBController();
             </div>
          </div>
          <div class="flex flex-wrap justify-center">
-            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+            <div class="w-full md:w-1/2 xl:w-1/3 p-5">
                <!--Metric Card-->
 
-               <div style="display: flex;">
+               <div class="flex items-center">
                   <div class="search-statistical js-search-statistical active">Total</div>
                   <div class="search-statistical js-search-statistical">moth</div>
                   <div class="search-statistical js-search-statistical">week</div>
@@ -832,10 +827,10 @@ $db_handle = new DBController();
                </div>
                <!--/Metric Card-->
             </div>
-            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+            <div class="w-full md:w-1/2 xl:w-1/3 p-5">
                <!--Metric Card-->
 
-               <div style="display: flex;">
+               <div class="flex items-center">
                   <div class="search-statistical js-search-statistical active">Total</div>
                   <div class="search-statistical js-search-statistical">Moth</div>
                   <div class="search-statistical js-search-statistical">Week</div>
@@ -900,13 +895,15 @@ $db_handle = new DBController();
                </div>
                <!--/Metric Card-->
             </div>
-            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+            <div class="w-full md:w-1/2 xl:w-1/3 p-5">
                <!--Metric Card-->
-               <form action="" class="search-statistical" style="display: flex; background-color: #f3f4f6;" method="GET">
-                  <!-- <input type="hidden" name="q" id="" value="statistical">
-                        <input name="searchStatisRoom" class="search-statistical" style="width:300px ;" placeholder="search room"></input>
-                        <button class="search-statistical" name="search">Search</button> -->
-               </form>
+               <div class="flex items-center">
+                  <div class="search-statistical js-search-statistical active">Total</div>
+                  <div class="search-statistical js-search-statistical">Standard</div>
+                  <div class="search-statistical js-search-statistical">Superior</div>
+                  <div class="search-statistical js-search-statistical">Deluxe</div>
+                  <div class="search-statistical js-search-statistical">Suite</div>
+               </div>
 
                <div class="bg-gradient-to-b from-yellow-200 to-yellow-100 border-b-4 border-yellow-600 rounded-lg shadow-xl p-5">
                   <div class="flex flex-row items-center">
@@ -931,7 +928,7 @@ $db_handle = new DBController();
             <!--/Metric Card-->
          </div>
          <div class="flex flex-row flex-wrap flex-grow mt-2">
-            <div class="w-full p-6">
+            <div class="w-full p-5">
                <!--Graph Card-->
                <div class="bg-white border-transparent rounded-lg shadow-xl">
                   <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
@@ -1029,20 +1026,27 @@ $db_handle = new DBController();
                      </script>
                   </div>
 
-                  <form action="" method="GET">
+                  <form action="" method="GET" class="flex items-center flex-wrap p-5 gap-x-6 gap-y-3 justify-center md:justify-start">
                      <input type="hidden" name="q" id="" value="statistical">
 
-                     <label for="">Select item statistics: </label>
-                     <input type="radio" name="typeStatis" id="5year" value="1" <?php echo $typeStatis == 1 ? 'checked' : ""; ?>>
-                     <label for="5year">Year </label>
+                     <label class="statistics-responsive font-bold text-xl md:" for="">Statistics According: </label>
 
-                     <input type="radio" name="typeStatis" id="12month" value="2" <?php echo $typeStatis == 2 ? 'checked' : ""; ?>>
-                     <label for="12month">Month </label>
+                     <div class="hover:bg-blue-400 ring-1 hover:text-white rounded-2xl p-3 text-center w-24">
+                        <input type="radio" name="typeStatis" id="5year" value="1" <?php echo $typeStatis == 1 ? 'checked' : ""; ?>>
+                        <label for="5year">Year </label>
+                     </div>
 
-                     <input type="radio" name="typeStatis" id="30day" value="3" <?php echo $typeStatis == 3 ? 'checked' : ""; ?>>
-                     <label for="30day">Day</label>
+                     <div class="hover:bg-blue-400 ring-1 hover:text-white rounded-2xl p-3 text-center w-24">
+                        <input type="radio" name="typeStatis" id="12month" value="2" <?php echo $typeStatis == 2 ? 'checked' : ""; ?>>
+                        <label for="12month">Month </label>
+                     </div>
 
-                     <input class="search-statistical" type="submit" name="statis" value="Statistical" id="">
+                     <div class="hover:bg-blue-400 ring-1 hover:text-white rounded-2xl p-3 text-center w-24">
+                        <input type="radio" name="typeStatis" id="30day" value="3" <?php echo $typeStatis == 3 ? 'checked' : ""; ?>>
+                        <label for="30day">Day</label>
+                     </div>
+
+                     <input class="rounded-2xl p-3 hover:text-white bg-blue-500 hover:bg-blue-400 active:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-inner w-4/6 sm:w-auto" type="submit" name="statis" value="STATISTICAL" id="">
                   </form>
 
                </div>
@@ -1079,8 +1083,6 @@ $db_handle = new DBController();
          location.reload();
       }
 
-
-
       function getLocation() {
          switch (action) {
             case 'deleteAcount':
@@ -1098,7 +1100,7 @@ $db_handle = new DBController();
 
    <script>
       // *SHOW DATA BUTTON FROM SIDEBAR
-            
+
       let buttonShowAccount = document.querySelector('.js-show-account')
       let buttonShowEmploy = document.querySelector('.js-show-employ')
       let buttonShowRoom = document.querySelector('.js-show-room')

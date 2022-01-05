@@ -7,34 +7,39 @@
 }
 
 .search-statistical {
-   background-color: rgb(63, 81, 163); 
+   background-color: rgb(63, 81, 163);
    color: #fff;
-   margin: 0 4px 2px 4px; 
-   width:100px ; 
-   height: 30px; 
+   margin: 0 4px 2px 4px;
+   width: 100px;
+   height: 30px;
    text-align: center;
+   border-top-right-radius: 10px;
+   border-top-left-radius: 10px;
 }
 
 .search-statistical:hover {
-   background-color: rgb(39, 63, 173); 
+   background-color: rgb(39, 63, 173);
    color: rgb(0, 0, 0);
    cursor: pointer;
 }
 
 .active {
-   background-color: rgb(0, 0, 0); 
+   background-color: rgb(0, 0, 0);
    color: #fff;
 }
 
 .txt-over {
-   width: 100px;
+   min-width: 100px;
+   word-break: break-all;
    text-overflow: ellipsis;
    overflow: hidden;
+   max-width: 200px;
 }
 
 .txt-over:hover {
    overflow: visible;
-   white-space: nowrap;
+   word-break: break-all;
+   white-space: initial;
 }
 
 .w-300 {
@@ -141,6 +146,11 @@ table.dataTable.no-footer {
       display: flex;
       justify-content: space-between;
    }
+
+   .statistics-responsive {
+      flex: 100%;
+      text-align: center;
+   }
 }
 
 @media screen and (max-width: 640px) {
@@ -154,6 +164,7 @@ table.dataTable.no-footer {
    .container {
       max-width: 100%;
    }
+
 }
 
 
