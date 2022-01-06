@@ -17,14 +17,14 @@ if (isset($_GET['search1'])) {
    if (isset($_GET['vitri2']))
       $queryRoom .= " and vitri like '%phố%'";
 
-   if (isset($_GET['sao'])){
+   if (isset($_GET['sao'])) {
       $queryComment = "SELECT * FROM phanhoi";
       $conn = $db_handle->connectDB();
       $result2 = $conn->query($queryComment);
       if ($result2->num_rows > 0) {
          while ($row = $result2->fetch_assoc()) {
             if ($row['sosao'] == '5') {
-               $queryRoom .= " and idphong = ".$row['idphong'];
+               $queryRoom .= " and idphong = " . $row['idphong'];
             }
          }
       }
@@ -39,7 +39,7 @@ if (isset($_GET['search1'])) {
 
 if (isset($_GET['search2'])) {
    $price = '';
-   if(isset($_GET['price']))
+   if (isset($_GET['price']))
       $price = $_GET['price'];
 
    switch ($price) {
@@ -68,7 +68,7 @@ if (isset($_GET['typeRoom'])) {
    $typeRoom = $_GET['typeRoom'];
    if ($typeRoom != 'all')
       $queryRoom .= "and idloaiphong = " . $typeRoom;
-   else 
+   else
       $queryRoom .= "and idloaiphong > 0";
 }
 
@@ -116,9 +116,32 @@ if ($result)
             ' . number_format($row['dongia']) . ' VNĐ
             </div>
          </div>
-         <div class="eval">
+         <div class="justify-end eval">
+            <div class="flex flex-col">
             <div>
-               <p>Lấy Ra Sao</p>
+            <div class="rating-star">
+               <input id="star10" name="rating" type="radio" value="10" />
+               <label for="star10"></label>
+               <input id="star9" name="rating" type="radio" value="9" />
+               <label for="star9" class="half"></label>
+               <input id="star8" name="rating" type="radio" value="8" />
+               <label for="star8"></label>
+               <input id="star7" name="rating" type="radio" value="7" />
+               <label for="star7" class="half"></label>
+               <input id="star6" name="rating" type="radio" value="6" />
+               <label for="star6"></label>
+               <input id="star5" name="rating" type="radio" value="5" />
+               <label for="star5" class="half"></label>
+               <input id="star4" name="rating" type="radio" value="4" />
+               <label for="star4"></label>
+               <input id="star3" name="rating" type="radio" value="3" />
+               <label for="star3" class="half"></label>
+               <input id="star2" name="rating" type="radio" value="2" />
+               <label for="star2"></label>
+               <input id="star1" name="rating" type="radio" value="1" />
+               <label for="star1" class="half"></label>
+            </div>
+            </div>
                <p>Tính Trung binh điểm</p>
             </div>
             <a href="">BOOK</a>

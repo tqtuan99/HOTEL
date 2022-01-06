@@ -38,7 +38,7 @@ $db_handle = new DBController();
    <div class="web-room">
       <div class="container">
          <div class="show-room">
-            <form id='formSearch' class="sidebar"  method="GET" action="#">
+            <form id='formSearch' class="sidebar flex"  method="GET" action="#">
                <div class="search-room">
                   <div class="search__container--item ">
                      <div>
