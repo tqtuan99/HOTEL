@@ -1,0 +1,129 @@
+* {
+   text-decoration: none;
+   box-sizing: border-box;
+   --tw-bg-opacity: 1;
+}
+
+/* ? SIDEBAR */
+.sidebar .sidebar-content {
+   background-color: #0093E9;
+   background-image: linear-gradient(157deg, #0093E9 0%, #58ccc0 100%);
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.hovered {
+   background-color: white;
+   border-top-left-radius: 50px;
+   border-bottom-left-radius: 50px;
+}
+
+.sidebar ul li:hover i,
+.sidebar ul li.hovered i {
+   color: yellowgreen;
+}
+
+.sidebar ul li:hover span {
+   color: yellowgreen;
+}
+
+.sidebar ul li:hover a::before,
+.sidebar ul li.hovered a::before {
+   content: '';
+   position: absolute;
+   top: -40px;
+   right: 0;
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   box-shadow: 23px 23px 0 5px white;
+   background: transparent;
+}
+
+.sidebar ul li:hover a::after,
+.sidebar ul li.hovered a::after {
+   content: '';
+   position: absolute;
+   bottom: -40px;
+   right: 0;
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   box-shadow: 23px -23px 0 5px white;
+   background: transparent;
+}
+
+/* ?Responsive TableData*/
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+   padding: 0 0 10px 0;
+}
+
+table.dataTable.no-footer {
+   margin-bottom: 20px;
+   width: 100% !important;
+}
+
+.dataTables_wrapper {
+   overflow-x: auto;
+}
+
+@media screen and (max-width: 767px) {
+   .dataTables_wrapper .dataTables_paginate {
+      margin-top: 0.5em;
+      display: flex;
+      justify-content: space-between;
+   }
+
+   .statistics-responsive {
+      flex: 100%;
+      text-align: center;
+   }
+}
+
+@media screen and (max-width: 640px) {
+   .dataTables_wrapper .dataTables_filter {
+      margin-bottom: 0.5em;
+      margin-top: 0 !important;
+   }
+}
+
+@media (min-width: 768px) {
+   .container {
+      max-width: 100%;
+   }
+
+}
+
+.txt-over {
+   min-width: 100px;
+   word-break: break-all;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   max-width: 200px;
+}
+
+.txt-over:hover {
+   overflow: visible;
+   word-break: break-all;
+   white-space: initial;
+}
+
+.payment {
+   display: block;
+}
+
+.room-detail {
+   display: none;
+}
+
+.room {
+   margin-left: 16px;
+   width: calc(20% - 16px);
+   height: 200px;
+}
+.room img {
+   height: 100px;
+   width: 70%;
+   margin: 0 auto;
+   color: #0093E9;
+}
