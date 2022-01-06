@@ -22,9 +22,11 @@
    color: yellowgreen;
 }
 
-.sidebar ul li:hover span {
+.sidebar ul li:hover span,
+.sidebar ul li.hovered span {
    color: yellowgreen;
 }
+
 
 .sidebar ul li:hover a::before,
 .sidebar ul li.hovered a::before {
@@ -109,7 +111,7 @@ table.dataTable.no-footer {
 }
 
 .payment {
-   display: block;
+   display: none;
 }
 
 .room-detail {

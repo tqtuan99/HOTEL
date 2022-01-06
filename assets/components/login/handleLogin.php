@@ -43,17 +43,14 @@ if (isset($_POST["submit"])) {
                   $kq = $conn->query($sql1);
                   if($kq->num_rows > 0){
                      $row1 = $kq->fetch_assoc();
-                     if($row1['chuvu'] == 1){
+                     if($row1['chucvu'] == 1){
                         $_SESSION['admin'] = 'yes';
                         header("Location: ../../admin/adminHome.php");
                      }
                      else {
-                        $_SESSION['admin'] = 'yes';
-
                         $_SESSION['employee'] = 'yes';
-                        header("Location: ../../admin/adminHome.php");
+                        header("Location: ../../employee/employee.php");
                      }
-
                   }
                   else
                      header("Location: ../../../index.php");

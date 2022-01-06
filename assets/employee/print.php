@@ -377,161 +377,104 @@
 
 <body>
    <?php
-   ob_start();
-   include('db.php');
-
-   $pid = $_GET['pid'];
-   $sql = "select * from payment where id = '$pid' ";
-   $re = mysqli_query($con, $sql);
-   while ($row = mysqli_fetch_array($re)) {
-      $id = $row['id'];
-      $title = $row['title'];
-      $fname = $row['fname'];
-      $lname = $row['lname'];
-      $troom = $row['troom'];
-      $bed = $row['tbed'];
-      $nroom = $row['nroom'];
-      $cin = $row['cin'];
-      $cout = $row['cout'];
-      $meal = $row['meal'];
-      $ttot = $row['ttot'];
-      $mepr = $row['mepr'];
-      $btot = $row['btot'];
-      $fintot = $row['fintot'];
-      $days = $row['noofdays'];
-   }
-
-   $type_of_room = 0;
-   if ($troom == "Superior Room") {
-      $type_of_room = 320;
-   } else if ($troom == "Deluxe Room") {
-      $type_of_room = 220;
-   } else if ($troom == "Guest House") {
-      $type_of_room = 180;
-   } else if ($troom == "Single Room") {
-      $type_of_room = 150;
-   }
-
-   if ($bed == "Single") {
-      $type_of_bed = $type_of_room * 1 / 100;
-   } else if ($bed == "Double") {
-      $type_of_bed = $type_of_room * 2 / 100;
-   } else if ($bed == "Triple") {
-      $type_of_bed = $type_of_room * 3 / 100;
-   } else if ($bed == "Quad") {
-      $type_of_bed = $type_of_room * 4 / 100;
-   } else if ($bed == "None") {
-      $type_of_bed = $type_of_room * 0 / 100;
-   }
-
-   if ($meal == "Room only") {
-      $type_of_meal = $type_of_bed * 0;
-   } else if ($meal == "Breakfast") {
-      $type_of_meal = $type_of_bed * 2;
-   } else if ($meal == "Half Board") {
-      $type_of_meal = $type_of_bed * 3;
-   } else if ($meal == "Full Board") {
-      $type_of_meal = $type_of_bed * 4;
-   }
-
+   include('../components/handle/configDB.php');
+   $id = '0';
+   if(isset($_GET['id']))
+      $id = $_GET['id'];
+   $sql = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, khachhang.*, count(*) as soluong,  hoadon.*, phong.*, timediff(ngaythanhtoan,ngaytao) as ngayo, nhanvien.hotennv ,ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2) as tongtien 
+            FROM ((((hoadon 
+                     left JOIN khachhang on hoadon.idkh = khachhang.idkhachhang)
+                     left JOIN nhanvien on hoadon.idnv = nhanvien.idnhanvien)
+                     left JOIN phong  on phong.idphong = hoadon.idphong)
+                     left JOIN loaiphong on loaiphong.idloaiphong = phong.idloaiphong)
+            WHERE idhoadon = '.$id;
+   $re = $conn->query($sql);
+   if($re)
+      $row = $re->fetch_assoc();
    ?>
    <header>
       <h1>Invoice</h1>
       <address>
-         <p>SUN RISE HOTEL,</p>
-         <p>New Kalmunani Road,<br>Battialoa,<br>Sri Lanka.</p>
-         <p>(+94) 65 222 44 55</p>
+         <p>KLT HOTEL,</p>
+         <p>56 - 58 Nguyen Thuat Street, <br> Hoa An, Cam Le, Da Nang.</p>
+         <p>+84 385 555 555</p>
+         <p>klthotel2021@gmail.com</p>
       </address>
       <span><img alt="" src="assets/img/sun.png"></span>
    </header>
    <article>
-      <h1>Recipient</h1>
-      <address>
-         <p><?php echo $title . $fname . " " . $lname ?> <br></p>
-      </address>
-      <table class="meta">
-         <tr>
-            <th><span>Invoice #</span></th>
-            <td><span><?php echo $id; ?></span></td>
-         </tr>
-         <tr>
-            <th><span>Date</span></th>
-            <td><span><?php echo $cout; ?> </span></td>
-         </tr>
+      <div >
 
-      </table>
+         <h1>Recipient</h1>
+         <div>
+            <p>Information: <?php echo $row['hoten'] ?> </p>
+            <hr>
+            <p>Phone: <?php echo $row['sodienthoai'] ?> </p>
+            <hr>
+            <p>Email: <?php echo $row['email'] ?> </p>
+            <hr>
+            <p>Cashier: <?php echo $row['hotennv'] ?> <br></p>
+         </div>
+         <table class="meta">
+            <tr>
+               <th><span>Invoice #</span></th>
+               <td><span><?php echo $id; ?></span></td>
+            </tr>
+            <tr>
+               <th><span>Create Date</span></th>
+               <td><span><?php echo date("H:i:s d/m/Y"); ?> </span></td>
+            </tr>
+   
+         </table>
+      </div>
       <table class="inventory">
          <thead>
             <tr>
-               <th><span>Item</span></th>
-               <th><span>No of Days</span></th>
-               <th><span>Rate</span></th>
+               <th><span>Room</span></th>
+               <th><span>CheckIn</span></th>
+               <th><span>CheckOut</span></th>
                <th><span>Quantity</span></th>
+               <th><span>No of Days</span></th>
                <th><span>Price</span></th>
             </tr>
          </thead>
          <tbody>
             <tr>
-               <td><span><?php echo $troom; ?></span></td>
-               <td><span><?php echo $days; ?> </span></td>
-               <td><span data-prefix>$</span><span><?php echo $type_of_room; ?></span></td>
-               <td><span><?php echo $nroom; ?> </span></td>
-               <td><span data-prefix>$</span><span><?php echo $ttot; ?></span></td>
+               <td><span><?php echo $row['tenphong']; ?></span></td>
+               <td><span><?php echo $row['ngaytao']; ?> </span></td>
+               <td><span><?php echo $row['ngaythanhtoan']; ?> </span></td>
+               <td><span><?php echo $row['soluong']; ?> </span></td>
+               <td><span><?php echo $row['ngayo']; ?> </span></td>
+               <td><span><?php echo $row['dongia']; ?> VNĐ/ngày </span></td>
             </tr>
-            <tr>
-               <td><span><?php echo $bed; ?> Bed </span></td>
-               <td><span><?php echo $days; ?></span></td>
-               <td><span data-prefix>$</span><span><?php echo $type_of_bed; ?></span></td>
-               <td><span><?php echo $nroom; ?> </span></td>
-               <td><span data-prefix>$</span><span><?php echo $btot; ?></span></td>
-            </tr>
-            <tr>
-               <td><span><?php echo $meal; ?> </span></td>
-               <td><span><?php echo $days; ?></span></td>
-               <td><span data-prefix>$</span><span><?php echo $type_of_meal ?></span></td>
-               <td><span><?php echo $nroom; ?> </span></td>
-               <td><span data-prefix>$</span><span><?php echo $mepr; ?></span></td>
-            </tr>
+            
          </tbody>
       </table>
 
       <table class="balance">
          <tr>
             <th><span>Total</span></th>
-            <td><span data-prefix>$</span><span><?php echo $fintot; ?></span></td>
+            <td><span data-prefix></span><span><?php echo $row['tongtien']; ?> VNĐ</span></td>
          </tr>
          <tr>
-            <th><span>Amount Paid</span></th>
-            <td><span data-prefix>$</span><span>0.00</span></td>
+            <th><span>Promotion</span></th>
+            <td><span data-prefix></span><span>0</span>%</td>
          </tr>
          <tr>
-            <th><span>Balance Due</span></th>
-            <td><span data-prefix>$</span><span><?php echo $fintot; ?></span></td>
+            <th><span>Money Pay</span></th>
+            <td><span data-prefix></span><span><?php echo $row['tongtien']; ?> VNĐ</span></td>
          </tr>
       </table>
    </article>
    <aside>
       <h1><span>Contact us</span></h1>
       <div>
-         <p align="center">Email :- info@sunrise.com || Web :- www.sunrise.com || Phone :- +94 65 222 44 55 </p>
+         <p align="center">Email : klthotel2021@gmail.com || Web : www.klthotel.com || Phone : +84 385 555 555 </p>
       </div>
    </aside>
 </body>
 
 </html>
 <?php
-$free = "Free";
-$nul = null;
-$rpsql = "UPDATE `room` SET `place`='$free',`cusid`='$nul' where `cusid`='$id'";
-if (mysqli_query($con, $rpsql)) {
-   $delsql = "DELETE FROM `roombook` WHERE id='$id' ";
-
-   if (mysqli_query($con, $delsql)) {
-   }
-}
-?>
-<?php
-
-ob_end_flush();
 
 ?>

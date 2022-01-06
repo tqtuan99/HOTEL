@@ -27,7 +27,7 @@
                   Hoa An, Cam Le, Da Nang<br>
                   Viet Nam <br>
                   <strong>Phone:</strong> <a class="text-blue-200 hover:underline hover:text-blue-400" href="tel:+84 385 555 555">+84 385 555 555</a> <br>
-                  <strong>Email:</strong> <a class="text-blue-200 hover:underline hover:text-blue-400" href="mailto:infohotel@gmail.com">infohotel@gmail.com</a>
+                  <strong>Email:</strong> <a class="text-blue-200 hover:underline hover:text-blue-400" href="mailto:infohotel@gmail.com">klthotel2021@gmail.com</a>
                </p>
 
                <div class="relative w-20 h-20 mx-auto my-12 bg-blue-300 rotate-45">
