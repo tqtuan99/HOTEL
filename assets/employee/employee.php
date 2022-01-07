@@ -2,8 +2,8 @@
 if (session_id() === "")
    session_start();
 
-if (isset($_SESSION['employee'])) {
-} else header('Location: ../../notFound.php');
+// if (isset($_SESSION['employee'])) {
+// } else header('Location: ../../notFound.php');
 
 if (isset($_SESSION['idUser']))
    $id = $_SESSION['idUser'];
@@ -245,7 +245,7 @@ require_once("../components/handle/configDB.php");
                      <a href="?q=booking" class="js-show-data block py-1 md:py-3 lg:pl-3 align-middle text-white no-underline">
                         <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-white block md:inline-block font-bold lg:leading-loose">Booking</span>
                      </a>
-                     <span  style="margin-left: 6.3rem; margin-top: 0.15rem;" class="absolute inset-0 object-right-top">
+                     <span  style="margin-left: 6.3rem; margin-top: 0.15rem;" class="absolute inset-0 object-right-top w-4 h-4">
                         <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
                            <?php
                               $query = 'SELECT COUNT(*) as soluong FROM hoadon where trangthai = 2';
@@ -442,7 +442,7 @@ require_once("../components/handle/configDB.php");
                                     </td>
                                     <td class="w-28 px-6 py-4">
                                        <div class="text-sm text-gray-900">
-                                          <img style="height:50px; margin-left: 20px;" src="../photo/avatar/' . $avatar . '" alt="">
+                                          <img class="h-10 w-10 m-auto" src="../photo/avatar/' . $avatar . '" alt="">
                                        </div>
                                     </td>
                                     <td class="w-28 px-6 py-4">

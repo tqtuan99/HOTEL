@@ -29,7 +29,7 @@ zoomBoxes.forEach(function (image) {
          // Update styles w/actual size
          Object.assign(image.style, {
             backgroundPosition: xPercent + ' ' + yPercent,
-            backgroundSize: imageWidth + 'px'
+            backgroundSize: imageWidth *5 + 'px'
          });
       };
 

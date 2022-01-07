@@ -2,7 +2,7 @@
 :root {
    --primary: #08aeea;
    --secondary: #13D2B8;
-   --purple: #bd93f9;
+   --purple: #b226b2;
    --pink: #ff6bcb;
    --blue: #8be9fd;
    --gray: #333;
@@ -117,4 +117,3 @@ textarea {
    text-shadow: 0px 0 5px rgba(220, 235, 15, 0.28);
    color: var(--purple);
 }
-
