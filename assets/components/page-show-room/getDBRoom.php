@@ -78,7 +78,7 @@ if ($result)
       while ($row = $result->fetch_assoc()) {
          echo '
                <div class="row-content">
-      <div class="image-room" style="background-image: url(../../photo/room/' . $row['tenphong'] . ');">
+      <div class="image-room" style="background-image: url(../../photo/room/' . $row['anh'] . ');">
       </div>
       <div class="row-text">
          <div class="info">
@@ -119,32 +119,17 @@ if ($result)
          <div class="justify-end eval">
             <div class="flex flex-col">
             <div>
-            <div class="rating-star">
-               <input id="star10'.$row['idphong'].'" checked name="rating" type="radio" value="10" />
-               <label for="star10'.$row['idphong'].'"></label>
-               <input id="star9'.$row['idphong'].'" name="rating" type="radio" value="9" />
-               <label for="star9'.$row['idphong'].'" class="half"></label>
-               <input id="star8'.$row['idphong'].'" name="rating" type="radio" value="8" />
-               <label for="star8'.$row['idphong'].'"></label>
-               <input id="star7'.$row['idphong'].'" name="rating" type="radio" value="7" />
-               <label for="star7'.$row['idphong'].'" class="half"></label>
-               <input id="star6'.$row['idphong'].'" name="rating" type="radio" value="6" />
-               <label for="star6'.$row['idphong'].'"></label>
-               <input id="star5'.$row['idphong'].'" name="rating" type="radio" value="5" />
-               <label for="star5'.$row['idphong'].'" class="half"></label>
-               <input id="star4'.$row['idphong'].'" name="rating" type="radio" value="4" />
-               <label for="star4'.$row['idphong'].'"></label>
-               <input id="star3'.$row['idphong'].'" name="rating" type="radio" value="3" />
-               <label for="star3'.$row['idphong'].'" class="half"></label>
-               <input id="star2'.$row['idphong'].'" name="rating" type="radio" value="2" />
-               <label for="star2'.$row['idphong'].'"></label>
-               <input id="star1'.$row['idphong'].'" name="rating" type="radio" value="1" />
-               <label for="star1'.$row['idphong'].'" class="half"></label>
+            <div class="flex justify-end">
+               <i class="fas star fa-star"></i>
+               <i class="fas star fa-star"></i>
+               <i class="fas star fa-star"></i>
+               <i class="fas star fa-star"></i>
+               <i class="fas star fa-star"></i>
             </div>
             </div>
                <p>Tính Trung binh điểm</p>
             </div>
-            <a href="../room-detail/roomdetail.php?idRoom='.$row['idphong'].'">BOOK</a>
+            <a href="../room-detail/roomdetail.php?idRoom='.$row['idphong'].'">View More</a>
          </div>
       </div>
    </div>                          

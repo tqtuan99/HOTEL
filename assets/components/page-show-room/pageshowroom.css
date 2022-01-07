@@ -191,6 +191,12 @@
    margin-right: 10px;
 }
 
+.row-text .star {
+   color: yellow !important;
+   font-size: 20px !important;
+   margin: 0 !important;
+}
+
 .row-text .info .text-sp {
    position: relative;
    display: flex;
@@ -323,51 +329,4 @@ span {
 
 .ui-datepicker .ui-datepicker-header {
    background: repeating-linear-gradient(145deg, #1d7f1f, transparent 100px);
-}
-
-/* STAR */
-.rating-star {
-   display: inline-flex;
-   flex-direction: row-reverse;
-   float: right;
-}
-
-.rating-star input {
-   display: none;
-}
-
-.rating-star label {
-   color: #ccc;
-}
-
-.rating-star label:before {
-   font-family: "Font Awesome 5 Pro";
-   display: block;
-   font-size: 2rem;
-   margin: 0;
-   cursor: pointer;
-   font-weight: 900;
-   content: "★";
-   color: inherit;
-}
-
-.rating-star label.half {
-   width: 25px;
-   overflow: hidden;
-   position: relative;
-   margin-right: -25px;
-}
-
-.rating-star label.half:before {
-   content: "★";
-   position: absolute;
-   top: 0;
-   left: 0;
-   padding-right: 0;
-   width: 100%;
-}
-
-.rating-star input:checked~label:before {
-   text-shadow: 0px 0 5px rgba(255, 157, 180, 0.28);
-   color: yellow;
 }
