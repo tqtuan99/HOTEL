@@ -78,7 +78,7 @@ if ($result)
       while ($row = $result->fetch_assoc()) {
          echo '
                <div class="row-content">
-      <div class="image-room" style="background-image: url(../../image/destination-1.jpg);">
+      <div class="image-room" style="background-image: url(../../photo/room/' . $row['tenphong'] . ');">
       </div>
       <div class="row-text">
          <div class="info">
@@ -120,31 +120,31 @@ if ($result)
             <div class="flex flex-col">
             <div>
             <div class="rating-star">
-               <input id="star10" name="rating" type="radio" value="10" />
-               <label for="star10"></label>
-               <input id="star9" name="rating" type="radio" value="9" />
-               <label for="star9" class="half"></label>
-               <input id="star8" name="rating" type="radio" value="8" />
-               <label for="star8"></label>
-               <input id="star7" name="rating" type="radio" value="7" />
-               <label for="star7" class="half"></label>
-               <input id="star6" name="rating" type="radio" value="6" />
-               <label for="star6"></label>
-               <input id="star5" name="rating" type="radio" value="5" />
-               <label for="star5" class="half"></label>
-               <input id="star4" name="rating" type="radio" value="4" />
-               <label for="star4"></label>
-               <input id="star3" name="rating" type="radio" value="3" />
-               <label for="star3" class="half"></label>
-               <input id="star2" name="rating" type="radio" value="2" />
-               <label for="star2"></label>
-               <input id="star1" name="rating" type="radio" value="1" />
-               <label for="star1" class="half"></label>
+               <input id="star10'.$row['idphong'].'" checked name="rating" type="radio" value="10" />
+               <label for="star10'.$row['idphong'].'"></label>
+               <input id="star9'.$row['idphong'].'" name="rating" type="radio" value="9" />
+               <label for="star9'.$row['idphong'].'" class="half"></label>
+               <input id="star8'.$row['idphong'].'" name="rating" type="radio" value="8" />
+               <label for="star8'.$row['idphong'].'"></label>
+               <input id="star7'.$row['idphong'].'" name="rating" type="radio" value="7" />
+               <label for="star7'.$row['idphong'].'" class="half"></label>
+               <input id="star6'.$row['idphong'].'" name="rating" type="radio" value="6" />
+               <label for="star6'.$row['idphong'].'"></label>
+               <input id="star5'.$row['idphong'].'" name="rating" type="radio" value="5" />
+               <label for="star5'.$row['idphong'].'" class="half"></label>
+               <input id="star4'.$row['idphong'].'" name="rating" type="radio" value="4" />
+               <label for="star4'.$row['idphong'].'"></label>
+               <input id="star3'.$row['idphong'].'" name="rating" type="radio" value="3" />
+               <label for="star3'.$row['idphong'].'" class="half"></label>
+               <input id="star2'.$row['idphong'].'" name="rating" type="radio" value="2" />
+               <label for="star2'.$row['idphong'].'"></label>
+               <input id="star1'.$row['idphong'].'" name="rating" type="radio" value="1" />
+               <label for="star1'.$row['idphong'].'" class="half"></label>
             </div>
             </div>
                <p>Tính Trung binh điểm</p>
             </div>
-            <a href="">BOOK</a>
+            <a href="../room-detail/roomdetail.php?idRoom='.$row['idphong'].'">BOOK</a>
          </div>
       </div>
    </div>                          

@@ -1,3 +1,15 @@
+<?php  
+    if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')   
+         $url = "https://";   
+    else  
+         $url = "http://";   
+    // Append the host(domain name, ip) to the URL.   
+    $url.= $_SERVER['HTTP_HOST'];   
+    
+    // Append the requested resource location to the URL   
+    $url.= $_SERVER['REQUEST_URI'];    
+      
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,9 +94,9 @@
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0" data-aos="fade-left">
                <div class="ml-auto flex items-center">
                   <div id="js-login-logout" class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                     <a href="../../../../../HOTEL/assets/components/login/login.php" class="text-white hover:text-pink-300">Sign in</a>
+                     <a href="../../../../../HOTEL/assets/components/login/login.php?url=<?php echo $url ?>" class="text-white hover:text-pink-300">Sign in</a>
                      <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
-                     <a href="../../../../../hotel/assets/components/register/register.php" class="text-white hover:text-pink-300">Create account</a>
+                     <a href="../../../../../hotel/assets/components/register/register.php?url=<?php echo $url ?>" class="text-white hover:text-pink-300">Create account</a>
                   </div>
 
                   <div class="js-change-currency hidden lg:ml-8 lg:flex">
@@ -134,7 +146,7 @@
                            <span class="sr-only">, change currency</span>
                         </a>
                         <a href="#" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Personal Information</a>
-                        <a href="/./HOTEL/logout.php" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" onclick="return confirm('Are you sure?')" role="menuitem" tabindex="-1" id="user-menu-item-1">Log Out</a>
+                        <a href="/./HOTEL/logout.php?url=<?php echo $url ?>" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" onclick="return confirm('Are you sure?')" role="menuitem" tabindex="-1" id="user-menu-item-1">Log Out</a>
 
                      </div>
                   </div>

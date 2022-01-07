@@ -24,6 +24,54 @@ textarea {
 
 /* Main code */
 
+/* star comment */
+.rating-star-comment {
+   display: inline-flex;
+   flex-direction: row-reverse;
+}
+
+.rating-star-comment input {
+   display: none;
+}
+
+.rating-star-comment label {
+   color: #ccc;
+}
+
+.rating-star-comment label:before {
+   font-family: "Font Awesome 5 Pro";
+   display: block;
+   font-size: 3.5rem;
+   padding: 0.3rem 0.2rem;
+   margin: 0;
+   cursor: pointer;
+   font-weight: 900;
+   content: "★";
+   color: inherit;
+}
+
+.rating-star-comment label.half {
+   width: 25px;
+   overflow: hidden;
+   position: relative;
+   margin-right: -25px;
+}
+
+.rating-star-comment label.half:before {
+   content: "★";
+   position: absolute;
+   top: 0;
+   left: 0;
+   padding-right: 0;
+   width: 100%;
+}
+
+.rating-star-comment input:checked~label:before {
+   text-shadow: 0px 0 5px rgba(255, 157, 180, 0.28);
+   color: var(--purple);
+}
+
+/* show star */
 .rating-star {
    display: inline-flex;
    flex-direction: row-reverse;
@@ -66,6 +114,7 @@ textarea {
 }
 
 .rating-star input:checked~label:before {
-   text-shadow: 0px 0 5px rgba(255, 157, 180, 0.28);
+   text-shadow: 0px 0 5px rgba(220, 235, 15, 0.28);
    color: var(--purple);
 }
+
