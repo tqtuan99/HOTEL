@@ -26,7 +26,7 @@ if(isset($_GET['search'])){
              <div class="row-text" data-aos="slide-up" data-aos-duration="2500">
                 <span class="price">' . number_format($row['dongia']) . ' VNĐ</span>
                 <p class="room"> ' . $row['tenphong'] . '</p>
-                <p class="view"> <i class="fas fa-umbrella-beach"></i>' . $row['vitri'] . '</p>
+                <p class="view"> <i class="txt-over fas fa-umbrella-beach"></i>' . $row['vitri'] . '</p>
                 <ul>
                    <li>
                       <span class="fas fa-bath"></span>' . $row['sobontam'] . ' bồn tắm

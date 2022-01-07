@@ -206,6 +206,8 @@ $rowCus = $result->fetch_assoc();
          $queryBook = "INSERT INTO `hoadon`(`idkh`, `idphong`, `ngaytao`, `ngaythanhtoan`, `trangthai`) 
                         VALUES ($id, $idRoom, '$checkin', '$checkout',2)";
          $resultBook = $conn->query($queryBook);
+         $queryRoom = "UPDATE PHONG set trangthai = 2 where idphong = $idRoom";
+         $resultRoom = $conn->query($queryRoom);
          if($resultBook){
             echo "<script>alert('Book room successful!');
                   window.location.href = '../page-show-room/pageRoom.php';

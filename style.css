@@ -13,6 +13,12 @@ p {
    background-position: center center;
 }
 
+.txt-over {
+   word-break: break-all;
+   text-overflow: ellipsis;
+   overflow: hidden;
+}
+
 .info {
    display: flex;
 }

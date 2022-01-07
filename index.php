@@ -182,19 +182,18 @@ $db_handle = new DBController();
 
          <!-- show room in DB -->
          <?php
-         $queryRoom = "SELECT * FROM PHONG ORDER BY idloaiphong DES LIMIT 10 ";
+         $queryRoom = "SELECT * FROM PHONG ORDER BY idloaiphong DESC LIMIT 10 ";
          $conn = $db_handle->connectDB();
          $result = $conn->query($queryRoom);
          if ($result)
             if ($result->num_rows > 0) {
                while ($row = $result->fetch_assoc()) {
                   $imgRoom = $row['anh'] == "" ? 'room1.jpg' : $row['anh'];
-                  if ($row['idloaiphong'] == '5' || $row['idloaiphong'] == '6' || $row['idloaiphong'] == '7')
+                  if ($row['idloaiphong'] == 5 || $row['idloaiphong'] == 6 )
                      echo '
                      <div class="image-item">
                      <div class="image">
-                        <img src="./assets/photo/room/' . $imgRoom . '" alt="" clas
-                        ""zoom/>
+                        <img src="./assets/photo/room/' . $imgRoom . '" alt="" class="zoom"/>
                         <div class="item__content">
                            <div class="item_center">
                               <h1>' . $row['tenphong'] . '</h1>
@@ -263,7 +262,7 @@ $db_handle = new DBController();
             $avatarComment = null;
             $nameEmployee = null;
 
-            $queryComment = "SELECT * FROM phanhoi ORDER BY SOSAO DES LIMIT 10 ";
+            $queryComment = "SELECT * FROM phanhoi ORDER BY SOSAO DESC LIMIT 10 ";
             $conn = $db_handle->connectDB();
             $result = $conn->query($queryComment);
             if($result)
@@ -278,7 +277,7 @@ $db_handle = new DBController();
                      }
                      echo '
                   <div class="comment-row">
-                  <img src="./assets/photo/avatar/' . $avatarComment . '" class="avatar" alt="">
+                  <img class="rounded-2xl" src="./assets/photo/avatar/' . $avatarComment . '" class="avatar" alt="">
                   <div class="comment-text">
                      <b class="title">“' . $row['tieude'] . '”</b>
                      <p class="sub-title">“' . $row['noidung'] . '”</p>

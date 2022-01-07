@@ -145,7 +145,7 @@
                            CAD
                            <span class="sr-only">, change currency</span>
                         </a>
-                        <a href="#" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Personal Information</a>
+                        <a href="/./HOTEL/assets/profile/profile.html" target="_black" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Personal Information</a>
                         <a href="/./HOTEL/logout.php?url=<?php echo $url ?>" class="hover:text-pink-300 block px-4 py-2 text-sm text-gray-700" onclick="return confirm('Are you sure?')" role="menuitem" tabindex="-1" id="user-menu-item-1">Log Out</a>
 
                      </div>
