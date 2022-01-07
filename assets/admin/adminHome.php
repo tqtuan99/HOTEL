@@ -526,7 +526,7 @@ $db_handle = new DBController();
                      <h3 class="text-4xl text-center font-medium text-gray-900 dark:text-white">Add Room</h3>
                      <div>
                         <label for="roomName" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300">Room Name</label>
-                        <input type="text" name="roomName" id="roomName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="NORMAL PH101" required>
+                        <input type="text" name="roomName" id="roomName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Room name" required>
                      </div>
                      <div style="display: flex; align-items: center; margin-top: 12px;">
                         <label class="block text-sm font-medium text-gray-900 dark:text-gray-300">Type:</label>
@@ -538,9 +538,9 @@ $db_handle = new DBController();
                            if ($result->num_rows > 0) {
                               while ($row = $result->fetch_assoc()) {
                                  echo '
-                                          <input type="radio"  name="typeRoom" value="' . $row['idloaiphong'] . '" id="' . $row['tenloaiphong'] . '" 
-                                          class="bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                                                <label for="' . $row['tenloaiphong'] . '" class="block text-sm text-gray-900 dark:text-gray-300">' . $row['tenloaiphong'] . '</label>
+                                          <input  type="radio"  name="typeRoom" value="' . $row['idloaiphong'] . '" id="' . $row['tenloaiphong'] . '" 
+                                          class=" bg-gray-50 border w-40 -mr-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                                                <label  for="' . $row['tenloaiphong'] . '" class="capitalize block text-sm text-gray-900 dark:text-gray-300">' . $row['tenloaiphong'] . '</label>
                                           ';
                               }
                            }
