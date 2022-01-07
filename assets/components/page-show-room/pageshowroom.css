@@ -197,6 +197,13 @@
    margin: 0 !important;
 }
 
+.row-text .nostar {
+   color: yellow !important;
+   font-size: 20px !important;
+   font-weight: 50;
+   margin: 0 !important;
+}
+
 .row-text .info .text-sp {
    position: relative;
    display: flex;

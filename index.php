@@ -182,7 +182,7 @@ $db_handle = new DBController();
 
          <!-- show room in DB -->
          <?php
-         $queryRoom = "SELECT * FROM PHONG";
+         $queryRoom = "SELECT * FROM PHONG ORDER BY idloaiphong DES LIMIT 10 ";
          $conn = $db_handle->connectDB();
          $result = $conn->query($queryRoom);
          if ($result)
@@ -262,9 +262,10 @@ $db_handle = new DBController();
             $avatarComment = null;
             $nameEmployee = null;
 
-            $queryComment = "SELECT * FROM phanhoi";
+            $queryComment = "SELECT * FROM phanhoi ORDER BY SOSAO DES LIMIT 10 ";
             $conn = $db_handle->connectDB();
             $result = $conn->query($queryComment);
+            if($result)
             if ($result->num_rows > 0) {
                while ($row = $result->fetch_assoc()) {
                   if ($row['sosao'] == '5' || $row['sosao'] == '4') {

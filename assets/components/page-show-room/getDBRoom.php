@@ -72,10 +72,66 @@ if (isset($_GET['typeRoom'])) {
       $queryRoom .= "and idloaiphong > 0";
 }
 
+$star = '';
+$ngayden = '';
 $result = $conn->query($queryRoom);
 if ($result)
    if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
+         $queryAvg = 'SELECT avg(phanhoi.sosao) as avg from phong, phanhoi WHERE phong.idphong = phanhoi.idphong and phong.idphong = '.$row['idphong'];
+         $queryHoaDon = 'SELECT * from phong, hoadon WHERE phong.idphong = hoadon.idphong and hoadon.trangthai = 2 and phong.idphong = '.$row['idphong'];
+         $resultHD = $conn->query($queryHoaDon);
+         if($resultHD){
+            if($rowHD = $resultHD->fetch_assoc()){
+               $ngayden = '';
+               $ngayden .= ' <p class="text-red-600 text-sm mt-2">';
+               $ngayden .= gmdate("d/m ", strtotime($rowHD['ngaytao']));
+               $ngayden .= ' - ';
+               $ngayden .= gmdate("d/m ", strtotime($rowHD['ngaythanhtoan']));
+               $ngayden .= 'hết phòng</p>';
+            }
+            else $ngayden = '';
+         }else $ngayden = '';
+
+
+         $resultAvg = $conn->query($queryAvg);
+         $rowStar = $resultAvg->fetch_assoc();
+         $avgStar = number_format($rowStar['avg'],0);
+         $avgCore = number_format($rowStar['avg']*2,2);
+
+         if($avgStar== 1) {
+            $star = '<i class="fas star fa-star"></i>
+            <i class="fas nostar fa-star"></i>
+            <i class="fas nostar fa-star"></i>
+            <i class="fas nostar fa-star"></i>
+            <i class="fas nostar fa-star"></i>';
+         }else if($avgStar== 2 ){
+            $star = '<i class="fas star fa-star"></i>
+            <i class="fas star fa-star"></i>
+            <i class="fas nostar fa-star"></i>
+            <i class="fas nostar fa-star"></i>
+            <i class="fas nostar fa-star"></i>';
+         }else if($avgStar== 3){
+            $star = '<i class="fas star fa-star"></i>
+            <i class="fas star fa-star"></i>
+            <i class="fas star fa-star"></i>
+            <i class="fas nostar fa-star"></i>
+            <i class="fas nostar fa-star"></i>';
+         }else if($avgStar== 4){
+            $star = '<i class="fas star fa-star"></i>
+            <i class="fas star fa-star"></i>
+            <i class="fas star fa-star"></i>
+            <i class="fas star fa-star"></i>
+            <i class="fas nostar fa-star"></i>';
+         }else{
+            $star = '<i class="fas star fa-star"></i>
+            <i class="fas star fa-star"></i>
+            <i class="fas star fa-star"></i>
+            <i class="fas star fa-star"></i>
+            <i class="fas star fa-star"></i>';
+
+         }
+
          echo '
                <div class="row-content">
       <div class="image-room" style="background-image: url(../../photo/room/' . $row['anh'] . ');">
@@ -118,16 +174,12 @@ if ($result)
          </div>
          <div class="justify-end eval">
             <div class="flex flex-col">
-            <div>
-            <div class="flex justify-end">
-               <i class="fas star fa-star"></i>
-               <i class="fas star fa-star"></i>
-               <i class="fas star fa-star"></i>
-               <i class="fas star fa-star"></i>
-               <i class="fas star fa-star"></i>
-            </div>
-            </div>
-               <p>Tính Trung binh điểm</p>
+               <div>
+                  <div class="flex justify-end">
+                     '.$star.'
+                  </div>
+               </div>
+               '.$ngayden.'
             </div>
             <a href="../room-detail/roomdetail.php?idRoom='.$row['idphong'].'">View More</a>
          </div>

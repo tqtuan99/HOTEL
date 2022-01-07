@@ -6,7 +6,9 @@ if (isset($_SESSION['idUser']))
    $id = $_SESSION['idUser'];
 else $id = "";
 
+$idcus = '';
 $idRoom = '';
+
 if (isset($_GET['idRoom']))
    $idRoom = $_GET['idRoom'];
 
@@ -14,18 +16,37 @@ require_once("../handle/dbcontroller.php");
 require_once("../handle/configDB.php");
 $db_handle = new DBController();
 
+if($id != ''){
+   $queryIdCus = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, khachhang.* 
+               FROM khachhang 
+               WHERE idtaikhoan = ' . $id;
+   $result = $conn->query($queryIdCus);
+   $rowidCus = $result->fetch_assoc();
+   $idcus = $rowidCus['idkhachhang'];
+}
 
-$query = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, count(idcomment) as soluong, phong.*, phanhoi.*, khachhang.* FROM PHONG, PHANHOI, khachhang WHERE PHONG.idphong = phanhoi.idphong and khachhang.idkhachhang = phanhoi.idkhachhang and phong.idphong = ' . $idRoom;
-$query5sao = 'SELECT count(idcomment) as sao5, phong.*, phanhoi.* FROM PHONG, PHANHOI WHERE PHONG.idphong = phanhoi.idphong and sosao = 5 and phong.idphong = ' . $idRoom;
-$query4sao = 'SELECT count(idcomment) as sao4, phong.*, phanhoi.* FROM PHONG, PHANHOI WHERE PHONG.idphong = phanhoi.idphong and sosao = 4 and phong.idphong = ' . $idRoom;
-$query3sao = 'SELECT count(idcomment) as sao3, phong.*, phanhoi.* FROM PHONG, PHANHOI WHERE PHONG.idphong = phanhoi.idphong and sosao = 3 and phong.idphong = ' . $idRoom;
-$query2sao = 'SELECT count(idcomment) as sao2, phong.*, phanhoi.* FROM PHONG, PHANHOI WHERE PHONG.idphong = phanhoi.idphong and sosao = 2 and phong.idphong = ' . $idRoom;
-$query1sao = 'SELECT count(idcomment) as sao1, phong.*, phanhoi.* FROM PHONG, PHANHOI WHERE PHONG.idphong = phanhoi.idphong and sosao = 1 and phong.idphong = ' . $idRoom;
+$query = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, count(idcomment) as soluong, phong.*, phanhoi.*, khachhang.* 
+            FROM PHONG, PHANHOI, khachhang 
+            WHERE PHONG.idphong = phanhoi.idphong and khachhang.idkhachhang = phanhoi.idkhachhang and phong.idphong = ' . $idRoom;
+$query5sao = 'SELECT count(idcomment) as sao5, phong.*, phanhoi.* 
+            FROM PHONG, PHANHOI 
+            WHERE PHONG.idphong = phanhoi.idphong and sosao = 5 and phong.idphong = ' . $idRoom;
+$query4sao = 'SELECT count(idcomment) as sao4, phong.*, phanhoi.* 
+            FROM PHONG, PHANHOI 
+            WHERE PHONG.idphong = phanhoi.idphong and sosao = 4 and phong.idphong = ' . $idRoom;
+$query3sao = 'SELECT count(idcomment) as sao3, phong.*, phanhoi.* 
+            FROM PHONG, PHANHOI 
+            WHERE PHONG.idphong = phanhoi.idphong and sosao = 3 and phong.idphong = ' . $idRoom;
+$query2sao = 'SELECT count(idcomment) as sao2, phong.*, phanhoi.* 
+            FROM PHONG, PHANHOI 
+            WHERE PHONG.idphong = phanhoi.idphong and sosao = 2 and phong.idphong = ' . $idRoom;
+$query1sao = 'SELECT count(idcomment) as sao1, phong.*, phanhoi.* 
+            FROM PHONG, PHANHOI 
+            WHERE PHONG.idphong = phanhoi.idphong and sosao = 1 and phong.idphong = ' . $idRoom;
 
 $result = $conn->query($query);
-if ($result)
-   $rowR = $result->fetch_assoc();
-$tongsao = $rowR['soluong'];
+$rowR = $result->fetch_assoc();
+$tongsao = $rowR['soluong']? $rowR['soluong']:1;
 
 $result = $conn->query($query5sao);
 $row5sao = $result->fetch_assoc();
@@ -97,16 +118,16 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
                <div class="detail-view rounded-2xl" style="background-image: url(../../photo/room/<?php echo $rowR['anh']; ?>); background-repeat: no-repeat; background-size: cover;">
                </div>
             </div>
-            <form class="flex justify-between shadow py-4 rounded rounded-lg">
+            <form action="./book.php" method="GET" class="flex justify-between shadow py-4 rounded rounded-lg">
                <div class="flex my-auto">
                   <div class="flex">
                      <div class="flex flex-col mr-20">
-                        <label for="" class="font-bold text-lg">Check In</label>
-                        <input type="datetime-local" name="" id="" required class="rounded-md border bg-green-600 p-2">
+                        <label for="checkin" class="font-bold text-lg">Check In</label>
+                        <input type="datetime-local" name="checkin" id="checkin" required class="rounded-md border bg-green-600 p-2">
                      </div>
                      <div class="flex flex-col">
-                        <label for="" class="font-bold text-lg">Check Out</label>
-                        <input type="datetime-local" name="" id="" required class="rounded-md border bg-green-600 p-2">
+                        <label for="checkout" class="font-bold text-lg">Check Out</label>
+                        <input type="datetime-local" name="checkout" id="checkout" required class="rounded-md border bg-green-600 p-2">
                      </div>
                   </div>
                </div>
@@ -118,6 +139,19 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
                </div>
             </form>
          </div>
+         <?php
+         // if(isset($_POST['book'])){
+         //    $checkin = $_POST['checkin'];
+         //    $checkout = $_POST['checkout'];
+         //    $idRoom = $_POST['idRoom'];
+
+         //    $queryCheck = "SELECT * FROM HOADON where hoadon.trangthai = 2 and datediff('$checkin',ngaythanhtoan) > 0 and idphong = $idRoom";
+         //    $resultCheck = $conn->query($queryCheck);
+         //    if($resultCheck->num_rows > 0) {
+         //       echo '<script>alert("The calendar you selected has been duplicated, please choose another one!");</script>';
+         //    } else echo "<script>window.location.href = './book.php?checkin=$checkin&checkout=$checkout&idRoom=$idRoom';</script>";
+         // }
+         ?>
 
          <div class="m-10 p-4 bg-white shadow-2xl rounded-full">
             <h3 class="text-xl text-center border-blue-200 border-b-4 uppercase text-purple-500">Reviews of Angle Hotel from real guests</h3>
@@ -343,7 +377,7 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
 
          <form method="GET" action="#" class="flex flex-col m-10 p-4 gap-y-4 bg-white shadow-2xl rounded-t-full">
             <input type="hidden" name='idRoom' value="<?php echo $idRoom ?>">
-            <input type="hidden" name='idCus' value="<?php echo $rowR['idkhachhang'] ?>">
+            <input type="hidden" name='idCus' value="<?php echo $idcus ?>">
             <h3 class="text-xl text-center border-blue-200 border-b-4 uppercase text-purple-500">
                Customer reviews and ratings for Angle Hotel</h3>
             <div class="flex flex-col">
@@ -384,7 +418,9 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
                <?php
                $queryComment = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, phong.*, phanhoi.*, khachhang.* 
                                     FROM PHONG, PHANHOI, khachhang 
-                                    WHERE PHONG.idphong = phanhoi.idphong and khachhang.idkhachhang = phanhoi.idkhachhang and phong.idphong = ' . $idRoom;
+                                    WHERE PHONG.idphong = phanhoi.idphong and khachhang.idkhachhang = phanhoi.idkhachhang and phong.idphong = ' . $idRoom .' 
+                                    ORDER BY thoigian DESC
+                                    LIMIT 10';
                $resultComment = $conn->query($queryComment);
                while ($rowComment = $resultComment->fetch_assoc()) {
                ?>
@@ -486,6 +522,11 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
 
       comment.onclick = function() {
          notification.style.display = 'none';
+      }
+   </script>
+   <script>
+      if (window.history.replaceState) {
+         window.history.replaceState(null, null, window.location.href);
       }
    </script>
    <script src="./roomdetail.js"></script>

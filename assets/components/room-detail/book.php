@@ -1,18 +1,30 @@
 <?php
 if (session_id() === "")
-   session_start();
-
-if (isset($_SESSION['idUser']))
-   $id = $_SESSION['idUser'];
-else $id = "";
-
-$idRoom = '';
-if (isset($_GET['idRoom']))
-   $idRoom = $_GET['idRoom'];
+session_start();
 
 require_once("../handle/dbcontroller.php");
 require_once("../handle/configDB.php");
 $db_handle = new DBController();
+
+if (isset($_SESSION['idUser']) )
+   $id = $_SESSION['idUser'];
+else header('location: ../login/login.php');
+
+$idRoom = '';
+$checkin = '';
+$checkout = '';
+
+if (isset($_GET['book'])){
+   $idRoom = $_GET['idRoom'];
+   $checkin = $_GET['checkin'];
+   $checkout = $_GET['checkout'];
+}
+
+
+$query = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, khachhang.* FROM khachhang where idtaikhoan = '.$id;
+$result = $conn->query($query);
+$rowCus = $result->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
@@ -48,30 +60,30 @@ $db_handle = new DBController();
                      <div class="flex flex-col">
                         <h3>Tên người liên hệ</h3>
                         <div>
-                           <input type="text" name="" id="" class="p-2 bg-gray-100 w-full rounded-xl" placeholder="Tran Van A">
+                           <input style="text-transform: capitalize;" value="<?php echo $rowCus['hoten'] ?>" type="text" name="" id="" class="p-2 bg-gray-100 w-full rounded-xl" placeholder="Tran Van A">
                         </div>
                         <h4 class="text-gray-300 text-sm italic">*Nhập tên như trên CMND/ hộ chiếu(không dấu)</h4>
                      </div>
                      <div class="flex gap-x-5">
                         <div class="w-1/2">
                            <h3>Số điện thoại</h3>
-                           <input type="tel" class="p-2 bg-gray-100 w-full rounded-xl" placeholder="123456789">
+                           <input value="<?php echo $rowCus['sodienthoai'] ?>" type="tel" class="p-2 bg-gray-100 w-full rounded-xl" placeholder="123456789">
                         </div>
                         <div class="w-1/2">
                            <h3>Email</h3>
-                           <input type="email" class="p-2 bg-gray-100 w-full rounded-xl" placeholder="user@gmail.com">
+                           <input value="<?php echo $rowCus['email'] ?>" type="email" class="p-2 bg-gray-100 w-full rounded-xl" placeholder="user@gmail.com">
                         </div>
                      </div>
-                     <form class="flex justify-between px-8 py-3">
+                     <div class="flex justify-between px-8 py-3">
                         <div>
-                           <input type="radio" name="" id="">
-                           <label for="">Tôi là khách lưu trú</label>
+                           <input type="radio" name="cus" id="cus1">
+                           <label for="cus1">Tôi là khách lưu trú</label>
                         </div>
                         <div>
-                           <input type="radio" name="" id="">
-                           <label for="">Tôi đặt cho người khác</label>
+                           <input type="radio" name="cus" id="cus2">
+                           <label for="cus2">Tôi đặt cho người khác</label>
                         </div>
-                     </form>
+                     </div>
                   </div>
 
                   <h3 class="font-bold text-xl">Chính sách huỷ phòng</h3>
@@ -83,25 +95,39 @@ $db_handle = new DBController();
                      </div>
                   </div>
 
+
+                  <?php
+                     $query = "SELECT phong.*, timediff('$checkout','$checkin') as ngayo, ROUND(TIME_TO_SEC(timediff('$checkout','$checkin'))*(phong.dongia/3600/24),2) as tongtien 
+                              FROM phong 
+                              WHERE phong.idphong =  ".$idRoom;
+                     $result = $conn->query($query);
+                     $rowRoom = $result->fetch_assoc();
+                  ?>
+
                   <h3 class="font-bold text-xl">Chi tiết giá</h3>
                   <div class="flex flex-col gap-y-3 shadow-xl flex-1 p-4 -mt-10">
                      <div class="flex justify-between">
-                        <p>Tổng tiền</p> <span class="font-bold text-yellow-500">40$</span>
+                        <p>Tổng tiền</p> <span class="font-bold text-yellow-500"><?php echo number_format($rowRoom['tongtien']) ?> VNĐ</span>
                      </div>
                      <div class="flex justify-between">
                         <span>
-                           <p class="inline-block">Phòng LUXURY(lấy tên phòng)</p> (1 đêm)
+                           <p class="inline-block">Phòng LUXURY(<?php echo $rowRoom['tenphong'] ?>)</p> (thời gian lưu trú: <?php echo $rowRoom['ngayo']; ?>)
                         </span>
-                        <span class="font-bold text-yellow-500">40$</span>
+                        <span class="font-bold text-yellow-500"><?php echo number_format($rowRoom['dongia']) ?> VNĐ/ngày</span>
                      </div>
                      <div class="flex justify-between">
-                        <p>Thuê và phí</p><span class="font-bold text-yellow-500">2$</span>
+                        <p>Thuê và phí</p><span class="font-bold text-yellow-500"><?php echo number_format($rowRoom['dongia']*1/100) ?> VNĐ</span>
                      </div>
                   </div>
 
-                  <div class="flex justify-between">
+                  <form method="post" class="flex justify-between">
+                     <input type="hidden" name="checkin" value="<?php echo $checkin ?>">
+                     <input type="hidden" name="checkout" value="<?php echo $checkout ?>">
+                     <input type="hidden" name="id" value="<?php echo $rowCus['idkhachhang'] ?>">
+                     <input type="hidden" name="idRoom" value="<?php echo $idRoom ?>">
+
                      <div class="flex items-center w-2/3 gap-x-2">
-                        <input type="checkbox" name="" id="">
+                        <input type="checkbox" name="" id="" required>
                         <p>Khi nhấn vào nút này bạn
                            công nhận mình đã đọc và
                            đồng ý với các <a href="" class="text-blue-300 italic">
@@ -109,8 +135,8 @@ $db_handle = new DBController();
                               Chính sách quyền riêng tư
                            </a> của Angle Hotel</p>
                      </div>
-                     <button class="px-10 h-10 my-auto bg-blue-400 rounded-xl">BOOK</button>
-                  </div>
+                     <button name="booking" class="px-10 h-10 my-auto bg-blue-400 rounded-xl">BOOK</button>
+                  </form>
                </div>
 
                <div class="flex flex-col shadow w-1/2 p-2 gap-y-5 bg-green-100 rounded-xl">
@@ -121,25 +147,25 @@ $db_handle = new DBController();
 
                   <div class="bg-gray-100 -mx-2">
                      <div class="flex flex-col px-4">
-                        <p class="font-bold">Check in:</p> <time datetime="" class="text-gray-500 italic">Fri, 7 Jan
-                           2022, Từ 14:00
+                        <p class="font-bold">Check in:</p> <time datetime="" class="text-gray-500 italic"><?php echo gmdate("H:i d/m/Y ", strtotime($checkin));?> 
                         </time>
                      </div>
                      <div class="flex flex-col mt-3 px-4">
-                        <p class="font-bold">Check out:</p> <time datetime="" class="text-gray-500 italic">Fri, 8 Jan
-                           2022, Từ 14:00
+                        <p class="font-bold">Check out:</p> <time datetime="" class="text-gray-500 italic"><?php echo gmdate("H:i d/m/Y ", strtotime($checkout));?>
                         </time>
                      </div>
                   </div>
 
+                  
+
                   <h2 class="font-bold">LYXURY ROOM</h2>
                   <div>
                      <div class="flex justify-between -mt-4">
-                        <img src="../../image/slider-room/room-1.jpg" alt="" class="h-20 w-30 rounded-xl my-auto">
+                        <img src="../../photo/room/<?php echo $rowRoom['anh'] ?>" alt="" class="h-20 w-30 rounded-xl my-auto">
                         <div class="flex flex-col">
-                           <p>4 người</p>
-                           <p>Loại giường</p>
-                           <p>View</p>
+                           <p><?php echo $rowRoom['songuoi'] ?> người</p>
+                           <p><?php echo $rowRoom['sogiuong'] ?> giường</p>
+                           <p><?php echo $rowRoom['vitri'] ?></p>
                            <div class="flex items-center text-green-400">
                               <i class="fas fa-wifi mr-1"></i>
                               <p>Wifi Free</p>
@@ -167,6 +193,30 @@ $db_handle = new DBController();
 
    <?php
    include('../home/footer/footer.php');
+
+   if(isset($_POST['booking'])){
+      $checkin = $_POST['checkin'];
+      $checkout = $_POST['checkout'];
+      $id = $_POST['id'];
+      $idRoom = $_POST['idRoom'];
+
+      $queryCheck = "SELECT * FROM HOADON where hoadon.trangthai = 2 and datediff('$checkin',ngaythanhtoan) > 0 and idphong = $idRoom";
+      $resultCheck = $conn->query($queryCheck);
+      if($resultCheck->num_rows >= 0){
+         $queryBook = "INSERT INTO `hoadon`(`idkh`, `idphong`, `ngaytao`, `ngaythanhtoan`, `trangthai`) 
+                        VALUES ($id, $idRoom, '$checkin', '$checkout',2)";
+         $resultBook = $conn->query($queryBook);
+         if($resultBook){
+            echo "<script>alert('Book room successful!');
+                  window.location.href = '../page-show-room/pageRoom.php';
+                  </script>";
+         } 
+         else echo '<script>alert("Book room failed!");</script>';
+      }
+      else {
+         echo '<script>alert("The calendar you selected has been duplicated, please choose another one!");</script>';
+      }
+   }
    ?>
    <?php
    if ($id) {
@@ -207,6 +257,12 @@ $db_handle = new DBController();
 
       comment.onclick = function() {
          notification.style.display = 'none';
+      }
+   </script>
+
+<script>
+      if (window.history.replaceState) {
+         window.history.replaceState(null, null, window.location.href);
       }
    </script>
 

@@ -2,7 +2,7 @@
 require_once("../handle/configDB.php");
 $cookie_time = 30 * 24 * 60 * 60;
 
-$url = '';
+$url = '../../../index.php';
 if(isset($_GET['url'])){
     $url = $_GET['url'];
 }
@@ -56,8 +56,11 @@ if (isset($_POST["submit"])) {
                         header("Location: ../../employee/employee.php");
                      }
                   }
-                  else
+                  else{
+
+                     // header("Location: ../../../index.php");
                      header("Location: $url");
+                  }
             }
             $check = 2;
          }

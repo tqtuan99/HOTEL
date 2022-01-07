@@ -381,6 +381,10 @@
    $id = '0';
    if(isset($_GET['id']))
       $id = $_GET['id'];
+
+   $sql1 = 'UPDATE HOADON SET trangthai = 1 WHERE idhoadon = '.$id;
+   $result  = $conn->query($sql1);
+   
    $sql = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, khachhang.*, count(*) as soluong,  hoadon.*, phong.*, timediff(ngaythanhtoan,ngaytao) as ngayo, nhanvien.hotennv ,ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2) as tongtien 
             FROM ((((hoadon 
                      left JOIN khachhang on hoadon.idkh = khachhang.idkhachhang)
