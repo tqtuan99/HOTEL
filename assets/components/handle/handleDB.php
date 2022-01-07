@@ -19,7 +19,9 @@ if(isset($_GET['search'])){
           $imgRoom = $row['anh'] == "" ? 'room1.jpg' : $row['anh'];
           echo '
              <div class="row-content">
-             <div class="image-room" data-aos="zoom-in-up" data-aos-duration="3000" style="background-image: url(./assets/photo/room/' . $imgRoom . ');">
+             <div class="overflow-hidden">
+                <div class="image-room" data-aos="zoom-in-up" data-aos-duration="3000" style="background-image: url(./assets/photo/room/' . $imgRoom . ');">
+                </div>
              </div>
              <div class="row-text" data-aos="slide-up" data-aos-duration="2500">
                 <span class="price">' . number_format($row['dongia']) . ' VNĐ</span>

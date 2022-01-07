@@ -19,6 +19,7 @@ if (isset($_GET['idEmploy']) && !empty($_GET['idEmploy'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../output.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>Document</title>
 </head>
 
@@ -27,7 +28,7 @@ if (isset($_GET['idEmploy']) && !empty($_GET['idEmploy'])) {
         <div aria-hidden="true" class="flex justify-center items-center mt-6">
             <div class="relative w-full max-w-2xl md:h-auto">
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <div class="flex justify-end bg-blue-300 shadow-lg rounded-tr-2xl rounded-tl-2xl">
+                    <div class="flex justify-end bg-blue-300 shadow-lg rounded-tr-2xl rounded-tl-2xl" data-aos="fade-down">
                         <a href="../admin/adminHome.php?q=employ">
                             <button type="button" class="close-modal-employ text-black-400 bg-transparent hover:bg-red-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white rounded-tr-2xl" data-modal-toggle="authentication-modal">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -36,14 +37,14 @@ if (isset($_GET['idEmploy']) && !empty($_GET['idEmploy'])) {
                             </button>
                         </a>
                     </div>
-                    <form class="px-6 pb-2 space-y-5 lg:px-8 text-left bg-blue-300 shadow-lg rounded-bl-2xl rounded-br-2xl" action="#" method="POST" enctype="multipart/form-data">
-                        <h3 class="text-4xl text-center font-medium text-gray-900 font-bold dark:text-white">EDIT EMPLOYEE</h3>
-                        <div>
+                    <form class="px-6 pb-2 space-y-5 lg:px-8 text-left bg-blue-300 shadow-lg rounded-bl-2xl rounded-br-2xl" action="#" method="POST" enctype="multipart/form-data" data-aos="fade-down">
+                        <h3 class="text-4xl text-center font-medium text-gray-900 font-bold dark:text-white" data-aos="fade-down">EDIT EMPLOYEE</h3>
+                        <div data-aos="fade-right">
                             <input type="hidden" name="idE" value="<?php echo $idE ?>">
                             <label for="name" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold">Full name</label>
                             <input type="text" name="name" id="name" value="<?php echo $rowAllEmploy['hotennv'] ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nguyen Van A" required>
                         </div>
-                        <div class="flex items-center">
+                        <div class="flex items-center" data-aos="fade-left">
                             <label class="block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold">Gender:</label>
                             <input type="radio" name="gender" <?php echo $gender == 'male' ? 'checked' : ''; ?> value="male" id="gender" class="bg-gray-50 border w-40 -mr-14 -ml-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                             <label class="block text-sm text-gray-900 dark:text-gray-300 mr-2">Male</label>
@@ -52,34 +53,34 @@ if (isset($_GET['idEmploy']) && !empty($_GET['idEmploy'])) {
                             <input type="radio" name="gender" <?php echo $gender == 'other' ? 'checked' : ''; ?> value="other" id="gender" class="bg-gray-50 border w-40 -mr-14 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                             <label class="block text-sm text-gray-900 dark:text-gray-300">Other</label>
                         </div>
-                        <div class="flex items-center">
+                        <div class="flex items-center" data-aos="fade-right">
                             <label class="block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold">Position:</label>
                             <input type="radio" name="position" <?php echo $rowAllEmploy['chucvu'] == '1' ? 'checked' : ''; ?> value="1" id="position" class="bg-gray-50 border w-40 -mr-14 -ml-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                             <label class="block text-sm text-gray-900 dark:text-gray-300">Admin</label>
                             <input type="radio" name="position" <?php echo $rowAllEmploy['chucvu'] == '0' ? 'checked' : ''; ?> value="0" id="position" class="bg-gray-50 border w-40 -mr-14 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                             <label class="block text-sm text-gray-900 dark:text-gray-300">Employee</label>
                         </div>
-                        <div class="w-2/5 inline-block">
+                        <div class="w-2/5 inline-block" data-aos="fade-right">
                             <label for="phone" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold">Phone</label>
                             <input type="text" value="<?php echo $rowAllEmploy['sodienthoai']; ?>" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="033456789" required>
                         </div>
-                        <div class="w-2/5 inline-block float-right">
+                        <div class="w-2/5 inline-block float-right" data-aos="fade-left">
                             <label for="id" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold">ID</label>
                             <input type="text" name="id" value="<?php echo $rowAllEmploy['socccd']; ?>" id="id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="0123456789" required>
                         </div>
-                        <div class="w-2/5 inline-block">
+                        <div class="w-2/5 inline-block" data-aos="fade-right">
                             <label for="dob" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold">Day of birth</label>
                             <input type="date" name="dob" value="<?php echo $rowAllEmploy['ngaysinh']; ?>" id="dob" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="01-01-2000" required>
                         </div>
-                        <div class="w-2/5 inline-block float-right">
+                        <div class="w-2/5 inline-block float-right" data-aos="fade-left">
                             <label for="email" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold">Email</label>
                             <input type="email" name="email" value="<?php echo $rowAllEmploy['email']; ?>" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required>
                         </div>
-                        <div>
+                        <div data-aos="fade-right">
                             <label for="address" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold">Address</label>
                             <input type="text" name="address" value="<?php echo $rowAllEmploy['diachi']; ?>" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required>
                         </div>
-                        <div class="flex align-center">
+                        <div class="flex align-center" data-aos="fade-left">
                             <span for="image" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold leading-10">Choose avatar</span>
                             <input type="hidden" name="size" value="1000000">
                             <input type="hidden" name="supImg" value="<?php echo $rowAllEmploy['avatar']; ?>">
@@ -113,6 +114,13 @@ if (isset($_GET['idEmploy']) && !empty($_GET['idEmploy'])) {
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
         }
+    </script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1500
+        });
     </script>
 </body>
 

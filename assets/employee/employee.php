@@ -27,6 +27,7 @@ require_once("../components/handle/configDB.php");
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js">
    </script>
+   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
    <title>Document</title>
 </head>
@@ -53,34 +54,34 @@ require_once("../components/handle/configDB.php");
                      </button>
                   </div>
                   <?php
-                  $time= '';
-                        $queryRoom = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, DATE_FORMAT( timediff(now(), ngaytao), "%H" ) as gio, DATE_FORMAT( timediff(now(), ngaytao), "%i" ) as phut, idhoadon, hoadon.trangthai, tenloaiphong, tenphong, ngaytao, ngaythanhtoan, dongia
+                  $time = '';
+                  $queryRoom = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, DATE_FORMAT( timediff(now(), ngaytao), "%H" ) as gio, DATE_FORMAT( timediff(now(), ngaytao), "%i" ) as phut, idhoadon, hoadon.trangthai, tenloaiphong, tenphong, ngaytao, ngaythanhtoan, dongia
                                        FROM (((hoadon 
                                                 left JOIN khachhang on hoadon.idkh = khachhang.idkhachhang)
                                                 left JOIN phong  on phong.idphong = hoadon.idphong)
                                                 left JOIN loaiphong on loaiphong.idloaiphong = phong.idloaiphong)
                                        WHERE hoadon.trangthai = 2';
-                     $result = $conn->query($queryRoom);
-                     if ($result) {
-                        while ($row = $result->fetch_assoc()) {
-                           if($row['gio'] <=0) $time = $row['phut']. ' minute ';
-                           else $time = $row['gio']. ' hours ';
+                  $result = $conn->query($queryRoom);
+                  if ($result) {
+                     while ($row = $result->fetch_assoc()) {
+                        if ($row['gio'] <= 0) $time = $row['phut'] . ' minute ';
+                        else $time = $row['gio'] . ' hours ';
 
-                           echo '
+                        echo '
                            <div class="w-full p-3 mt-8 bg-white rounded flex">
                      <div tabindex="0" aria-label="heart icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-gray-200 flex items-center justify-center">
                         <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/notification_1-svg2.svg" alt="icon" />
 
                      </div>
                      <div class="pl-3">
-                        <p tabindex="0" class="focus:outline-none text-sm leading-none"><span class="text-indigo-700">'.$row['hoten'].'</span> đã đặt phòng, vui lòng xác nhận <span class="text-indigo-700"><a href="?q=booking&name='.$row['hoten'].'">view</a></span></p>
-                        <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">'.$time.' ago</p>
+                        <p tabindex="0" class="focus:outline-none text-sm leading-none"><span class="text-indigo-700">' . $row['hoten'] . '</span> đã đặt phòng, vui lòng xác nhận <span class="text-indigo-700"><a href="?q=booking&name=' . $row['hoten'] . '">view</a></span></p>
+                        <p tabindex="0" class="focus:outline-none text-xs leading-3 pt-1 text-gray-500">' . $time . ' ago</p>
                      </div>
                   </div>
 
                            ';
-                        }
                      }
+                  }
                   ?>
                </div>
             </div>
@@ -163,15 +164,15 @@ require_once("../components/handle/configDB.php");
                      <a href="?q=booking" class="js-show-data block py-1 md:py-3 lg:pl-3 align-middle text-white no-underline">
                         <i class="fas fa-tasks pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs lg:text-base text-white block md:inline-block font-bold lg:leading-loose">Booking</span>
                      </a>
-                     <span  style="margin-left: 6.3rem; margin-top: 0.15rem;" class="absolute inset-0 object-right-top w-4 h-4">
+                     <span style="margin-left: 6.3rem; margin-top: 0.15rem;" class="absolute inset-0 object-right-top w-4 h-4">
                         <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
                            <?php
-                              $query = 'SELECT COUNT(*) as soluong FROM hoadon where trangthai = 2';
-                              $result = $conn->query($query);
-                              if($result){
-                                 $row = $result->fetch_assoc();
-                                 echo $row['soluong'];
-                              }
+                           $query = 'SELECT COUNT(*) as soluong FROM hoadon where trangthai = 2';
+                           $result = $conn->query($query);
+                           if ($result) {
+                              $row = $result->fetch_assoc();
+                              echo $row['soluong'];
+                           }
                            ?>
                         </div>
                      </span>
@@ -188,8 +189,8 @@ require_once("../components/handle/configDB.php");
       <!-- End: SIDEBAR -->
 
       <!-- Start: PAYMENT -->
-      <div class="js-show-payment payment lg:ml-52 w-full px-4 mt-4 overflow-hidden">
-         <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+      <div class="js-show-payment payment lg:ml-52 w-full px-4 mt-4 overflow-hidden" data-aos="fade-left">
+         <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white" data-aos="fade-down">
             <h3 class="font-bold pl-2">Payment Details</h3>
          </div>
          <div class="container mx-auto">
@@ -228,7 +229,7 @@ require_once("../components/handle/configDB.php");
                               </th>
                            </tr>
                         </thead>
-                        <tbody  class="bg-white divide-y divide-gray-300">
+                        <tbody class="bg-white divide-y divide-gray-300">
                            <?php
                            $status = '';
                            $queryRoom = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, idhoadon, hoadon.trangthai, tenloaiphong, tenphong, ngaytao, ngaythanhtoan, dongia, ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2) as tongtien 
@@ -240,9 +241,9 @@ require_once("../components/handle/configDB.php");
                            $result = $conn->query($queryRoom);
                            if ($result) {
                               while ($row = $result->fetch_assoc()) {
-                                 if($row['trangthai']<=2)
+                                 if ($row['trangthai'] <= 2)
                                     $status = $row['trangthai'] == 1 ? 'Đã thanh toán' : 'Chưa thanh toán';
-                                 else $status ='Đã hủy';
+                                 else $status = 'Đã hủy';
                                  echo '
                                  <tr class="text-center whitespace-nowrap">
                                     <td class="w-28 px-6 py-4">
@@ -284,7 +285,7 @@ require_once("../components/handle/configDB.php");
                                        </div>
                                     </td>
                                     <td class="w-28 px-6 py-4">
-                                       <a href="./print.php?id='.$row['idhoadon'].'" target="_blank"  class="inline-block text-center px-6 bg-blue-500 rounded-lg">
+                                       <a href="./print.php?id=' . $row['idhoadon'] . '" target="_blank"  class="inline-block text-center px-6 bg-blue-500 rounded-lg">
                                           <i class="fas fa-print">Print</i>
                                        </a>
                                     </td>
@@ -303,8 +304,8 @@ require_once("../components/handle/configDB.php");
       <!-- End: PAYMENT -->
 
       <!-- Start: Customer -->
-      <div class="js-show-cus payment lg:ml-52 w-full px-4 mt-4 overflow-hidden">
-         <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+      <div class="js-show-cus payment lg:ml-52 w-full px-4 mt-4 overflow-hidden" data-aos="fade-left">
+         <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white" data-aos="fade-down">
             <h3 class="font-bold pl-2">Payment Details</h3>
          </div>
          <div class="container mx-auto">
@@ -346,13 +347,13 @@ require_once("../components/handle/configDB.php");
                               </th>
                            </tr>
                         </thead>
-                        <tbody  class="bg-white divide-y divide-gray-300">
+                        <tbody class="bg-white divide-y divide-gray-300">
                            <?php
                            $queryCus = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, khachhang.* FROM khachhang';
                            $result = $conn->query($queryCus);
                            if ($result) {
                               while ($row = $result->fetch_assoc()) {
-                                 $avatar = $row['avatar']==''?'avtNull.png':$row['avatar'];
+                                 $avatar = $row['avatar'] == '' ? 'avtNull.png' : $row['avatar'];
                                  echo '
                                  <tr class="text-center whitespace-nowrap">
                                     <td class="w-28 px-6 py-4">
@@ -380,12 +381,12 @@ require_once("../components/handle/configDB.php");
                                     </td>
                                     <td class="w-28 px-6 py-4 text-sm text-gray-900">
                                        <div class="text-sm text-gray-900">
-                                       ' .$row['sodienthoai'] . '
+                                       ' . $row['sodienthoai'] . '
                                        </div>
                                     </td>
                                     <td class="w-28 px-6 py-4 text-sm text-gray-500">
                                        <div class="text-sm text-gray-900">
-                                       ' . $row['email']. '
+                                       ' . $row['email'] . '
                                        </div>
                                     </td>
                                     <td class="w-28 px-6 py-4 text-sm text-gray-500">
@@ -422,8 +423,8 @@ require_once("../components/handle/configDB.php");
       <!-- End: Customer -->
 
       <!-- Start: Booking  -->
-      <div class="js-show-booking payment lg:ml-52 w-full px-4 mt-4 overflow-hidden">
-         <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+      <div class="js-show-booking payment lg:ml-52 w-full px-4 mt-4 overflow-hidden" data-aos="fade-left">
+         <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white" data-aos="fade-down">
             <h3 class="font-bold pl-2">Booking</h3>
          </div>
          <div class="container mx-auto">
@@ -457,10 +458,10 @@ require_once("../components/handle/configDB.php");
                               <th class="w-28 px-6 py-2 text-xs text-white">
                                  Disagree
                               </th>
-                              
+
                            </tr>
                         </thead>
-                        <tbody  class="bg-white divide-y divide-gray-300">
+                        <tbody class="bg-white divide-y divide-gray-300">
                            <?php
                            $queryCus = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, khachhang.*, hoadon.*, phong.tenphong 
                                           FROM khachhang, phong, hoadon 
@@ -495,11 +496,11 @@ require_once("../components/handle/configDB.php");
                                     </td>
                                     <td class="w-28 px-6 py-4 text-sm text-gray-900">
                                        <div class="text-sm text-gray-900">
-                                       ' .$row['ngaythanhtoan'] . '
+                                       ' . $row['ngaythanhtoan'] . '
                                        </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                    <a href="?q=booking&action=agree&id='.$row['idhoadon'].'" class=" inline-block text-center">
+                                    <a href="?q=booking&action=agree&id=' . $row['idhoadon'] . '" class=" inline-block text-center">
                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                        <path fill="none" d="M7.197,16.963H7.195c-0.204,0-0.399-0.083-0.544-0.227l-6.039-6.082c-0.3-0.302-0.297-0.788,0.003-1.087
                                                             C0.919,9.266,1.404,9.269,1.702,9.57l5.495,5.536L18.221,4.083c0.301-0.301,0.787-0.301,1.087,0c0.301,0.3,0.301,0.787,0,1.087
@@ -508,7 +509,7 @@ require_once("../components/handle/configDB.php");
                                     </a>
                                  </td>
                                  <td class="px-6 py-4">
-                                    <a href="?q=booking&action=disagree&id='.$row['idhoadon'].'" class="open-modal inline-block text-center">
+                                    <a href="?q=booking&action=disagree&id=' . $row['idhoadon'] . '" class="open-modal inline-block text-center">
                                        <svg xmlns="http://www.w3.org/2000/svg" onclick="return confirm("Are you sure you want to cancel this reservation?");" class="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                        </svg>
@@ -527,25 +528,25 @@ require_once("../components/handle/configDB.php");
          </div>
       </div>
       <!-- End: Booking  -->
-<?php
-include('./actionAgree.php');
-?>
+      <?php
+      include('./actionAgree.php');
+      ?>
       <!-- Start: ROOM DETAIL -->
-      <div class="js-show-room-detail room-detail lg:ml-52 w-full px-4 mt-4 overflow-hidden">
+      <div class="js-show-room-detail room-detail lg:ml-52 w-full px-4 mt-4 h-full overflow-hidden">
          <div class="flex flex-col gap-4">
             <?php
-               $type = '';
-               if(isset($_GET['typeRoom'])) $type = $_GET['typeRoom'];
+            $type = '';
+            if (isset($_GET['typeRoom'])) $type = $_GET['typeRoom'];
             ?>
-            <div>
+            <div data-aos="fade-down">
                <label for="" class="">Type Room</label>
                <div class="flex relative w-64">
                   <select form="detailRoom" name="typeRoom" class="appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                     <option value="standard" <?php if($type == 'standard' ) echo 'selected'?>><a href="">Standard</a></option>
-                     <option value="superior" <?php if($type == 'superior' ) echo 'selected'?>>Superior</option>
-                     <option value="deluxe" <?php if($type == 'deluxe' ) echo 'selected'?>>Deluxe</option>
-                     <option value="suite" <?php if($type == 'suite' ) echo 'selected'?>>Suite</option>
-                     <option value="all" <?php if($type == 'all' || $type=='') echo 'selected'?>>All</option>
+                     <option value="standard" <?php if ($type == 'standard') echo 'selected' ?>><a href="">Standard</a></option>
+                     <option value="superior" <?php if ($type == 'superior') echo 'selected' ?>>Superior</option>
+                     <option value="deluxe" <?php if ($type == 'deluxe') echo 'selected' ?>>Deluxe</option>
+                     <option value="suite" <?php if ($type == 'suite') echo 'selected' ?>>Suite</option>
+                     <option value="all" <?php if ($type == 'all' || $type == '') echo 'selected' ?>>All</option>
                   </select>
                   <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -555,113 +556,111 @@ include('./actionAgree.php');
                </div>
             </div>
 
-            
-
             <form method="GET" action="#" class="flex flex-col" id="detailRoom">
                <input type="hidden" name="q" value="detailRoom">
-               <label for="">Status Room </label>
+               <label for="" data-aos="fade-right">Status Room </label>
                <div class="flex justify-between items-center gap-3 flex-wrap mt-4">
-                  <button name="typeSubmit" value="0" class="relative bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                  <button name="typeSubmit" value="0" class="relative bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" data-aos="fade-right">
                      All
                      <span class="absolute inset-0 object-right-top -mt-3 -mr-14">
                         <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-                        <?php
-                              $query = 'SELECT COUNT(*) as soluong FROM phong ';
-                              $result = $conn->query($query);
-                              if($result){
-                                 $row = $result->fetch_assoc();
-                                 echo $row['soluong'];
-                              }
-                                 
+                           <?php
+                           $query = 'SELECT COUNT(*) as soluong FROM phong ';
+                           $result = $conn->query($query);
+                           if ($result) {
+                              $row = $result->fetch_assoc();
+                              echo $row['soluong'];
+                           }
+
                            ?>
                         </div>
                      </span>
                   </button>
-                  <button name="typeSubmit" value="1" class="relative bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                  <button name="typeSubmit" value="1" class="relative bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" data-aos="fade-right">
                      Đã đặt
                      <span class="absolute inset-0 object-right-top -mt-3 -mr-20">
                         <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-                        <?php
-                              $query = 'SELECT COUNT(*) as soluong FROM phong where trangthai = 2';
-                              $result = $conn->query($query);
-                              if($result){
-                                 $row = $result->fetch_assoc();
-                                 echo $row['soluong'];
-                              }
+                           <?php
+                           $query = 'SELECT COUNT(*) as soluong FROM phong where trangthai = 2';
+                           $result = $conn->query($query);
+                           if ($result) {
+                              $row = $result->fetch_assoc();
+                              echo $row['soluong'];
+                           }
                            ?>
                         </div>
                      </span>
                   </button>
-                  <button name="typeSubmit" value="2" class="relative bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                  <button name="typeSubmit" value="2" class="relative bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" data-aos="fade-right">
                      Đang ở
                      <span class="absolute inset-0 object-right-top -mt-3 -mr-20">
                         <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-                        <?php
-                              $query = 'SELECT COUNT(*) as soluong FROM phong where trangthai = 1';
-                              $result = $conn->query($query);
-                              if($result){
-                                 $row = $result->fetch_assoc();
-                                 echo $row['soluong'];
-                              }
-                                 
+                           <?php
+                           $query = 'SELECT COUNT(*) as soluong FROM phong where trangthai = 1';
+                           $result = $conn->query($query);
+                           if ($result) {
+                              $row = $result->fetch_assoc();
+                              echo $row['soluong'];
+                           }
+
                            ?>
                         </div>
                      </span>
                   </button>
-                  <button name="typeSubmit" value="3" class="relative bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                  <button name="typeSubmit" value="3" class="relative bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" data-aos="fade-left">
                      chuẩn bị rời
                      <span class="absolute inset-0 object-right-top -mt-3 -mr-32">
                         <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-                        <?php
-                              $query = 'SELECT DISTINCT COUNT(*) as soluong
+                           <?php
+                           $query = 'SELECT DISTINCT COUNT(*) as soluong
                                        FROM `hoadon`, `ct_hoadon`, `phong` 
                                        WHERE hoadon.idhoadon = ct_hoadon.idhoadon and ct_hoadon.idphong = phong.idphong 
                                              and datediff(CURDATE(),ngaytao) <= 1';
-                              $result = $conn->query($query);
-                              if($result){
-                                 $row = $result->fetch_assoc();
-                                 echo $row['soluong'];
-                              }else echo '0';
-                                 
+                           $result = $conn->query($query);
+                           if ($result) {
+                              $row = $result->fetch_assoc();
+                              echo $row['soluong'];
+                           } else echo '0';
+
                            ?>
                         </div>
                      </span>
                   </button>
-                  <button name="typeSubmit" value="4" class="relative bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                  <button name="typeSubmit" value="4" class="relative bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" data-aos="fade-left">
                      phòng trống
                      <span class="absolute inset-0 object-right-top -mt-3 -mr-32">
                         <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-                        <?php
-                              $query = 'SELECT COUNT(*) as soluong FROM phong where trangthai = 0';
-                              $result = $conn->query($query);
-                              if($result){
-                                 $row = $result->fetch_assoc();
-                                 echo $row['soluong'];
-                              }
-                                 
+                           <?php
+                           $query = 'SELECT COUNT(*) as soluong FROM phong where trangthai = 0';
+                           $result = $conn->query($query);
+                           if ($result) {
+                              $row = $result->fetch_assoc();
+                              echo $row['soluong'];
+                           }
+
                            ?>
                         </div>
                      </span>
                   </button>
-                  <button name="typeSubmit" value="5" class="relative bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                  <button name="typeSubmit" value="5" class="relative bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" data-aos="fade-left">
                      Phòng đang sữa
                      <span class="absolute inset-0 object-right-top -mt-3 -mr-40">
                         <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-                        <?php
-                              $query = 'SELECT COUNT(*) as soluong FROM phong where trangthai = 3';
-                              $result = $conn->query($query);
-                              if($result){
-                                 $row = $result->fetch_assoc();
-                                 echo $row['soluong'];
-                              }
-                                 
+                           <?php
+                           $query = 'SELECT COUNT(*) as soluong FROM phong where trangthai = 3';
+                           $result = $conn->query($query);
+                           if ($result) {
+                              $row = $result->fetch_assoc();
+                              echo $row['soluong'];
+                           }
+
                            ?>
                         </div>
                      </span>
                   </button>
                </div>
             </form>
-            <div class="flex gap-y-4 flex-wrap -ml-4">
+            <div class="flex gap-y-4 flex-wrap -ml-4" data-aos="fade-up">
                <?php
                include('./viewRoom.php');
                ?>
@@ -699,35 +698,38 @@ include('./actionAgree.php');
       }
 
       <?php
-         if(isset($_GET['q'])){
-            if($_GET['q'] == 'detailRoom')
-               echo '
+      if (isset($_GET['q'])) {
+         if ($_GET['q'] == 'detailRoom')
+            echo '
                list[0].classList.add("hovered");
                showDetailRoom();
                ';
-            else if($_GET['q'] == 'payment')
-               echo '
+         else if ($_GET['q'] == 'payment')
+            echo '
                list[2].classList.add("hovered");
-               showPayment();'
-               ;
-            else if($_GET['q'] == 'booking')
-               echo '
+               showPayment();';
+         else if ($_GET['q'] == 'booking')
+            echo '
                list[3].classList.add("hovered");
                showBooking();';
-            else if($_GET['q'] == 'customer')
-               echo '
+         else if ($_GET['q'] == 'customer')
+            echo '
                list[1].classList.add("hovered");
                showCustomer();';
-            else
-               echo '
+         else
+            echo '
                list[4].classList.add("hovered");
                showDetailRoom();';
-         }
+      }
 
       ?>
+   </script>
 
-
-
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+   <script>
+      AOS.init({
+         duration: 1500
+      });
    </script>
 </body>
 

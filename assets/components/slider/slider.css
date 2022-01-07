@@ -23,8 +23,7 @@ button {
    cursor: pointer;
 }
 
-#slider {
-}
+#slider {}
 
 .image-slider {
    /* z-index: -2; */
@@ -33,9 +32,11 @@ button {
 }
 
 .image {
+   position: relative;
    height: 500px;
    margin-bottom: 20px;
-   position: relative;
+   border-radius: 20px;
+   overflow: hidden;
 }
 
 .image img {
@@ -44,7 +45,11 @@ button {
    height: 100% !important;
    object-fit: cover;
    border-radius: 20px;
-   filter: grayscale(50%);
+   filter: grayscale(40%);
+}
+
+.image .zoom {
+   animation: scale 30s linear infinite;
 }
 
 .image-title {
@@ -227,4 +232,14 @@ button {
 
 .item_rating i:nth-child(5) {
    color: #fca400;
+}
+
+@keyframes scale {
+   50% {
+      -webkit-transform: scale(1.2);
+      -moz-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+      -o-transform: scale(1.2);
+      transform: scale(1.2);
+   }
 }

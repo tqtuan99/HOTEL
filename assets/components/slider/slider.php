@@ -24,7 +24,7 @@
       <div class="image-slider">
          <div class="image-item">
             <div class="image">
-               <img src="../../../../hotel/assets/image/slider-room/room-1.jpg" alt="" />
+               <img src="../../../../hotel/assets/image/slider-room/room-1.jpg" alt=""/>
                <div class="item__content">
                   <div class="item_center">
                      <h1>VIP 001</h1>

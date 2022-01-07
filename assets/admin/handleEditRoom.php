@@ -16,6 +16,7 @@ if (isset($_GET['idRoom']) && !empty($_GET['idRoom'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../output.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>Document</title>
 </head>
 
@@ -24,7 +25,7 @@ if (isset($_GET['idRoom']) && !empty($_GET['idRoom'])) {
         <div div aria-hidden="true" class="flex justify-center items-center mt-5">
             <div class="relative w-full max-w-2xl md:h-auto">
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <div class="flex justify-end bg-blue-300 shadow-lg rounded-tr-2xl rounded-tl-2xl">
+                    <div class="flex justify-end bg-blue-300 shadow-lg rounded-tr-2xl rounded-tl-2xl" data-aos="fade-down">
                         <a href="../admin/adminHome.php?q=room">
                             <button type="button" class="close-modal-room text-black-400 bg-transparent hover:bg-red-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white rounded-tr-2xl" data-modal-toggle="authentication-modal">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -33,14 +34,14 @@ if (isset($_GET['idRoom']) && !empty($_GET['idRoom'])) {
                             </button>
                         </a>
                     </div>
-                    <form class="px-6 pb-2 -mt-4 lg:px-8 space-y-4 text-left bg-blue-300 shadow-lg rounded-bl-2xl rounded-br-2xl " action="" method="POST" enctype="multipart/form-data">
+                    <form class="px-6 pb-2 -mt-4 lg:px-8 space-y-4 text-left bg-blue-300 shadow-lg rounded-bl-2xl rounded-br-2xl " action="" method="POST" enctype="multipart/form-data" data-aos="fade-down">
                         <input type="hidden" value="<?php echo $idR ?>" name="idR">
-                        <h3 class="text-4xl text-center font-medium text-gray-900 font-bold dark:text-white">UPDATE ROOM</h3>
-                        <div>
+                        <h3 class="text-4xl text-center font-medium text-gray-900 font-bold dark:text-white" data-aos="fade-down">UPDATE ROOM</h3>
+                        <div data-aos="fade-right">
                             <label for="nameR" class="block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold text-base font-bold">Room Name</label>
                             <input type="text" name="nameR" id="nameR" value="<?php echo $rowAllRoom['tenphong'] ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="LUXURY PH101" required>
                         </div>
-                        <div class="flex items-center">
+                        <div class="flex items-center" data-aos="fade-left">
                             <label class="block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold">Type:</label>
                             <?php
                             $queryTypeRoom = "SELECT * FROM loaiphong";
@@ -64,7 +65,7 @@ if (isset($_GET['idRoom']) && !empty($_GET['idRoom'])) {
                                 }
                             ?>
                         </div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between" data-aos="fade-right">
                             <div class="w-24">
                                 <label for="Flo" class="text-center block text-sm font-medium text-gray-900 dark:text-gray-300 font-bold">Floor</label>
                                 <input type="number" name="Flo" value="<?php echo $rowAllRoom['tang']; ?>" id="Flo" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
@@ -82,19 +83,19 @@ if (isset($_GET['idRoom']) && !empty($_GET['idRoom'])) {
                                 <input type="number" name="Ba" id="Ba" value="<?php echo $rowAllRoom['sobontam']; ?>" min="1" max="20" class="text-center bg-gray-50 border w-40 -mr-12 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                             </div>
                         </div>
-                        <div>
+                        <div data-aos="fade-left">
                             <label for="Lo" class="block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold">Location</label>
                             <input type="text" name="Lo" value="<?php echo $rowAllRoom['vitri']; ?>" id="Lo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Sea ​​views..." required>
                         </div>
-                        <div>
+                        <div data-aos="fade-right">
                             <label for="Des" class="block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold">Description</label>
                             <textarea cols="40" rows="5" type="text" name="Des" id="Des" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white h-16" placeholder="Luxury bedroom..." required><?php echo $rowAllRoom['mota']; ?></textarea>
                         </div>
-                        <div>
+                        <div data-aos="fade-left">
                             <label for="Pri" class="block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold">Unit price</label>
                             <input type="number" min="100000" value="<?php echo $rowAllRoom['dongia']; ?>" step="100000" name="Pri" id="Pri" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="1.000.000" required>
                         </div>
-                        <div class="flex align-center">
+                        <div class="flex align-center" data-aos="fade-right">
                             <span for="image" class="mb-1 block text-sm font-medium text-gray-900 dark:text-gray-300 text-base font-bold leading-10">Choose room photo</span>
                             <input type="hidden" name="size" value="1000000">
                             <input type="hidden" name="supImg" value="<?php echo $rowAllRoom['anh']; ?>">
@@ -128,6 +129,13 @@ if (isset($_GET['idRoom']) && !empty($_GET['idRoom'])) {
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
         }
+    </script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1500
+        });
     </script>
 </body>
 

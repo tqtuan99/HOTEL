@@ -34,6 +34,7 @@ $db_handle = new DBController();
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js">
    </script>
+   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -44,7 +45,7 @@ $db_handle = new DBController();
    <nav class="bg-gray-800 pt-2 md:pt-1 pb-1 px-1 mt-0 h-auto fixed w-full z-20 top-0">
 
       <div class="flex items-center">
-         <div class="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white">
+         <div class="flex flex-shrink md:w-1/3 justify-center md:justify-start text-white" >
             <a href="#">
                <span class="text-3xl pl-2 text-green-600 font-extrabold">
                   <span class="">ANGLE</span>
@@ -106,7 +107,7 @@ $db_handle = new DBController();
 
    <!-- Start: SIDEBAR -->
    <div class="sidebar flex flex-col lg:flex-row mx-4">
-      <div class="sidebar-content z-50 shadow-xl h-16 fixed bottom-0 mt-12 lg:h-screen z-10 w-full lg:w-60 left-0">
+      <div class="sidebar-content z-50 shadow-xl h-16 fixed bottom-0 mt-12 lg:h-screen z-10 w-full lg:w-60 left-0" >
          <a href="#" class="hidden lg:block mt-3  ml-5">
             <span class="text-3xl text-white font-extrabold">
                <span class="">ANGLE</span>
@@ -197,14 +198,14 @@ $db_handle = new DBController();
       ?>
 
       <!-- ? START: ACCOUNT MANAGEMENT -->
-      <div class="js-show-account account-management bg-gray-100 mt-12 md:mt-2">
+      <div class="js-show-account account-management bg-gray-100 mt-12 md:mt-2" data-aos="fade-left">
          <div class="bg-gray-800 pt-3">
-            <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+            <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white" data-aos="fade-down">
                <h3 class="font-bold pl-2">Account Management</h3>
             </div>
          </div>
 
-         <div class="container mx-auto">
+         <div class="container mx-auto" data-aos="fade-left">
             <div class="flex flex-col">
                <div class="w-full">
                   <div class="p-2 lg:p-8 border-b border-gray-200 shadow">
@@ -291,8 +292,8 @@ $db_handle = new DBController();
       <!-- ? END: ACCOUNT MANAGEMENT-->
 
       <!-- ? EMPLOY MANAGEMENT -->
-      <div class="js-show-employ employ-management bg-gray-100 mt-12 md:mt-2">
-         <div class="bg-gray-800 flex justify-between items-center pt-3">
+      <div class="js-show-employ employ-management bg-gray-100 mt-12 md:mt-2"  data-aos="fade-left">
+         <div class="bg-gray-800 flex justify-between items-center pt-3" data-aos="fade-down">
             <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
                <h3 class="font-bold pl-2">Employ Management</h3>
             </div>
@@ -302,7 +303,7 @@ $db_handle = new DBController();
          </div>
 
          <!-- Main modal add employ -->
-         <div aria-hidden="true" class="my-modal-employ hidden overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center h-modal md:h-full inset-0 bg-gray-600 bg-opacity-50">
+         <div aria-hidden="true" class="my-modal-employ hidden overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center h-modal md:h-full inset-0 bg-gray-600 bg-opacity-50" data-aos="fade-left">
             <div class="relative w-full max-w-lg md:h-auto">
                <!-- Modal content -->
                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -386,7 +387,7 @@ $db_handle = new DBController();
          include('./handleAddEmployee.php');
          ?>
 
-         <div class="container mx-auto">
+         <div class="container mx-auto"  data-aos="fade-left">
             <div class="flex flex-col">
                <div class="w-full">
                   <div class="p-2 lg:p-8 border-b border-gray-200 shadow">
@@ -500,8 +501,8 @@ $db_handle = new DBController();
       </div>
 
       <!-- ROOM MANAGEMENT -->
-      <div class="js-show-room room-management bg-gray-100 mt-12 md:mt-2">
-         <div class="bg-gray-800 flex justify-between items-center pt-3">
+      <div class="js-show-room room-management bg-gray-100 mt-12 md:mt-2" data-aos="fade-left">
+         <div class="bg-gray-800 flex justify-between items-center pt-3" data-aos="fade-down">
             <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
                <h3 class="font-bold pl-2">Room Management</h3>
             </div>
@@ -601,7 +602,7 @@ $db_handle = new DBController();
          <?php
          include('./handleAddRoom.php');
          ?>
-         <div class="container mx-auto">
+         <div class="container mx-auto" data-aos="fade-left">
             <div class="flex flex-col">
                <div class="w-full">
                   <div class="p-8 border-b border-gray-200 shadow">
@@ -736,14 +737,14 @@ $db_handle = new DBController();
       <!-- END ROOM MANAGEMENT -->
 
       <!-- ? Statistical  -->
-      <div class="js-show-statis statistical bg-gray-100 mt-12 md:mt-2 pb-12">
-         <div class="bg-gray-800 pt-3">
+      <div class="js-show-statis statistical bg-gray-100 mt-12 md:mt-2 pb-12" data-aos="fade-up">
+         <div class="bg-gray-800 pt-3" data-aos="fade-down">
             <div class="rounded-tl-3xl rounded-tr-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
                <h3 class="font-bold pl-2">Statistical</h3>
             </div>
          </div>
          <div class="flex flex-wrap justify-center">
-            <div class="w-full md:w-1/2 xl:w-1/3 p-5">
+            <div class="w-full md:w-1/2 xl:w-1/3 p-5" data-aos="fade-right">
                <!--Metric Card-->
 
                <div class="flex items-center">
@@ -766,7 +767,7 @@ $db_handle = new DBController();
                            <?php
                            $queryTotal = 'SELECT sum(ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2)) as tong FROM `hoadon`, `phong` WHERE hoadon.idphong = phong.idphong';
                            $result = $conn->query($queryTotal);
-                           if($result){
+                           if ($result) {
                               $row = $result->fetch_assoc();
                               echo number_format($row['tong']);
                            }
@@ -785,7 +786,7 @@ $db_handle = new DBController();
                                           FROM `hoadon`, `phong` 
                                           WHERE hoadon..idphong = phong.idphong and datediff(CURDATE(),ngaythanhtoan) < 30';
                            $result = $conn->query($queryTotal);
-                           if($result){
+                           if ($result) {
                               $row = $result->fetch_assoc();
                               echo number_format($row['tong']);
                            }
@@ -804,7 +805,7 @@ $db_handle = new DBController();
                                           FROM `hoadon`, `phong` 
                                           WHERE hoadon.idphong = phong.idphong and datediff(CURDATE(),ngaythanhtoan) < 7';
                            $result = $conn->query($queryTotal);
-                           if($result){
+                           if ($result) {
                               $row = $result->fetch_assoc();
                               echo number_format($row['tong']);
                            }
@@ -822,7 +823,7 @@ $db_handle = new DBController();
                                           FROM `hoadon`, `phong` 
                                           WHERE hoadon.idphong = phong.idphong and datediff(CURDATE(),ngaythanhtoan) < 1';
                            $result = $conn->query($queryTotal);
-                           if($result){
+                           if ($result) {
                               $row = $result->fetch_assoc();
                               echo number_format($row['tong']);
                            }
@@ -835,7 +836,7 @@ $db_handle = new DBController();
                </div>
                <!--/Metric Card-->
             </div>
-            <div class="w-full md:w-1/2 xl:w-1/3 p-5">
+            <div class="w-full md:w-1/2 xl:w-1/3 p-5" data-aos="fade-up">
                <!--Metric Card-->
 
                <div class="flex items-center">
@@ -858,7 +859,7 @@ $db_handle = new DBController();
                         <h3 class="font-bold text-3xl">
                            <?php
                            $query = $conn->query('SELECT * FROM taikhoan;');
-                           if($query)
+                           if ($query)
                               echo mysqli_num_rows($query);
                            ?>
                            <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span>
@@ -871,7 +872,7 @@ $db_handle = new DBController();
                         <h3 class="font-bold text-3xl">
                            <?php
                            $query = $conn->query('SELECT * FROM `taikhoan` WHERE datediff(CURDATE(),ngaytao) < 30;');
-                           if($query)
+                           if ($query)
                               echo mysqli_num_rows($query);
                            ?>
                            <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span>
@@ -884,7 +885,7 @@ $db_handle = new DBController();
                         <h3 class="font-bold text-3xl">
                            <?php
                            $query = $conn->query('SELECT * FROM `taikhoan` WHERE datediff(CURDATE(),ngaytao) < 7;');
-                           if($query)
+                           if ($query)
                               echo mysqli_num_rows($query);
                            ?>
                            <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span>
@@ -897,7 +898,7 @@ $db_handle = new DBController();
                         <h3 class="font-bold text-3xl">
                            <?php
                            $query = $conn->query('SELECT * FROM `taikhoan` WHERE datediff(CURDATE(),ngaytao) < 1;');
-                           if($query)
+                           if ($query)
                               echo mysqli_num_rows($query);
                            ?>
                            <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span>
@@ -907,7 +908,7 @@ $db_handle = new DBController();
                </div>
                <!--/Metric Card-->
             </div>
-            <div class="w-full md:w-1/2 xl:w-1/3 p-5">
+            <div class="w-full md:w-1/2 xl:w-1/3 p-5" data-aos="fade-left">
                <!--Metric Card-->
                <div class="flex items-center">
                   <div class="search-statistical js-search-statistical active">Total</div>
@@ -929,7 +930,7 @@ $db_handle = new DBController();
                         <h3 class="font-bold text-3xl">
                            <?php
                            $query = $conn->query('SELECT * FROM phong ;');
-                           if($query)
+                           if ($query)
                               echo mysqli_num_rows($query);
                            ?>
                            <span class="text-yellow-600"></span>
@@ -940,7 +941,7 @@ $db_handle = new DBController();
             </div>
             <!--/Metric Card-->
          </div>
-         <div class="flex flex-row flex-wrap flex-grow mt-2">
+         <div class="flex flex-row flex-wrap flex-grow mt-2"  data-aos="fade-up">
             <div class="w-full p-5">
                <!--Graph Card-->
                <div class="bg-white border-transparent rounded-lg shadow-xl">
@@ -969,7 +970,7 @@ $db_handle = new DBController();
                      if (isset($_GET['typeStatis'])) {
                         $typeStatis = $_GET['typeStatis'];
 
-                        if ($typeStatis == 2){
+                        if ($typeStatis == 2) {
                            $queryStatis = 'SELECT DISTINCT DATE_FORMAT(ngaythanhtoan, "%m/%Y") as thang, sum(ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2)) as danhthu 
                                              FROM `hoadon`,`phong` 
                                              WHERE hoadon.idphong = phong.idphong 
@@ -988,7 +989,7 @@ $db_handle = new DBController();
                                              GROUP by DATE_FORMAT(ngaythanhtoan, "%d/%m/%Y")
                                              ORDER BY ngaythanhtoan ASC';
 
-                           $queryStatisUser = 'SELECT DISTINCT DATE_FORMAT(ngaytao, "%d/%m/%Y") as thang, count(*) as soluong 
+                        $queryStatisUser = 'SELECT DISTINCT DATE_FORMAT(ngaytao, "%d/%m/%Y") as thang, count(*) as soluong 
                                              FROM taikhoan
                                              GROUP by DATE_FORMAT(ngaytao, "%d/%m/%Y")
                                              ORDER BY ngaytao ASC';
@@ -1002,10 +1003,10 @@ $db_handle = new DBController();
                         }
                      if ($result1)
                         while ($row = $result1->fetch_assoc()) {
-                           if($row == null) 
+                           if ($row == null)
                               $arrayTotalUser .= '"0",';
 
-                           $arrayTotalUser .= '"' . $row['soluong']*1000000 . '",';
+                           $arrayTotalUser .= '"' . $row['soluong'] * 1000000 . '",';
                         }
                      ?>
                      <script>
@@ -1039,7 +1040,7 @@ $db_handle = new DBController();
                      </script>
                   </div>
 
-                  <form action="" method="GET" class="flex items-center flex-wrap p-5 gap-x-6 gap-y-3 justify-center md:justify-start">
+                  <form action="" method="GET" class="flex items-center flex-wrap p-5 gap-x-6 gap-y-3 justify-center md:justify-start" data-aos="fade-right">
                      <input type="hidden" name="q" id="" value="statistical">
 
                      <label class="statistics-responsive font-bold text-xl md:" for="">Statistics According: </label>
@@ -1183,6 +1184,13 @@ $db_handle = new DBController();
       if (window.history.replaceState) {
          window.history.replaceState(null, null, window.location.href);
       }
+   </script>
+
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+   <script>
+      AOS.init({
+         duration: 1500
+      });
    </script>
 
    <!--Datatables -->

@@ -193,7 +193,8 @@ $db_handle = new DBController();
                      echo '
                      <div class="image-item">
                      <div class="image">
-                        <img src="./assets/photo/room/' . $imgRoom . '" alt="" />
+                        <img src="./assets/photo/room/' . $imgRoom . '" alt="" clas
+                        ""zoom/>
                         <div class="item__content">
                            <div class="item_center">
                               <h1>' . $row['tenphong'] . '</h1>

@@ -129,12 +129,15 @@ p {
 }
 
 .row-content:hover .image-room {
-   width: 110% !important;
-   opacity: 0.7 !important;
+   transform: scale(1.5) !important;
 }
 
 .row-content:hover .row-text {
-   background: #00ffdc29;
+   background: linear-gradient(1deg, #9beff7, transparent);
+}
+
+.row-content:hover .row-text .fas {
+   color: chartreuse;
 }
 
 .row .row-content .image-room {
@@ -145,6 +148,8 @@ p {
    background-size: cover;
    background-position: center center;
    background-repeat: no-repeat;
+   object-fit: cover;
+   transition: all 2s ease;
 }
 
 .row-text {
@@ -155,6 +160,7 @@ p {
    border-bottom-left-radius: 10px;
    border: 1px solid #ccc;
    z-index: 10;
+   background: white;
 }
 
 .row-text .price {
