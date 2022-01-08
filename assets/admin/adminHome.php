@@ -765,7 +765,9 @@ $db_handle = new DBController();
                         <h5 class="font-bold uppercase text-gray-600">Total Revenue</h5>
                         <h3 class="font-bold text-2xl">
                            <?php
-                           $queryTotal = 'SELECT sum(ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2)) as tong FROM `hoadon`, `phong` WHERE hoadon.idphong = phong.idphong';
+                           $queryTotal = 'SELECT sum(ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2)) as tong 
+                                          FROM `hoadon`, `phong` 
+                                          WHERE hoadon.idphong = phong.idphong and hoadon.trangthai =1';
                            $result = $conn->query($queryTotal);
                            if ($result) {
                               $row = $result->fetch_assoc();
@@ -784,7 +786,7 @@ $db_handle = new DBController();
                            <?php
                            $queryTotal = 'SELECT sum(ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2)) as tong 
                                           FROM `hoadon`, `phong` 
-                                          WHERE hoadon..idphong = phong.idphong and datediff(CURDATE(),ngaythanhtoan) < 30';
+                                          WHERE hoadon.idphong = phong.idphong and datediff(CURDATE(),ngaythanhtoan) < 30 and hoadon.trangthai =1';
                            $result = $conn->query($queryTotal);
                            if ($result) {
                               $row = $result->fetch_assoc();
@@ -803,7 +805,7 @@ $db_handle = new DBController();
                            <?php
                            $queryTotal = 'SELECT sum(ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2)) as tong 
                                           FROM `hoadon`, `phong` 
-                                          WHERE hoadon.idphong = phong.idphong and datediff(CURDATE(),ngaythanhtoan) < 7';
+                                          WHERE hoadon.idphong = phong.idphong and datediff(CURDATE(),ngaythanhtoan) <= 7 and hoadon.trangthai =1';
                            $result = $conn->query($queryTotal);
                            if ($result) {
                               $row = $result->fetch_assoc();
@@ -821,7 +823,7 @@ $db_handle = new DBController();
                            <?php
                            $queryTotal = 'SELECT sum(ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2)) as tong 
                                           FROM `hoadon`, `phong` 
-                                          WHERE hoadon.idphong = phong.idphong and datediff(CURDATE(),ngaythanhtoan) < 1';
+                                          WHERE hoadon.idphong = phong.idphong and datediff(CURDATE(),ngaythanhtoan) <= 1 and hoadon.trangthai =1';
                            $result = $conn->query($queryTotal);
                            if ($result) {
                               $row = $result->fetch_assoc();
@@ -959,7 +961,7 @@ $db_handle = new DBController();
                      $typeStatis = '';
                      $queryStatis = 'SELECT DISTINCT DATE_FORMAT(ngaythanhtoan, "%Y") as thang, sum(ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2)) as danhthu 
                                           FROM `hoadon`, `phong` 
-                                          WHERE hoadon.idphong = phong.idphong 
+                                          WHERE hoadon.idphong = phong.idphong and hoadon.trangthai =1
                                           GROUP by DATE_FORMAT(ngaythanhtoan, "%Y")
                                           ORDER BY ngaythanhtoan ASC';
                      $queryStatisUser = 'SELECT DISTINCT DATE_FORMAT(ngaytao, "%Y") as thang, count(*) as soluong 
@@ -973,7 +975,7 @@ $db_handle = new DBController();
                         if ($typeStatis == 2) {
                            $queryStatis = 'SELECT DISTINCT DATE_FORMAT(ngaythanhtoan, "%m/%Y") as thang, sum(ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2)) as danhthu 
                                              FROM `hoadon`,`phong` 
-                                             WHERE hoadon.idphong = phong.idphong 
+                                             WHERE hoadon.idphong = phong.idphong and hoadon.trangthai =1
                                              GROUP by DATE_FORMAT(ngaythanhtoan, "%m/%Y")
                                              ORDER BY ngaythanhtoan ASC';
 
@@ -985,7 +987,7 @@ $db_handle = new DBController();
                         if ($typeStatis == 3)
                            $queryStatis = 'SELECT DISTINCT DATE_FORMAT(ngaythanhtoan, "%d/%m/%Y") as thang, sum(ROUND(TIME_TO_SEC(timediff(ngaythanhtoan,ngaytao))*(phong.dongia/3600/24),2)) as danhthu 
                                              FROM `hoadon`, `phong` 
-                                             WHERE hoadon.idphong = phong.idphong 
+                                             WHERE hoadon.idphong = phong.idphong and hoadon.trangthai =1
                                              GROUP by DATE_FORMAT(ngaythanhtoan, "%d/%m/%Y")
                                              ORDER BY ngaythanhtoan ASC';
 
@@ -1021,7 +1023,7 @@ $db_handle = new DBController();
                                  "backgroundColor": "rgba(255, 99, 132, 0.2)"
                               }, {
                                  "label": "Adsense Clicks",
-                                 "data": [<?php echo $arrayTotalUser  ?>],
+                                 "data": [<?php echo $arrayDanhthu  ?>],
                                  "type": "line",
                                  "fill": false,
                                  "borderColor": "rgb(54, 162, 235)"

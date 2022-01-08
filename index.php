@@ -196,7 +196,7 @@ $db_handle = new DBController();
                         <img src="./assets/photo/room/' . $imgRoom . '" alt="" class="zoom"/>
                         <div class="item__content">
                            <div class="item_center">
-                              <h1>' . $row['tenphong'] . '</h1>
+                              <h1 class="uppercase">' . $row['tenphong'] . '</h1>
                               <div class="item_price">' . number_format($row['dongia']) . ' VNĐ</div>
                               <div class="item_rating">
                                  <i class="fa fa-star"></i>
