@@ -21,8 +21,10 @@ if($id != ''){
                FROM khachhang 
                WHERE idtaikhoan = ' . $id;
    $result = $conn->query($queryIdCus);
-   $rowidCus = $result->fetch_assoc();
-   $idcus = $rowidCus['idkhachhang'];
+   if($result){
+      $rowidCus = $result->fetch_assoc();
+      $idcus = $rowidCus['idkhachhang'];
+   }
 }
 
 $query = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, count(idcomment) as soluong, phong.*, phanhoi.*, khachhang.* 
