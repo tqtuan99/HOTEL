@@ -207,7 +207,7 @@ $db_handle = new DBController();
                               </div>
                               <div class="tour__item--btn">
                                  <div class="tour__btn__bgc"></div>
-                                 <a href="#">Book now
+                                 <a href="./assets/components/room-detail/roomdetail.php?idRoom='.$row['idphong'].'">Book now
                                     <span></span>
                                     <span></span>
                                     <span></span>

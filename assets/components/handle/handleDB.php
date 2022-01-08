@@ -38,7 +38,7 @@ if(isset($_GET['search'])){
                       <span class="fas fa-street-view"></span>' . $row['songuoi'] . ' người
                    </li>
                 </ul>
-                <a href="">View More</a>
+                <a href="./assets/components/room-detail/roomdetail.php?idRoom='.$row['idphong'].'">View More</a>
              </div>
           </div>
              ';
