@@ -26,6 +26,7 @@ $db_handle = new DBController();
    <link rel="stylesheet" href="./pageshowroom.css">
    <link rel="stylesheet" href="../home/header/header.css">
    <link rel="stylesheet" href="../../font/fontawesome-free-5.15.4-web/css/all.min.css">
+   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
@@ -38,7 +39,7 @@ $db_handle = new DBController();
    <div class="web-room">
       <div class="container">
          <div class="show-room">
-            <form id='formSearch' class="sidebar flex"  method="GET" action="#">
+            <form id='formSearch' class="sidebar flex" method="GET" action="#">
                <div class="search-room">
                   <div class="search__container--item ">
                      <div>
@@ -50,19 +51,19 @@ $db_handle = new DBController();
                      <div>
                         <label for="to">CHECK OUT</label>
                      </div>
-                     <input class="text-center rounded-2xl text-lg" type="text" id="to" name="checkout" placeholder="mm-dd-yyyy" >
+                     <input class="text-center rounded-2xl text-lg" type="text" id="to" name="checkout" placeholder="mm-dd-yyyy">
                   </div>
                   <div class="search__container--item">
                      <div>
                         <span>ADULTS</span>
                      </div>
-                     <input type="number" class="text-center w-full rounded-2xl text-lg" min="1" max="20" name="adults" id="" value="<?php echo isset($_GET['adults'])?$_GET['adults']:""; ?>"></input>
+                     <input type="number" class="text-center w-full rounded-2xl text-lg" min="1" max="20" name="adults" id="" value="<?php echo isset($_GET['adults']) ? $_GET['adults'] : ""; ?>"></input>
                   </div>
                   <div class="search__container--item">
                      <div>
                         <span>CHILDREN</span>
                      </div>
-                     <input type="number" class="text-center w-full rounded-2xl text-lg" min="0" max="20" name="children" id="" value="<?php echo isset($_GET['children'])?$_GET['children']:""; ?>"> </input>
+                     <input type="number" class="text-center w-full rounded-2xl text-lg" min="0" max="20" name="children" id="" value="<?php echo isset($_GET['children']) ? $_GET['children'] : ""; ?>"> </input>
                   </div>
                   <div class="search__container--btn ani">
                      <button name="search" class="no-underline text-white animate-pulse">SEARCH</button>
@@ -74,27 +75,27 @@ $db_handle = new DBController();
                   </div>
                   <div class="option-type">
                      <div class="">
-                        <input name="vitri1" type="checkbox" class="chk-option" <?php if(isset($_GET['vitri1'])) echo 'checked'?>>
+                        <input name="vitri1" type="checkbox" class="chk-option" <?php if (isset($_GET['vitri1'])) echo 'checked' ?>>
                         <label for="" class="lbl-option">Giáp Biển</label>
                      </div>
 
                      <div class="">
-                        <input name="vitri2" type="checkbox" class="chk-option" <?php if(isset($_GET['vitri2'])) echo 'checked'?>>
+                        <input name="vitri2" type="checkbox" class="chk-option" <?php if (isset($_GET['vitri2'])) echo 'checked' ?>>
                         <label for="" class="lbl-option">Giáp Mặt Phố</label>
                      </div>
 
                      <div class="">
-                        <input name="sao" type="checkbox" class="chk-option" <?php if(isset($_GET['sao'])) echo 'checked'?>>
+                        <input name="sao" type="checkbox" class="chk-option" <?php if (isset($_GET['sao'])) echo 'checked' ?>>
                         <label for="" class="lbl-option">5 Sao</label>
                      </div>
 
                      <div class="">
-                        <input name="giuongdoi" type="checkbox" class="chk-option" <?php if(isset($_GET['giuongdoi'])) echo 'checked'?>>
+                        <input name="giuongdoi" type="checkbox" class="chk-option" <?php if (isset($_GET['giuongdoi'])) echo 'checked' ?>>
                         <label for="" class="lbl-option">Giường Đôi</label>
                      </div>
 
                      <div class="">
-                        <input name="nguoi" type="checkbox" class="chk-option" <?php if(isset($_GET['nguoi'])) echo 'checked'?>>
+                        <input name="nguoi" type="checkbox" class="chk-option" <?php if (isset($_GET['nguoi'])) echo 'checked' ?>>
                         <label for="" class="lbl-option">Trên 5 người</label>
                      </div>
                      <div class="search__container--btn ani">
@@ -108,42 +109,42 @@ $db_handle = new DBController();
                      Chọn Lọc Theo Giá:
                   </div>
                   <div class="option-type">
-                  <?php
-                  $checked = "";
-                   if(isset($_GET['price'])) 
-                     $checked = $_GET['price'];
-                   ?>
-                      <div class="">
-                        <input type="radio" name="price" class="chk-option" value="0" <?php if($checked==0) echo 'checked'?>>
+                     <?php
+                     $checked = "";
+                     if (isset($_GET['price']))
+                        $checked = $_GET['price'];
+                     ?>
+                     <div class="">
+                        <input type="radio" name="price" class="chk-option" value="0" <?php if ($checked == 0) echo 'checked' ?>>
                         <label for="" class="lbl-option"> All</label>
                      </div>
                      <div class="">
-                        <input type="radio" name="price" class="chk-option" value="1" <?php if($checked==1) echo 'checked'?>>
+                        <input type="radio" name="price" class="chk-option" value="1" <?php if ($checked == 1) echo 'checked' ?>>
                         <label for="" class="lbl-option"> Dưới 1000$</label>
                      </div>
 
                      <div class="">
-                        <input type="radio" name="price" class="chk-option" <?php if($checked==2) echo 'checked'?> value="2">
+                        <input type="radio" name="price" class="chk-option" <?php if ($checked == 2) echo 'checked' ?> value="2">
                         <label for="" class="lbl-option">1000$ - 1500$</label>
                      </div>
 
                      <div class="">
-                        <input type="radio" name="price" class="chk-option" <?php if($checked==3) echo 'checked'?> value="3">
+                        <input type="radio" name="price" class="chk-option" <?php if ($checked == 3) echo 'checked' ?> value="3">
                         <label for="" class="lbl-option">1500$ - 2000$</label>
                      </div>
 
                      <div class="">
-                        <input type="radio" name="price" class="chk-option" <?php if($checked==4) echo 'checked'?> value="4">
+                        <input type="radio" name="price" class="chk-option" <?php if ($checked == 4) echo 'checked' ?> value="4">
                         <label for="" class="lbl-option">2000$ - 2500$</label>
                      </div>
 
                      <div class="">
-                        <input type="radio" name="price" class="chk-option" <?php if($checked==5) echo 'checked'?> value="5">
+                        <input type="radio" name="price" class="chk-option" <?php if ($checked == 5) echo 'checked' ?> value="5">
                         <label for="" class="lbl-option">2500$ - 3000$</label>
                      </div>
 
                      <div class="">
-                        <input type="radio" name="price" class="chk-option" <?php if($checked==6) echo 'checked'?> value="6" >
+                        <input type="radio" name="price" class="chk-option" <?php if ($checked == 6) echo 'checked' ?> value="6">
                         <label for="" class="lbl-option">Trên 3000$</label>
                      </div>
 
@@ -158,7 +159,7 @@ $db_handle = new DBController();
             <div class="row">
                <div class="type">
                   <div class="type-room">
-                     <button form="formSearch" name="typeRoom"  class="type-name" value="all">ALL</button>
+                     <button form="formSearch" name="typeRoom" class="type-name" value="all">ALL</button>
                      <?php
                      include('./getDBTypeRoom.php');
                      ?>
@@ -220,7 +221,14 @@ $db_handle = new DBController();
          }
       }
    </script>
+
+   <script src="./pageRoom.js"></script>
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+   <script>
+      AOS.init({
+         duration: 1500
+      });
+   </script>
 </body>
-<script src="./pageRoom.js"></script>
 
 </html>

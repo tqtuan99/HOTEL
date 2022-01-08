@@ -85,6 +85,7 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
    <link rel="stylesheet" href="../home/footer/footer.css">
    <link rel="stylesheet" href="./roomdetail.css">
    <link rel="stylesheet" href="../../font/fontawesome-free-5.15.4-web/css/all.min.css">
+   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
    <title>Document</title>
 </head>
 
@@ -96,7 +97,7 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
    <div class="m-auto bg-gray-100 mt-7">
       <div class="flex flex-col max-w-screen-lg m-auto bg-white">
          <div class="flex flex-col m-10 p-4 gap-y-4 bg-white shadow-2xl rounded-b-full">
-            <div class="flex justify-between items-start">
+            <div class="flex justify-between items-start" data-aos="fade-up">
                <div>
                   <h3 class="text-3xl font-bold text-blue-600">ANGLE HOTEL</h3>
                   <span class="italic text-gray-300">
@@ -108,7 +109,7 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
                </svg>
             </div>
             <hr>
-            <div class="w-full">
+            <div class="w-full" data-aos="fade-up">
                <div class="text-xl font-bold text-yellow-400">
                   <?php
                   echo $rowR['tenphong']
@@ -119,7 +120,7 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
                </div>
             </div>
             <form action="./book.php" method="GET" class="flex justify-between shadow py-4 rounded rounded-lg">
-               <div class="flex my-auto">
+               <div class="flex my-auto" data-aos="fade-up">
                   <div class="flex">
                      <div class="flex flex-col mr-20">
                         <label for="checkin" class="font-bold text-lg">Check In</label>
@@ -131,7 +132,7 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
                      </div>
                   </div>
                </div>
-               <div class="flex flex-col gap-y-2">
+               <div class="flex flex-col gap-y-2" data-aos="fade-up">
                   <p class="font-bold text-gray-600">Giá phòng mỗi đêm từ</p>
                   <span class="block text-3xl text-yellow-400 text-center"><?php echo number_format($rowR['dongia']); ?> VNĐ</span>
                   <input type="hidden" name="idRoom" value="<?php echo $idRoom ?>">
@@ -154,9 +155,9 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
          ?>
 
          <div class="m-10 p-4 bg-white shadow-2xl rounded-full">
-            <h3 class="text-xl text-center border-blue-200 border-b-4 uppercase text-purple-500">Reviews of Angle Hotel from real guests</h3>
+            <h3 class="text-xl text-center border-blue-200 border-b-4 uppercase text-purple-500" data-aos="fade-up">Reviews of Angle Hotel from real guests</h3>
             <div class="flex justify-between gap-x-5 mt-5">
-               <div class="flex-1 px-4 py-4 rounded-lg shadow">
+               <div class="flex-1 px-4 py-4 rounded-lg shadow" data-aos="fade-right">
                   <div class="px-4 py-4 mb-1 tracking-wide">
                      <h2 class="mt-1 font-semibold text-gray-800">500 Users reviews</h2>
                      <div class="px-8 pb-3 -mx-8 border-b">
@@ -230,7 +231,7 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
                </div>
 
 
-               <div class="max-w-sm px-4 py-4 rounded-lg shadow">
+               <div class="max-w-sm px-4 py-4 rounded-lg shadow" data-aos="fade-left">
                   <div class="px-4 py-4 mb-1 tracking-wide">
                      <h2 class="mt-1 font-semibold text-gray-800"><?php echo $rowR['soluong']; ?> Users reviews</h2>
                      <div class="px-8 pb-3 -mx-8 border-b">
@@ -330,26 +331,26 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
          </div>
 
          <div class="m-10 p-4 bg-white shadow-2xl rounded-full">
-            <h3 class="text-xl text-center border-blue-200 border-b-4 uppercase text-purple-500">Hotel Amenities</h3>
+            <h3 class="text-xl text-center border-blue-200 border-b-4 uppercase text-purple-500" data-aos="fade-up">Hotel Amenities</h3>
             <div class="flex mt-5">
                <ul class="inline-block w-full flex justify-between items-center shadow rounded-lg h-52">
-                  <li class="inline-block w-2/12 text-center">
+                  <li class="inline-block w-2/12 text-center" data-aos="fade-right">
                      <i class="text-2xl p-4 text-green-500 fas fa-wifi"></i>
                      <p class="text-base">Free Wi-Fi!</p>
                   </li>
-                  <li class="inline-block w-2/12 text-center">
+                  <li class="inline-block w-2/12 text-center" data-aos="fade-right">
                      <i class="text-2xl p-4 text-green-500 fas fa-broom"></i>
                      <p class="text-base">Daily housekeeping</p>
                   </li>
-                  <li class="inline-block w-2/12 text-center">
+                  <li class="inline-block w-2/12 text-center" data-aos="fade-up">
                      <i class="text-2xl p-4 text-green-500 far fa-clock"></i>
                      <p class="text-base">Receptionist 24H</p>
                   </li>
-                  <li class="inline-block w-2/12 text-center">
+                  <li class="inline-block w-2/12 text-center" data-aos="fade-left">
                      <i class="text-2xl p-4 text-green-500 fas fa-parking"></i>
                      <p class="text-base">Parking lot</p>
                   </li>
-                  <li class="inline-block w-2/12 text-center">
+                  <li class="inline-block w-2/12 text-center" data-aos="fade-left">
                      <i class="text-2xl p-4 text-green-500 fas fa-person-booth"></i>
                      <p class="text-base">Elevator</p>
                   </li>
@@ -378,11 +379,11 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
          <form method="GET" action="#" class="flex flex-col m-10 p-4 gap-y-4 bg-white shadow-2xl rounded-t-full">
             <input type="hidden" name='idRoom' value="<?php echo $idRoom ?>">
             <input type="hidden" name='idCus' value="<?php echo $idcus ?>">
-            <h3 class="text-xl text-center border-blue-200 border-b-4 uppercase text-purple-500">
+            <h3 class="text-xl text-center border-blue-200 border-b-4 uppercase text-purple-500" data-aos="fade-up">
                Customer reviews and ratings for Angle Hotel</h3>
             <div class="flex flex-col">
-               <h3 class="text-xl">Discussion (<?php echo $rowR['soluong'] ?>)</h3>
-               <div class="w-full px-4">
+               <h3 class="text-xl" data-aos="fade-right">Discussion (<?php echo $rowR['soluong'] ?>)</h3>
+               <div class="w-full px-4" data-aos="fade-right">
                   <div class="rating-star-comment">
                      <input id="star10-cm" name="rating" type="radio" value="10" />
                      <label for="star10-cm"></label>
@@ -408,7 +409,7 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
                   </div>
                   <label class="notification text-reb-600 inline-block" style="transform: translateY(-10px);" for="">Vui lòng chọn số sao</label>
                </div>
-               <div class="flex flex-col px-10 py-5 mb-5">
+               <div class="flex flex-col px-10 py-5 mb-5" data-aos="fade-left">
                   <div class="flex-1 rounded-xl">
                      <textarea required name="content" id="content" placeholder="Add to the discussion" required class="bg-gray-100 rounded-xl w-full h-full p-3 border border-solid border-yellow-400"></textarea>
                   </div>
@@ -424,7 +425,7 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
                $resultComment = $conn->query($queryComment);
                while ($rowComment = $resultComment->fetch_assoc()) {
                ?>
-                  <div class="flex flex-col">
+                  <div class="flex flex-col" data-aos="fade-left">
                      <div class="flex px-10 py-5 gap-x-3">
                         <img src="../../photo/avatar/<?php echo $rowComment['avatar'] == '' ? 'avtNull.png' : $rowComment['avatar']; ?>" alt="" class="w-10 h-10 flex-shrink-0 object-cover rounded-2xl mt-2">
                         <div class="flex-1 border border-gray-400 rounded-xl">
@@ -530,6 +531,12 @@ $avgStar = number_format(((5 * $sao5 + 4 * $sao4 + 3 * $sao3 + 2 * $sao2 + 1 * $
       }
    </script>
    <script src="./roomdetail.js"></script>
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+   <script>
+      AOS.init({
+         duration: 1500
+      });
+   </script>
 </body>
 
 </html>

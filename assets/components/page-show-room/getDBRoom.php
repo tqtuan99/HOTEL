@@ -133,7 +133,7 @@ if ($result)
          }
 
          echo '
-               <div class="row-content">
+      <div class="row-content" data-aos="fade-left">
       <div class="image-room" style="background-image: url(../../photo/room/' . $row['anh'] . ');">
       </div>
       <div class="row-text">
