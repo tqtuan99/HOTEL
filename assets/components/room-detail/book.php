@@ -1,12 +1,12 @@
 <?php
 if (session_id() === "")
-session_start();
+   session_start();
 
 require_once("../handle/dbcontroller.php");
 require_once("../handle/configDB.php");
 $db_handle = new DBController();
 
-if (isset($_SESSION['idUser']) )
+if (isset($_SESSION['idUser']))
    $id = $_SESSION['idUser'];
 else header('location: ../login/login.php');
 
@@ -14,14 +14,14 @@ $idRoom = '';
 $checkin = '';
 $checkout = '';
 
-if (isset($_GET['book'])){
+if (isset($_GET['book'])) {
    $idRoom = $_GET['idRoom'];
    $checkin = $_GET['checkin'];
    $checkout = $_GET['checkout'];
 }
 
 
-$query = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, khachhang.* FROM khachhang where idtaikhoan = '.$id;
+$query = 'SELECT Concat( khachhang.ho," ",khachhang.ten) as hoten, khachhang.* FROM khachhang where idtaikhoan = ' . $id;
 $result = $conn->query($query);
 $rowCus = $result->fetch_assoc();
 
@@ -38,6 +38,7 @@ $rowCus = $result->fetch_assoc();
    <link rel="stylesheet" href="../home/header/header.css">
    <link rel="stylesheet" href="../home/footer/footer.css">
    <link rel="stylesheet" href="../../font/fontawesome-free-5.15.4-web/css/all.min.css">
+   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
    <title>Document</title>
 </head>
 
@@ -49,14 +50,14 @@ $rowCus = $result->fetch_assoc();
 
    <div class="m-auto bg-gray-100 mt-7">
       <div class="flex flex-col max-w-screen-lg m-auto bg-white">
-         <div class="flex flex-col m-10 p-4 gap-y-4 bg-white shadow-2xl rounded-b-full">
+         <div class="flex flex-col m-10 p-4 gap-y-4 bg-white shadow-2xl rounded-b-full" data-aos="fade-up">
             <h2 class="text-center text-3xl uppercase font-bold">Đặt phòng khách sạn</h2>
             <p class="text-center text-2xl -mt-3">Điền thông tin người liên lạc và khách bên dưới</p>
 
             <div class="flex gap-5">
                <div class="flex flex-col gap-y-10">
-                  <h3 class="font-bold text-xl">Thông tin của bạn</h3>
-                  <div class="flex flex-col gap-y-3 shadow-xl flex-1 p-4 -mt-10">
+                  <h3 class="font-bold text-xl" data-aos="fade-up">Thông tin của bạn</h3>
+                  <div class="flex flex-col gap-y-3 shadow-xl flex-1 p-4 -mt-10" data-aos="fade-up">
                      <div class="flex flex-col">
                         <h3>Tên người liên hệ</h3>
                         <div>
@@ -86,8 +87,8 @@ $rowCus = $result->fetch_assoc();
                      </div>
                   </div>
 
-                  <h3 class="font-bold text-xl">Chính sách huỷ phòng</h3>
-                  <div class="flex flex-col gap-y-3 shadow-xl flex-1 p-4 -mt-10">
+                  <h3 class="font-bold text-xl" data-aos="fade-up">Chính sách huỷ phòng</h3>
+                  <div class="flex flex-col gap-y-3 shadow-xl flex-1 p-4 -mt-10" data-aos="fade-up">
                      <p>Chính sách huỷ đặt phòng</p>
                      <div>
                         <i class="fas fa-exclamation text-red-600 mr-2"></i>
@@ -97,15 +98,15 @@ $rowCus = $result->fetch_assoc();
 
 
                   <?php
-                     $query = "SELECT phong.*, timediff('$checkout','$checkin') as ngayo, ROUND(TIME_TO_SEC(timediff('$checkout','$checkin'))*(phong.dongia/3600/24),2) as tongtien 
+                  $query = "SELECT phong.*, timediff('$checkout','$checkin') as ngayo, ROUND(TIME_TO_SEC(timediff('$checkout','$checkin'))*(phong.dongia/3600/24),2) as tongtien 
                               FROM phong 
-                              WHERE phong.idphong =  ".$idRoom;
-                     $result = $conn->query($query);
-                     $rowRoom = $result->fetch_assoc();
+                              WHERE phong.idphong =  " . $idRoom;
+                  $result = $conn->query($query);
+                  $rowRoom = $result->fetch_assoc();
                   ?>
 
-                  <h3 class="font-bold text-xl">Chi tiết giá</h3>
-                  <div class="flex flex-col gap-y-3 shadow-xl flex-1 p-4 -mt-10">
+                  <h3 class="font-bold text-xl" data-aos="fade-up">Chi tiết giá</h3>
+                  <div class="flex flex-col gap-y-3 shadow-xl flex-1 p-4 -mt-10" data-aos="fade-up">
                      <div class="flex justify-between">
                         <p>Tổng tiền</p> <span class="font-bold text-yellow-500"><?php echo number_format($rowRoom['tongtien']) ?> VNĐ</span>
                      </div>
@@ -116,11 +117,11 @@ $rowCus = $result->fetch_assoc();
                         <span class="font-bold text-yellow-500"><?php echo number_format($rowRoom['dongia']) ?> VNĐ/ngày</span>
                      </div>
                      <div class="flex justify-between">
-                        <p>Thuê và phí</p><span class="font-bold text-yellow-500"><?php echo number_format($rowRoom['dongia']*1/100) ?> VNĐ</span>
+                        <p>Thuê và phí</p><span class="font-bold text-yellow-500"><?php echo number_format($rowRoom['dongia'] * 1 / 100) ?> VNĐ</span>
                      </div>
                   </div>
 
-                  <form method="post" class="flex justify-between">
+                  <form method="post" class="flex justify-between" data-aos="fade-up">
                      <input type="hidden" name="checkin" value="<?php echo $checkin ?>">
                      <input type="hidden" name="checkout" value="<?php echo $checkout ?>">
                      <input type="hidden" name="id" value="<?php echo $rowCus['idkhachhang'] ?>">
@@ -139,7 +140,7 @@ $rowCus = $result->fetch_assoc();
                   </form>
                </div>
 
-               <div class="flex flex-col shadow w-1/2 p-2 gap-y-5 bg-green-100 rounded-xl">
+               <div class="flex flex-col shadow w-1/2 p-2 gap-y-5 bg-green-100 rounded-xl" data-aos="fade-up">
                   <h3 class="text-3xl font-bold text-blue-600 text-center">ANGLE HOTEL</h3>
                   <span class="italic text-gray-300 -mt-4">
                      <i class="fas fa-map-marker-alt mr-1"></i>56 Nguyen Thuat, Cam Le, Da Nang
@@ -147,16 +148,16 @@ $rowCus = $result->fetch_assoc();
 
                   <div class="bg-gray-100 -mx-2">
                      <div class="flex flex-col px-4">
-                        <p class="font-bold">Check in:</p> <time datetime="" class="text-gray-500 italic"><?php echo gmdate("H:i d/m/Y ", strtotime($checkin));?> 
+                        <p class="font-bold">Check in:</p> <time datetime="" class="text-gray-500 italic"><?php echo gmdate("H:i d/m/Y ", strtotime($checkin)); ?>
                         </time>
                      </div>
                      <div class="flex flex-col mt-3 px-4">
-                        <p class="font-bold">Check out:</p> <time datetime="" class="text-gray-500 italic"><?php echo gmdate("H:i d/m/Y ", strtotime($checkout));?>
+                        <p class="font-bold">Check out:</p> <time datetime="" class="text-gray-500 italic"><?php echo gmdate("H:i d/m/Y ", strtotime($checkout)); ?>
                         </time>
                      </div>
                   </div>
 
-                  
+
 
                   <h2 class="font-bold">LYXURY ROOM</h2>
                   <div>
@@ -194,7 +195,7 @@ $rowCus = $result->fetch_assoc();
    <?php
    include('../home/footer/footer.php');
 
-   if(isset($_POST['booking'])){
+   if (isset($_POST['booking'])) {
       $checkin = $_POST['checkin'];
       $checkout = $_POST['checkout'];
       $id = $_POST['id'];
@@ -202,20 +203,18 @@ $rowCus = $result->fetch_assoc();
 
       $queryCheck = "SELECT * FROM HOADON where hoadon.trangthai = 2 and datediff('$checkin',ngaythanhtoan) > 0 and idphong = $idRoom";
       $resultCheck = $conn->query($queryCheck);
-      if($resultCheck->num_rows >= 0){
+      if ($resultCheck->num_rows >= 0) {
          $queryBook = "INSERT INTO `hoadon`(`idkh`, `idphong`, `ngaytao`, `ngaythanhtoan`, `trangthai`) 
                         VALUES ($id, $idRoom, '$checkin', '$checkout',2)";
          $resultBook = $conn->query($queryBook);
          $queryRoom = "UPDATE PHONG set trangthai = 2 where idphong = $idRoom";
          $resultRoom = $conn->query($queryRoom);
-         if($resultBook){
+         if ($resultBook) {
             echo "<script>alert('Book room successful!');
                   window.location.href = '../page-show-room/pageRoom.php';
                   </script>";
-         } 
-         else echo '<script>alert("Book room failed!");</script>';
-      }
-      else {
+         } else echo '<script>alert("Book room failed!");</script>';
+      } else {
          echo '<script>alert("The calendar you selected has been duplicated, please choose another one!");</script>';
       }
    }
@@ -262,12 +261,17 @@ $rowCus = $result->fetch_assoc();
       }
    </script>
 
-<script>
+   <script>
       if (window.history.replaceState) {
          window.history.replaceState(null, null, window.location.href);
       }
    </script>
-
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+   <script>
+      AOS.init({
+         duration: 1500
+      });
+   </script>
 </body>
 
 </html>
